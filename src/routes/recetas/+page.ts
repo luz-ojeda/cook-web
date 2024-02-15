@@ -1,11 +1,10 @@
 import type { PageLoad } from './$types';
-import type { Recipe } from "$lib/types/Recipe";
+import type { Recipe } from '$lib/types/Recipe';
+import { PUBLIC_API_URL } from '$env/static/public';
 
-export const load: PageLoad<Recipe[]> = async ({ fetch }) => {
-	const url = "http://localhost:5255"
-
-	const res = await fetch(`${url}/recipes`);
+export const load: PageLoad<{ recipes: Recipe[] }> = async ({ fetch }) => {
+	const res = await fetch(`${PUBLIC_API_URL}/recipes`);
 	const recipes = await res.json();
 
-	return recipes;
-}
+	return { recipes };
+};
