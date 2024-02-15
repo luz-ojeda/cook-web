@@ -1,9 +1,9 @@
+import { error } from '@sveltejs/kit';
+import type { PageLoad } from './$types';
 import type { Recipe } from "$lib/types/Recipe";
-import { error } from "@sveltejs/kit";
 
-/** @type {import('./$types').PageLoad} */
-export async function load({ fetch, params }): Promise<{ recipe: Recipe }> {
-    const url = "http://localhost:5255"
+export const load: PageLoad<Recipe> = async ({ fetch, params }) => {
+	const url = 'http://localhost:5255';
 
 	const res = await fetch(`${url}/recipes/name/${params.name}`);
 
@@ -11,5 +11,5 @@ export async function load({ fetch, params }): Promise<{ recipe: Recipe }> {
 
 	const recipe = await res.json();
 
-	return { recipe };
-}
+	return recipe;
+};
