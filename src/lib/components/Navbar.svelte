@@ -16,7 +16,6 @@
 
 <style>
 	nav {
-		border: 1px solid red;
 		font-size: 24px;
 		height: 80px;
 		margin-bottom: 32px;
