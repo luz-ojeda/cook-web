@@ -1,0 +1,12 @@
+@import "sass/variables";
+@import "sass/utilities";
+
+body {
+    padding: 8px 16px; 
+}
+
+@media (min-width: $tabletBreakpoint) {
+    body {
+        padding: 48px 160px;
+    }
+}

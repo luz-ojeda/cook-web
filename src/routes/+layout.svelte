@@ -1,7 +1,8 @@
-<nav>
-	<a href="/">home</a>
-	<a href="/recetas">recetas</a>
-	<a href="/recetas-guardadas">recetas guardadas</a>
-</nav>
+<script>
+	import '../app.scss'
+	import Navbar from '$lib/components/Navbar.svelte';
+  </script>
+
+<Navbar />
 
 <slot />
