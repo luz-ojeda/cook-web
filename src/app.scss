@@ -5,7 +5,13 @@ body {
     padding: 8px 16px; 
 }
 
-@media (min-width: $tabletBreakpoint) {
+@media (min-width: $tabletBreakpoint) and (max-width: $laptopBreakpoint) {
+    body {
+        padding: 24px 80px;
+    }
+}
+
+@media (min-width: $laptopBreakpoint) {
     body {
         padding: 48px 160px;
     }
