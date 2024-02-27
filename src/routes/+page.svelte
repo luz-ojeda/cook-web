@@ -1,7 +1,11 @@
-<script>
-	import Footer from "$lib/components/Footer.svelte";
+<script lang="ts">
+	import Footer from '$lib/components/Footer.svelte';
 	import HomeSearch from '$lib/components/HomeSearch.svelte';
 	import RecipeCard from '$lib/components/RecipeCard.svelte';
+	import type { Recipe } from "$lib/types/Recipe";
+
+	export let data: { recipes: Recipe[] };
+	console.log(data)
 </script>
 
 <!-- Hero -->
@@ -23,26 +27,10 @@
 <!-- Recipe cards -->
 <div class="background">
 	<div class="recipes-container spacing flex-center">
-		<RecipeCard
-			recipeTitle="Receta #1"
-			recipeSummary="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec placerat euismod turpis, at fringilla sem mollis et. In et tortor quis libero porta fermentum. "
-			recipeImage="https://cookapistorage.blob.core.windows.net/recipes/f6f3e96b-8583-4cda-8fc6-9f260fb6bc09/image1.jpg?sp=r&st=2024-02-25T22:02:43Z&se=2024-03-25T06:02:43Z&spr=https&sv=2022-11-02&sr=c&sig=Bh0Eyyf%2Bgxjs%2B8gMTaU6g39PxL3z4y1kUtvbZ93cNfQ%3D"
-		/>
-        <RecipeCard
-			recipeTitle="Receta con un nombre muy largo"
-			recipeSummary="Lorem ipsum dolor sit amet"
-			recipeImage="https://cookapistorage.blob.core.windows.net/recipes/AMAZING-Chana-Masala-made-in-1-Pot-So-healthy-flavorful-and-delicious-vegan-glutenfree-chanamasala-recipe-minimalistbaker.jpg?sp=r&st=2024-02-25T22:02:43Z&se=2024-03-25T06:02:43Z&spr=https&sv=2022-11-02&sr=c&sig=Bh0Eyyf%2Bgxjs%2B8gMTaU6g39PxL3z4y1kUtvbZ93cNfQ%3D"
-		/>
-        <RecipeCard
-			recipeTitle="Receta #3"
-			recipeSummary="Lorem ipsum dolor sit amet"
-			recipeImage="https://cookapistorage.blob.core.windows.net/recipes/Apple-Pie-Recipe-Video.jpg?sp=r&st=2024-02-25T22:02:43Z&se=2024-03-25T06:02:43Z&spr=https&sv=2022-11-02&sr=c&sig=Bh0Eyyf%2Bgxjs%2B8gMTaU6g39PxL3z4y1kUtvbZ93cNfQ%3D"
-		/>
-        <RecipeCard
-			recipeTitle="Receta #4"
-			recipeSummary="Lorem ipsum dolor sit amet"
-			recipeImage="https://cookapistorage.blob.core.windows.net/recipes/maxresdefault.jpg?sp=r&st=2024-02-25T22:02:43Z&se=2024-03-25T06:02:43Z&spr=https&sv=2022-11-02&sr=c&sig=Bh0Eyyf%2Bgxjs%2B8gMTaU6g39PxL3z4y1kUtvbZ93cNfQ%3D"
-		/>
+		{#each data.recipes as { name, summary, pictures }}
+			<!-- href="/recetas/{name}" -->
+			<RecipeCard recipeTitle={name} recipeSummary={summary} recipeImage={pictures[0]} />
+		{/each}
 	</div>
 </div>
 
@@ -76,10 +64,10 @@
 		display: grid;
 		column-gap: 32px;
 		grid-template-columns: repeat(4, 1fr);
-        
+
 		@media (max-width: 1200px) {
 			column-gap: 64px;
-            grid-template-columns: repeat(2, 1fr);
+			grid-template-columns: repeat(2, 1fr);
 			grid-template-rows: 1fr 1fr;
 		}
 
