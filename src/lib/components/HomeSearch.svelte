@@ -31,9 +31,12 @@
 	<button>BUSCAR</button>
 </div>
 
-<style>
+<style lang="scss">
+	@import "../../sass/variables.scss";
+
 	.container {
-		border: 1px solid black;
+		background-color: lightgray;
+		border-radius: $borderRadius;
 		padding: 24px;
 	}
 

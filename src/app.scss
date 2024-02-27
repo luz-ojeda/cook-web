@@ -1,18 +1,23 @@
 @import "sass/variables";
 @import "sass/utilities";
 
-body {
-    padding: 8px 16px; 
+:root {
+    color: $fgColor;
 }
 
-@media (min-width: $tabletBreakpoint) and (max-width: $laptopBreakpoint) {
-    body {
+body {
+    margin: 0;
+}
+
+.spacing {
+    padding: $paddingMobile; 
+
+    @media (min-width: $tabletBreakpoint) and (max-width: $laptopBreakpoint) {
         padding: 24px 80px;
     }
-}
-
-@media (min-width: $laptopBreakpoint) {
-    body {
+    
+    @media (min-width: $laptopBreakpoint) {
         padding: 48px 160px;
     }
 }
+

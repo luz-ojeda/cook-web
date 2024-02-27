@@ -2,7 +2,7 @@
 	import logo from '$lib/assets/logo.png';
 </script>
 
-<nav class="flex-center">
+<nav class="spacing flex-center">
 	<!-- Use svg to modify size without quality? -->
 	<a class="flex-center logo" href="/">
 		<img alt="" src={logo} width="32" />
@@ -29,6 +29,10 @@
 
 	img {
 		margin-right: 12px;
+	}
+	
+	.nav-links a {
+		text-decoration: none
 	}
 
 	.nav-links a:not(:last-child) {
