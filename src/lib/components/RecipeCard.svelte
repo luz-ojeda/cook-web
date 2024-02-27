@@ -5,7 +5,8 @@
 </script>
 
 <div class="flex-column">
-    <img src={recipeImage} alt="" />
+    <!-- svelte-ignore a11y-img-redundant-alt -->
+    <img src={recipeImage} alt="Photo of the recipe" />
     <h2>{recipeTitle}</h2>
     <p>{recipeSummary}</p>
 </div>
