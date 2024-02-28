@@ -5,7 +5,6 @@
 	import type { Recipe } from "$lib/types/Recipe";
 
 	export let data: { recipes: Recipe[] };
-	console.log(data)
 </script>
 
 <!-- Hero -->
