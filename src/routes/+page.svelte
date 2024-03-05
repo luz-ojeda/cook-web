@@ -24,6 +24,7 @@
 </div>
 
 <!-- Recipe cards -->
+{#if data.recipes.length > 0}
 <div class="background">
 	<div class="recipes-container spacing flex-center">
 		{#each data.recipes as { name, summary, pictures }}
@@ -32,6 +33,7 @@
 		{/each}
 	</div>
 </div>
+{/if}
 
 <Footer />
 

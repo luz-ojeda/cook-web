@@ -3,7 +3,7 @@
 	import email from '$lib/assets/mail.svg';
 </script>
 
-<div class="container spacing">
+<footer class="container spacing">
 	<div class="section">
 		<h3>COOK</h3>
 		<p>
@@ -35,7 +35,7 @@
 			</li>
 		</ul>
 	</div>
-</div>
+</footer>
 
 <style lang="scss">
 	@import '../../sass/variables.scss';
