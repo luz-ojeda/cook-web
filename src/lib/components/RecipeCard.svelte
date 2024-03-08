@@ -8,18 +8,20 @@
 </script>
 
 <div class="flex-column">
-	<!-- svelte-ignore a11y-img-redundant-alt -->
-	<img
-		src={recipeImage ? `${recipeImage}?${PUBLIC_AZURE_STORAGE_SAS_TOKEN}` : placeholder}
-		alt="Photo of the recipe"
-	/>
-	<div class="title-container">
-		<h2>{recipeTitle}</h2>
-		<img class="icon" alt="" src={bookmarkEmpty} title="Guardar en mis recetas" height="32" width="32" />
-	</div>
-	{#if recipeSummary}
-		<p>{recipeSummary}</p>
-	{/if}
+	<a href={`/recetas/${recipeTitle}`}>
+		<!-- svelte-ignore a11y-img-redundant-alt -->
+		<img
+			src={recipeImage ? `${recipeImage}?${PUBLIC_AZURE_STORAGE_SAS_TOKEN}` : placeholder}
+			alt="Photo of the recipe"
+		/>
+		<div class="title-container">
+			<h2>{recipeTitle}</h2>
+			<img class="icon" alt="" src={bookmarkEmpty} title="Guardar en mis recetas" height="32" width="32" />
+		</div>
+		{#if recipeSummary}
+			<p>{recipeSummary}</p>
+		{/if}
+	</a>
 </div>
 
 <style lang="scss">

@@ -3,36 +3,36 @@
 		<label for="name">Nombre de la receta:</label>
 		<input placeholder="risotto, pastafrola, tortilla" type="text" id="name" name="name" />
 	</div>
-	
+
 	<div class="flex-column">
 		<label for="ingredients">Ingredientes:</label>
 		<input placeholder="huevos, tomate, queso" type="text" id="ingredients" name="ingredients" />
 	</div>
-	
+
 	<fieldset>
 		<legend>Dificultad de las recetas:</legend>
 		<div class="flex-center">
 			<div>
 				<input type="checkbox" id="easy" name="easy" checked />
-				<label for="easy">Fácil</label>
+				<label for="easy">Fáciles</label>
 			</div>
-		
+
 			<div>
 				<input type="checkbox" id="medium" name="medium" />
-				<label for="medium">Intermedio</label>
+				<label for="medium">Intermedias</label>
 			</div>
 			<div>
 				<input type="checkbox" id="hard" name="hard" />
-				<label for="hard">Difícil</label>
+				<label for="hard">Difíciles</label>
 			</div>
 		</div>
 	</fieldset>
-	
+
 	<button>BUSCAR</button>
 </div>
 
 <style lang="scss">
-	@import "../../sass/variables.scss";
+	@import '../../sass/variables.scss';
 
 	.container {
 		background-color: lightgray;

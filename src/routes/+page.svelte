@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Footer from '$lib/components/Footer.svelte';
 	import HomeSearch from '$lib/components/HomeSearch.svelte';
 	import RecipeCard from '$lib/components/RecipeCard.svelte';
 	import type { Recipe } from "$lib/types/Recipe";
@@ -34,8 +33,6 @@
 	</div>
 </div>
 {/if}
-
-<Footer />
 
 <style lang="scss">
 	.hero {
