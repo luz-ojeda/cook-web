@@ -3,12 +3,12 @@
     export let placeholder = "";
     export let id = "";
     export let name = "";
-
+    export let inputValue = "";
 </script>
 
 <div class="flex-column">
     <label for={id}>{label}</label>
-    <input placeholder={placeholder} type="text" id={id} name={name} />
+    <input placeholder={placeholder} type="text" id={id} name={name} bind:value={inputValue}/>
 </div>
 
 <style lang="scss">

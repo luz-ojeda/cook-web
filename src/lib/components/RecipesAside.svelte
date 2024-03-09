@@ -1,11 +1,24 @@
 <script lang="ts">
+	import { setContext } from 'svelte';
 	import TextInput from '$lib/components/TextInput.svelte';
 	import PrimaryButton from './PrimaryButton.svelte';
+	import { recipes } from '../../stores/recipesStore';
+
+	let recipeName = '';
+
+	async function getRecipes() {
+		const response = await fetch(`/recetas?name=${recipeName}`);
+		const responseJson = await response.json();
+		console.log(responseJson)
+
+		recipes.update((r) => responseJson);
+	}
 </script>
 
 <aside>
 	<div>
 		<TextInput
+			bind:inputValue={recipeName}
 			label="Nombre de la receta:"
 			placeholder="guiso de lentejas..."
 			id="name"
@@ -36,7 +49,7 @@
 			<label for="hard">Difíciles</label>
 		</div>
 	</div>
-	<PrimaryButton width="100%">Buscar</PrimaryButton>
+	<PrimaryButton onClick={getRecipes} width="100%">Buscar</PrimaryButton>
 </aside>
 
 <style lang="scss">

@@ -1,8 +1,11 @@
 <script lang="ts">
+	import type { MouseEventHandler } from "svelte/elements";
+
     export let width: string;
+    export let onClick: MouseEventHandler<HTMLButtonElement>;
 </script>
 
-<button style="width: {width}">
+<button on:click={onClick} style="width: {width}">
     <slot></slot>
 </button>
 
