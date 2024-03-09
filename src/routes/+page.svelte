@@ -26,9 +26,8 @@
 {#if data.recipes.length > 0}
 <div class="background">
 	<div class="recipes-container spacing flex-center">
-		{#each data.recipes as { name, summary, pictures }}
-			<!-- href="/recetas/{name}" -->
-			<RecipeCard recipeTitle={name} recipeSummary={summary} recipeImage={pictures[0]} />
+		{#each data.recipes as { id, name, summary, pictures }}
+			<RecipeCard recipeId={id} recipeTitle={name} recipeSummary={summary} recipeImage={pictures[0]} />
 		{/each}
 	</div>
 </div>

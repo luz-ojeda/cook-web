@@ -1,31 +1,87 @@
 <script lang="ts">
+	export let recipeId: string;
 	export let recipeImage: string;
 	export let recipeTitle: string;
 	export let recipeSummary: string;
 	import { PUBLIC_AZURE_STORAGE_SAS_TOKEN } from '$env/static/public';
 	import placeholder from '$lib/assets/recipe_image_placeholder.png';
 	import bookmarkEmpty from '$lib/assets/bookmark_empty.svg';
+	import bookmarkFull from '$lib/assets/bookmark_full.svg';
+	import { onMount } from 'svelte';
+
+	// TODO: Improve the following so no every single component instance hold the array of recipes saved
+	let recipesSavedParsed: string[] = [];
+	onMount(() => {
+		let recipesSaved = localStorage.getItem('recipesSaved');
+		if (recipesSaved) recipesSavedParsed = JSON.parse(recipesSaved);
+
+		window.addEventListener('storage', updateRecipesSaved);
+		return () => {
+			window.removeEventListener('storage', updateRecipesSaved);
+		};
+	});
+
+	function saveRecipe(e: MouseEvent | KeyboardEvent) {
+		if (e instanceof KeyboardEvent && e.key !== 'Enter') return;
+
+		const recipesSaved = localStorage.getItem('recipesSaved');
+		if (!recipesSaved) {
+			recipesSavedParsed = [recipeId];
+		} else {
+			recipesSavedParsed = JSON.parse(recipesSaved);
+			if (!recipesSavedParsed.includes(recipeId)) {
+				recipesSavedParsed.push(recipeId);
+			} else {
+				recipesSavedParsed = recipesSavedParsed.filter((id) => id !== recipeId);
+			}
+		}
+		localStorage.setItem('recipesSaved', JSON.stringify(recipesSavedParsed));
+	}
+
+	function updateRecipesSaved() {
+		const recipesSaved = localStorage.getItem('recipesSaved');
+		if (recipesSaved) {
+			recipesSavedParsed = JSON.parse(recipesSaved);
+		}
+	}
 </script>
 
 <div class="flex-column">
+	<!-- svelte-ignore a11y-img-redundant-alt -->
 	<a href={`/recetas/${recipeTitle}`}>
-		<!-- svelte-ignore a11y-img-redundant-alt -->
 		<img
 			src={recipeImage ? `${recipeImage}?${PUBLIC_AZURE_STORAGE_SAS_TOKEN}` : placeholder}
 			alt="Photo of the recipe"
 		/>
-		<div class="title-container">
-			<h2>{recipeTitle}</h2>
-			<img class="icon" alt="" src={bookmarkEmpty} title="Guardar en mis recetas" height="32" width="32" />
-		</div>
-		{#if recipeSummary}
-			<p>{recipeSummary}</p>
-		{/if}
 	</a>
+	<div class="title-container">
+		<a href={`/recetas/${recipeTitle}`}>
+			<h2>{recipeTitle}</h2>
+		</a>
+		<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+		<img
+			class="icon"
+			alt=""
+			src={recipesSavedParsed && recipesSavedParsed.includes(recipeId)
+				? bookmarkFull
+				: bookmarkEmpty}
+			title="Guardar en mis recetas"
+			height="32"
+			on:keydown={saveRecipe}
+			on:click={saveRecipe}
+			width="32"
+		/>
+	</div>
+	{#if recipeSummary}
+		<p>{recipeSummary}</p>
+	{/if}
 </div>
 
 <style lang="scss">
 	@import '../../sass/variables.scss';
+	a {
+		text-decoration: none;
+	}
 
 	img {
 		aspect-ratio: 1 / 1;

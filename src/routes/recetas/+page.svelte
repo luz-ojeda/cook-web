@@ -12,9 +12,9 @@
 	<!-- Recipe cards -->
 	{#if data.recipes.length > 0}
 		<div class="recipes-container flex-center">
-			{#each data.recipes as { name, summary, pictures }}
+			{#each data.recipes as { id, name, summary, pictures }}
 				<!-- href="/recetas/{name}" -->
-				<RecipeCard recipeTitle={name} recipeSummary={summary} recipeImage={pictures[0]} />
+				<RecipeCard recipeId={id} recipeTitle={name} recipeSummary={summary} recipeImage={pictures[0]} />
 			{/each}
 		</div>
 	{/if}
