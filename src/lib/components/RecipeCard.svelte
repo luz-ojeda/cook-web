@@ -11,6 +11,8 @@
 
 	// TODO: Improve the following so no every single component instance hold the array of recipes saved
 	let recipesSavedParsed: string[] = [];
+
+	// Sync recipes saved across multiple possible open tabs
 	onMount(() => {
 		let recipesSaved = localStorage.getItem('recipesSaved');
 		if (recipesSaved) recipesSavedParsed = JSON.parse(recipesSaved);
@@ -59,6 +61,7 @@
 			<h2>{recipeTitle}</h2>
 		</a>
 		<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
+		<!-- svelte-ignore a11y-no-noninteractive-element-to-interactive-role -->
 		<img
 			class="icon"
 			alt=""
@@ -69,6 +72,8 @@
 			height="32"
 			on:keydown={saveRecipe}
 			on:click={saveRecipe}
+			role="button"
+			tabindex="0"
 			width="32"
 		/>
 	</div>

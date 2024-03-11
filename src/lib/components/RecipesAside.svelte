@@ -1,18 +1,24 @@
 <script lang="ts">
-	import { setContext } from 'svelte';
 	import TextInput from '$lib/components/TextInput.svelte';
 	import PrimaryButton from './PrimaryButton.svelte';
 	import { recipes } from '../../stores/recipesStore';
 
 	let recipeName = '';
+	let difficulties: string[] = [];
 
 	async function getRecipes() {
-		const response = await fetch(`/recetas?name=${recipeName}`);
+		let url = `/recetas?name=${recipeName}`
+		for (let i = 0; i < difficulties.length; i++) {
+			url += `&difficulty=${difficulties[i]}`;
+		}
+		
+		const response = await fetch(url);
 		const responseJson = await response.json();
-		console.log(responseJson)
 
 		recipes.update((r) => responseJson);
 	}
+
+	$:console.log(difficulties)
 </script>
 
 <aside>
@@ -36,16 +42,16 @@
 	<div>
 		<div class="difficulty-label">Dificultad:</div>
 		<div>
-			<input type="checkbox" id="easy" name="easy" />
+			<input type="checkbox" id="easy" name="easy" bind:group={difficulties} value="Easy" />
 			<label for="easy">Fáciles</label>
 		</div>
 
 		<div>
-			<input type="checkbox" id="medium" name="medium" />
+			<input type="checkbox" id="medium" name="medium" bind:group={difficulties} value="Medium" />
 			<label for="medium">Intermedias</label>
 		</div>
 		<div>
-			<input type="checkbox" id="hard" name="hard" />
+			<input type="checkbox" id="hard" name="hard" bind:group={difficulties} value="Hard" />
 			<label for="hard">Difíciles</label>
 		</div>
 	</div>

@@ -1,16 +1,36 @@
 <script lang="ts">
 	import RecipeCard from '$lib/components/RecipeCard.svelte';
-	import RecipesAside from '$lib/components/RecipesAside.svelte';
 	import type { Recipe } from '$lib/types/Recipe';
+	import { onMount } from 'svelte';
 
-	export let data: { recipes: Recipe[] };
+	let recipes: Recipe[] = [];
+
+	async function getRecipes(recipesIds: string[]) {
+		let url = '/recetas?';
+		for (let i = 0; i < recipesIds.length; i++) {
+			url += `ids=${recipesIds[i]}&`;
+		}
+
+		const response = await fetch(url);
+		const responseJson = await response.json();
+
+		return responseJson;
+	}
+
+	onMount(async () => {
+		const recipesSaved = localStorage.getItem('recipesSaved');
+		if (recipesSaved) {
+			const recipesSavedParsed = JSON.parse(recipesSaved);
+			recipes = await getRecipes(recipesSavedParsed);
+		}
+	});
 </script>
 
 <h1>Mis recetas guardadas</h1>
 <!-- Recipe cards -->
-{#if data.recipes.length > 0}
+{#if recipes.length > 0}
 	<div class="recipes-container flex-center">
-		{#each data.recipes as { id, name, summary, pictures }}
+		{#each recipes as { id, name, summary, pictures }}
 			<!-- href="/recetas/{name}" -->
 			<RecipeCard
 				recipeId={id}
