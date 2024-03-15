@@ -6,15 +6,17 @@
 
 	let recipeName = '';
 	let difficulties: string[] = [];
-
-	// Find a way to manage this information along with chiptextinput
 	let ingredients: string[] = [];
-	let ingredient: string;
 
 	async function getRecipes() {
 		let url = `/recetas?name=${recipeName}`
+
 		for (let i = 0; i < difficulties.length; i++) {
 			url += `&difficulty=${difficulties[i]}`;
+		}
+
+		for (let i = 0; i < ingredients.length; i++) {
+			url += `&ingredients=${ingredients[i]}`;
 		}
 		
 		const response = await fetch(url);
@@ -36,8 +38,8 @@
 	</div>
 	<div>
 		<ChipTextInput
-			bind:inputValue={ingredient}
-			label="Ingredientes:"
+			bind:values={ingredients}
+			label="Ingredientes (separados por espacio):"
 			placeholder="huevos, tomate, queso"
 			id="ingredients"
 			name="ingredients"

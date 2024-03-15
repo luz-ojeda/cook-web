@@ -5,13 +5,13 @@
 	export let placeholder = '';
 	export let id = '';
 	export let name = '';
-	export let inputValue = '';
-	export let chips: string[] = [];
+	export let values: string[] = []
+
+	let inputValue = '';
 
 	function handleKeyPress(event: KeyboardEvent) {
-		console.log(event);
 		if (event.key === ' ' && inputValue.trim() !== '') {
-			chips = [...chips, inputValue.trim()];
+			values = [...values, inputValue]
 			inputValue = '';
 		}
 	}
@@ -19,10 +19,10 @@
 
 <div class="flex-column">
 	<TextInput {label} {placeholder} {id} {name} bind:inputValue on:keydown={handleKeyPress} />
-	{#if chips.length > 0}
+	{#if values.length > 0}
 		<div class="chips-container">
-			{#each chips as chip}
-				<div class="chip">{chip}</div>
+			{#each values as value}
+				<div class="chip">{value}</div>
 			{/each}
 		</div>
 	{/if}
