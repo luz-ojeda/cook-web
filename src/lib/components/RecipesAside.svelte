@@ -39,7 +39,7 @@
 	<div>
 		<ChipTextInput
 			bind:values={ingredients}
-			label="Ingredientes (separados por espacio):"
+			label="Ingredientes (presiona enter luego de cada uno):"
 			placeholder="huevos, tomate, queso"
 			id="ingredients"
 			name="ingredients"

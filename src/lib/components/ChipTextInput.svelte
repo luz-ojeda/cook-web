@@ -5,15 +5,19 @@
 	export let placeholder = '';
 	export let id = '';
 	export let name = '';
-	export let values: string[] = []
+	export let values: string[] = [];
 
 	let inputValue = '';
 
 	function handleKeyPress(event: KeyboardEvent) {
-		if (event.key === ' ' && inputValue.trim() !== '') {
-			values = [...values, inputValue]
+		if (event.key === 'Enter' && inputValue.trim() !== '') {
+			values = [...values, inputValue];
 			inputValue = '';
 		}
+	}
+
+	function removeValue(valueClicked: string) {
+		values = values.filter(value => value !== valueClicked)
 	}
 </script>
 
@@ -22,7 +26,7 @@
 	{#if values.length > 0}
 		<div class="chips-container">
 			{#each values as value}
-				<div class="chip">{value}</div>
+				<div class="chip" on:click={() => removeValue(value)} title="Remover">{value} X</div>
 			{/each}
 		</div>
 	{/if}
@@ -46,6 +50,11 @@
 		font-size: 14px;
 		padding: 4px 8px;
 		margin-right: 6px;
-		width: min-content;
+		width: max-content;
+
+		&:hover {
+			cursor: pointer;
+			opacity: 0.7;
+		}
 	}
 </style>
