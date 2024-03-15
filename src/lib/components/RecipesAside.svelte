@@ -2,9 +2,14 @@
 	import TextInput from '$lib/components/TextInput.svelte';
 	import PrimaryButton from './PrimaryButton.svelte';
 	import { recipes } from '../../stores/recipesStore';
+	import ChipTextInput from "./ChipTextInput.svelte";
 
 	let recipeName = '';
 	let difficulties: string[] = [];
+
+	// Find a way to manage this information along with chiptextinput
+	let ingredients: string[] = [];
+	let ingredient: string;
 
 	async function getRecipes() {
 		let url = `/recetas?name=${recipeName}`
@@ -17,8 +22,6 @@
 
 		recipes.update((r) => responseJson);
 	}
-
-	$:console.log(difficulties)
 </script>
 
 <aside>
@@ -32,7 +35,8 @@
 		/>
 	</div>
 	<div>
-		<TextInput
+		<ChipTextInput
+			bind:inputValue={ingredient}
 			label="Ingredientes:"
 			placeholder="huevos, tomate, queso"
 			id="ingredients"
