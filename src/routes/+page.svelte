@@ -16,7 +16,6 @@
 		</p>
 	</div>
 
-	<!-- Buscador -->
 	<div>
 		<HomeSearch />
 	</div>
@@ -47,8 +46,12 @@
 		}
 	}
 
-	.hero > div {
+	.hero > div:first-of-type {
 		flex-basis: 100%;
+	}
+
+	.hero div:nth-of-type(2) {
+		flex-basis: 65%;
 	}
 
 	.hero div:first-of-type {

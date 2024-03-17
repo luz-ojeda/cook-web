@@ -1,3 +1,7 @@
+<script>
+	import PrimaryButton from "./PrimaryButton.svelte";
+</script>
+
 <div class="container flex-column">
 	<div class="flex-column">
 		<label for="name">Nombre de la receta:</label>
@@ -28,7 +32,7 @@
 		</div>
 	</fieldset>
 
-	<button>BUSCAR</button>
+	<PrimaryButton onClick={() => console.log("")} width="100%">Buscar</PrimaryButton>
 </div>
 
 <style lang="scss">

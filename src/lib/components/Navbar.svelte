@@ -18,7 +18,6 @@
 	nav {
 		font-size: 24px;
 		height: 80px;
-		margin-bottom: 32px;
 		justify-content: space-between;
 	}
 
