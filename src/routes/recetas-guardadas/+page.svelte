@@ -26,6 +26,10 @@
 	});
 </script>
 
+<svelte:head>
+  <title>Recetas guardadas</title>
+</svelte:head>
+
 <h1>Mis recetas guardadas</h1>
 <!-- Recipe cards -->
 {#if recipes.length > 0}

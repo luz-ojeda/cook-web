@@ -18,6 +18,10 @@
 	});
 </script>
 
+<svelte:head>
+  <title>Recetas</title>
+</svelte:head>
+
 <div class="flex spacing">
 	<RecipesAside />
 

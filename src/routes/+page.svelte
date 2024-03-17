@@ -6,6 +6,10 @@
 	export let data: { recipes: Recipe[] };
 </script>
 
+<svelte:head>
+  <title>Cook</title>
+</svelte:head>
+
 <!-- Hero -->
 <div class="spacing hero flex-center">
 	<div>
