@@ -9,15 +9,7 @@ body {
     margin: 0;
 }
 
-.spacing {
-    padding: $paddingMobile; 
-
-    @media (min-width: $tabletBreakpoint) and (max-width: $laptopBreakpoint) {
-        padding: 24px 80px;
-    }
-    
-    @media (min-width: $laptopBreakpoint) {
-        padding: 48px 160px;
-    }
+button {
+    cursor: pointer;
 }
 

@@ -16,7 +16,7 @@
 		position: absolute;
 		width: 70%;
 		height: 70%;
-		background: white;
+		background: rgb(233, 233, 237);
 		border-radius: 50%;
 	}
 

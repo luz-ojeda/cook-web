@@ -2,7 +2,7 @@
 	import TextInput from '$lib/components/TextInput.svelte';
 	import PrimaryButton from './PrimaryButton.svelte';
 	import { recipesStore } from '../../stores/recipesStore';
-	import ChipTextInput from "./ChipTextInput.svelte";
+	import ChipTextInput from './ChipTextInput.svelte';
 
 	let recipeName = '';
 	let difficulties: string[] = [];
@@ -11,7 +11,7 @@
 
 	async function getRecipes() {
 		isLoadingRecipes = true;
-		let url = `/recetas?name=${recipeName}`
+		let url = `/recetas?name=${recipeName}`;
 
 		for (let i = 0; i < difficulties.length; i++) {
 			url += `&difficulty=${difficulties[i]}`;
@@ -20,7 +20,7 @@
 		for (let i = 0; i < ingredients.length; i++) {
 			url += `&ingredients=${ingredients[i]}`;
 		}
-		
+
 		const response = await fetch(url);
 		const data = await response.json();
 		isLoadingRecipes = false;
@@ -29,9 +29,6 @@
 </script>
 
 <aside>
-	{#if isLoadingRecipes}
-	loading...
-	{/if}
 	<div>
 		<TextInput
 			bind:inputValue={recipeName}
@@ -66,7 +63,7 @@
 			<label for="hard">Difíciles</label>
 		</div>
 	</div>
-	<PrimaryButton onClick={getRecipes} width="100%">{isLoadingRecipes ? "Cargando..." : "Buscar"}</PrimaryButton>
+	<PrimaryButton loading={isLoadingRecipes} onClick={getRecipes} width="100%">Buscar</PrimaryButton>
 </aside>
 
 <style lang="scss">
