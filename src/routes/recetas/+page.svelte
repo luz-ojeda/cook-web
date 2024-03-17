@@ -3,17 +3,18 @@
 	import RecipesAside from '$lib/components/RecipesAside.svelte';
 	import type { Recipe } from '$lib/types/Recipe';
 	import { onMount } from 'svelte';
-	import { recipes } from '../../stores/recipesStore';
+	import { recipesStore } from '../../stores/recipesStore';
 
 	export let data: { recipes: Recipe[] };
 	let myRecipes: Recipe[];
 
-	recipes.subscribe((recipes) => {
+	recipesStore.subscribe((recipes) => {
 		myRecipes = recipes;
 	});
 
 	onMount(() => {
-		recipes.update((r) => data.recipes);
+		// Update recipes store from the load function
+		recipesStore.update((r) => data.recipes);
 	});
 </script>
 

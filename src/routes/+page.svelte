@@ -1,7 +1,7 @@
 <script lang="ts">
 	import HomeSearch from '$lib/components/HomeSearch.svelte';
 	import RecipeCard from '$lib/components/RecipeCard.svelte';
-	import type { Recipe } from "$lib/types/Recipe";
+	import type { Recipe } from '$lib/types/Recipe';
 
 	export let data: { recipes: Recipe[] };
 </script>
@@ -24,13 +24,18 @@
 
 <!-- Recipe cards -->
 {#if data.recipes.length > 0}
-<div class="background">
-	<div class="recipes-container spacing flex-center">
-		{#each data.recipes as { id, name, summary, pictures }}
-			<RecipeCard recipeId={id} recipeTitle={name} recipeSummary={summary} recipeImage={pictures[0]} />
-		{/each}
+	<div class="background">
+		<div class="recipes-container spacing flex-center">
+			{#each data.recipes as { id, name, summary, pictures }}
+				<RecipeCard
+					recipeId={id}
+					recipeTitle={name}
+					recipeSummary={summary}
+					recipeImage={pictures[0]}
+				/>
+			{/each}
+		</div>
 	</div>
-</div>
 {/if}
 
 <style lang="scss">
