@@ -2,7 +2,7 @@
 	import type { Recipe, RecipeDiffiulty } from '$lib/types/Recipe';
 	import placeholder from '$lib/assets/recipe_image_placeholder.png';
 	import { PUBLIC_AZURE_STORAGE_SAS_TOKEN } from '$env/static/public';
-	import { Clock, Fire } from '$lib';
+	import { Clock, Fire, capitalizeFirstLetter } from '$lib';
 
 	export let data: { recipe: Recipe };
 
@@ -62,10 +62,10 @@
 	</div>
 
 	<div>
-		<h2>Ingredients:</h2>
+		<h2>Ingredientes:</h2>
 		<ul>
 			{#each data.recipe?.ingredients as ingredient}
-				<li>{ingredient}</li>
+				<li>{capitalizeFirstLetter(ingredient)}</li>
 			{/each}
 		</ul>
 	</div>
