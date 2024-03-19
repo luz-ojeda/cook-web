@@ -4,9 +4,8 @@
 	export let recipeTitle: string;
 	export let recipeSummary: string;
 	import { PUBLIC_AZURE_STORAGE_SAS_TOKEN } from '$env/static/public';
+	import { BookmarkEmpty, BookmarkFull } from "$lib";
 	import placeholder from '$lib/assets/recipe_image_placeholder.png';
-	import bookmarkEmpty from '$lib/assets/bookmark_empty.svg';
-	import bookmarkFull from '$lib/assets/bookmark_full.svg';
 	import { onMount } from 'svelte';
 
 	// TODO: Improve the following so no every single component instance hold the array of recipes saved
@@ -52,6 +51,7 @@
 	<!-- svelte-ignore a11y-img-redundant-alt -->
 	<a href={`/recetas/${recipeTitle}`}>
 		<img
+			class="recipe-image"
 			src={recipeImage ? `${recipeImage}?${PUBLIC_AZURE_STORAGE_SAS_TOKEN}` : placeholder}
 			alt="Photo of the recipe"
 		/>
@@ -63,18 +63,16 @@
 		<!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
 		<!-- svelte-ignore a11y-no-noninteractive-element-to-interactive-role -->
 		<img
-			class="icon"
+			class="clickable-icon bookmark-icon"
 			alt=""
 			src={recipesSavedParsed && recipesSavedParsed.includes(recipeId)
-				? bookmarkFull
-				: bookmarkEmpty}
+				? BookmarkFull
+				: BookmarkEmpty}
 			title="Guardar en mis recetas"
-			height="32"
 			on:keydown={saveRecipe}
 			on:click={saveRecipe}
 			role="button"
 			tabindex="0"
-			width="32"
 		/>
 	</div>
 	{#if recipeSummary}
@@ -88,11 +86,10 @@
 		text-decoration: none;
 	}
 
-	img {
+	.recipe-image {
 		aspect-ratio: 1 / 1;
-		border-radius: $borderRadius;
 		margin-bottom: 16px;
-		max-width: 100%;
+		width: 100%;
 		object-fit: cover;
 	}
 
@@ -104,5 +101,19 @@
 	.title-container {
 		display: flex;
 		justify-content: space-between;
+
+		@media (max-width: 720px) {
+			align-items: center;
+		}
+	}
+
+	.bookmark-icon {
+		height: min-content;
+		width: 32px;
+
+		@media (max-width: 720px) {
+			height: 48px;
+			width: 48px;
+		}
 	}
 </style>

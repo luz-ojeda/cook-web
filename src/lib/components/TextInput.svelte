@@ -1,6 +1,4 @@
 <script lang="ts">
-	import type { KeyboardEventHandler } from 'svelte/elements';
-
 	export let label: string;
 	export let placeholder = '';
 	export let id = '';

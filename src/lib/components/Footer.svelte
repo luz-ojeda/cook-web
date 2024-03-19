@@ -1,6 +1,5 @@
 <script>
-	import location from '$lib/assets/location.svg';
-	import email from '$lib/assets/mail.svg';
+	import { Location, Mail } from '$lib';
 </script>
 
 <footer class="container spacing">
@@ -26,11 +25,11 @@
 		<h3>CONTACTO</h3>
 		<ul>
 			<li>
-				<img class="list-icon" alt="" src={location} width="24" />
+				<img class="list-icon" alt="" src={Location} width="24" />
 				Ciudad Autónoma de Buenos Aires
 			</li>
 			<li>
-				<img class="list-icon" alt="" src={email} width="24" />
+				<img class="list-icon" alt="" src={Mail} width="24" />
 				cook@proton.me
 			</li>
 		</ul>
@@ -65,14 +64,14 @@
 	}
 
 	ul {
-        align-items: center;
+		align-items: center;
 		display: flex;
-        flex-direction: column;
+		flex-direction: column;
 		list-style: none;
 		padding-left: 0;
 
-        @media (min-width: $tabletBreakpoint) {
-		    display: block;
+		@media (min-width: $tabletBreakpoint) {
+			display: block;
 		}
 	}
 
@@ -80,10 +79,10 @@
 		align-items: center;
 		display: flex;
 
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
+		a {
+			text-decoration: none;
+			color: inherit;
+		}
 
 		@media (min-width: $tabletBreakpoint) {
 			text-align: left;
@@ -93,8 +92,8 @@
 	li:not(:last-child) {
 		margin-bottom: 16px;
 
-        @media (min-width: $tabletBreakpoint) {
-		    margin-bottom: 8px;
+		@media (min-width: $tabletBreakpoint) {
+			margin-bottom: 8px;
 		}
 	}
 

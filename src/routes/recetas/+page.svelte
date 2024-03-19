@@ -1,9 +1,8 @@
 <script lang="ts">
-	import RecipeCard from '$lib/components/RecipeCard.svelte';
-	import RecipesAside from '$lib/components/RecipesAside.svelte';
 	import type { Recipe } from '$lib/types/Recipe';
 	import { onMount } from 'svelte';
 	import { recipesStore } from '../../stores/recipesStore';
+	import { RecipeCard, RecipesAside } from '$lib';
 
 	export let data: { recipes: Recipe[] };
 	let myRecipes: Recipe[];
@@ -19,7 +18,7 @@
 </script>
 
 <svelte:head>
-  <title>Recetas</title>
+	<title>Recetas</title>
 </svelte:head>
 
 <div class="flex spacing">

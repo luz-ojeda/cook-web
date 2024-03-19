@@ -30,18 +30,20 @@
   <title>Recetas guardadas</title>
 </svelte:head>
 
-<h1>Mis recetas guardadas</h1>
-<!-- Recipe cards -->
-{#if recipes.length > 0}
-	<div class="recipes-container flex-center">
-		{#each recipes as { id, name, summary, pictures }}
-			<!-- href="/recetas/{name}" -->
-			<RecipeCard
-				recipeId={id}
-				recipeTitle={name}
-				recipeSummary={summary}
-				recipeImage={pictures[0]}
-			/>
-		{/each}
-	</div>
-{/if}
+<div class="spacing">
+	<h1>Mis recetas guardadas</h1>
+	<!-- Recipe cards -->
+	{#if recipes.length > 0}
+		<div class="recipes-container flex-center">
+			{#each recipes as { id, name, summary, pictures }}
+				<!-- href="/recetas/{name}" -->
+				<RecipeCard
+					recipeId={id}
+					recipeTitle={name}
+					recipeSummary={summary}
+					recipeImage={pictures[0]}
+				/>
+			{/each}
+		</div>
+	{/if}
+</div>

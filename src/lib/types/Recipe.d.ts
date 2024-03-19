@@ -6,9 +6,11 @@ export type Recipe = {
     instructions: string;
     pictures: string[];
     videos: string[];
-    preparationTime: number;
-    cookingTime: number;
+    preparationTime?: number;
+    cookingTime?: number;
     servings: number;
-    difficulty: "Easy" | "Medium" | "Hard";
+    difficulty?: RecipeDiffiulty;
     vegetarian: boolean;
 };
+
+export type RecipeDiffiulty = "Easy" | "Medium" | "Hard";
