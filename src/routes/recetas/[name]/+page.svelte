@@ -86,7 +86,7 @@
 			<CopyRecipeButton recipe={data.recipe} />
 		</div>
 		<div>
-			<SaveRecipeButton label recipeId={data.recipe?.id} --fontSize="18px" --iconWidth="18px" />
+			<SaveRecipeButton label recipeId={data.recipe?.id} --fontSize="18px" --iconWidth="18px" --iconMobileWidth="20px" />
 		</div>
 		<div>
 			<DownloadRecipeButton recipe={data.recipe} />
@@ -138,6 +138,13 @@
 		margin-right: 20px;
 		object-fit: cover;
 		width: 65%;
+
+		@media (max-width: $tabletBreakpoint) {
+			margin-bottom: 16px;
+			margin-right: 0;
+			max-height: 150px;
+			width: 100%;
+		}
 	}
 
 	.icon {
@@ -171,6 +178,11 @@
 
 		div {
 			margin-right: 16px;
+		}
+
+		@media (max-width: $tabletBreakpoint) {
+			margin: 16px 0;
+			justify-content: space-between;
 		}
 	}
 
