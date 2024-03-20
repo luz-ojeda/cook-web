@@ -17,9 +17,9 @@
 </script>
 
 {#if browser}
-	<a {href} download={"Receta de " + recipe.name} class="interactive-pointer-opacity flex-center">
-		<img class="icon" alt="" src={Download} />
-		<span>Descargar</span>
+	<a {href} download={"Receta de " + recipe.name} class="flex-center interactive-pointer-opacity flex-center">
+		<img class="action-icon" alt="" src={Download} />
+		<span class="action-label">Descargar</span>
 	</a>
 {/if}
 
@@ -27,10 +27,5 @@
 	a {
 		text-decoration: none;
 		color: inherit;
-	}
-
-	.icon {
-		margin-right: 6px;
-		width: 18px;
 	}
 </style>

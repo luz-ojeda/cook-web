@@ -54,13 +54,13 @@
 	on:click={saveRecipe}
 >
 	<img
-		class="bookmark-icon"
+		class="bookmark-icon action-icon"
 		alt=""
 		src={isRecipeSaved ? BookmarkFull : BookmarkEmpty}
 		title="Guardar en mis recetas"
 	/>
 	{#if label}
-		<span style="margin-left: 6px">{isRecipeSaved ? 'Guardada' : 'Guardar'}</span>
+		<span class="action-label">{isRecipeSaved ? 'Guardada' : 'Guardar'}</span>
 	{/if}
 </button>
 

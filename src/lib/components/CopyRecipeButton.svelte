@@ -32,13 +32,6 @@
 	role="button"
 	tabindex="0"
 >
-	<img class="icon" alt="" src={isRecipeCopied ? CopyFull : Copy} />
-	<span>{isRecipeCopied ? 'Copiada' : 'Copiar'}</span>
+	<img class="action-icon" alt="" src={isRecipeCopied ? CopyFull : Copy} />
+	<span class="action-label">{isRecipeCopied ? 'Copiada' : 'Copiar'}</span>
 </div>
-
-<style>
-	.icon {
-		margin-right: 6px;
-		width: 18px;
-	}
-</style>
