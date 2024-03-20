@@ -9,18 +9,19 @@ import TextInput from './components/TextInput.svelte';
 export { ChipTextInput, CircularLoading, Footer, Navbar, RecipeCard, RecipesAside, TextInput };
 
 // Icons
+import Axe from './assets/icons/axe.svg';
 import BookmarkEmpty from './assets/icons/bookmark_empty.svg';
 import BookmarkFull from './assets/icons/bookmark_full.svg';
 import Clock from './assets/icons/clock.svg';
-import Copy from './assets/icons/mail.svg';
-import Download from './assets/icons/mail.svg';
+import Copy from './assets/icons/copy.svg';
+import Download from './assets/icons/download.svg';
 import Fire from './assets/icons/fire.svg';
-import Fridge from './assets/icons/mail.svg';
+import Fridge from './assets/icons/fridge.svg';
 import Location from './assets/icons/location.svg';
 import Mail from './assets/icons/mail.svg';
-import Stove from './assets/icons/mail.svg';
+import Stove from './assets/icons/stove.svg';
 
-export { BookmarkEmpty, BookmarkFull, Clock, Copy, Download, Fire, Fridge, Location, Mail, Stove };
+export { Axe, BookmarkEmpty, BookmarkFull, Clock, Copy, Download, Fire, Fridge, Location, Mail, Stove };
 
 // Scripts
 import { capitalizeFirstLetter } from './scripts/strings';

@@ -12,7 +12,7 @@
     flex-direction: column;
 }
 
-.clickable-icon {
+.interactive-pointer-opacity {
     &:hover {
         cursor: pointer;
         opacity: 0.7;
@@ -29,4 +29,8 @@
     @media (min-width: $laptopBreakpoint) {
         padding: 48px 320px;
     }
+}
+
+.rounded-img {
+    border-radius: $borderRadius;
 }
