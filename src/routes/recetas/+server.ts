@@ -30,6 +30,11 @@ export const GET = async ({ fetch, url }) => {
 		}
 	}
 
+	if (url.searchParams.get('onlyVegetarian')) {
+		const vegetarian = url.searchParams.get('onlyVegetarian')
+		urlWithParams += `&onlyVegetarian=${vegetarian}`;
+	}
+
 	const res = await fetch(urlWithParams);
 	const recipes = await res.json();
 

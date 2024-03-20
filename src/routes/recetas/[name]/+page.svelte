@@ -137,13 +137,17 @@
 		max-height: 374px;
 		margin-right: 20px;
 		object-fit: cover;
-		width: 65%;
+		min-width: 65%;
 
 		@media (max-width: $tabletBreakpoint) {
 			margin-bottom: 16px;
 			margin-right: 0;
 			max-height: 150px;
 			width: 100%;
+		}
+
+		@media (max-width: $laptopBreakpoint) {
+			min-width: 50%;
 		}
 	}
 

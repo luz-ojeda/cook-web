@@ -2,23 +2,32 @@
 	import PrimaryButton from './PrimaryButton.svelte';
 	import { recipesStore } from '../../stores/recipesStore';
 	import ChipTextInput from './ChipTextInput.svelte';
-	import TextInput from "./TextInput.svelte";
+	import TextInput from './TextInput.svelte';
 
 	let recipeName = '';
 	let difficulties: string[] = [];
 	let ingredients: string[] = [];
+	let onlyVegetarian = false;
 	let isLoadingRecipes = false;
 
 	async function getRecipes() {
 		isLoadingRecipes = true;
-		let url = `/recetas?name=${recipeName}`;
+		let url = `/recetas?`;
+
+		if (recipeName) {
+			url += `name=${recipeName}&`;
+		}
 
 		for (let i = 0; i < difficulties.length; i++) {
-			url += `&difficulty=${difficulties[i]}`;
+			url += `difficulty=${difficulties[i]}&`;
 		}
 
 		for (let i = 0; i < ingredients.length; i++) {
-			url += `&ingredients=${ingredients[i]}`;
+			url += `ingredients=${ingredients[i]}&`;
+		}
+
+		if (onlyVegetarian) {
+			url += `onlyVegetarian=true`;
 		}
 
 		const response = await fetch(url);
@@ -54,7 +63,7 @@
 				<input type="checkbox" id="easy" name="easy" bind:group={difficulties} value="Easy" />
 				<label for="easy">Fáciles</label>
 			</div>
-	
+
 			<div>
 				<input type="checkbox" id="medium" name="medium" bind:group={difficulties} value="Medium" />
 				<label for="medium">Intermedias</label>
@@ -64,8 +73,11 @@
 				<label for="hard">Difíciles</label>
 			</div>
 		</div>
-		<PrimaryButton loading={isLoadingRecipes} onClick={getRecipes} width="100%">Buscar</PrimaryButton>
-
+		<input id="vegetarian" name="vegetarian" type="checkbox" bind:value={onlyVegetarian} />
+		<label for="vegetarian">Solo vegetarianas</label>
+		<PrimaryButton loading={isLoadingRecipes} onClick={getRecipes} width="100%"
+			>Buscar</PrimaryButton
+		>
 	</form>
 </aside>
 
