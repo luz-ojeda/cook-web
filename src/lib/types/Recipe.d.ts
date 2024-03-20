@@ -8,7 +8,7 @@ export type Recipe = {
     videos: string[];
     preparationTime?: number;
     cookingTime?: number;
-    servings: number;
+    servings?: number;
     difficulty?: RecipeDiffiulty;
     vegetarian: boolean;
 };

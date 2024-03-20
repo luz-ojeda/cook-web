@@ -1,20 +1,41 @@
 <script lang="ts">
-	import type { Recipe, RecipeDiffiulty } from '$lib/types/Recipe';
+	import type { Recipe } from '$lib/types/Recipe';
 	import placeholder from '$lib/assets/recipe_image_placeholder.png';
 	import { PUBLIC_AZURE_STORAGE_SAS_TOKEN } from '$env/static/public';
-	import { Axe, Clock, Copy, Download, Fire, Fridge, Stove, capitalizeFirstLetter } from '$lib';
-	import SaveRecipeButton from '$lib/components/SaveRecipeButton.svelte';
+	import {
+		Axe,
+		Broccoli,
+		Clock,
+		Dish,
+		Download,
+		Fire,
+		Fridge,
+		SaveRecipeButton,
+		Stove,
+		capitalizeFirstLetter
+	} from '$lib';
+	import CopyRecipeButton from '$lib/components/CopyRecipeButton.svelte';
+	import { mapRecipeDifficulty } from '$lib/scripts/strings';
 
 	export let data: { recipe: Recipe };
 
-	function mapDifficulty(difficulty: RecipeDiffiulty) {
-		if (difficulty === 'Hard') {
-			return 'Difícil';
-		} else if (difficulty === 'Medium') {
-			return 'Intermedia';
+	let isRecipeCopied = false;
+
+	async function copyRecipe() {
+		try {
+			await navigator.clipboard.writeText(data.recipe?.name + '\n' + data.recipe?.ingredients);
+			isRecipeCopied = true;
+			setTimeout(() => {
+				isRecipeCopied = false;
+			}, 5000);
+		} catch (error) {
+			if (error instanceof Error) {
+				console.error(error.message);
+			}
 		}
-		return 'Fácil';
 	}
+
+	function downloadRecipe() {}
 </script>
 
 <svelte:head>
@@ -55,7 +76,22 @@
 					<div class="flex-center">
 						<img class="icon" alt="" src={Fire} />
 						<span>Dificultad:&nbsp</span>
-						<p>{mapDifficulty(data.recipe?.difficulty)}</p>
+						<p>{mapRecipeDifficulty(data.recipe?.difficulty)}</p>
+					</div>
+				{/if}
+
+				{#if data.recipe?.vegetarian}
+					<div class="flex-center">
+						<img class="icon" alt="" src={Broccoli} />
+						<span>Vegetariana</span>
+					</div>
+				{/if}
+
+				<!-- TODO: Implement recipe adjustment according to servings. Must have a stateful copy of the recipe and pass it to CopyRecipeButton as well -->
+				{#if data.recipe?.servings}
+					<div class="flex-center">
+						<img class="icon" alt="" src={Dish} />
+						<span>Porciones: {data.recipe?.servings}</span>
 					</div>
 				{/if}
 			</div>
@@ -63,16 +99,22 @@
 	</div>
 
 	<div class="actions">
-		<div class="interactive-pointer-opacity flex-center">
-			<img class="icon" alt="" src={Copy} />
-			<span>Copiar</span>
+		<!-- TODO: Handle copy for firefox for Android where clipboard API is not supported -->
+		<div>
+			<CopyRecipeButton recipe={data.recipe} />
 		</div>
 		<div>
 			<SaveRecipeButton label recipeId={data.recipe?.id} --fontSize="18px" --iconWidth="18px" />
 		</div>
-		<div class="interactive-pointer-opacity flex-center">
+		<div
+			class="interactive-pointer-opacity flex-center"
+			on:click={downloadRecipe}
+			on:keydown={downloadRecipe}
+			role="button"
+			tabindex="0"
+		>
 			<img class="icon" alt="" src={Download} />
-			<span>Descargar</span>
+			<span>Descargar en formato PDF</span>
 		</div>
 	</div>
 
@@ -138,6 +180,14 @@
 
 	.recipe-summary {
 		font-size: 18px;
+
+		div:not(:last-of-type) {
+			margin-bottom: 12px;
+		}
+
+		p {
+			margin: 0;
+		}
 	}
 
 	.actions {
@@ -146,14 +196,6 @@
 
 		div {
 			margin-right: 16px;
-		}
-
-		span {
-			font-size: 18px;
-
-			@media (max-width: $tabletBreakpoint) {
-				font-size: 16px;
-			}
 		}
 	}
 

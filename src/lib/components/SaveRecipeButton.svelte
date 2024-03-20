@@ -8,6 +8,8 @@
 	// TODO: Improve the following so no every single component instance hold the array of recipes saved
 	let recipesSavedParsed: string[] = [];
 
+	$: isRecipeSaved = recipesSavedParsed && recipesSavedParsed.includes(recipeId);
+
 	// Sync recipes saved across multiple possible open tabs
 	onMount(() => {
 		let recipesSaved = localStorage.getItem('recipesSaved');
@@ -43,10 +45,10 @@
 		}
 	}
 
-	$: isRecipeSaved = recipesSavedParsed && recipesSavedParsed.includes(recipeId);
 </script>
 
 <button
+	aria-label="Guardar receta"
 	class="flex-center interactive-pointer-opacity"
 	on:keydown={saveRecipe}
 	on:click={saveRecipe}
@@ -67,7 +69,6 @@
 		border: 0;
 		background-color: transparent;
 		font-family: inherit;
-		font-size: var(--fontSize);
 		height: fit-content;
 	}
 
