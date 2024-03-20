@@ -7,7 +7,7 @@
 		Broccoli,
 		Clock,
 		Dish,
-		Download,
+		DownloadRecipeButton,
 		Fire,
 		Fridge,
 		SaveRecipeButton,
@@ -18,24 +18,6 @@
 	import { mapRecipeDifficulty } from '$lib/scripts/strings';
 
 	export let data: { recipe: Recipe };
-
-	let isRecipeCopied = false;
-
-	async function copyRecipe() {
-		try {
-			await navigator.clipboard.writeText(data.recipe?.name + '\n' + data.recipe?.ingredients);
-			isRecipeCopied = true;
-			setTimeout(() => {
-				isRecipeCopied = false;
-			}, 5000);
-		} catch (error) {
-			if (error instanceof Error) {
-				console.error(error.message);
-			}
-		}
-	}
-
-	function downloadRecipe() {}
 </script>
 
 <svelte:head>
@@ -106,15 +88,8 @@
 		<div>
 			<SaveRecipeButton label recipeId={data.recipe?.id} --fontSize="18px" --iconWidth="18px" />
 		</div>
-		<div
-			class="interactive-pointer-opacity flex-center"
-			on:click={downloadRecipe}
-			on:keydown={downloadRecipe}
-			role="button"
-			tabindex="0"
-		>
-			<img class="icon" alt="" src={Download} />
-			<span>Descargar en formato PDF</span>
+		<div>
+			<DownloadRecipeButton recipe={data.recipe} />
 		</div>
 	</div>
 

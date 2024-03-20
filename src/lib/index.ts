@@ -1,6 +1,7 @@
 import ChipTextInput from './components/ChipTextInput.svelte';
 import CircularLoading from './components/ChipTextInput.svelte';
 import CopyRecipeButton from './components/CopyRecipeButton.svelte';
+import DownloadRecipeButton from './components/DownloadRecipeButton.svelte';
 import Footer from './components/Footer.svelte';
 import Navbar from './components/Navbar.svelte';
 import RecipeCard from './components/RecipeCard.svelte';
@@ -12,6 +13,7 @@ export {
 	ChipTextInput,
 	CircularLoading,
     CopyRecipeButton,
+	DownloadRecipeButton,
 	Footer,
 	Navbar,
 	RecipeCard,
