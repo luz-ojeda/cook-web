@@ -5,15 +5,15 @@
 	import { RecipeCard, RecipesAside } from '$lib';
 
 	export let data: { recipes: Recipe[] };
-	let myRecipes: Recipe[];
+	let recipesToDisplay: Recipe[];
 
 	recipesStore.subscribe((recipes) => {
-		myRecipes = recipes;
+		recipesToDisplay = recipes;
 	});
 
 	onMount(() => {
-		// Update recipes store from the load function
-		recipesStore.update((r) => data.recipes);
+		// Update recipes store with the recipes retrieved from API
+		recipesStore.update((recipes) => data.recipes);
 	});
 </script>
 
@@ -25,9 +25,9 @@
 	<RecipesAside />
 
 	<!-- Recipe cards -->
-	{#if myRecipes.length > 0}
+	{#if recipesToDisplay.length > 0}
 		<div class="recipes-container flex-center">
-			{#each myRecipes as { id, name, summary, pictures }}
+			{#each recipesToDisplay as { id, name, summary, pictures }}
 				<!-- href="/recetas/{name}" -->
 				<RecipeCard
 					recipeId={id}

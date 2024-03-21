@@ -1,21 +1,23 @@
 <script lang="ts">
+	import { BookmarkEmpty, BookmarkFull } from '$lib';
+	import { onMount } from 'svelte';
+	import { savedRecipesIdsStore } from "../../stores/savedRecipesStore";
+
 	export let recipeId: string;
 	export let label = false;
 
-	import { BookmarkEmpty, BookmarkFull } from '$lib';
-	import { onMount } from 'svelte';
+	let recipesIdsSaved: string[] = [];
 
-	// TODO: Improve the following so no every single component instance hold the array of recipes saved
-	let recipesSavedParsed: string[] = [];
+	savedRecipesIdsStore.subscribe((r) => {
+		recipesIdsSaved = r;
+	});
 
-	$: isRecipeSaved = recipesSavedParsed && recipesSavedParsed.includes(recipeId);
+	$: isRecipeSaved = $savedRecipesIdsStore.includes(recipeId);
 
 	// Sync recipes saved across multiple possible open tabs
 	onMount(() => {
-		let recipesSaved = localStorage.getItem('recipesSaved');
-		if (recipesSaved) recipesSavedParsed = JSON.parse(recipesSaved);
-
 		window.addEventListener('storage', updateRecipesSaved);
+
 		return () => {
 			window.removeEventListener('storage', updateRecipesSaved);
 		};
@@ -26,22 +28,22 @@
 
 		const recipesSaved = localStorage.getItem('recipesSaved');
 		if (!recipesSaved) {
-			recipesSavedParsed = [...recipesSavedParsed, recipeId];
+			$savedRecipesIdsStore = [...$savedRecipesIdsStore, recipeId];
 		} else {
-			recipesSavedParsed = JSON.parse(recipesSaved);
-			if (!recipesSavedParsed.includes(recipeId)) {
-				recipesSavedParsed.push(recipeId);
+			if (!$savedRecipesIdsStore.includes(recipeId)) {
+				$savedRecipesIdsStore = [...$savedRecipesIdsStore, recipeId];
 			} else {
-				recipesSavedParsed = recipesSavedParsed.filter((id) => id !== recipeId);
+				$savedRecipesIdsStore = $savedRecipesIdsStore.filter((id) => id !== recipeId);
 			}
 		}
-		localStorage.setItem('recipesSaved', JSON.stringify(recipesSavedParsed));
+		localStorage.setItem('recipesSaved', JSON.stringify($savedRecipesIdsStore));
 	}
 
 	function updateRecipesSaved() {
+		console.log("update recipes")
 		const recipesSaved = localStorage.getItem('recipesSaved');
 		if (recipesSaved) {
-			recipesSavedParsed = JSON.parse(recipesSaved);
+			$savedRecipesIdsStore = [...JSON.parse(recipesSaved)];
 		}
 	}
 
