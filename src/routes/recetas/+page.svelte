@@ -39,23 +39,3 @@
 		</div>
 	{/if}
 </div>
-
-<style>
-	.recipes-container {
-		align-items: start;
-		display: grid;
-		column-gap: 32px;
-		row-gap: 64px;
-		grid-template-columns: repeat(3, 1fr);
-
-		@media (max-width: 1200px) {
-			column-gap: 64px;
-			grid-template-columns: repeat(2, 1fr);
-			grid-template-rows: 1fr 1fr;
-		}
-
-		@media (max-width: 720px) {
-			display: block;
-		}
-	}
-</style>

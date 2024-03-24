@@ -13,7 +13,7 @@
 <!-- Hero -->
 <div class="spacing hero flex-center">
 	<div>
-		<h1>Recetas simples sin publicidades</h1>
+		<h1>Recetas simples</h1>
 		<p>
 			Descubrí recetas auténticas y deliciosas, sin anuncios molestos. Tu experiencia culinaria
 			merece ser ininterrumpida. Busca según ingredientes, dificultad y nombre:
@@ -66,23 +66,5 @@
 
 	.background {
 		background-color: lightgray;
-	}
-
-	.recipes-container {
-		align-items: start;
-		display: grid;
-		column-gap: 32px;
-		grid-template-columns: repeat(4, 1fr);
-
-		@media (max-width: 1200px) {
-			column-gap: 64px;
-			grid-template-columns: repeat(2, 1fr);
-			grid-template-rows: 1fr 1fr;
-		}
-
-		@media (max-width: 720px) {
-			grid-template-columns: repeat(1, 1fr);
-			row-gap: 48px;
-		}
 	}
 </style>
