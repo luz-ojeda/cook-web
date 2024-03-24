@@ -1,10 +1,12 @@
 <div class="circle spin-animation"></div>
 
-<style>
+<style lang="scss">
+	@import '../../sass/variables.scss';
+
 	.circle {
 		width: var(--circle-width);
 		height: var(--circle-width);
-		background: conic-gradient(gray 90deg, lightgray 0deg);
+		background: conic-gradient(darkgray 90deg, ghostwhite 0deg);
 		border-radius: 50%;
 		display: flex;
 		align-items: center;
@@ -12,11 +14,11 @@
 	}
 
 	.circle::before {
+		background-color: var(--background, $bgColor);
 		content: '';
 		position: absolute;
-		width: 70%;
-		height: 70%;
-		background: rgb(233, 233, 237);
+		width: 80%;
+		height: 80%;
 		border-radius: 50%;
 	}
 

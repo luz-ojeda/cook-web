@@ -9,7 +9,7 @@
 
 <button on:click={onClick} style="width: {width}">
 	{#if loading}
-		<CircularLoading --circle-width="30px" />
+		<CircularLoading --background="darksalmon" --circle-width="30px" />
 	{:else}
 		<slot />
 	{/if}
@@ -18,7 +18,11 @@
 <style>
 	button {
         align-items: center;
+		border: 0;
+		background-color: darksalmon;
+		color: whitesmoke;
         display: flex;
+		font-size: 16px;
         height: 48px;
         justify-content: center;
 		padding: 8px 24px;

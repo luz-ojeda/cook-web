@@ -26,6 +26,8 @@
 	{#if values.length > 0}
 		<div class="chips-container">
 			{#each values as value}
+				<!-- svelte-ignore a11y-click-events-have-key-events -->
+				<!-- svelte-ignore a11y-no-static-element-interactions -->
 				<div class="chip" on:click={() => removeValue(value)} title="Remover">{value} X</div>
 			{/each}
 		</div>

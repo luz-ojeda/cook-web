@@ -7,13 +7,20 @@
 	export let data: { recipes: Recipe[] };
 	let recipesToDisplay: Recipe[];
 
-	recipesStore.subscribe((recipes) => {
-		recipesToDisplay = recipes;
+	$:
+
+	recipesStore.subscribe((store) => {
+		recipesToDisplay = store.recipes ?? [];
 	});
 
 	onMount(() => {
 		// Update recipes store with the recipes retrieved from API
-		recipesStore.update((recipes) => data.recipes);
+		recipesStore.update(() => {
+			return {
+				recipes: data.recipes,
+				loading: false
+			};
+		});
 	});
 </script>
 
@@ -24,9 +31,8 @@
 <div class="flex spacing">
 	<RecipesAside />
 
-	<!-- Recipe cards -->
-	{#if recipesToDisplay.length > 0}
-		<div class="recipes-container flex-center">
+	<div class:loading={$recipesStore.loading} class="recipes-container w-100">
+		{#if recipesToDisplay.length > 0}
 			{#each recipesToDisplay as { id, name, summary, pictures }}
 				<!-- href="/recetas/{name}" -->
 				<RecipeCard
@@ -36,6 +42,12 @@
 					recipeImage={pictures[0]}
 				/>
 			{/each}
-		</div>
-	{/if}
+		{/if}
+	</div>
 </div>
+
+<style>
+	.loading {
+		opacity: 0.6;
+	}
+</style>

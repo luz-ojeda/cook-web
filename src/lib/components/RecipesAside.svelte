@@ -8,22 +8,31 @@
 	let difficulties: string[] = [];
 	let ingredients: string[] = [];
 	let onlyVegetarian = false;
-	let isLoadingRecipes = false;
 
 	async function getRecipes() {
-		isLoadingRecipes = true;
+		recipesStore.update((store) => {
+			return {
+				recipes: store.recipes,
+				loading: true
+			}
+		});
+		await new Promise<void>((resolve) => setTimeout(() => resolve(), 6000))
 		let url = `/recetas?`;
 
 		if (recipeName) {
 			url += `name=${recipeName}&`;
 		}
 
-		for (let i = 0; i < difficulties.length; i++) {
-			url += `difficulty=${difficulties[i]}&`;
+		if (difficulties.length > 0) {
+			for (let i = 0; i < difficulties.length; i++) {
+				url += `difficulty=${difficulties[i]}&`;
+			}
 		}
 
-		for (let i = 0; i < ingredients.length; i++) {
-			url += `ingredients=${ingredients[i]}&`;
+		if (ingredients.length > 0) {
+			for (let i = 0; i < ingredients.length; i++) {
+				url += `ingredients=${ingredients[i]}&`;
+			}
 		}
 
 		if (onlyVegetarian) {
@@ -32,8 +41,13 @@
 
 		const response = await fetch(url);
 		const data = await response.json();
-		isLoadingRecipes = false;
-		recipesStore.update((r) => data);
+
+		recipesStore.update((store) => {
+			return {
+				recipes: data,
+				loading: false
+			}
+		});
 	}
 </script>
 
@@ -75,7 +89,7 @@
 		</div>
 		<input id="vegetarian" name="vegetarian" type="checkbox" bind:value={onlyVegetarian} />
 		<label for="vegetarian">Solo vegetarianas</label>
-		<PrimaryButton loading={isLoadingRecipes} onClick={getRecipes} width="100%"
+		<PrimaryButton loading={$recipesStore.loading} onClick={getRecipes} width="100%"
 			>Buscar</PrimaryButton
 		>
 	</form>

@@ -1,6 +1,5 @@
 <script lang="ts">
-	import HomeSearch from '$lib/components/HomeSearch.svelte';
-	import RecipeCard from '$lib/components/RecipeCard.svelte';
+	import { HomeSearch, RecipeCard } from "$lib";
 	import type { Recipe } from '$lib/types/Recipe';
 
 	export let data: { recipes: Recipe[] };
@@ -28,7 +27,7 @@
 <!-- Recipe cards -->
 {#if data.recipes.length > 0}
 	<div class="background">
-		<div class="recipes-container spacing flex-center">
+		<div class="recipes-container recipes-container-home spacing">
 			{#each data.recipes as { id, name, summary, pictures }}
 				<RecipeCard
 					recipeId={id}
@@ -42,6 +41,10 @@
 {/if}
 
 <style lang="scss">
+	.background {
+		background-color: whitesmoke;
+	}
+
 	.hero {
 		@media (max-width: 1200px) {
 			flex-direction: column;
@@ -64,7 +67,7 @@
 		}
 	}
 
-	.background {
-		background-color: lightgray;
+	.recipes-container-home {
+		grid-template-columns: repeat(4, 1fr);
 	}
 </style>

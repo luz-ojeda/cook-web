@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { BookmarkEmpty, BookmarkFull } from '$lib';
 	import { onMount } from 'svelte';
-	import { savedRecipesIdsStore } from "../../stores/savedRecipesStore";
+	import { savedRecipesIdsStore } from '../../stores/savedRecipesStore';
 
 	export let recipeId: string;
 	export let label = false;
@@ -40,13 +40,11 @@
 	}
 
 	function updateRecipesSaved() {
-		console.log("update recipes")
 		const recipesSaved = localStorage.getItem('recipesSaved');
 		if (recipesSaved) {
 			$savedRecipesIdsStore = [...JSON.parse(recipesSaved)];
 		}
 	}
-
 </script>
 
 <button
@@ -56,7 +54,7 @@
 	on:click={saveRecipe}
 >
 	<img
-		class="bookmark-icon action-icon"
+		class="bookmark-icon {label ? 'action-icon' : ''}"
 		alt=""
 		src={isRecipeSaved ? BookmarkFull : BookmarkEmpty}
 		title="Guardar en mis recetas"
@@ -72,6 +70,7 @@
 		background-color: transparent;
 		font-family: inherit;
 		height: fit-content;
+		padding: 0;
 	}
 
 	.bookmark-icon {

@@ -39,7 +39,7 @@
 	@import '../../sass/variables.scss';
 
 	.container {
-		background-color: lightgray;
+		background-color: whitesmoke;
 		border-radius: $borderRadius;
 		padding: 24px;
 	}
