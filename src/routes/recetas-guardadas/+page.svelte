@@ -1,49 +1,46 @@
 <script lang="ts">
 	import RecipeCard from '$lib/components/RecipeCard.svelte';
 	import type { Recipe } from '$lib/types/Recipe';
-	import { onMount } from 'svelte';
+	import { savedRecipesIdsStore } from '../../stores/savedRecipesStore';
 
-	let recipes: Recipe[] = [];
+	let isLoadingRecipes = false;
 
-	async function getRecipes(recipesIds: string[]) {
-		let url = '/recetas?';
-		for (let i = 0; i < recipesIds.length; i++) {
-			url += `ids=${recipesIds[i]}&`;
+	$: getRecipes = async () => {
+		if ($savedRecipesIdsStore.length == 0) return [];
+		console.log($savedRecipesIdsStore)
+		isLoadingRecipes = true;
+		let url = `/recetas?`;
+		for (let i = 0; i < $savedRecipesIdsStore.length; i++) {
+			url += `ids=${$savedRecipesIdsStore[i]}&`;
 		}
-
+		
 		const response = await fetch(url);
-		const responseJson = await response.json();
-
-		return responseJson;
+		isLoadingRecipes = false;
+		return await response.json();
 	}
-
-	onMount(async () => {
-		const recipesSaved = localStorage.getItem('recipesSaved');
-		if (recipesSaved) {
-			const recipesSavedParsed = JSON.parse(recipesSaved);
-			recipes = await getRecipes(recipesSavedParsed);
-		}
-	});
+	let recipesPromise = getRecipes();
 </script>
 
 <svelte:head>
-  <title>Recetas guardadas</title>
+	<title>Recetas guardadas</title>
 </svelte:head>
 
 <div class="spacing">
 	<h1>Mis recetas guardadas</h1>
 	<!-- Recipe cards -->
-	{#if recipes.length > 0}
-		<div class="recipes-container flex-center">
-			{#each recipes as { id, name, summary, pictures }}
-				<!-- href="/recetas/{name}" -->
-				<RecipeCard
-					recipeId={id}
-					recipeTitle={name}
-					recipeSummary={summary}
-					recipeImage={pictures[0]}
-				/>
-			{/each}
-		</div>
-	{/if}
+	{#await recipesPromise then recipes}
+		{#if recipes.length > 0}
+			<div class="recipes-container flex-center">
+				{#each recipes as { id, name, summary, pictures }}
+					<!-- href="/recetas/{name}" -->
+					<RecipeCard
+						recipeId={id}
+						recipeTitle={name}
+						recipeSummary={summary}
+						recipeImage={pictures[0]}
+					/>
+				{/each}
+			</div>
+		{/if}
+	{/await}
 </div>

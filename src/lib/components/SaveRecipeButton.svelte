@@ -9,7 +9,7 @@
 	let recipesIdsSaved: string[] = [];
 
 	savedRecipesIdsStore.subscribe((r) => {
-		recipesIdsSaved = r;
+		recipesIdsSaved = [...r];
 	});
 
 	$: isRecipeSaved = $savedRecipesIdsStore.includes(recipeId);
