@@ -38,5 +38,6 @@ export const GET = async ({ fetch, url }) => {
 	const res = await fetch(urlWithParams);
 	const recipes = await res.json();
 
+	// Creates an HTTP response object with JSON data
 	return json(recipes);
 };

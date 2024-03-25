@@ -3,6 +3,8 @@
 	import { recipesStore } from '../../stores/recipesStore';
 	import ChipTextInput from './ChipTextInput.svelte';
 	import TextInput from './TextInput.svelte';
+	import type { PaginatedList } from "$lib/types/PaginatedList";
+	import type { Recipe } from "$lib/types/Recipe";
 
 	let recipeName = '';
 	let difficulties: string[] = [];
@@ -39,11 +41,11 @@
 		}
 
 		const response = await fetch(url);
-		const data = await response.json();
+		const recipesPaginatedList: PaginatedList<Recipe> = await response.json();
 
 		recipesStore.update((store) => {
 			return {
-				recipes: data,
+				recipes: recipesPaginatedList.data,
 				loading: false
 			};
 		});

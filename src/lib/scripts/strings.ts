@@ -1,10 +1,10 @@
-import type { Recipe, RecipeDiffiulty } from '$lib/types/Recipe';
+import type { Recipe, RecipeDifficulty } from '$lib/types/Recipe';
 
 function capitalizeFirstLetter(string: string) {
 	return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-function mapRecipeDifficulty(difficulty: RecipeDiffiulty) {
+function mapRecipeDifficulty(difficulty: RecipeDifficulty) {
 	if (difficulty === 'Hard') {
 		return 'Difícil';
 	} else if (difficulty === 'Medium') {

@@ -18,24 +18,24 @@
 		scaleServings
 	} from '$lib';
 
-	export let data: { recipe: Recipe };
+	export let data: Recipe;
 
 	let ingredients: string[];
-	let servings = data.recipe?.servings;
+	let servings = data.servings;
 
 	$: {
-		ingredients = data.recipe?.ingredients;
+		ingredients = data.ingredients;
 	}
 
 	$: {
-		if (servings && data.recipe.servings) {
-			ingredients = scaleServings(data.recipe?.ingredients, servings, data.recipe.servings);
+		if (servings && data.servings) {
+			ingredients = scaleServings(data.ingredients, servings, data.servings);
 		}
 	}
 </script>
 
 <svelte:head>
-	<title>{data.recipe?.name}</title>
+	<title>{data.name}</title>
 	<!-- <meta name="description" content="{metaDescription}"> -->
 </svelte:head>
 
@@ -43,39 +43,39 @@
 	<div class="title-image-container flex">
 		<img
 			class="rounded-img recipe-image"
-			src={data.recipe?.pictures[0]
-				? `${data.recipe?.pictures[0]}?${PUBLIC_AZURE_STORAGE_SAS_TOKEN}`
+			src={data.pictures[0]
+				? `${data.pictures[0]}?${PUBLIC_AZURE_STORAGE_SAS_TOKEN}`
 				: placeholder}
 			alt=""
 		/>
 		<div>
-			<h1>{data.recipe?.name}</h1>
+			<h1>{data.name}</h1>
 			<div class="recipe-summary">
-				{#if data.recipe?.preparationTime}
+				{#if data.preparationTime}
 					<div class="flex-center">
 						<img class="icon" alt="" src={Clock} />
 						<span>Tiempo de preparación:&nbsp </span>
-						<p>{data.recipe?.preparationTime} minutos</p>
+						<p>{data.preparationTime} minutos</p>
 					</div>
 				{/if}
 
-				{#if data.recipe?.cookingTime}
+				{#if data.cookingTime}
 					<div class="flex-center">
 						<img class="icon" alt="" src={Stove} />
 						<span>Tiempo de cocina:&nbsp</span>
-						<p>{data.recipe?.cookingTime} minutos</p>
+						<p>{data.cookingTime} minutos</p>
 					</div>
 				{/if}
 
-				{#if data.recipe?.difficulty}
+				{#if data.difficulty}
 					<div class="flex-center">
 						<img class="icon" alt="" src={Fire} />
 						<span>Dificultad:&nbsp</span>
-						<p>{mapRecipeDifficulty(data.recipe?.difficulty)}</p>
+						<p>{mapRecipeDifficulty(data.difficulty)}</p>
 					</div>
 				{/if}
 
-				{#if data.recipe?.vegetarian}
+				{#if data.vegetarian}
 					<div class="flex-center">
 						<img class="icon" alt="" src={Broccoli} />
 						<span>Vegetariana</span>
@@ -83,7 +83,7 @@
 				{/if}
 
 				<!-- TODO: Implement recipe adjustment according to servings. Must have a stateful copy of the recipe and pass it to CopyRecipeButton as well -->
-				{#if data.recipe?.servings}
+				{#if data.servings}
 					<div class="flex-center">
 						<img class="icon" alt="" src={Dish} />
 						<span
@@ -99,19 +99,19 @@
 	<div class="actions">
 		<!-- TODO: Handle copy for firefox for Android where clipboard API is not supported -->
 		<div>
-			<CopyRecipeButton recipe={data.recipe} />
+			<CopyRecipeButton recipe={data} />
 		</div>
 		<div>
 			<SaveRecipeButton
 				label
-				recipeId={data.recipe?.id}
+				recipeId={data.id}
 				--fontSize="18px"
 				--iconWidth="18px"
 				--iconMobileWidth="20px"
 			/>
 		</div>
 		<div>
-			<DownloadRecipeButton recipe={data.recipe} />
+			<DownloadRecipeButton recipe={data} />
 		</div>
 	</div>
 
@@ -132,7 +132,7 @@
 			<img class="icon" alt="" src={Axe} />
 			<h2>Instrucciones:</h2>
 		</div>
-		<p>{data.recipe?.instructions}</p>
+		<p>{data.instructions}</p>
 	</div>
 
 	<!-- TODO: Display all images in gallery -->

@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { HomeSearch, RecipeCard } from '$lib';
+	import type { PaginatedList } from "$lib/types/PaginatedList";
 	import type { Recipe } from '$lib/types/Recipe';
 
-	export let data: { recipes: Recipe[] };
+	export let data: PaginatedList<Recipe>;
 </script>
 
 <svelte:head>
@@ -25,10 +26,10 @@
 </div>
 
 <!-- Recipe cards -->
-{#if data.recipes.length > 0}
+{#if data.data.length > 0}
 	<div class="background">
 		<div class="recipes-container recipes-container-home spacing">
-			{#each data.recipes as { id, name, summary, pictures }}
+			{#each data.data as { id, name, summary, pictures }}
 				<RecipeCard
 					recipeId={id}
 					recipeTitle={name}

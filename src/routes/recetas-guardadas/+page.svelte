@@ -1,9 +1,10 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { savedRecipesIdsStore } from '../../stores/savedRecipesStore';
+	import { browser } from '$app/environment';
 	import { CircularLoading, RecipeCard } from '$lib';
 	import type { Recipe } from '$lib/types/Recipe';
-	import { browser } from '$app/environment';
+	import type { PaginatedList } from '$lib/types/PaginatedList';
 
 	let isLoadingRecipes = false;
 	let recipes: Recipe[] = [];
@@ -22,8 +23,9 @@
 		}
 
 		const response = await fetch(url);
+		const recipesPaginatedList: PaginatedList<Recipe> = await response.json();
+		recipes = recipesPaginatedList.data;
 		isLoadingRecipes = false;
-		recipes = await response.json();
 	}
 
 	onMount(async () => {

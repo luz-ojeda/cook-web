@@ -1,14 +1,15 @@
+import { PUBLIC_API_URL } from '$env/static/public';
 import type { PageLoad } from './recetas/$types';
 import type { Recipe } from '$lib/types/Recipe';
-import { PUBLIC_API_URL } from '$env/static/public';
+import type { PaginatedList } from '$lib/types/PaginatedList';
 
-export const load: PageLoad<{ recipes: Recipe[] }> = async ({ fetch }) => {
+export const load: PageLoad<PaginatedList<Recipe>> = async ({ fetch }) => {
 	try {
 		const res = await fetch(`${PUBLIC_API_URL}/recipes?limit=4`);
-		const recipes = await res.json();
+		const paginatedList = await res.json();
 
-		return { recipes };
+		return paginatedList;
 	} catch (error) {
-		return { recipes: [] };
+		return { data: [] };
 	}
 };

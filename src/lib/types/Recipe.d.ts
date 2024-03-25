@@ -9,10 +9,10 @@ type Recipe = {
 	preparationTime?: number;
 	cookingTime?: number;
 	servings?: number;
-	difficulty?: RecipeDiffiulty;
+	difficulty?: RecipeDifficulty;
 	vegetarian: boolean;
 };
 
-type RecipeDiffiulty = 'Easy' | 'Medium' | 'Hard';
+type RecipeDifficulty = 'Easy' | 'Medium' | 'Hard';
 
-export { Recipe, Reciped };
+export { Recipe, RecipeDifficulty };

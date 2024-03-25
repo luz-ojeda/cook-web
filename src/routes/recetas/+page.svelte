@@ -3,8 +3,9 @@
 	import { onMount } from 'svelte';
 	import { recipesStore } from '../../stores/recipesStore';
 	import { RecipeCard, RecipesAside } from '$lib';
+	import type { PaginatedList } from "$lib/types/PaginatedList";
 
-	export let data: { recipes: Recipe[] };
+	export let data: PaginatedList<Recipe>;
 	let recipesToDisplay: Recipe[];
 
 	$: recipesStore.subscribe((store) => {
@@ -15,7 +16,7 @@
 		// Update recipes store with the recipes retrieved from API
 		recipesStore.update(() => {
 			return {
-				recipes: data.recipes,
+				recipes: data.data,
 				loading: false
 			};
 		});
@@ -32,7 +33,6 @@
 	<div class:loading={$recipesStore.loading} class="recipes-container w-100">
 		{#if recipesToDisplay.length > 0}
 			{#each recipesToDisplay as { id, name, summary, pictures }}
-				<!-- href="/recetas/{name}" -->
 				<RecipeCard
 					recipeId={id}
 					recipeTitle={name}
