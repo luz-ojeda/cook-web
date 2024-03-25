@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { Copy, CopyFull } from '$lib';
-	import { formatRecipeForCopyOrDownload } from '$lib/scripts/strings';
+	import { Copy, CopyFull, formatRecipeForCopyOrDownload } from '$lib';
 	import type { Recipe } from '$lib/types/Recipe';
 
 	export let recipe: Recipe;

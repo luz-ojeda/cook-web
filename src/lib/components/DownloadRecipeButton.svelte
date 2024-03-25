@@ -1,8 +1,7 @@
 <script lang="ts">
-	import { Download } from '$lib';
+	import { Download, formatRecipeForCopyOrDownload } from '$lib';
 	import { browser } from '$app/environment';
 
-	import { formatRecipeForCopyOrDownload } from '$lib/scripts/strings';
 	import type { Recipe } from '$lib/types/Recipe';
 
 	export let recipe: Recipe;

@@ -16,7 +16,6 @@
 				loading: true
 			}
 		});
-		await new Promise<void>((resolve) => setTimeout(() => resolve(), 6000))
 		let url = `/recetas?`;
 
 		if (recipeName) {

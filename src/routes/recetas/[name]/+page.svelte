@@ -6,24 +6,37 @@
 		Axe,
 		Broccoli,
 		Clock,
+		CopyRecipeButton,
 		Dish,
 		DownloadRecipeButton,
 		Fire,
 		Fridge,
 		SaveRecipeButton,
 		Stove,
-		capitalizeFirstLetter
+		capitalizeFirstLetter,
+		mapRecipeDifficulty,
+		scaleServings
 	} from '$lib';
-	import CopyRecipeButton from '$lib/components/CopyRecipeButton.svelte';
-	import { mapRecipeDifficulty } from '$lib/scripts/strings';
 
 	export let data: { recipe: Recipe };
+
+	let ingredients: string[];
+	let servings = data.recipe?.servings;
+
+	$: {
+		ingredients = data.recipe?.ingredients;
+	}
+
+	$: {
+		if (servings && data.recipe.servings) {
+			ingredients = scaleServings(data.recipe?.ingredients, servings, data.recipe.servings);
+		}
+	}
 </script>
 
 <svelte:head>
 	<title>{data.recipe?.name}</title>
 	<!-- <meta name="description" content="{metaDescription}"> -->
-	<!-- Other meta tags can be included here -->
 </svelte:head>
 
 <div class="spacing">
@@ -73,7 +86,10 @@
 				{#if data.recipe?.servings}
 					<div class="flex-center">
 						<img class="icon" alt="" src={Dish} />
-						<span>Porciones: {data.recipe?.servings}</span>
+						<span
+							>Porciones:
+							<input min="1" class="servings-input" type="number" bind:value={servings} />
+						</span>
 					</div>
 				{/if}
 			</div>
@@ -86,7 +102,13 @@
 			<CopyRecipeButton recipe={data.recipe} />
 		</div>
 		<div>
-			<SaveRecipeButton label recipeId={data.recipe?.id} --fontSize="18px" --iconWidth="18px" --iconMobileWidth="20px" />
+			<SaveRecipeButton
+				label
+				recipeId={data.recipe?.id}
+				--fontSize="18px"
+				--iconWidth="18px"
+				--iconMobileWidth="20px"
+			/>
 		</div>
 		<div>
 			<DownloadRecipeButton recipe={data.recipe} />
@@ -99,7 +121,7 @@
 			<h2>Ingredientes:</h2>
 		</div>
 		<ul>
-			{#each data.recipe?.ingredients as ingredient}
+			{#each ingredients as ingredient}
 				<li>{capitalizeFirstLetter(ingredient)}</li>
 			{/each}
 		</ul>
@@ -192,5 +214,10 @@
 
 	.ingredients {
 		margin-bottom: 12px;
+	}
+
+	.servings-input {
+		padding: 6px;
+		width: 38px;
 	}
 </style>

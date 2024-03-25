@@ -58,6 +58,7 @@ export {
 };
 
 // Scripts
-import { capitalizeFirstLetter } from './scripts/strings';
+import { capitalizeFirstLetter, formatRecipeForCopyOrDownload, mapRecipeDifficulty } from './scripts/strings';
+import { scaleServings } from './scripts/recipe';
 
-export { capitalizeFirstLetter };
+export { capitalizeFirstLetter, formatRecipeForCopyOrDownload, mapRecipeDifficulty, scaleServings };
