@@ -46,7 +46,8 @@
 		recipesStore.update((store) => {
 			return {
 				recipes: recipesPaginatedList.data,
-				loading: false
+				loading: false,
+				pagination: recipesPaginatedList.pagination
 			};
 		});
 	}

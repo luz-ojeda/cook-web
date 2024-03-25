@@ -5,6 +5,7 @@ import DownloadRecipeButton from './components/DownloadRecipeButton.svelte';
 import Footer from './components/Footer.svelte';
 import HomeSearch from './components/HomeSearch.svelte';
 import Navbar from './components/Navbar.svelte';
+import Pagination from './components/Pagination.svelte';
 import RecipeCard from './components/RecipeCard.svelte';
 import RecipesAside from './components/RecipesAside.svelte';
 import SaveRecipeButton from './components/SaveRecipeButton.svelte';
@@ -18,6 +19,7 @@ export {
 	Footer,
 	HomeSearch,
 	Navbar,
+	Pagination,
 	RecipeCard,
 	RecipesAside,
 	SaveRecipeButton,

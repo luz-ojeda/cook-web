@@ -2,8 +2,8 @@
 	import type { Recipe } from '$lib/types/Recipe';
 	import { onMount } from 'svelte';
 	import { recipesStore } from '../../stores/recipesStore';
-	import { RecipeCard, RecipesAside } from '$lib';
-	import type { PaginatedList } from "$lib/types/PaginatedList";
+	import { Pagination, RecipeCard, RecipesAside } from '$lib';
+	import type { PaginatedList } from '$lib/types/PaginatedList';
 
 	export let data: PaginatedList<Recipe>;
 	let recipesToDisplay: Recipe[];
@@ -17,7 +17,8 @@
 		recipesStore.update(() => {
 			return {
 				recipes: data.data,
-				loading: false
+				loading: false,
+				pagination: data.pagination
 			};
 		});
 	});
@@ -29,9 +30,14 @@
 
 <div class="flex spacing">
 	<RecipesAside />
-
+	{#if $recipesStore.pagination && $recipesStore.pagination.totalPages > 1}
+		<Pagination
+			currentPage={1}
+			totalPages={10}
+		/>
+	{/if}
 	<div class:loading={$recipesStore.loading} class="recipes-container w-100">
-		{#if recipesToDisplay.length > 0}
+		<!-- {#if recipesToDisplay.length > 0}
 			{#each recipesToDisplay as { id, name, summary, pictures }}
 				<RecipeCard
 					recipeId={id}
@@ -40,7 +46,9 @@
 					recipeImage={pictures[0]}
 				/>
 			{/each}
-		{/if}
+		{:else}
+			<div>No se encontraron recetas</div>
+		{/if} -->
 	</div>
 </div>
 

@@ -7,7 +7,7 @@ type Pagination = {
 
 type PaginatedList<DataType> = {
 	data: DataType[];
-	pagination: Pagination;
+	pagination?: Pagination | null;
 };
 
 export { Pagination, PaginatedList };
