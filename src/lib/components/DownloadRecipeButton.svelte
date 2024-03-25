@@ -12,11 +12,14 @@
 		const blob = new Blob([formatRecipeForCopyOrDownload(recipe)], { type: 'text/plain' });
 		href = window.URL.createObjectURL(blob);
 	}
-
 </script>
 
 {#if browser}
-	<a {href} download={"Receta de " + recipe.name} class="flex-center interactive-pointer-opacity flex-center">
+	<a
+		{href}
+		download={'Receta de ' + recipe.name}
+		class="flex-center interactive-pointer-opacity flex-center"
+	>
 		<img class="action-icon" alt="" src={Download} />
 		<span class="action-label">Descargar</span>
 	</a>

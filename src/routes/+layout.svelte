@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { Footer, Navbar } from '$lib';
-	import { onMount } from "svelte";
+	import { onMount } from 'svelte';
 	import '../app.scss';
-	import { savedRecipesIdsStore } from "../stores/savedRecipesStore";
+	import { savedRecipesIdsStore } from '../stores/savedRecipesStore';
 
 	onMount(() => {
 		let recipesSaved = localStorage.getItem('recipesSaved');

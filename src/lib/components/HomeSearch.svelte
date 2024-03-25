@@ -1,5 +1,5 @@
 <script>
-	import PrimaryButton from "./PrimaryButton.svelte";
+	import PrimaryButton from './PrimaryButton.svelte';
 </script>
 
 <div class="container flex-column">
@@ -32,7 +32,7 @@
 		</div>
 	</fieldset>
 
-	<PrimaryButton onClick={() => console.log("")} width="100%">Buscar</PrimaryButton>
+	<PrimaryButton onClick={() => console.log('')} width="100%">Buscar</PrimaryButton>
 </div>
 
 <style lang="scss">

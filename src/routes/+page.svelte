@@ -1,12 +1,12 @@
 <script lang="ts">
-	import { HomeSearch, RecipeCard } from "$lib";
+	import { HomeSearch, RecipeCard } from '$lib';
 	import type { Recipe } from '$lib/types/Recipe';
 
 	export let data: { recipes: Recipe[] };
 </script>
 
 <svelte:head>
-  <title>Cook</title>
+	<title>Cook</title>
 </svelte:head>
 
 <!-- Hero -->

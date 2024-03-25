@@ -1,20 +1,20 @@
-@import "sass/variables";
-@import "sass/utilities";
-@import "sass/recipe-page";
+@import 'sass/variables';
+@import 'sass/utilities';
+@import 'sass/recipe-page';
 
 :root {
-    background-color: $bgColor;
-    color: $fgColor;
+	background-color: $bgColor;
+	color: $fgColor;
 }
 
 body {
-    margin: 0;
+	margin: 0;
 }
 
 button {
-    cursor: pointer;
+	cursor: pointer;
 
-    &:hover {
-        opacity: 0.7;
-    }
+	&:hover {
+		opacity: 0.7;
+	}
 }

@@ -7,9 +7,7 @@
 	export let data: { recipes: Recipe[] };
 	let recipesToDisplay: Recipe[];
 
-	$:
-
-	recipesStore.subscribe((store) => {
+	$: recipesStore.subscribe((store) => {
 		recipesToDisplay = store.recipes ?? [];
 	});
 

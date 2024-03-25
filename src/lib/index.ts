@@ -13,7 +13,7 @@ import TextInput from './components/TextInput.svelte';
 export {
 	ChipTextInput,
 	CircularLoading,
-    CopyRecipeButton,
+	CopyRecipeButton,
 	DownloadRecipeButton,
 	Footer,
 	HomeSearch,
@@ -58,7 +58,11 @@ export {
 };
 
 // Scripts
-import { capitalizeFirstLetter, formatRecipeForCopyOrDownload, mapRecipeDifficulty } from './scripts/strings';
+import {
+	capitalizeFirstLetter,
+	formatRecipeForCopyOrDownload,
+	mapRecipeDifficulty
+} from './scripts/strings';
 import { scaleServings } from './scripts/recipe';
 
 export { capitalizeFirstLetter, formatRecipeForCopyOrDownload, mapRecipeDifficulty, scaleServings };

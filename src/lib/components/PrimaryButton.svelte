@@ -17,14 +17,14 @@
 
 <style>
 	button {
-        align-items: center;
+		align-items: center;
 		border: 0;
 		background-color: darksalmon;
 		color: whitesmoke;
-        display: flex;
+		display: flex;
 		font-size: 16px;
-        height: 48px;
-        justify-content: center;
+		height: 48px;
+		justify-content: center;
 		padding: 8px 24px;
 		text-transform: uppercase;
 	}

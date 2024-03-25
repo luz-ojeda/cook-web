@@ -14,7 +14,7 @@
 			return {
 				recipes: store.recipes,
 				loading: true
-			}
+			};
 		});
 		let url = `/recetas?`;
 
@@ -45,7 +45,7 @@
 			return {
 				recipes: data,
 				loading: false
-			}
+			};
 		});
 	}
 </script>

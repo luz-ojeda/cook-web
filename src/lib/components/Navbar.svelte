@@ -29,9 +29,9 @@
 	img {
 		margin-right: 12px;
 	}
-	
+
 	.nav-links a {
-		text-decoration: none
+		text-decoration: none;
 	}
 
 	.nav-links a:not(:last-child) {

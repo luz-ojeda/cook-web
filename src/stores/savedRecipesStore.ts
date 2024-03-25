@@ -1,3 +1,3 @@
-import { writable } from 'svelte/store'
+import { writable } from 'svelte/store';
 
-export const savedRecipesIdsStore = writable<string[]>([])
+export const savedRecipesIdsStore = writable<string[]>([]);

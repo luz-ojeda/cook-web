@@ -26,7 +26,7 @@
 		animation-duration: 1.5s;
 		animation-name: rotate;
 		animation-iteration-count: infinite;
-        animation-timing-function: linear;
+		animation-timing-function: linear;
 	}
 
 	@keyframes rotate {

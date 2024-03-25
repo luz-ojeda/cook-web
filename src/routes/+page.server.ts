@@ -6,9 +6,9 @@ export const load: PageLoad<{ recipes: Recipe[] }> = async ({ fetch }) => {
 	try {
 		const res = await fetch(`${PUBLIC_API_URL}/recipes?limit=4`);
 		const recipes = await res.json();
-	
+
 		return { recipes };
 	} catch (error) {
-		return { recipes: [] }
+		return { recipes: [] };
 	}
 };

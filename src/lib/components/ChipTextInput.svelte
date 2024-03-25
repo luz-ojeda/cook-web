@@ -17,7 +17,7 @@
 	}
 
 	function removeValue(valueClicked: string) {
-		values = values.filter(value => value !== valueClicked)
+		values = values.filter((value) => value !== valueClicked);
 	}
 </script>
 
