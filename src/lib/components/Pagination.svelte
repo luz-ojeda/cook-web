@@ -1,13 +1,18 @@
 <script lang="ts">
-	export let totalPages: number;
+	import { parameters } from "../../stores/recipes";
+
 	export let currentPage: number;
+	export let totalPages: number;
 
 	const PAGES_IN_BETWEEN = 3;
 	let pagesArray = Array.from({ length: totalPages }, (_, x) => x + 1);
 	let sliceIndex = 1;
 
-    // Dynamically changing the starting index of the middle pages based on the
-    // current page lets us 
+	function onPageClick(page: number) {
+		$parameters.page = page;
+	}
+
+	// Dynamically changing the starting index of a slice of the array with all pages lets us correctly display the middle pages
 	$: {
 		sliceIndex =
 			currentPage <= PAGES_IN_BETWEEN // Page is less than or equal to 3, we slice the array from 1 to 4
@@ -20,10 +25,10 @@
 
 <nav class="flex-center" style="height: 48px">
 	{#if currentPage !== 1}
-		<button style="width: 96px;">Página anterior</button>
+		<button on:click={() => onPageClick(currentPage - 1)} style="width: 96px;">Página anterior</button>
 	{/if}
 
-	<button disabled={currentPage === 1}>1</button>
+	<button disabled={currentPage === 1} on:click={() => onPageClick(1)}>1</button>
 
 	{#if totalPages > PAGES_IN_BETWEEN + 2}
 		{#if currentPage >= 1 + PAGES_IN_BETWEEN}
@@ -31,7 +36,7 @@
 		{/if}
 
 		{#each pagesArray.slice(sliceIndex, sliceIndex + 3) as i}
-			<button disabled={currentPage === i}>{i}</button>
+			<button disabled={currentPage === i} on:click={() => onPageClick(i)}>{i}</button>
 		{/each}
 
 		{#if currentPage <= totalPages - PAGES_IN_BETWEEN}
@@ -43,10 +48,12 @@
 		{/each}
 	{/if}
 
-	<button disabled={currentPage === totalPages}>{totalPages}</button>
+	<button disabled={currentPage === totalPages} on:click={() => onPageClick(totalPages)}
+		>{totalPages}</button
+	>
 
 	{#if currentPage !== totalPages}
-		<button style="width: 96px;">Página siguiente</button>
+		<button on:click={() => onPageClick(currentPage + 1)} style="width: 96px;">Página siguiente</button>
 	{/if}
 </nav>
 

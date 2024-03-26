@@ -11,6 +11,7 @@
 
 	function handleKeyPress(event: KeyboardEvent) {
 		if (event.key === 'Enter' && inputValue.trim() !== '') {
+			event.preventDefault();
 			values = [...values, inputValue];
 			inputValue = '';
 		}

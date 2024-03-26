@@ -4,6 +4,11 @@ import { json } from '@sveltejs/kit';
 export const GET = async ({ fetch, url }) => {
 	let urlWithParams = `${PUBLIC_API_URL}/recipes?`;
 
+	if (url.searchParams.get('page')) {
+		const page = url.searchParams.get('page');
+		urlWithParams += `&page=${page}`;
+	}
+
 	if (url.searchParams.get('name')) {
 		const name = url.searchParams.get('name');
 		urlWithParams += `&name=${name}`;
