@@ -44,7 +44,7 @@
 		{/if}
 	{:else}
 		{#each Array.from(Array(totalPages - 2)).keys() as i}
-			<button disabled={currentPage === 2}>{i + 2}</button>
+			<button disabled={currentPage === i + 2} on:click={() => onPageClick(i + 2)}>{i + 2}</button>
 		{/each}
 	{/if}
 

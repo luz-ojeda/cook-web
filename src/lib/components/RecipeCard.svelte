@@ -44,6 +44,9 @@
 	h2 {
 		margin: 0;
 		text-transform: uppercase;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		max-width: 250px;
 	}
 
 	.title-container {

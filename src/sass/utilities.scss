@@ -40,16 +40,19 @@
 	display: grid;
 	column-gap: 32px;
 	row-gap: 64px;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template: minmax(0, 1fr) / repeat(3, minmax(0, 1fr));
 
-	@media (max-width: 1200px) {
+	@media (max-width: 1620px) {
 		column-gap: 64px;
-		grid-template-columns: repeat(2, 1fr);
-		grid-template-rows: 1fr 1fr;
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 	}
 
 	@media (max-width: 720px) {
 		display: block;
+
+		> * {
+			margin-bottom: 64px;
+		}
 	}
 }
 

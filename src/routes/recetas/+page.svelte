@@ -4,7 +4,7 @@
 	import { parameters, recipes } from '../../stores/recipes';
 	import { Pagination, RecipeCard, RecipesAside } from '$lib';
 	import type { PaginatedList } from '$lib/types/PaginatedList';
-	import { browser } from "$app/environment";
+	import { browser } from '$app/environment';
 
 	export let data: PaginatedList<Recipe>;
 	let recipesToDisplay: Recipe[];
@@ -13,6 +13,7 @@
 	let difficulties: string[];
 	let onlyVegetarian: boolean;
 	let page: number;
+	let limit: number;
 
 	$: recipes.subscribe((store) => {
 		recipesToDisplay = store.recipes ?? [];
@@ -24,6 +25,7 @@
 		difficulties = params.difficulties;
 		onlyVegetarian = params.onlyVegetarian;
 		page = params.page;
+		limit = params.resultsPerPage;
 	});
 
 	async function getRecipes() {
@@ -55,7 +57,7 @@
 			url += `onlyVegetarian=true`;
 		}
 
-		url += `page=${page}`;
+		url += `&page=${page}&limit=${limit}`;
 
 		const response = await fetch(url);
 		const recipesPaginatedList: PaginatedList<Recipe> = await response.json();
@@ -88,22 +90,26 @@
 
 <div class="flex spacing">
 	<RecipesAside {getRecipes} />
-	{#if $recipes.pagination && $recipes.pagination.totalPages > 1}
-		<Pagination
-			currentPage={$recipes.pagination.pageNumber}
-			totalPages={$recipes.pagination.totalPages}
-		/>
-	{/if}
-	<div class:loading={$recipes.loading} class="recipes-container w-100">
+	<div class:loading={$recipes.loading} class="w-100">
 		{#if recipesToDisplay.length > 0}
-			{#each recipesToDisplay as { id, name, summary, pictures }}
-				<RecipeCard
-					recipeId={id}
-					recipeTitle={name}
-					recipeSummary={summary}
-					recipeImage={pictures[0]}
-				/>
-			{/each}
+			<div class="recipes-container">
+				{#each recipesToDisplay as { id, name, summary, pictures }}
+					<RecipeCard
+						recipeId={id}
+						recipeTitle={name}
+						recipeSummary={summary}
+						recipeImage={pictures[0]}
+					/>
+				{/each}
+			</div>
+			{#if $recipes.pagination && $recipes.pagination.totalPages > 1}
+				<div class="pagination">
+					<Pagination
+						currentPage={$recipes.pagination.pageNumber}
+						totalPages={$recipes.pagination.totalPages}
+					/>
+				</div>
+			{/if}
 		{:else}
 			<div>No se encontraron recetas</div>
 		{/if}
@@ -113,5 +119,11 @@
 <style>
 	.loading {
 		opacity: 0.6;
+	}
+
+	.pagination {
+		display: flex;
+		justify-content: center;
+		margin-top: 24px;
 	}
 </style>

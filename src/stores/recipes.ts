@@ -23,7 +23,7 @@ export const parameters = writable<RecipeParameters>({
 	ingredients: [],
 	onlyVegetarian: false,
 	page: 1,
-	resultsPerPage: 10
+	resultsPerPage: 9
 });
 
 export const recipes = writable<RecipesStore>({
