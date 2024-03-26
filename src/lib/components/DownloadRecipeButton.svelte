@@ -8,7 +8,7 @@
 
 	let href: string;
 
-	if (browser) {
+	$: if (browser) {
 		const blob = new Blob([formatRecipeForCopyOrDownload(recipe)], { type: 'text/plain' });
 		href = window.URL.createObjectURL(blob);
 	}

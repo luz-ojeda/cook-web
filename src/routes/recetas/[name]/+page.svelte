@@ -43,9 +43,7 @@
 	<div class="title-image-container flex">
 		<img
 			class="rounded-img recipe-image"
-			src={data.pictures[0]
-				? `${data.pictures[0]}?${PUBLIC_AZURE_STORAGE_SAS_TOKEN}`
-				: placeholder}
+			src={data.pictures[0] ? `${data.pictures[0]}?${PUBLIC_AZURE_STORAGE_SAS_TOKEN}` : placeholder}
 			alt=""
 		/>
 		<div>
@@ -82,7 +80,6 @@
 					</div>
 				{/if}
 
-				<!-- TODO: Implement recipe adjustment according to servings. Must have a stateful copy of the recipe and pass it to CopyRecipeButton as well -->
 				{#if data.servings}
 					<div class="flex-center">
 						<img class="icon" alt="" src={Dish} />
@@ -99,7 +96,7 @@
 	<div class="actions">
 		<!-- TODO: Handle copy for firefox for Android where clipboard API is not supported -->
 		<div>
-			<CopyRecipeButton recipe={data} />
+			<CopyRecipeButton recipe={{ ...data, ingredients, servings }} />
 		</div>
 		<div>
 			<SaveRecipeButton
@@ -111,7 +108,7 @@
 			/>
 		</div>
 		<div>
-			<DownloadRecipeButton recipe={data} />
+			<DownloadRecipeButton recipe={{ ...data, ingredients, servings }} />
 		</div>
 	</div>
 
