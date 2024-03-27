@@ -75,7 +75,7 @@
 
 	<input id="vegetarian" name="vegetarian" type="checkbox" bind:checked={$recipes.onlyVegetarian} />
 	<label for="vegetarian">Solo vegetarianas</label>
-	<a href={""}>Buscar</a>
+	<a href={''}>Buscar</a>
 
 	<PrimaryButton disabled={$recipes.loading} {loading} onClick={onButtonClick} width="100%"
 		>{#if $page.url.pathname === '/'}

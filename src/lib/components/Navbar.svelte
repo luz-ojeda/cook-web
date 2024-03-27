@@ -3,7 +3,7 @@
 	import logo from '$lib/assets/logo.png';
 	import { page } from '$app/stores';
 	import { burgerMenuStore } from '../../stores/burgerMenu';
-	import BurgerMenu from "./BurgerMenu.svelte";
+	import BurgerMenu from './BurgerMenu.svelte';
 </script>
 
 <nav class="spacing">

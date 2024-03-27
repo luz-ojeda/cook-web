@@ -1,5 +1,5 @@
 <script>
-	import { RecipesSearchForm } from "$lib";
+	import { RecipesSearchForm } from '$lib';
 </script>
 
 <div class="container">

@@ -1,4 +1,4 @@
-import { buildRecipesApiUrl } from "$lib/scripts/urls";
+import { buildRecipesApiUrl } from '$lib/scripts/urls';
 import { json } from '@sveltejs/kit';
 
 export const GET = async ({ fetch, url }) => {
