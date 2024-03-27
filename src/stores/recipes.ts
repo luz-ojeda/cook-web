@@ -1,6 +1,6 @@
-import type { Pagination } from '$lib/types/PaginatedList';
+import type { PaginatedList, Pagination } from '$lib/types/PaginatedList';
 import type { Recipe } from '$lib/types/Recipe';
-import { writable } from 'svelte/store';
+import { get, writable } from 'svelte/store';
 
 type RecipeParameters = {
 	ingredients: string[];
@@ -11,23 +11,78 @@ type RecipeParameters = {
 	resultsPerPage: number;
 };
 
-type RecipesStore = {
+type RecipesStore = RecipeParameters & {
 	recipes?: Recipe[];
 	loading: boolean;
 	pagination?: Pagination | null;
 };
 
-export const parameters = writable<RecipeParameters>({
-	name: '',
-	difficulties: [],
-	ingredients: [],
-	onlyVegetarian: false,
-	page: 1,
-	resultsPerPage: 9
-});
+export function createRecipes() {
+	const store = writable<RecipesStore>({
+		recipes: [],
+		pagination: null,
+		loading: false,
+		name: '',
+		difficulties: [],
+		ingredients: [],
+		onlyVegetarian: false,
+		page: 1,
+		resultsPerPage: 9
+	});
 
-export const recipes = writable<RecipesStore>({
-	recipes: [],
-	pagination: null,
-	loading: false
-});
+	async function loadRecipes() {
+		toggleLoading();
+
+		const s = get(store);
+		const { name, difficulties, ingredients, onlyVegetarian, page, resultsPerPage } = s;
+
+		let url = `/recetas?`;
+
+		if (name) {
+			url += `name=${name}&`;
+		}
+
+		if (difficulties && difficulties.length > 0) {
+			for (let i = 0; i < difficulties.length; i++) {
+				url += `difficulty=${difficulties[i]}&`;
+			}
+		}
+
+		if (ingredients && ingredients.length > 0) {
+			for (let i = 0; i < ingredients.length; i++) {
+				url += `ingredients=${ingredients[i]}&`;
+			}
+		}
+
+		if (onlyVegetarian) {
+			url += `onlyVegetarian=true`;
+		}
+
+		url += `&page=${page}&limit=${resultsPerPage}`;
+
+		const response = await fetch(url);
+		const recipesPaginatedList: PaginatedList<Recipe> = await response.json();
+
+		store.update((store) => {
+			return {
+				...store,
+				recipes: recipesPaginatedList.data,
+				pagination: recipesPaginatedList.pagination,
+				loading: false
+			};
+		});
+	}
+
+	function toggleLoading() {
+		store.update((store) => {
+			return {
+				...store,
+				loading: !store.loading
+			};
+		});
+	}
+
+	return { ...store, loadRecipes, toggleLoading };
+}
+
+export const recipes = createRecipes();

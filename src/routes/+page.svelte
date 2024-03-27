@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { HomeSearch, RecipeCard } from '$lib';
-	import type { PaginatedList } from "$lib/types/PaginatedList";
+	import type { PaginatedList } from '$lib/types/PaginatedList';
 	import type { Recipe } from '$lib/types/Recipe';
 
 	export let data: PaginatedList<Recipe>;

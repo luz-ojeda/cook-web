@@ -5,7 +5,7 @@ import type { PaginatedList } from '$lib/types/PaginatedList';
 
 export const load: PageLoad<PaginatedList<Recipe>> = async ({ fetch }) => {
 	try {
-		const res = await fetch(`${PUBLIC_API_URL}/recipes`);
+		const res = await fetch(`${PUBLIC_API_URL}/recipes?limit=9`);
 		const paginatedList = await res.json();
 
 		return paginatedList;

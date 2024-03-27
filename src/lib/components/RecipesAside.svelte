@@ -1,22 +1,24 @@
 <script lang="ts">
 	import PrimaryButton from './PrimaryButton.svelte';
-	import { parameters, recipes } from '../../stores/recipes';
 	import ChipTextInput from './ChipTextInput.svelte';
 	import TextInput from './TextInput.svelte';
 
-	export let getRecipes: (
-		difficulties: string[],
-		ingredients: string[],
-		name: string,
-		onlyVegetarian: boolean
-	) => void;
+	import { recipes } from '../../stores/recipes';
+
+	let loading = false;
+
+	async function onButtonClick() {
+		loading = true;
+		await recipes.loadRecipes();
+		loading = false;
+	}
 </script>
 
 <aside>
 	<form>
 		<div>
 			<TextInput
-				bind:inputValue={$parameters.name}
+				bind:inputValue={$recipes.name}
 				label="Nombre de la receta:"
 				placeholder="guiso de lentejas..."
 				id="name"
@@ -25,7 +27,7 @@
 		</div>
 		<div>
 			<ChipTextInput
-				bind:values={$parameters.ingredients}
+				bind:values={$recipes.ingredients}
 				label="Ingredientes (presiona enter luego de cada uno):"
 				placeholder="huevos, tomate, queso"
 				id="ingredients"
@@ -39,7 +41,7 @@
 					type="checkbox"
 					id="easy"
 					name="easy"
-					bind:group={$parameters.difficulties}
+					bind:group={$recipes.difficulties}
 					value="Easy"
 				/>
 				<label for="easy">Fáciles</label>
@@ -50,7 +52,7 @@
 					type="checkbox"
 					id="medium"
 					name="medium"
-					bind:group={$parameters.difficulties}
+					bind:group={$recipes.difficulties}
 					value="Medium"
 				/>
 				<label for="medium">Intermedias</label>
@@ -60,7 +62,7 @@
 					type="checkbox"
 					id="hard"
 					name="hard"
-					bind:group={$parameters.difficulties}
+					bind:group={$recipes.difficulties}
 					value="Hard"
 				/>
 				<label for="hard">Difíciles</label>
@@ -71,20 +73,12 @@
 			id="vegetarian"
 			name="vegetarian"
 			type="checkbox"
-			bind:checked={$parameters.onlyVegetarian}
+			bind:checked={$recipes.onlyVegetarian}
 		/>
 		<label for="vegetarian">Solo vegetarianas</label>
 
-		<PrimaryButton
-			loading={$recipes.loading}
-			onClick={() =>
-				getRecipes(
-					$parameters.difficulties,
-					$parameters.ingredients,
-					$parameters.name,
-					$parameters.onlyVegetarian
-				)}
-			width="100%">Buscar</PrimaryButton
+		<PrimaryButton disabled={$recipes.loading} {loading} onClick={onButtonClick} width="100%"
+			>Buscar</PrimaryButton
 		>
 	</form>
 </aside>

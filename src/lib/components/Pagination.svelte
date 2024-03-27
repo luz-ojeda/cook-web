@@ -1,16 +1,11 @@
 <script lang="ts">
-	import { parameters } from "../../stores/recipes";
-
 	export let currentPage: number;
 	export let totalPages: number;
+	export let onPageClick: (page: number) => void;
 
 	const PAGES_IN_BETWEEN = 3;
 	let pagesArray = Array.from({ length: totalPages }, (_, x) => x + 1);
 	let sliceIndex = 1;
-
-	function onPageClick(page: number) {
-		$parameters.page = page;
-	}
 
 	// Dynamically changing the starting index of a slice of the array with all pages lets us correctly display the middle pages
 	$: {
@@ -25,7 +20,9 @@
 
 <nav class="flex-center" style="height: 48px">
 	{#if currentPage !== 1}
-		<button on:click={() => onPageClick(currentPage - 1)} style="width: 96px;">Página anterior</button>
+		<button on:click={() => onPageClick(currentPage - 1)} style="width: 96px;"
+			>Página anterior</button
+		>
 	{/if}
 
 	<button disabled={currentPage === 1} on:click={() => onPageClick(1)}>1</button>
@@ -53,7 +50,9 @@
 	>
 
 	{#if currentPage !== totalPages}
-		<button on:click={() => onPageClick(currentPage + 1)} style="width: 96px;">Página siguiente</button>
+		<button on:click={() => onPageClick(currentPage + 1)} style="width: 96px;"
+			>Página siguiente</button
+		>
 	{/if}
 </nav>
 
