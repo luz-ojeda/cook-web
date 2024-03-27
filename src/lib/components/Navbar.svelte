@@ -1,9 +1,9 @@
 <script>
 	import { Burger, Cross } from '$lib';
 	import logo from '$lib/assets/logo.png';
-	import { page } from '$app/stores';
 	import { burgerMenuStore } from '../../stores/burgerMenu';
 	import BurgerMenu from './BurgerMenu.svelte';
+	import NavLinks from "./NavLinks.svelte";
 </script>
 
 <nav class="spacing">
@@ -14,10 +14,7 @@
 		</a>
 		<div class="nav-links flex-center">
 			<div class="nav-links-tablet-desktop">
-				<a href="/recetas" aria-current={$page.url.pathname === '/recetas'}>Recetas</a>
-				<a href="/recetas-guardadas" aria-current={$page.url.pathname === '/recetas-guardadas'}
-					>Recetas guardadas</a
-				>
+				<NavLinks />
 			</div>
 			<button class="burger-button" on:click={() => ($burgerMenuStore = !$burgerMenuStore)}>
 				<img src={!$burgerMenuStore ? Burger : Cross} alt="" />
@@ -66,22 +63,10 @@
 		}
 	}
 
-	.nav-links a {
-		text-decoration: none;
-
-		&[aria-current='true'] {
-			text-decoration: underline;
-		}
-	}
-
-	.nav-links a:not(:last-child) {
-		margin-right: 16px;
-	}
-
 	.nav-links-tablet-desktop {
 		margin-right: 16px;
 
-		@media (max-width: $mobileBreakpoint) {
+		@media (max-width: $tabletBreakpoint) {
 			display: none;
 		}
 	}

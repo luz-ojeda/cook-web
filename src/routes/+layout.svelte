@@ -15,6 +15,8 @@
 	});
 </script>
 
-<Navbar />
+<header>
+	<Navbar />
+</header>
 <slot />
 <Footer />
