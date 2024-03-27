@@ -1,3 +1,12 @@
+type RecipeParameters = {
+	name: string;
+	ingredients: string[];
+	difficulties: string[];
+	onlyVegetarian: boolean;
+	page: number;
+	resultsPerPage: number;
+};
+
 type Recipe = {
 	id: string;
 	name: string;
@@ -15,4 +24,4 @@ type Recipe = {
 
 type RecipeDifficulty = 'Easy' | 'Medium' | 'Hard';
 
-export { Recipe, RecipeDifficulty };
+export { Recipe, RecipeDifficulty, RecipeParameters };

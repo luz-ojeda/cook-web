@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { Footer, Navbar } from '$lib';
 	import { onMount } from 'svelte';
+	import { Footer, Navbar } from '$lib';
 	import '../app.scss';
 	import { savedRecipesIdsStore } from '../stores/savedRecipesStore';
 

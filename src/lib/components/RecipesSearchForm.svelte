@@ -4,38 +4,41 @@
 	import TextInput from './TextInput.svelte';
 
 	import { recipes } from '../../stores/recipes';
+	import { page } from '$app/stores';
 
 	let loading = false;
 
 	async function onButtonClick() {
+		if ($page.url.pathname === '/') return;
+
 		loading = true;
 		await recipes.loadRecipes();
 		loading = false;
 	}
 </script>
 
-<aside>
-	<form>
-		<div>
-			<TextInput
-				bind:inputValue={$recipes.name}
-				label="Nombre de la receta:"
-				placeholder="guiso de lentejas..."
-				id="name"
-				name="name"
-			/>
-		</div>
-		<div>
-			<ChipTextInput
-				bind:values={$recipes.ingredients}
-				label="Ingredientes (presiona enter luego de cada uno):"
-				placeholder="huevos, tomate, queso"
-				id="ingredients"
-				name="ingredients"
-			/>
-		</div>
-		<div>
-			<div class="difficulty-label">Dificultad:</div>
+<form>
+	<div>
+		<TextInput
+			bind:inputValue={$recipes.name}
+			label="Nombre de la receta:"
+			placeholder="guiso de lentejas..."
+			id="name"
+			name="name"
+		/>
+	</div>
+	<div>
+		<ChipTextInput
+			bind:values={$recipes.ingredients}
+			label="Ingredientes (presiona enter luego de cada uno):"
+			placeholder="huevos, tomate, queso"
+			id="ingredients"
+			name="ingredients"
+		/>
+	</div>
+	<div>
+		<div class="difficulty-label">Dificultad:</div>
+		<div class={$page.url.pathname === '/' ? 'flex-center justify-between' : ''}>
 			<div>
 				<input
 					type="checkbox"
@@ -68,35 +71,24 @@
 				<label for="hard">Difíciles</label>
 			</div>
 		</div>
+	</div>
 
-		<input
-			id="vegetarian"
-			name="vegetarian"
-			type="checkbox"
-			bind:checked={$recipes.onlyVegetarian}
-		/>
-		<label for="vegetarian">Solo vegetarianas</label>
+	<input id="vegetarian" name="vegetarian" type="checkbox" bind:checked={$recipes.onlyVegetarian} />
+	<label for="vegetarian">Solo vegetarianas</label>
+	<a href={""}>Buscar</a>
 
-		<PrimaryButton disabled={$recipes.loading} {loading} onClick={onButtonClick} width="100%"
-			>Buscar</PrimaryButton
-		>
-	</form>
-</aside>
+	<PrimaryButton disabled={$recipes.loading} {loading} onClick={onButtonClick} width="100%"
+		>{#if $page.url.pathname === '/'}
+			<a href="/recetas?name=chicken">Buscar</a>
+		{:else}Buscar{/if}</PrimaryButton
+	>
+</form>
 
 <style lang="scss">
 	@import '../../sass/variables.scss';
 
-	aside {
-		font-size: 18px;
-		margin-right: 20px;
-		min-width: 265px;
-
-		@media (max-width: $tabletBreakpoint) {
-			display: none;
-		}
-	}
-
 	form {
+		font-size: 18px;
 		> *:not(:last-child) {
 			margin-bottom: 16px;
 		}

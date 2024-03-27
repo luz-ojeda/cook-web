@@ -2,15 +2,10 @@
 	import type { Recipe } from '$lib/types/Recipe';
 	import { onMount } from 'svelte';
 	import { recipes } from '../../stores/recipes';
-	import { Pagination, RecipeCard, RecipesAside } from '$lib';
+	import { Pagination, RecipeCard, RecipesSearchForm } from '$lib';
 	import type { PaginatedList } from '$lib/types/PaginatedList';
 
 	export let data: PaginatedList<Recipe>;
-	let recipesToDisplay: Recipe[];
-
-	$: recipes.subscribe((store) => {
-		recipesToDisplay = store.recipes ?? [];
-	});
 
 	function onPageClick(page: number) {
 		$recipes.page = page;
@@ -35,11 +30,13 @@
 </svelte:head>
 
 <div class="flex spacing">
-	<RecipesAside />
+	<aside>
+		<RecipesSearchForm />
+	</aside>
 	<div class="w-100 {$recipes.loading ? 'loading' : ''}">
-		{#if recipesToDisplay.length > 0}
+		{#if $recipes.recipes && $recipes.recipes.length > 0}
 			<div class="recipes-container">
-				{#each recipesToDisplay as { id, name, summary, pictures }}
+				{#each $recipes.recipes as { id, name, summary, pictures }}
 					<RecipeCard
 						recipeId={id}
 						recipeTitle={name}
@@ -65,7 +62,18 @@
 	</div>
 </div>
 
-<style>
+<style lang="scss">
+	@import '../../sass/variables.scss';
+
+	aside {
+		margin-right: 20px;
+		min-width: 265px;
+
+		@media (max-width: $tabletBreakpoint) {
+			display: none;
+		}
+	}
+
 	.loading {
 		opacity: 0.6;
 	}

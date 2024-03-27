@@ -1,3 +1,4 @@
+import { buildRecipesBrowserUrl } from '$lib/scripts/urls';
 import type { PaginatedList, Pagination } from '$lib/types/PaginatedList';
 import type { Recipe } from '$lib/types/Recipe';
 import { get, writable } from 'svelte/store';
@@ -33,32 +34,17 @@ export function createRecipes() {
 	async function loadRecipes() {
 		toggleLoading();
 
-		const s = get(store);
-		const { name, difficulties, ingredients, onlyVegetarian, page, resultsPerPage } = s;
+		const recipesStore = get(store);
+		const { name, difficulties, ingredients, onlyVegetarian, page, resultsPerPage } = recipesStore;
 
-		let url = `/recetas?`;
-
-		if (name) {
-			url += `name=${name}&`;
-		}
-
-		if (difficulties && difficulties.length > 0) {
-			for (let i = 0; i < difficulties.length; i++) {
-				url += `difficulty=${difficulties[i]}&`;
-			}
-		}
-
-		if (ingredients && ingredients.length > 0) {
-			for (let i = 0; i < ingredients.length; i++) {
-				url += `ingredients=${ingredients[i]}&`;
-			}
-		}
-
-		if (onlyVegetarian) {
-			url += `onlyVegetarian=true`;
-		}
-
-		url += `&page=${page}&limit=${resultsPerPage}`;
+		const url = buildRecipesBrowserUrl({
+			name,
+			ingredients,
+			difficulties,
+			onlyVegetarian,
+			page,
+			resultsPerPage
+		});
 
 		const response = await fetch(url);
 		const recipesPaginatedList: PaginatedList<Recipe> = await response.json();

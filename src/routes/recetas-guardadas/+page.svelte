@@ -11,11 +11,11 @@
 
 	$: {
 		if (browser && $savedRecipesIdsStore.length > 0) {
-			getRecipes();
+			loadSavedRecipes();
 		}
 	}
 
-	async function getRecipes() {
+	async function loadSavedRecipes() {
 		isLoadingRecipes = true;
 		let url = `/recetas?`;
 		for (let i = 0; i < $savedRecipesIdsStore.length; i++) {
@@ -30,7 +30,7 @@
 
 	onMount(async () => {
 		if ($savedRecipesIdsStore.length > 0) {
-			await getRecipes();
+			await loadSavedRecipes();
 		}
 	});
 </script>
@@ -46,7 +46,7 @@
 			<CircularLoading --circle-width="72px" />
 		</div>
 	{/if}
-	{#if recipes.length > 0}
+	{#if recipes && recipes.length > 0}
 		<div class="recipes-container">
 			{#each recipes as { id, name, summary, pictures }}
 				<RecipeCard
@@ -57,6 +57,10 @@
 				/>
 			{/each}
 		</div>
+	{:else}
+		<h2 class="no-recipes-container h-100 flex-center justify-center">
+			Aún no tienes recetas guardadas
+		</h2>
 	{/if}
 </div>
 
@@ -66,5 +70,10 @@
 		justify-content: center;
 		padding: 64px 0;
 		width: 100%;
+	}
+
+	.no-recipes-container {
+		padding: 64px;
+		text-align: center;
 	}
 </style>

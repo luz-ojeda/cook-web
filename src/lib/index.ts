@@ -7,7 +7,7 @@ import HomeSearch from './components/HomeSearch.svelte';
 import Navbar from './components/Navbar.svelte';
 import Pagination from './components/Pagination.svelte';
 import RecipeCard from './components/RecipeCard.svelte';
-import RecipesAside from './components/RecipesAside.svelte';
+import RecipesSearchForm from './components/RecipesSearchForm.svelte';
 import SaveRecipeButton from './components/SaveRecipeButton.svelte';
 import TextInput from './components/TextInput.svelte';
 
@@ -21,7 +21,7 @@ export {
 	Navbar,
 	Pagination,
 	RecipeCard,
-	RecipesAside,
+	RecipesSearchForm,
 	SaveRecipeButton,
 	TextInput
 };
@@ -31,7 +31,9 @@ import Axe from './assets/icons/axe.svg';
 import BookmarkEmpty from './assets/icons/bookmark_empty.svg';
 import BookmarkFull from './assets/icons/bookmark_full.svg';
 import Broccoli from './assets/icons/broccoli.svg';
+import Burger from './assets/icons/burger.svg';
 import Clock from './assets/icons/clock.svg';
+import Cross from './assets/icons/cross.svg';
 import Copy from './assets/icons/copy.svg';
 import CopyFull from './assets/icons/copy_full.svg';
 import Dish from './assets/icons/dish.svg';
@@ -47,7 +49,9 @@ export {
 	BookmarkEmpty,
 	BookmarkFull,
 	Broccoli,
+	Burger,
 	Clock,
+	Cross,
 	Copy,
 	CopyFull,
 	Dish,
