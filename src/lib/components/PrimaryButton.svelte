@@ -4,7 +4,7 @@
 
 	export let disabled = false;
 	export let loading = false; // Use local state since we not always want it to sync with a global/different one
-	export let onClick: MouseEventHandler<HTMLButtonElement>;
+	export let onClick: MouseEventHandler<HTMLButtonElement> | undefined = undefined;
 	export let width: string;
 </script>
 

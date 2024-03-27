@@ -3,8 +3,8 @@ type RecipeParameters = {
 	ingredients: string[];
 	difficulties: string[];
 	onlyVegetarian: boolean;
-	page: number;
-	resultsPerPage: number;
+	page?: number;
+	resultsPerPage?: number;
 };
 
 type Recipe = {

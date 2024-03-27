@@ -5,6 +5,7 @@
 
 	import { recipes } from '../../stores/recipes';
 	import { page } from '$app/stores';
+	import { buildRecipesBrowserUrl } from '$lib/scripts/urls';
 
 	let loading = false;
 
@@ -75,13 +76,23 @@
 
 	<input id="vegetarian" name="vegetarian" type="checkbox" bind:checked={$recipes.onlyVegetarian} />
 	<label for="vegetarian">Solo vegetarianas</label>
-	<a href={''}>Buscar</a>
 
-	<PrimaryButton disabled={$recipes.loading} {loading} onClick={onButtonClick} width="100%"
-		>{#if $page.url.pathname === '/'}
-			<a href="/recetas?name=chicken">Buscar</a>
-		{:else}Buscar{/if}</PrimaryButton
-	>
+	{#if $page.url.pathname !== '/'}
+		<PrimaryButton disabled={$recipes.loading} {loading} onClick={onButtonClick} width="100%">
+			Buscar
+		</PrimaryButton>
+	{:else}
+		<a
+			href={buildRecipesBrowserUrl({
+				name: $recipes.name,
+				ingredients: $recipes.ingredients,
+				difficulties: $recipes.difficulties,
+				onlyVegetarian: $recipes.onlyVegetarian
+			})}
+		>
+			<PrimaryButton disabled={$recipes.loading} {loading} width="100%">Buscar</PrimaryButton>
+		</a>
+	{/if}
 </form>
 
 <style lang="scss">
@@ -96,5 +107,9 @@
 
 	.difficulty-label {
 		margin-bottom: 6px;
+	}
+
+	a {
+		text-decoration: none;
 	}
 </style>

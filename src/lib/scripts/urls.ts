@@ -73,7 +73,7 @@ function buildRecipesBrowserUrl({
 		browserUrl += `soloVegetarianas=true`;
 	}
 
-	browserUrl += `&pagina=${page}&limit=${resultsPerPage}`;
+	browserUrl += `&pagina=${page ?? '1'}&limit=${resultsPerPage ?? '9'}`;
 
 	return browserUrl;
 }
