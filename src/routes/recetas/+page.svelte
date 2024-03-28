@@ -13,7 +13,6 @@
 	}
 
 	onMount(() => {
-		// Update recipes store with the recipes retrieved from API
 		recipes.update((store) => {
 			return {
 				...store,

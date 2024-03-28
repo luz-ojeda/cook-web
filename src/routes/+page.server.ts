@@ -1,15 +1,20 @@
 import { PUBLIC_API_URL } from '$env/static/public';
-import type { PageLoad } from './recetas/$types';
 import type { Recipe } from '$lib/types/Recipe';
 import type { PaginatedList } from '$lib/types/PaginatedList';
+import type { PageServerLoad } from './$types';
+import { logRecipesError } from '../utils/errorLogging';
 
-export const load: PageLoad<PaginatedList<Recipe>> = async ({ fetch }) => {
+export const load: PageServerLoad<PaginatedList<Recipe>> = async ({ fetch }) => {
 	try {
 		const res = await fetch(`${PUBLIC_API_URL}/recipes?limit=4`);
-		const paginatedList = await res.json();
+		const responseJson = await res.json();
+		if ('status' in responseJson) {
+			throw new Error(responseJson.title);
+		}
 
-		return paginatedList;
+		return responseJson;
 	} catch (error) {
+		logRecipesError('/', error);
 		return { data: [] };
 	}
 };
