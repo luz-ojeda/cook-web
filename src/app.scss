@@ -30,7 +30,7 @@ header {
 	z-index: 10;
 
 	@media (max-width: $tabletBreakpoint) {
-		box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+		box-shadow: $smallShadow;
 	}
 }
 

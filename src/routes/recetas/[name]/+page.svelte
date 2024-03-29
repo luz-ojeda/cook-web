@@ -53,7 +53,7 @@
 					<div class="flex-center">
 						<img class="icon" alt="" src={Clock} />
 						<span>Tiempo de preparación:&nbsp </span>
-						<p>{data.preparationTime} minutos</p>
+						<p><span class="bold">{data.preparationTime}</span> minutos</p>
 					</div>
 				{/if}
 
@@ -61,7 +61,7 @@
 					<div class="flex-center">
 						<img class="icon" alt="" src={Stove} />
 						<span>Tiempo de cocina:&nbsp</span>
-						<p>{data.cookingTime} minutos</p>
+						<p><span class="bold">{data.cookingTime}</span> minutos</p>
 					</div>
 				{/if}
 
@@ -83,10 +83,15 @@
 				{#if data.servings}
 					<div class="flex-center">
 						<img class="icon" alt="" src={Dish} />
-						<span
-							>
+						<span>
 							<label for="servings">Porciones:</label>
-							<input id="servings" min="1" class="servings-input" type="number" bind:value={servings} />
+							<input
+								id="servings"
+								min="1"
+								class="servings-input"
+								type="number"
+								bind:value={servings}
+							/>
 						</span>
 					</div>
 				{/if}
@@ -225,5 +230,9 @@
 		@media (max-width: $tabletBreakpoint) {
 			max-width: none;
 		}
+	}
+
+	.bold {
+		font-weight: bold;
 	}
 </style>

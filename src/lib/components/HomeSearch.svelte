@@ -12,7 +12,7 @@
 	.container {
 		background-color: #ccc5b8;
 		border-radius: $borderRadius;
-		box-shadow: 0px 3px 6px hsla(18, 16%, 16%, .2);
+		box-shadow: $smallShadow;
 		padding: 24px;
 	}
 </style>

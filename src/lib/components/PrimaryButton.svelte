@@ -18,13 +18,14 @@
 
 <style lang="scss">
 	@import '../../sass/colors.scss';
+	@import '../../sass/variables.scss';
 
 	button {
 		align-items: center;
 		background-color: $primaryColor;
 		border: 0;
 		border-radius: 7px;
-		box-shadow: inset 0 3px 0 $lightestPrimaryColor, 0 1px 3px hsla(0, 0%, 0%, .2);
+		box-shadow: inset 0 3px 0 $lightestPrimaryColor, $smallShadow;
 		color: $grey200;
 		display: flex;
 		font-size: 20px;
@@ -34,8 +35,12 @@
 		padding: 8px 24px;
 
 		&:disabled {
+			box-shadow: inset 0 3px 0 $grey300, $smallShadow;
 			background-color: $grey500;
-			box-shadow: none;
+		}
+
+		&:active {
+			box-shadow: $smallestShadow;
 		}
 	}
 </style>
