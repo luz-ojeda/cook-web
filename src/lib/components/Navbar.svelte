@@ -6,7 +6,7 @@
 	import NavLinks from './NavLinks.svelte';
 </script>
 
-<nav class="spacing">
+<nav>
 	<div class="main-nav flex-center">
 		<a class="flex-center logo" href="/">
 			<img alt="" src={logo} width="32" />
@@ -32,9 +32,15 @@
 
 	nav {
 		font-size: 24px;
+		padding: 16px 160px;
 
 		@media (max-width: $tabletBreakpoint) {
 			font-size: 20px;
+			padding: 24px;
+		}
+
+		@media (max-width: $mobileBreakpoint) {
+			font-size: 8 32px;
 		}
 	}
 

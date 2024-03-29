@@ -31,11 +31,11 @@
 	padding: $paddingMobile;
 
 	@media (min-width: $tabletBreakpoint) and (max-width: $laptopBreakpoint) {
-		padding: 24px 80px;
+		padding: $paddingLaptop;
 	}
 
 	@media (min-width: $laptopBreakpoint) {
-		padding: 48px 320px;
+		padding: $paddingDesktop;
 	}
 }
 
