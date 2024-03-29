@@ -16,6 +16,7 @@
 		await recipes.loadRecipes();
 		loading = false;
 	}
+	$: console.log($navigating?.to);
 </script>
 
 <form>
@@ -94,7 +95,10 @@
 		>
 			<PrimaryButton
 				disabled={$recipes.loading || Boolean($navigating)}
-				loading={loading || $navigating?.to?.url.pathname == '/recetas'}
+				loading={loading && $navigating?.to?.url.pathname == '/recetas'}
+				onClick={() => {
+					loading = true;
+				}}
 				width="100%">Buscar</PrimaryButton
 			>
 		</a>
