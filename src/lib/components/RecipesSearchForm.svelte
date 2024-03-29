@@ -39,7 +39,9 @@
 	</div>
 	<div>
 		<div class="difficulty-label">Dificultad:</div>
-		<div class={$page.url.pathname === '/' ? 'flex-center justify-between' : ''}>
+		<div
+			class={`difficulties-container ${$page.url.pathname === '/' ? 'flex-center justify-between' : ''}`}
+		>
 			<div>
 				<input
 					type="checkbox"
@@ -50,7 +52,6 @@
 				/>
 				<label for="easy">Fáciles</label>
 			</div>
-
 			<div>
 				<input
 					type="checkbox"
@@ -93,7 +94,7 @@
 		>
 			<PrimaryButton
 				disabled={$recipes.loading || Boolean($navigating)}
-				loading={loading || Boolean($navigating)}
+				loading={loading || $navigating?.to?.url.pathname == '/recetas'}
 				width="100%">Buscar</PrimaryButton
 			>
 		</a>
@@ -105,13 +106,28 @@
 
 	form {
 		font-size: 18px;
+
 		> *:not(:last-child) {
 			margin-bottom: 16px;
+
+			@media (max-width: $tabletBreakpoint) {
+				margin-bottom: 24px;
+			}
 		}
 	}
 
 	.difficulty-label {
 		margin-bottom: 6px;
+	}
+
+	.difficulties-container {
+		@media (max-width: $tabletBreakpoint) {
+			div {
+				&:not(:last-child) {
+					margin-bottom: 12px;
+				}
+			}
+		}
 	}
 
 	a {

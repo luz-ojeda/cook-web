@@ -10,6 +10,7 @@
 	function onPageClick(page: number) {
 		$recipes.page = page;
 		recipes.loadRecipes();
+		window.scrollTo(0, 0)
 	}
 
 	onMount(() => {

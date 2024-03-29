@@ -31,15 +31,17 @@
 
 <style lang="scss">
 	@import '../../sass/variables.scss';
+
 	a {
+		color: inherit;
 		text-decoration: none;
 	}
 
 	.recipe-image {
 		aspect-ratio: 1 / 1;
 		margin-bottom: 16px;
-		width: 100%;
 		object-fit: cover;
+		width: 100%;
 	}
 
 	h2 {
@@ -51,6 +53,7 @@
 	.title-container {
 		display: flex;
 		justify-content: space-between;
+		font-size: 16px;
 
 		@media (max-width: 720px) {
 			align-items: center;

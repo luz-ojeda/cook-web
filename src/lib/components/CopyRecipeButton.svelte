@@ -34,3 +34,9 @@
 	<img class="action-icon" alt="" src={isRecipeCopied ? CopyFull : Copy} />
 	<span class="action-label">{isRecipeCopied ? 'Copiada' : 'Copiar'}</span>
 </div>
+
+<style>
+	div {
+		cursor: pointer;
+	}
+</style>

@@ -129,7 +129,7 @@
 			<img class="icon" alt="" src={Axe} />
 			<h2>Instrucciones:</h2>
 		</div>
-		<p>{data.instructions}</p>
+		<p class="instructions-paragraph">{data.instructions}</p>
 	</div>
 
 	<!-- TODO: Display all images in gallery -->
@@ -216,5 +216,13 @@
 	.servings-input {
 		padding: 6px;
 		width: 38px;
+	}
+
+	.instructions-paragraph {
+		max-width: 34em;
+
+		@media (max-width: $tabletBreakpoint) {
+			max-width: none;
+		}
 	}
 </style>

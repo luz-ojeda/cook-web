@@ -19,7 +19,7 @@
 </script>
 
 <nav class="flex-center" style="height: 48px">
-	{#if currentPage !== 1}
+	{#if currentPage !== 1 && totalPages >= 2}
 		<button on:click={() => onPageClick(currentPage - 1)} style="width: 96px;"
 			>Página anterior</button
 		>
@@ -49,7 +49,7 @@
 		>{totalPages}</button
 	>
 
-	{#if currentPage !== totalPages}
+	{#if currentPage !== totalPages && totalPages > 2}
 		<button on:click={() => onPageClick(currentPage + 1)} style="width: 96px;"
 			>Página siguiente</button
 		>

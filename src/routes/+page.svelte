@@ -42,12 +42,14 @@
 {/if}
 
 <style lang="scss">
+	@import '../sass/variables.scss';
+
 	.background {
 		background-color: whitesmoke;
 	}
 
 	.hero {
-		@media (max-width: 1200px) {
+		@media (max-width: $tabletBreakpoint) {
 			flex-direction: column;
 			padding-bottom: 32px;
 			text-align: center;
@@ -69,6 +71,15 @@
 	}
 
 	.recipes-container-home {
-		grid-template-columns: repeat(4, 1fr);
+		grid-template: minmax(0, 1fr) / repeat(4, minmax(0, 1fr));
+		
+		@media (max-width: $laptopBreakpoint) {
+			padding: 32px 80px;
+			grid-template: repeat(2, minmax(0, 1fr)) / repeat(2, minmax(0, 1fr));
+		}
+
+		@media (max-width: $mobileBreakpoint) {
+			padding: 32px 80px;
+		}
 	}
 </style>
