@@ -16,7 +16,6 @@
 		await recipes.loadRecipes();
 		loading = false;
 	}
-	$: console.log($navigating?.to);
 </script>
 
 <form>
