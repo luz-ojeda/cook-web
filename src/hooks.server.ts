@@ -1,6 +1,6 @@
 import type { HandleServerError } from '@sveltejs/kit';
-import { logRecipesError } from './utils/errorLogging';
-import { MESSAGES } from './utils/constants';
+import { logRecipesError } from './errorLogging';
+import { MESSAGES } from './constants';
 import type { ApiError } from '$lib/types/ApiError';
 
 export const handleError: HandleServerError = async ({ event, error }) => {

@@ -2,7 +2,7 @@ import { PUBLIC_API_URL } from '$env/static/public';
 import type { Recipe } from '$lib/types/Recipe';
 import type { PaginatedList } from '$lib/types/PaginatedList';
 import type { PageServerLoad } from './$types';
-import { logRecipesError } from '../utils/errorLogging';
+import { logRecipesError } from '../errorLogging';
 
 export const load: PageServerLoad<PaginatedList<Recipe>> = async ({ fetch }) => {
 	try {

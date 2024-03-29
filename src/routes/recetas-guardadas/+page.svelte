@@ -3,7 +3,7 @@
 	import { savedRecipesIdsStore } from '../../stores/savedRecipesStore';
 	import { CircularLoading, RecipeCard } from '$lib';
 	import type { Recipe } from '$lib/types/Recipe';
-	import { MESSAGES } from '../../utils/constants';
+	import { MESSAGES } from '../../constants';
 
 	let isLoadingRecipes = false;
 	let recipes: Recipe[] = [];

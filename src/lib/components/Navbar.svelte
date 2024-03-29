@@ -57,6 +57,7 @@
 	.logo {
 		color: inherit;
 		text-decoration: none;
+		font-weight: bold;
 
 		img {
 			margin-right: 12px;
