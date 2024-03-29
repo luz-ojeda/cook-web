@@ -1,7 +1,7 @@
 import type { HandleServerError } from '@sveltejs/kit';
 import { logRecipesError } from './utils/errorLogging';
 import { MESSAGES } from './utils/constants';
-import type { ApiError } from "$lib/types/ApiError";
+import type { ApiError } from '$lib/types/ApiError';
 
 export const handleError: HandleServerError = async ({ event, error }) => {
 	if (event.route.id === '/' || event.route.id === '/recetas') {
@@ -10,7 +10,7 @@ export const handleError: HandleServerError = async ({ event, error }) => {
 
 	const apiError = error as ApiError;
 	try {
-		let message = "";
+		let message = '';
 		if (apiError.status?.toString().startsWith('5')) {
 			message = MESSAGES.SERVER_ERROR;
 		} else if (apiError.status === 404) {

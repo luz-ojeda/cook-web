@@ -5,8 +5,8 @@ type Pagination = {
 	totalRecords: number;
 };
 
-type PaginatedList<DataType> = {
-	data: DataType[];
+type PaginatedList<T> = {
+	data: T[];
 	pagination?: Pagination | null;
 };
 

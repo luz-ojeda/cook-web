@@ -1,11 +1,12 @@
 <script lang="ts">
+	import { PUBLIC_AZURE_STORAGE_SAS_TOKEN } from '$env/static/public';
+	import { SaveRecipeButton } from '$lib';
+	import placeholder from '$lib/assets/recipe_image_placeholder.png';
+
 	export let recipeId: string;
 	export let recipeImage: string;
 	export let recipeTitle: string;
 	export let recipeSummary: string;
-	import { PUBLIC_AZURE_STORAGE_SAS_TOKEN } from '$env/static/public';
-	import { SaveRecipeButton } from '$lib';
-	import placeholder from '$lib/assets/recipe_image_placeholder.png';
 </script>
 
 <div class="flex-column">

@@ -3,7 +3,6 @@
 	import { savedRecipesIdsStore } from '../../stores/savedRecipesStore';
 	import { CircularLoading, RecipeCard } from '$lib';
 	import type { Recipe } from '$lib/types/Recipe';
-	import type { PaginatedList } from '$lib/types/PaginatedList';
 	import { MESSAGES } from '../../utils/constants';
 
 	let isLoadingRecipes = false;

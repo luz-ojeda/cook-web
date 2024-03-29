@@ -3,9 +3,9 @@
 	import ChipTextInput from './ChipTextInput.svelte';
 	import TextInput from './TextInput.svelte';
 
-	import { recipes } from '../../stores/recipes';
 	import { page } from '$app/stores';
 	import { buildRecipesBrowserUrl } from '$lib/scripts/urls';
+	import { recipes } from '../../stores/recipes';
 
 	let loading = false;
 

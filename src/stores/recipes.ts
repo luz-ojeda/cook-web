@@ -1,4 +1,4 @@
-import { buildRecipesBrowserUrl } from '$lib/scripts/urls';
+import { buildRecipesBrowserUrl } from '$lib';
 import type { PaginatedList, Pagination } from '$lib/types/PaginatedList';
 import type { Recipe } from '$lib/types/Recipe';
 import { get, writable } from 'svelte/store';

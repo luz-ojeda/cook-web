@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Cross } from "$lib";
+	import { Cross } from '$lib';
 	import TextInput from './TextInput.svelte';
 
 	export let label: string;
@@ -30,7 +30,9 @@
 			{#each values as value}
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
 				<!-- svelte-ignore a11y-no-static-element-interactions -->
-				<div class="chip" on:click={() => removeValue(value)} title="Remover">{value} <img src={Cross} height="8" alt=""></div>
+				<div class="chip" on:click={() => removeValue(value)} title="Remover">
+					{value} <img src={Cross} height="8" alt="" />
+				</div>
 			{/each}
 		</div>
 	{/if}

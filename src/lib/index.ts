@@ -70,5 +70,13 @@ import {
 	mapRecipeDifficulty
 } from './scripts/strings';
 import { scaleServings } from './scripts/recipe';
+import { buildRecipesApiUrl, buildRecipesBrowserUrl } from './scripts/urls';
 
-export { capitalizeFirstLetter, formatRecipeForCopyOrDownload, mapRecipeDifficulty, scaleServings };
+export {
+	capitalizeFirstLetter,
+	formatRecipeForCopyOrDownload,
+	mapRecipeDifficulty,
+	scaleServings,
+	buildRecipesApiUrl,
+	buildRecipesBrowserUrl
+};
