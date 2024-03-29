@@ -10,8 +10,9 @@
 	@import '../../sass/variables.scss';
 
 	.container {
-		background-color: whitesmoke;
+		background-color: #ccc5b8;
 		border-radius: $borderRadius;
+		box-shadow: 0px 3px 6px hsla(18, 16%, 16%, .2);
 		padding: 24px;
 	}
 </style>

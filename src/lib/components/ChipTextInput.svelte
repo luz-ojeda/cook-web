@@ -52,7 +52,7 @@
 	.chip {
 		background-color: $darkestPrimaryColor;
 		border-radius: 12px;
-		color: $lightestGrey;
+		color: $grey300;
 		font-size: 14px;
 		font-weight: bold;
 		letter-spacing: 0.025rem;

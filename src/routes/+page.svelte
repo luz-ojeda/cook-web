@@ -43,9 +43,10 @@
 
 <style lang="scss">
 	@import '../sass/variables.scss';
+	@import '../sass/colors.scss';
 
 	.background {
-		background-color: whitesmoke;
+		background-color: $grey200;
 	}
 
 	.hero {

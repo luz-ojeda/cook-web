@@ -19,21 +19,31 @@
 </script>
 
 <nav class="flex-center" style="height: 48px">
+	<!-- Previous page button -->
 	{#if currentPage !== 1 && totalPages >= 2}
-		<button on:click={() => onPageClick(currentPage - 1)} style="width: 96px;"
-			>Página anterior</button
+		<button on:click={() => onPageClick(currentPage - 1)} style="width: 96px;">Pág. anterior</button
 		>
 	{/if}
 
-	<button disabled={currentPage === 1} on:click={() => onPageClick(1)}>1</button>
+	<!-- Page 1 button -->
+	<button
+		class={currentPage === 1 ? 'active-page' : ''}
+		disabled={currentPage === 1}
+		on:click={() => onPageClick(1)}>1</button
+	>
 
+	<!-- Rest of pages buttons -->
 	{#if totalPages > PAGES_IN_BETWEEN + 2}
 		{#if currentPage >= 1 + PAGES_IN_BETWEEN}
 			<span>...</span>
 		{/if}
 
 		{#each pagesArray.slice(sliceIndex, sliceIndex + 3) as i}
-			<button disabled={currentPage === i} on:click={() => onPageClick(i)}>{i}</button>
+			<button
+				class={currentPage === i ? 'active-page' : ''}
+				disabled={currentPage === i}
+				on:click={() => onPageClick(i)}>{i}</button
+			>
 		{/each}
 
 		{#if currentPage <= totalPages - PAGES_IN_BETWEEN}
@@ -41,23 +51,51 @@
 		{/if}
 	{:else}
 		{#each Array.from(Array(totalPages - 2)).keys() as i}
-			<button disabled={currentPage === i + 2} on:click={() => onPageClick(i + 2)}>{i + 2}</button>
+			<button
+				class={currentPage === i + 2 ? 'active-page' : ''}
+				disabled={currentPage === i + 2}
+				on:click={() => onPageClick(i + 2)}>{i + 2}</button
+			>
 		{/each}
 	{/if}
 
-	<button disabled={currentPage === totalPages} on:click={() => onPageClick(totalPages)}
-		>{totalPages}</button
+	<!-- Last page button -->
+	<button
+		class={currentPage === totalPages ? 'active-page' : ''}
+		disabled={currentPage === totalPages}
+		on:click={() => onPageClick(totalPages)}>{totalPages}</button
 	>
 
+	<!-- Next page button -->
 	{#if currentPage !== totalPages && totalPages > 2}
 		<button on:click={() => onPageClick(currentPage + 1)} style="width: 96px;"
-			>Página siguiente</button
+			>Pág. siguiente</button
 		>
 	{/if}
 </nav>
 
-<style>
+<style lang="scss">
+	@import '../../sass/colors.scss';
+	nav {
+		*:not(:last-child) {
+			margin-right: 6px;
+		}
+	}
+
 	button {
+		background-color: transparent;
+		border-radius: 8px;
+		font-size: 18px;
+		padding: 1px 0;
 		width: 32px;
+
+		&:hover {
+			background-color: $lightestPrimaryColor;
+		}
+	}
+
+	.active-page {
+		background-color: $darkPrimaryColor;
+		color: $grey100;
 	}
 </style>

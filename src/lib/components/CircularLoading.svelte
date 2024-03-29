@@ -14,7 +14,7 @@
 	}
 
 	.circle::before {
-		background-color: var(--background, $lightestGrey);
+		background-color: var(--background, $grey500);
 		content: '';
 		position: absolute;
 		width: 80%;

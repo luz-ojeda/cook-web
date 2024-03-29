@@ -10,7 +10,7 @@
 
 <button {disabled} on:click={onClick} style="width: {width}">
 	{#if loading}
-		<CircularLoading --background={!disabled ? 'darksalmon' : 'lightgray'} --circle-width="30px" />
+		<CircularLoading --circle-width="30px" />
 	{:else}
 		<slot />
 	{/if}
@@ -21,9 +21,11 @@
 
 	button {
 		align-items: center;
-		border: 0;
 		background-color: $primaryColor;
-		color: $lightestGrey;
+		border: 0;
+		border-radius: 7px;
+		box-shadow: inset 0 3px 0 $lightestPrimaryColor, 0 1px 3px hsla(0, 0%, 0%, .2);
+		color: $grey200;
 		display: flex;
 		font-size: 20px;
 		font-weight: bold;
@@ -32,7 +34,8 @@
 		padding: 8px 24px;
 
 		&:disabled {
-			background-color: lightgray;
+			background-color: $grey500;
+			box-shadow: none;
 		}
 	}
 </style>
