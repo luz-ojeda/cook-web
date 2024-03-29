@@ -1,25 +1,13 @@
 import { buildRecipesBrowserUrl } from '$lib';
-import type { PaginatedList, Pagination } from '$lib/types/PaginatedList';
-import type { Recipe } from '$lib/types/Recipe';
+import type { PaginatedList } from '$lib/types/PaginatedList';
+import type { Recipe, RecipeParameters } from '$lib/types/Recipe';
+import type { RecipesStore } from "$lib/types/RecipesStore";
 import { get, writable } from 'svelte/store';
 
-type RecipeParameters = {
-	ingredients: string[];
-	difficulties: string[];
-	onlyVegetarian: boolean;
-	name: string;
-	page: number;
-	resultsPerPage: number;
-};
-
-type RecipesStore = RecipeParameters & {
-	recipes?: Recipe[];
-	loading: boolean;
-	pagination?: Pagination | null;
-};
+type RecipesStoreWithParameters = RecipeParameters & RecipesStore;
 
 export function createRecipes() {
-	const store = writable<RecipesStore>({
+	const store = writable<RecipesStoreWithParameters>({
 		recipes: [],
 		pagination: null,
 		loading: false,

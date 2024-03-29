@@ -1,38 +1,10 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { savedRecipesIdsStore } from '../../stores/savedRecipesStore';
+	import { savedIds, savedRecipes } from '../../stores/savedRecipesStore';
 	import { CircularLoading, RecipeCard } from '$lib';
-	import type { Recipe } from '$lib/types/Recipe';
-	import { MESSAGES } from '../../constants';
 
-	let isLoadingRecipes = false;
-	let recipes: Recipe[] = [];
 	let message = '';
 
-	async function loadSavedRecipes() {
-		message = '';
-		isLoadingRecipes = true;
-		let url = `/recetas?`;
-		for (let i = 0; i < $savedRecipesIdsStore.length; i++) {
-			url += `ids=${$savedRecipesIdsStore[i]}&`;
-		}
-
-		const res = await fetch(url);
-		const responseJson = await res.json();
-
-		if ('data' in responseJson) {
-			recipes = responseJson.data;
-		} else if ('status' in responseJson) {
-			message = MESSAGES.SERVER_ERROR;
-		}
-		isLoadingRecipes = false;
-	}
-
-	onMount(async () => {
-		if ($savedRecipesIdsStore.length > 0) {
-			await loadSavedRecipes();
-		}
-	});
+	$: $savedIds && savedRecipes.loadRecipes();
 </script>
 
 <svelte:head>
@@ -41,30 +13,31 @@
 
 <div class="spacing">
 	<h1>Mis recetas guardadas</h1>
-	{#if isLoadingRecipes}
-		<div class="loading-container">
-			<CircularLoading --circle-width="72px" />
-		</div>
-	{/if}
-	{#if !message}
-		{#if recipes && recipes.length > 0}
-			<div class="recipes-container">
-				{#each recipes as { id, name, summary, pictures }}
-					<RecipeCard
-						recipeId={id}
-						recipeTitle={name}
-						recipeSummary={summary}
-						recipeImage={pictures[0]}
-					/>
-				{/each}
+	{#if !$savedIds.loadingIdsFromLocalStorage}
+		{#if $savedRecipes.loading}
+			<div class="loading-container">
+				<CircularLoading --circle-width="72px" />
 			</div>
+		{:else if !message}
+			{#if $savedRecipes.recipes && $savedRecipes.recipes.length > 0}
+				<div class="recipes-container">
+					{#each $savedRecipes.recipes as { id, name, summary, pictures }}
+						<RecipeCard
+							recipeId={id}
+							recipeTitle={name}
+							recipeSummary={summary}
+							recipeImage={pictures[0]}
+						/>
+					{/each}
+				</div>
+			{:else if $savedRecipes.recipes && $savedRecipes.recipes.length === 0}
+				<h2 class="no-recipes-container h-100 flex-center justify-center">
+					Aún no tienes recetas guardadas
+				</h2>
+			{/if}
 		{:else}
-			<h2 class="no-recipes-container h-100 flex-center justify-center">
-				Aún no tienes recetas guardadas
-			</h2>
+			<h2>{message}</h2>
 		{/if}
-	{:else}
-		<h2>{message}</h2>
 	{/if}
 </div>
 

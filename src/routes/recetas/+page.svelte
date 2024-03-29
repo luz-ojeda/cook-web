@@ -65,7 +65,7 @@
 	@import '../../sass/variables.scss';
 
 	aside {
-		margin-right: 20px;
+		margin-right: 32px;
 		min-width: 265px;
 
 		@media (max-width: $tabletBreakpoint) {

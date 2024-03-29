@@ -1,10 +1,11 @@
 type RecipeParameters = {
-	name: string;
-	ingredients: string[];
-	difficulties: string[];
-	onlyVegetarian: boolean;
+	name?: string;
+	ingredients?: string[];
+	difficulties?: string[];
+	onlyVegetarian?: boolean;
 	page?: number;
 	resultsPerPage?: number;
+	ids?: string[];
 };
 
 type Recipe = {

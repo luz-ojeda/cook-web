@@ -1,18 +1,12 @@
 <script lang="ts">
 	import { BookmarkEmpty, BookmarkFull } from '$lib';
 	import { onMount } from 'svelte';
-	import { savedRecipesIdsStore } from '../../stores/savedRecipesStore';
+	import { savedIds } from '../../stores/savedRecipesStore';
 
 	export let recipeId: string;
 	export let label = false;
 
-	let recipesIdsSaved: string[] = [];
-
-	savedRecipesIdsStore.subscribe((r) => {
-		recipesIdsSaved = [...r];
-	});
-
-	$: isRecipeSaved = $savedRecipesIdsStore.includes(recipeId);
+	$: isRecipeSaved = $savedIds.ids.includes(recipeId);
 
 	// Sync recipes saved across multiple possible open tabs
 	onMount(() => {
@@ -28,21 +22,21 @@
 
 		const recipesSaved = localStorage.getItem('recipesSaved');
 		if (!recipesSaved) {
-			$savedRecipesIdsStore = [...$savedRecipesIdsStore, recipeId];
+			$savedIds.ids = [...$savedIds.ids, recipeId];
 		} else {
-			if (!$savedRecipesIdsStore.includes(recipeId)) {
-				$savedRecipesIdsStore = [...$savedRecipesIdsStore, recipeId];
+			if (!$savedIds.ids.includes(recipeId)) {
+				$savedIds.ids = [...$savedIds.ids, recipeId];
 			} else {
-				$savedRecipesIdsStore = $savedRecipesIdsStore.filter((id) => id !== recipeId);
+				$savedIds.ids = $savedIds.ids.filter((id) => id !== recipeId);
 			}
 		}
-		localStorage.setItem('recipesSaved', JSON.stringify($savedRecipesIdsStore));
+		localStorage.setItem('recipesSaved', JSON.stringify($savedIds.ids));
 	}
 
 	function updateRecipesSaved() {
 		const recipesSaved = localStorage.getItem('recipesSaved');
 		if (recipesSaved) {
-			$savedRecipesIdsStore = [...JSON.parse(recipesSaved)];
+			$savedIds.ids = [...JSON.parse(recipesSaved)];
 		}
 	}
 </script>

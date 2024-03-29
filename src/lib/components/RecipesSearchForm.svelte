@@ -3,7 +3,7 @@
 	import ChipTextInput from './ChipTextInput.svelte';
 	import TextInput from './TextInput.svelte';
 
-	import { page } from '$app/stores';
+	import { page, navigating } from '$app/stores';
 	import { buildRecipesBrowserUrl } from '$lib/scripts/urls';
 	import { recipes } from '../../stores/recipes';
 
@@ -89,8 +89,13 @@
 				difficulties: $recipes.difficulties,
 				onlyVegetarian: $recipes.onlyVegetarian
 			})}
+			style={Boolean($navigating) ? 'pointer-events: none' : ''}
 		>
-			<PrimaryButton disabled={$recipes.loading} {loading} width="100%">Buscar</PrimaryButton>
+			<PrimaryButton
+				disabled={$recipes.loading || Boolean($navigating)}
+				loading={loading || Boolean($navigating)}
+				width="100%">Buscar</PrimaryButton
+			>
 		</a>
 	{/if}
 </form>
