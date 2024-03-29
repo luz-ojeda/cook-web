@@ -48,11 +48,7 @@
 	on:click={saveRecipe}
 >
 	{#if isRecipeSaved}
-		<BookmarkFull
-			title="Quitar de mis recetas guardadas"
-			height="32"
-			width="32"
-		/>
+		<BookmarkFull title="Quitar de mis recetas guardadas" height="32" width="32" />
 	{:else}
 		<img
 			class="bookmark-icon {label ? 'action-icon' : ''}"
@@ -72,14 +68,17 @@
 	button {
 		border: 0;
 		background-color: transparent;
-		color: $darkPrimaryColor;
 		font-family: inherit;
 		height: fit-content;
 		padding: 0;
 	}
 
+	span {
+		color: inherit;
+	}
+
 	.bookmark-icon {
-		color: $primaryColor;
+		color: $darkPrimaryColor;
 		height: min-content;
 		width: var(--iconWidth);
 

@@ -25,11 +25,11 @@
 		background-color: $primaryColor;
 		color: $lightestGrey;
 		display: flex;
-		font-size: 16px;
+		font-size: 20px;
+		font-weight: bold;
 		height: 48px;
 		justify-content: center;
 		padding: 8px 24px;
-		text-transform: uppercase;
 
 		&:disabled {
 			background-color: lightgray;

@@ -84,8 +84,9 @@
 					<div class="flex-center">
 						<img class="icon" alt="" src={Dish} />
 						<span
-							>Porciones:
-							<input min="1" class="servings-input" type="number" bind:value={servings} />
+							>
+							<label for="servings">Porciones:</label>
+							<input id="servings" min="1" class="servings-input" type="number" bind:value={servings} />
 						</span>
 					</div>
 				{/if}

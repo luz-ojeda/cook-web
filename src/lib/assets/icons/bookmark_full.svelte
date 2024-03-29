@@ -4,7 +4,7 @@
 	export let width = '1rem';
 </script>
 
-<svg {height} {width} viewBox="0 0 48 48" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+<svg {height} {width} viewBox="0 0 48 48" fill="#8c3a1d" xmlns="http://www.w3.org/2000/svg">
 	<title>{title}</title>
 	<path
 		fill-rule="evenodd"
