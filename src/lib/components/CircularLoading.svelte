@@ -6,7 +6,7 @@
 	.circle {
 		width: var(--circle-width);
 		height: var(--circle-width);
-		background: conic-gradient(darkgray 90deg, ghostwhite 0deg);
+		background: conic-gradient($darkPrimaryColor 90deg, $lightestPrimaryColor 0deg);
 		border-radius: 50%;
 		display: flex;
 		align-items: center;

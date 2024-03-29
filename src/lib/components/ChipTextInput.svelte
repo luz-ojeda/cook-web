@@ -50,10 +50,12 @@
 	}
 
 	.chip {
-		background-color: $darkPrimaryColor;
+		background-color: $darkestPrimaryColor;
 		border-radius: 12px;
 		color: $lightestGrey;
 		font-size: 14px;
+		font-weight: bold;
+		letter-spacing: 0.025rem;
 		padding: 4px 8px;
 		margin-right: 6px;
 		width: max-content;
