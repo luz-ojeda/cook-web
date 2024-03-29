@@ -22,6 +22,10 @@
 	.nav-links a {
 		text-decoration: none;
 
+		&:visited {
+			color: inherit;
+		}
+
 		&[aria-current='true'] {
 			text-decoration: underline;
 		}

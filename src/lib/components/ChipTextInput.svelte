@@ -39,7 +39,7 @@
 </div>
 
 <style lang="scss">
-	@import '../../sass/variables.scss';
+	@import '../../sass/colors.scss';
 
 	.chips-container {
 		display: flex;
@@ -50,9 +50,9 @@
 	}
 
 	.chip {
-		background-color: lightgray;
+		background-color: $darkPrimaryColor;
 		border-radius: 12px;
-		color: $fgColor;
+		color: $lightestGrey;
 		font-size: 14px;
 		padding: 4px 8px;
 		margin-right: 6px;

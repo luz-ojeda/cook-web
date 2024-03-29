@@ -1,7 +1,7 @@
 <div class="circle spin-animation"></div>
 
 <style lang="scss">
-	@import '../../sass/variables.scss';
+	@import '../../sass/colors.scss';
 
 	.circle {
 		width: var(--circle-width);
@@ -14,7 +14,7 @@
 	}
 
 	.circle::before {
-		background-color: var(--background, $bgColor);
+		background-color: var(--background, $lightestGrey);
 		content: '';
 		position: absolute;
 		width: 80%;

@@ -2,10 +2,11 @@
 @import 'sass/utilities';
 @import 'sass/recipe-page';
 @import 'sass/typography';
+@import 'sass/colors';
 
 :root {
-	background-color: $bgColor;
-	color: $fgColor;
+	background-color: $lightestGrey;
+	color: $darkestGrey;
 }
 
 body {
@@ -23,7 +24,7 @@ button {
 }
 
 header {
-	background-color: $bgColor;
+	background-color: $lightestGrey;
 	position: sticky;
 	top: 0;
 	z-index: 10;
@@ -34,5 +35,5 @@ header {
 }
 
 footer {
-	border-top: 1px solid $fgColor;
+	border-top: 1px solid $darkestGrey;
 }

@@ -17,11 +17,13 @@
 </button>
 
 <style lang="scss">
+	@import '../../sass/colors.scss';
+
 	button {
 		align-items: center;
 		border: 0;
-		background-color: darksalmon;
-		color: whitesmoke;
+		background-color: $primaryColor;
+		color: $lightestGrey;
 		display: flex;
 		font-size: 16px;
 		height: 48px;

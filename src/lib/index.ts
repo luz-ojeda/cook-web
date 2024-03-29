@@ -29,7 +29,7 @@ export {
 // Icons
 import Axe from './assets/icons/axe.svg';
 import BookmarkEmpty from './assets/icons/bookmark_empty.svg';
-import BookmarkFull from './assets/icons/bookmark_full.svg';
+import BookmarkFull from './assets/icons/bookmark_full.svelte';
 import Broccoli from './assets/icons/broccoli.svg';
 import Burger from './assets/icons/burger.svg';
 import Clock from './assets/icons/clock.svg';
