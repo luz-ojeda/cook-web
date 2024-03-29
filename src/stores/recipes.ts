@@ -8,7 +8,7 @@ type RecipesStoreWithParameters = RecipeParameters & RecipesStore;
 
 export function createRecipes() {
 	const store = writable<RecipesStoreWithParameters>({
-		recipes: [],
+		recipes: undefined,
 		pagination: null,
 		loading: false,
 		name: '',

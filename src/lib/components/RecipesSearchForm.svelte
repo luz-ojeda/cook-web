@@ -11,6 +11,7 @@
 
 	async function onButtonClick() {
 		if ($page.url.pathname === '/') return;
+		$recipes.page = 1;
 
 		loading = true;
 		await recipes.loadRecipes();

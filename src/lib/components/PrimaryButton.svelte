@@ -10,7 +10,7 @@
 
 <button {disabled} on:click={onClick} style="width: {width}">
 	{#if loading}
-		<CircularLoading --circle-width="30px" />
+		<CircularLoading --background="#a19887" --circle-width="30px" />
 	{:else}
 		<slot />
 	{/if}

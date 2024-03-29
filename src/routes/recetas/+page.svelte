@@ -2,7 +2,7 @@
 	import type { Recipe } from '$lib/types/Recipe';
 	import { onMount } from 'svelte';
 	import { recipes } from '../../stores/recipes';
-	import { Pagination, RecipeCard, RecipesSearchForm } from '$lib';
+	import { CircularLoading, Pagination, RecipeCard, RecipesSearchForm } from '$lib';
 	import type { PaginatedList } from '$lib/types/PaginatedList';
 
 	export let data: PaginatedList<Recipe>;
@@ -10,7 +10,7 @@
 	function onPageClick(page: number) {
 		$recipes.page = page;
 		recipes.loadRecipes();
-		window.scrollTo(0, 0)
+		window.scrollTo(0, 0);
 	}
 
 	onMount(() => {
@@ -34,7 +34,7 @@
 		<RecipesSearchForm />
 	</aside>
 	<div class="w-100 {$recipes.loading ? 'loading' : ''}">
-		{#if $recipes.recipes && $recipes.recipes.length > 0}
+		{#if $recipes.recipes && $recipes.recipes.length > 0 && !$recipes.loading}
 			<div class="recipes-container">
 				{#each $recipes.recipes as { id, name, summary, pictures }}
 					<RecipeCard
@@ -54,7 +54,11 @@
 					/>
 				</div>
 			{/if}
-		{:else if !$recipes.loading}
+		{:else if $recipes.loading}
+			<div class="w-100 h-100 flex-full-center">
+				<CircularLoading --background="#e7e2da" --circle-width="72px" />
+			</div>
+		{:else if !$recipes.loading && $recipes.recipes !== undefined}
 			<h2 class="h-100 flex-center justify-center">
 				No se encontraron recetas usando esas opciones de búsqueda
 			</h2>
