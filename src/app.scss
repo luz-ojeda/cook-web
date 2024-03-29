@@ -23,6 +23,20 @@ button {
 	}
 }
 
+a {
+	text-decoration: none;
+	color: $grey900;
+
+	&:visited {
+		color: $grey900;
+	}
+
+	&:hover {
+		color: $lightestPrimaryColor;
+		transition: color 0.2s ease;
+	}
+}
+
 header {
 	background-color: $grey300;
 	position: sticky;

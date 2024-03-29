@@ -79,11 +79,6 @@
 		align-items: center;
 		display: flex;
 
-		a {
-			text-decoration: none;
-			color: inherit;
-		}
-
 		@media (min-width: $tabletBreakpoint) {
 			text-align: left;
 		}

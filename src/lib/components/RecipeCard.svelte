@@ -31,11 +31,7 @@
 
 <style lang="scss">
 	@import '../../sass/variables.scss';
-
-	a {
-		color: inherit;
-		text-decoration: none;
-	}
+	@import '../../sass/colors.scss';
 
 	.recipe-image {
 		aspect-ratio: 1 / 1;

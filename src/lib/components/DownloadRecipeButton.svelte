@@ -23,10 +23,3 @@
 		<span class="action-label">Descargar</span>
 	</a>
 {/if}
-
-<style>
-	a {
-		text-decoration: none;
-		color: inherit;
-	}
-</style>

@@ -71,8 +71,6 @@
 	}
 
 	.nav-links-tablet-desktop {
-		margin-right: 16px;
-
 		@media (max-width: $tabletBreakpoint) {
 			display: none;
 		}
