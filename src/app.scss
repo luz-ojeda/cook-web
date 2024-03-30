@@ -18,8 +18,6 @@ button {
 
 	&:not(:disabled) {
 		cursor: pointer;
-
-
 	}
 }
 
@@ -49,14 +47,23 @@ header {
 }
 
 footer {
-	border-top: 1px solid $grey900;
+	border-top: 1px solid $grey400;
+	padding: 16px 160px;
+
+	@media (max-width: $tabletBreakpoint) {
+		font-size: 20px;
+		padding: 12px 24px;
+	}
+
+	@media (max-width: $mobileBreakpoint) {
+	}
 }
 
 input {
 	background-color: $grey100;
 }
 
-input[type="text"] {
+input[type='text'] {
 	box-shadow: inset 0 2px 2px hsla(0, 0%, 0%, 0.1);
 }
 
@@ -67,6 +74,10 @@ input[type="text"] {
 }
 
 ::selection {
-    background-color: $darkestPrimaryColor;
-    color: $grey100;
+	background-color: $darkestPrimaryColor;
+	color: $grey100;
+}
+
+input[type='checkbox'] {
+	accent-color: $primaryColor;
 }

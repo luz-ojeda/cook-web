@@ -40,7 +40,7 @@
 		}
 
 		@media (max-width: $mobileBreakpoint) {
-			font-size: 8 32px;
+			padding: 8px 32px;
 		}
 	}
 

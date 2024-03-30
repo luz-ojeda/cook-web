@@ -1,8 +1,9 @@
 <script>
+	import { page } from '$app/stores';
 	import { Location, Mail } from '$lib';
 </script>
 
-<footer class="container spacing">
+<footer class="container">
 	<div class="section">
 		<h3>COOK</h3>
 		<p>
@@ -18,7 +19,11 @@
 				<a href="/">Inicio</a>
 			</li>
 			<li>Sobre la página</li>
-			<li>Buscar recetas</li>
+			{#if $page.url.pathname != '/recetas'}
+				<li>
+					<a href="/recetas"> Buscar recetas </a>
+				</li>
+			{/if}
 		</ul>
 	</div>
 	<div class="section">
@@ -26,7 +31,8 @@
 		<ul>
 			<li>
 				<img class="list-icon" alt="" src={Location} width="24" />
-				Ciudad Autónoma de Buenos Aires
+				<span class="large-screen">Ciudad Autónoma de Buenos Aires, Argentina</span>
+				<span class="mobile">CABA, Argentina</span>
 			</li>
 			<li>
 				<img class="list-icon" alt="" src={Mail} width="24" />
@@ -94,5 +100,21 @@
 
 	.list-icon {
 		margin-right: 6px;
+	}
+
+	.mobile {
+		display: block;
+
+		@media (min-width: $largeScreenBreakpoint) {
+			display: none;
+		}
+	}
+
+	.large-screen {
+		display: none;
+
+		@media (min-width: $largeScreenBreakpoint) {
+			display: block;
+		}
 	}
 </style>

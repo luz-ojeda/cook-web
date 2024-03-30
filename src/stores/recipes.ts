@@ -1,7 +1,7 @@
 import { buildRecipesBrowserUrl } from '$lib';
 import type { PaginatedList } from '$lib/types/PaginatedList';
 import type { Recipe, RecipeParameters } from '$lib/types/Recipe';
-import type { RecipesStore } from "$lib/types/RecipesStore";
+import type { RecipesStore } from '$lib/types/RecipesStore';
 import { get, writable } from 'svelte/store';
 
 type RecipesStoreWithParameters = RecipeParameters & RecipesStore;

@@ -1,43 +1,44 @@
 :root {
 	font-family: 'Satoshi', sans-serif;
 
-    @font-face {
-        font-family: 'Satoshi';
-        src: url("/fonts/Satoshi-Italic.woff2");
-        font-weight: normal;
-        font-style: italic;
-    }
+	@font-face {
+		font-family: 'Satoshi';
+		src: url('/fonts/Satoshi-Italic.woff2');
+		font-weight: normal;
+		font-style: italic;
+	}
 
-    @font-face {
-        font-family: "Satoshi";
-        src: url("/fonts/Satoshi-Regular.woff2");
-        font-weight: normal;
-        font-style: normal;
-    }
+	@font-face {
+		font-family: 'Satoshi';
+		src: url('/fonts/Satoshi-Regular.woff2');
+		font-weight: normal;
+		font-style: normal;
+	}
 
-    @font-face {
-        font-family: "Satoshi";
-        src: url("/fonts/Satoshi-Bold.woff2");
-        font-weight: bold;
-        font-style: normal;
-    }
+	@font-face {
+		font-family: 'Satoshi';
+		src: url('/fonts/Satoshi-Bold.woff2');
+		font-weight: bold;
+		font-style: normal;
+	}
 
-    @font-face {
-        font-family: "Satoshi";
-        src: url("/fonts/Satoshi-BoldItalic.woff2");
-        font-weight: bold;
-        font-style: italic;
-    }
+	@font-face {
+		font-family: 'Satoshi';
+		src: url('/fonts/Satoshi-BoldItalic.woff2');
+		font-weight: bold;
+		font-style: italic;
+	}
 }
 
 button {
-    font-family: 'Satoshi';
+	font-family: 'Satoshi';
 }
 
 p {
 	line-height: 1.5;
 }
 
-h1, h2 {
-    line-height: 1.25;
+h1,
+h2 {
+	line-height: 1.25;
 }
