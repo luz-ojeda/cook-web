@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { savedIds } from '../../stores/savedRecipesStore';
-	import { Icon } from "$lib";
+	import { Icon } from '$lib';
 
 	export let recipeId: string;
 	export let label = false;
@@ -50,7 +50,7 @@
 >
 	{#if isRecipeSaved}
 		<Icon
-			class={label ? 'action-icon' : ''}
+			class={label ? 'icon-margin-right' : ''}
 			name="bookmark_full"
 			title="Quitar de mis recetas guardadas"
 			height={iconWidth ?? '32'}
@@ -58,7 +58,7 @@
 		/>
 	{:else}
 		<Icon
-			class={label ? 'action-icon' : ''}
+			class={label ? 'icon-margin-right' : ''}
 			fill="none"
 			name="bookmark_empty"
 			title="Guardar en mis recetas"

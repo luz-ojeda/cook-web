@@ -20,12 +20,6 @@
 			align-items: center;
 		}
 	}
-	.nav-links a {
-		&[aria-current='true'] {
-			color: $primaryColor;
-			text-decoration: underline;
-		}
-	}
 
 	.nav-links a:not(:last-child) {
 		margin-right: 16px;

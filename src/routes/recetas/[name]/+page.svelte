@@ -10,7 +10,7 @@
 		mapRecipeDifficulty,
 		scaleServings
 	} from '$lib';
-	import Icon from "$lib/components/Icon.svelte";
+	import Icon from '$lib/components/Icon.svelte';
 
 	export let data: Recipe;
 
@@ -44,7 +44,7 @@
 			<div class="recipe-summary">
 				{#if data.preparationTime}
 					<div class="flex-center">
-						<Icon name="clock" width="24" height="24" />
+						<Icon class="icon-margin-right" name="clock" width="24" height="24" />
 						<span>Tiempo de preparación:&nbsp </span>
 						<p><span class="bold">{data.preparationTime}</span> minutos</p>
 					</div>
@@ -52,7 +52,7 @@
 
 				{#if data.cookingTime}
 					<div class="flex-center">
-						<Icon name="stove" width="24" height="24"/>
+						<Icon class="icon-margin-right" name="stove" width="24" height="24" />
 						<span>Tiempo de cocina:&nbsp</span>
 						<p><span class="bold">{data.cookingTime}</span> minutos</p>
 					</div>
@@ -60,7 +60,7 @@
 
 				{#if data.difficulty}
 					<div class="flex-center">
-						<Icon name="fire" width="24" height="24" />
+						<Icon class="icon-margin-right" name="fire" width="24" height="24" />
 						<span>Dificultad:&nbsp</span>
 						<p>{mapRecipeDifficulty(data.difficulty)}</p>
 					</div>
@@ -68,14 +68,14 @@
 
 				{#if data.vegetarian}
 					<div class="flex-center">
-						<Icon name="broccoli" width="24" height="24" />
+						<Icon class="icon-margin-right" name="broccoli" width="24" height="24" />
 						<span>Vegetariana</span>
 					</div>
 				{/if}
 
 				{#if data.servings}
 					<div class="flex-center">
-						<Icon name="dish" width="24" height="24" />
+						<Icon class="icon-margin-right" name="dish" width="24" height="24" />
 						<span>
 							<label for="servings">Porciones:</label>
 							<input
@@ -98,12 +98,7 @@
 			<CopyRecipeButton recipe={{ ...data, ingredients, servings }} />
 		</div>
 		<div>
-			<SaveRecipeButton
-				--color="#2f2622"
-				label
-				iconWidth="18"
-				recipeId={data.id}
-			/>
+			<SaveRecipeButton --color="#2f2622" label iconWidth="18" recipeId={data.id} />
 		</div>
 		<div>
 			<DownloadRecipeButton recipe={{ ...data, ingredients, servings }} />
@@ -112,7 +107,7 @@
 
 	<div class="ingredients">
 		<div class="flex-center">
-			<Icon name="fridge" width="24" height="24" />
+			<Icon class="icon-margin-right" name="fridge" width="24" height="24" />
 			<h2>Ingredientes:</h2>
 		</div>
 		<ul>
@@ -124,7 +119,7 @@
 
 	<div>
 		<div class="flex-center">
-			<Icon name="axe" width="24" height="24" />
+			<Icon class="icon-margin-right" name="axe" width="24" height="24" />
 			<h2>Instrucciones:</h2>
 		</div>
 		<p class="instructions-paragraph">{data.instructions}</p>
@@ -166,10 +161,6 @@
 		@media (max-width: $laptopBreakpoint) {
 			min-width: 50%;
 		}
-	}
-
-	:global(svg) {
-		margin-right: 6px;
 	}
 
 	.title-image-container {
@@ -225,5 +216,9 @@
 
 	.bold {
 		font-weight: bold;
+	}
+
+	* :global(.icon-margin-right) {
+		margin-right: 6px;
 	}
 </style>

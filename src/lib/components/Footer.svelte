@@ -18,7 +18,9 @@
 			<li>
 				<a href="/">Inicio</a>
 			</li>
-			<li><a href="/sobre-cook">Sobre Cook</a></li>
+			<li>
+				<a href="/sobre-cook" aria-current={$page.url.pathname === '/sobre-cook'}>Sobre Cook</a>
+			</li>
 			{#if $page.url.pathname != '/recetas'}
 				<li>
 					<a href="/recetas"> Buscar recetas </a>
@@ -30,12 +32,12 @@
 		<h3>CONTACTO</h3>
 		<ul>
 			<li>
-				<Icon name="location" width="24" height="24" />
+				<Icon class="icon-margin-right" name="location" width="24" height="24" />
 				<span class="large-screen">Ciudad Autónoma de Buenos Aires, Argentina</span>
 				<span class="mobile">CABA, Argentina</span>
 			</li>
 			<li>
-				<Icon name="mail" width="24" height="24" />
+				<Icon class="icon-margin-right" name="mail" width="24" height="24" />
 				cook@proton.me
 			</li>
 		</ul>
@@ -116,5 +118,9 @@
 		@media (min-width: $largeScreenBreakpoint) {
 			display: block;
 		}
+	}
+
+	* :global(.icon-margin-right) {
+		margin-right: 6px;
 	}
 </style>

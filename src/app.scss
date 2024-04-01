@@ -33,6 +33,11 @@ a {
 		color: $lightestPrimaryColor;
 		transition: color 0.2s ease;
 	}
+
+	&[aria-current='true'] {
+		color: $primaryColor;
+		text-decoration: underline;
+	}
 }
 
 header {

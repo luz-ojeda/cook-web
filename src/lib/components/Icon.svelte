@@ -86,6 +86,7 @@
 </script>
 
 <svg
+	class={$$props.class}
 	fill={fill ?? 'currentColor'}
 	stroke={stroke ?? 'currentColor'}
 	{focusable}

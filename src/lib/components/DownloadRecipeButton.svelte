@@ -19,7 +19,7 @@
 		download={'Receta de ' + recipe.name}
 		class="flex-center interactive-pointer-opacity flex-center"
 	>
-		<Icon name="download" width="18" height="18" />
+		<Icon class="icon-margin-right" name="download" width="18" height="18" />
 		<span class="action-label">Descargar</span>
 	</a>
 {/if}
