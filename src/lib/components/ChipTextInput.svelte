@@ -30,7 +30,7 @@
 			{#each values as value}
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
 				<!-- svelte-ignore a11y-no-static-element-interactions -->
-				<div class="chip" on:click={() => removeValue(value)} title="Remover">
+				<div class="chip interactive-pointer-opacity" on:click={() => removeValue(value)} title="Remover">
 					{value} <img src={Cross} height="8" alt="" />
 				</div>
 			{/each}
@@ -58,11 +58,9 @@
 		letter-spacing: 0.025rem;
 		padding: 4px 8px;
 		margin-right: 6px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
 		width: max-content;
-
-		&:hover {
-			cursor: pointer;
-			opacity: 0.7;
-		}
 	}
 </style>

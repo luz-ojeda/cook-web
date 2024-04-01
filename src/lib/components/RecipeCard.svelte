@@ -35,6 +35,7 @@
 
 	.recipe-image {
 		aspect-ratio: 1 / 1;
+		box-shadow: $smallestShadow;
 		margin-bottom: 16px;
 		object-fit: cover;
 		width: 100%;

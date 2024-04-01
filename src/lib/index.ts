@@ -1,3 +1,4 @@
+import BurgerMenu from './components/BurgerMenu.svelte';
 import ChipTextInput from './components/ChipTextInput.svelte';
 import CircularLoading from './components/CircularLoading.svelte';
 import CopyRecipeButton from './components/CopyRecipeButton.svelte';
@@ -6,12 +7,14 @@ import Footer from './components/Footer.svelte';
 import HomeSearch from './components/HomeSearch.svelte';
 import Navbar from './components/Navbar.svelte';
 import Pagination from './components/Pagination.svelte';
+import PrimaryButton from './components/PrimaryButton.svelte';
 import RecipeCard from './components/RecipeCard.svelte';
 import RecipesSearchForm from './components/RecipesSearchForm.svelte';
 import SaveRecipeButton from './components/SaveRecipeButton.svelte';
 import TextInput from './components/TextInput.svelte';
 
 export {
+	BurgerMenu,
 	ChipTextInput,
 	CircularLoading,
 	CopyRecipeButton,
@@ -20,6 +23,7 @@ export {
 	HomeSearch,
 	Navbar,
 	Pagination,
+	PrimaryButton,
 	RecipeCard,
 	RecipesSearchForm,
 	SaveRecipeButton,

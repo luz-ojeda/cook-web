@@ -36,7 +36,6 @@
 
 <svelte:head>
 	<title>{data.name}</title>
-	<!-- <meta name="description" content="{metaDescription}"> -->
 </svelte:head>
 
 <div class="spacing">

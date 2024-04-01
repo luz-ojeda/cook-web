@@ -55,6 +55,14 @@
 			padding-bottom: 32px;
 			text-align: center;
 		}
+
+		p {
+			font-size: 18px;
+
+			@media (max-width: $tabletBreakpoint) {
+				font-size: 16px;
+			}
+		}
 	}
 
 	.hero > div:first-of-type {
@@ -77,10 +85,6 @@
 		@media (max-width: $laptopBreakpoint) {
 			padding: 32px 80px;
 			grid-template: repeat(2, minmax(0, 1fr)) / repeat(2, minmax(0, 1fr));
-		}
-
-		@media (max-width: $mobileBreakpoint) {
-			padding: 32px 80px;
 		}
 	}
 </style>

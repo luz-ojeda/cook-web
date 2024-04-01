@@ -67,6 +67,10 @@
 		@media (min-width: $tabletBreakpoint) {
 			text-align: left;
 		}
+
+		@media (max-width: $mobileBreakpoint) {
+			font-size: 16px;
+		}
 	}
 
 	ul {

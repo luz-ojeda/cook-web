@@ -11,7 +11,7 @@
 			await navigator.clipboard.writeText(formatRecipeForCopyOrDownload(recipe));
 			isRecipeCopied = true;
 
-			const revertButtonLookDelay = 5000;
+			const revertButtonLookDelay = 3000;
 			setTimeout(() => {
 				isRecipeCopied = false;
 			}, revertButtonLookDelay);

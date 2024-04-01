@@ -33,7 +33,13 @@
 	<aside>
 		<RecipesSearchForm />
 	</aside>
-	<div class="w-100 {$recipes.loading ? 'loading' : ''}">
+	<div
+		class="w-100 {$recipes.loading ? 'loading' : ''} {!$recipes.loading &&
+		$recipes.recipes !== undefined &&
+		$recipes.recipes.length === 0
+			? 'no-recipes-found-container'
+			: ''}"
+	>
 		{#if $recipes.recipes && $recipes.recipes.length > 0 && !$recipes.loading}
 			<div class="recipes-container">
 				{#each $recipes.recipes as { id, name, summary, pictures }}
@@ -59,7 +65,7 @@
 				<CircularLoading --background="#e7e2da" --circle-width="72px" />
 			</div>
 		{:else if !$recipes.loading && $recipes.recipes !== undefined}
-			<h2 class="h-100 flex-center justify-center">
+			<h2 class="mobile-text-center h-100 flex-center justify-center">
 				No se encontraron recetas usando esas opciones de búsqueda
 			</h2>
 		{/if}
@@ -71,7 +77,7 @@
 
 	aside {
 		margin-right: 32px;
-		min-width: 265px;
+		width: 320px;
 
 		@media (max-width: $tabletBreakpoint) {
 			display: none;
@@ -86,5 +92,9 @@
 		display: flex;
 		justify-content: center;
 		margin-top: 24px;
+	}
+
+	.no-recipes-found-container {
+		padding: 64px 0;
 	}
 </style>

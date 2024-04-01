@@ -1,8 +1,7 @@
 <script>
-	import { Burger, Cross } from '$lib';
+	import { Burger, BurgerMenu, Cross } from '$lib';
 	import logo from '$lib/assets/logo.png';
 	import { burgerMenuStore } from '../../stores/burgerMenu';
-	import BurgerMenu from './BurgerMenu.svelte';
 	import NavLinks from './NavLinks.svelte';
 </script>
 
@@ -30,25 +29,26 @@
 <style lang="scss">
 	@import '../../sass/variables.scss';
 
-	nav {
-		font-size: 24px;
-		padding: 16px 160px;
+	nav {		
+		@media (max-width: $mobileBreakpoint) {
+			padding: 0px 16px;
+		}
 
 		@media (max-width: $tabletBreakpoint) {
 			font-size: 20px;
 			padding: 24px;
 		}
-
-		@media (max-width: $mobileBreakpoint) {
-			padding: 8px 32px;
-		}
+		
+		font-size: 24px;
+		padding: 16px 160px;
 	}
 
 	.burger-button {
-		width: 32px;
-		height: 32px;
+		background: none;
 		display: flex;
+		height: 48px;
 		justify-content: center;
+		width: 48px;
 
 		@media (min-width: $tabletBreakpoint) {
 			display: none;

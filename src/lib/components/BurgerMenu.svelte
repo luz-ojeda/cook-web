@@ -16,8 +16,11 @@
 
 <style lang="scss">
 	@import '../../sass/variables.scss';
+	@import '../../sass/colors.scss';
 
 	hr {
+		color: $lightestPrimaryColor;
+
 		@media (min-width: $tabletBreakpoint) {
 			display: none;
 		}

@@ -89,7 +89,7 @@
 		padding: 1px 0;
 		width: 32px;
 
-		&:hover {
+		&:hover:not(:disabled) {
 			background-color: $lightestPrimaryColor;
 		}
 	}

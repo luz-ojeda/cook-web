@@ -1,9 +1,6 @@
 <script lang="ts">
-	import PrimaryButton from './PrimaryButton.svelte';
-	import ChipTextInput from './ChipTextInput.svelte';
-	import TextInput from './TextInput.svelte';
-
 	import { page, navigating } from '$app/stores';
+	import { ChipTextInput, PrimaryButton, TextInput } from '$lib';
 	import { buildRecipesBrowserUrl } from '$lib/scripts/urls';
 	import { recipes } from '../../stores/recipes';
 
