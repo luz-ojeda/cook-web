@@ -1,10 +1,11 @@
 <script lang="ts">
-	import { BookmarkEmpty, BookmarkFull } from '$lib';
 	import { onMount } from 'svelte';
 	import { savedIds } from '../../stores/savedRecipesStore';
+	import { Icon } from "$lib";
 
 	export let recipeId: string;
 	export let label = false;
+	export let iconWidth: string | null = null;
 
 	$: isRecipeSaved = $savedIds.ids.includes(recipeId);
 
@@ -48,13 +49,21 @@
 	on:click={saveRecipe}
 >
 	{#if isRecipeSaved}
-		<BookmarkFull title="Quitar de mis recetas guardadas" height="32" width="32" />
+		<Icon
+			class={label ? 'action-icon' : ''}
+			name="bookmark_full"
+			title="Quitar de mis recetas guardadas"
+			height={iconWidth ?? '32'}
+			width={iconWidth ?? '32'}
+		/>
 	{:else}
-		<img
-			class="bookmark-icon {label ? 'action-icon' : ''}"
-			alt=""
-			src={BookmarkEmpty}
+		<Icon
+			class={label ? 'action-icon' : ''}
+			fill="none"
+			name="bookmark_empty"
 			title="Guardar en mis recetas"
+			height={iconWidth ?? '32'}
+			width={iconWidth ?? '32'}
 		/>
 	{/if}
 	{#if label}
@@ -68,22 +77,13 @@
 	button {
 		border: 0;
 		background-color: transparent;
+		color: var(--color, $darkestPrimaryColor);
 		font-family: inherit;
 		height: fit-content;
 		padding: 0;
 	}
 
 	span {
-		color: inherit;
-	}
-
-	.bookmark-icon {
-		color: $darkPrimaryColor;
-		height: min-content;
-		width: var(--iconWidth);
-
-		@media (max-width: 720px) {
-			width: var(--iconMobileWidth);
-		}
+		color: $grey900;
 	}
 </style>

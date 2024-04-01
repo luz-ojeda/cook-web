@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Copy, CopyFull, formatRecipeForCopyOrDownload } from '$lib';
+	import { Icon, formatRecipeForCopyOrDownload } from '$lib';
 	import type { Recipe } from '$lib/types/Recipe';
 
 	export let recipe: Recipe;
@@ -31,7 +31,11 @@
 	role="button"
 	tabindex="0"
 >
-	<img class="action-icon" alt="" src={isRecipeCopied ? CopyFull : Copy} />
+	{#if isRecipeCopied}
+		<Icon name="copy_full" width="18" height="18" />
+	{:else}
+		<Icon name={isRecipeCopied ? 'copy_full' : 'copy_empty'} width="18" height="18" />
+	{/if}
 	<span class="action-label">{isRecipeCopied ? 'Copiada' : 'Copiar'}</span>
 </div>
 

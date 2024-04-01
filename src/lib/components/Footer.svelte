@@ -1,6 +1,6 @@
 <script>
 	import { page } from '$app/stores';
-	import { Location, Mail } from '$lib';
+	import { Icon } from '$lib';
 </script>
 
 <footer class="container">
@@ -30,12 +30,12 @@
 		<h3>CONTACTO</h3>
 		<ul>
 			<li>
-				<img class="list-icon" alt="" src={Location} width="24" />
+				<Icon class="list-icon" name="location" width="24" height="24" />
 				<span class="large-screen">Ciudad Autónoma de Buenos Aires, Argentina</span>
 				<span class="mobile">CABA, Argentina</span>
 			</li>
 			<li>
-				<img class="list-icon" alt="" src={Mail} width="24" />
+				<Icon class="list-icon" name="mail" width="24" height="24" />
 				cook@proton.me
 			</li>
 		</ul>

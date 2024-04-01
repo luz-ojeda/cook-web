@@ -1,5 +1,5 @@
 <script>
-	import { Burger, BurgerMenu, Cross } from '$lib';
+	import { BurgerMenu, Icon } from '$lib';
 	import logo from '$lib/assets/logo.png';
 	import { burgerMenuStore } from '../../stores/burgerMenu';
 	import NavLinks from './NavLinks.svelte';
@@ -16,7 +16,11 @@
 				<NavLinks />
 			</div>
 			<button class="burger-button" on:click={() => ($burgerMenuStore = !$burgerMenuStore)}>
-				<img src={!$burgerMenuStore ? Burger : Cross} alt="" />
+				{#if !$burgerMenuStore}
+					<Icon name="burger" height="48" width="48" />
+				{:else}
+					<Icon name="cross" height="32" width="32" />
+				{/if}
 			</button>
 		</div>
 	</div>
@@ -29,7 +33,7 @@
 <style lang="scss">
 	@import '../../sass/variables.scss';
 
-	nav {		
+	nav {
 		@media (max-width: $mobileBreakpoint) {
 			padding: 0px 16px;
 		}
@@ -38,12 +42,13 @@
 			font-size: 20px;
 			padding: 24px;
 		}
-		
+
 		font-size: 24px;
 		padding: 16px 160px;
 	}
 
 	.burger-button {
+		align-items: center;
 		background: none;
 		display: flex;
 		height: 48px;

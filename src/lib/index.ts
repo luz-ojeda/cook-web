@@ -5,6 +5,7 @@ import CopyRecipeButton from './components/CopyRecipeButton.svelte';
 import DownloadRecipeButton from './components/DownloadRecipeButton.svelte';
 import Footer from './components/Footer.svelte';
 import HomeSearch from './components/HomeSearch.svelte';
+import Icon from './components/Icon.svelte';
 import Navbar from './components/Navbar.svelte';
 import Pagination from './components/Pagination.svelte';
 import PrimaryButton from './components/PrimaryButton.svelte';
@@ -21,6 +22,7 @@ export {
 	DownloadRecipeButton,
 	Footer,
 	HomeSearch,
+	Icon,
 	Navbar,
 	Pagination,
 	PrimaryButton,
@@ -28,43 +30,6 @@ export {
 	RecipesSearchForm,
 	SaveRecipeButton,
 	TextInput
-};
-
-// Icons
-import Axe from './assets/icons/axe.svg';
-import BookmarkEmpty from './assets/icons/bookmark_empty.svg';
-import BookmarkFull from './assets/icons/bookmark_full.svelte';
-import Broccoli from './assets/icons/broccoli.svg';
-import Burger from './assets/icons/burger.svg';
-import Clock from './assets/icons/clock.svg';
-import Cross from './assets/icons/cross.svg';
-import Copy from './assets/icons/copy.svg';
-import CopyFull from './assets/icons/copy_full.svg';
-import Dish from './assets/icons/dish.svg';
-import Download from './assets/icons/download.svg';
-import Fire from './assets/icons/fire.svg';
-import Fridge from './assets/icons/fridge.svg';
-import Location from './assets/icons/location.svg';
-import Mail from './assets/icons/mail.svg';
-import Stove from './assets/icons/stove.svg';
-
-export {
-	Axe,
-	BookmarkEmpty,
-	BookmarkFull,
-	Broccoli,
-	Burger,
-	Clock,
-	Cross,
-	Copy,
-	CopyFull,
-	Dish,
-	Download,
-	Fire,
-	Fridge,
-	Location,
-	Mail,
-	Stove
 };
 
 // Scripts

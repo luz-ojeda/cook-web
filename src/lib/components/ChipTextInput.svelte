@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Cross } from '$lib';
+	import { Icon } from '$lib';
 	import TextInput from './TextInput.svelte';
 
 	export let label: string;
@@ -30,8 +30,15 @@
 			{#each values as value}
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
 				<!-- svelte-ignore a11y-no-static-element-interactions -->
-				<div class="chip interactive-pointer-opacity" on:click={() => removeValue(value)} title="Remover">
-					{value} <img src={Cross} height="8" alt="" />
+				<div
+					class="chip interactive-pointer-opacity"
+					on:click={() => removeValue(value)}
+					title="Remover"
+				>
+					<span>
+						{value}
+					</span>
+					<Icon name="cross" width="8" height="8" />
 				</div>
 			{/each}
 		</div>
@@ -50,9 +57,11 @@
 	}
 
 	.chip {
+		align-items: center;
 		background-color: $darkestPrimaryColor;
 		border-radius: 12px;
 		color: $grey300;
+		display: flex;
 		font-size: 14px;
 		font-weight: bold;
 		letter-spacing: 0.025rem;
@@ -62,5 +71,9 @@
 		text-overflow: ellipsis;
 		white-space: nowrap;
 		width: max-content;
+
+		span {
+			margin-right: 4px;
+		}
 	}
 </style>

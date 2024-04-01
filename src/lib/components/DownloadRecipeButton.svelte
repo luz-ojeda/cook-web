@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
-	import { Download, formatRecipeForCopyOrDownload } from '$lib';
+	import { Icon, formatRecipeForCopyOrDownload } from '$lib';
 	import type { Recipe } from '$lib/types/Recipe';
 
 	export let recipe: Recipe;
@@ -19,7 +19,7 @@
 		download={'Receta de ' + recipe.name}
 		class="flex-center interactive-pointer-opacity flex-center"
 	>
-		<img class="action-icon" alt="" src={Download} />
+		<Icon name="download" width="18" height="18" />
 		<span class="action-label">Descargar</span>
 	</a>
 {/if}
