@@ -49,6 +49,14 @@
 		background-color: $grey200;
 	}
 
+	h1 {
+		font-size: 48px;
+
+		@media (max-width: $tabletBreakpoint) {
+			font-size: 32px;
+		}
+	}
+
 	.hero {
 		@media (max-width: $tabletBreakpoint) {
 			flex-direction: column;

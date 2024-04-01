@@ -2,7 +2,7 @@
 	import type { Recipe } from '$lib/types/Recipe';
 	import { onMount } from 'svelte';
 	import { recipes } from '../../stores/recipes';
-	import { CircularLoading, Pagination, RecipeCard, RecipesSearchForm } from '$lib';
+	import { CircularLoading, Pagination, RecipeCard, RecipesSearchForm, SearchEmpty } from '$lib';
 	import type { PaginatedList } from '$lib/types/PaginatedList';
 
 	export let data: PaginatedList<Recipe>;
@@ -65,9 +65,12 @@
 				<CircularLoading --background="#e7e2da" --circle-width="72px" />
 			</div>
 		{:else if !$recipes.loading && $recipes.recipes !== undefined}
-			<h2 class="mobile-text-center h-100 flex-center justify-center">
-				No se encontraron recetas usando esas opciones de búsqueda
-			</h2>
+			<div class="h-100">
+				<h2 class="mobile-text-center">
+					No se encontraron recetas usando esas opciones de búsqueda
+				</h2>
+				<img class="no-recipes-image" src={SearchEmpty} alt="" />
+			</div>
 		{/if}
 	</div>
 </div>
@@ -96,5 +99,23 @@
 
 	.no-recipes-found-container {
 		padding: 64px 0;
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		position: relative;
+	}
+
+	.no-recipes-image {
+		position: absolute;
+		right: 50px;
+		bottom: -75px;
+		opacity: 0.3;
+		width: 250px;
+		z-index: -1;
+
+		@media (min-width: $laptopBreakpoint) {
+			bottom: -120px;
+			width: 300px;
+		}
 	}
 </style>

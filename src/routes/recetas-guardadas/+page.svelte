@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { savedIds, savedRecipes } from '../../stores/savedRecipesStore';
-	import { CircularLoading, RecipeCard } from '$lib';
+	import { CircularLoading, RecipeCard, Icon, SearchEmpty, EmptyBox } from '$lib';
 
 	let message = '';
 
@@ -30,7 +30,11 @@
 						{/each}
 					</div>
 				{:else if $savedRecipes.recipes && $savedRecipes.recipes.length === 0}
-					<h2 class="h-100 flex-center justify-center">Aún no tienes recetas guardadas</h2>
+					<div class="h-100 no-recipes-container">
+						<h2>Aún no tienes ninguna guardada</h2>
+						<a href="/recetas">Explorar recetas</a>
+						<img class="empty-box" src={EmptyBox} alt="" />
+					</div>
 				{/if}
 			{:else}
 				<h2>{message}</h2>
@@ -38,13 +42,52 @@
 		{/if}
 	</div>
 </div>
-		
-<style>
+
+<style lang="scss">
+	@import '../../sass/colors.scss';
+	@import '../../sass/variables.scss';
+
 	.container {
 		display: flex;
 		justify-content: center;
 		padding: 32px 0;
 		width: 100%;
+	}
+
+	.empty-box {
+		position: absolute;
+		right: 10%;
+		bottom: -180px;
+		opacity: 0.3;
+		width: 400px;
+		z-index: -1;
+
+		@media (max-width: $laptopBreakpoint) {
+			right: -50px;
+			bottom: -130px;
+			width: 300px;
+		}
+
+		@media (max-width: $tabletBreakpoint) {
+			position: static;
+		}
+	}
+
+	.no-recipes-container {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		position: relative;
+		width: 100%;
+
+		a {
+			color: $primaryColor;
+			font-size: 18px;
+			font-weight: bold;
+			&:hover {
+				color: $lightPrimaryColor;
+			}
+		}
 	}
 
 	h2 {

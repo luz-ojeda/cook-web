@@ -11,12 +11,12 @@ export const handleError: HandleServerError = async ({ event, error }) => {
 	const apiError = error as ApiError;
 	try {
 		let message = '';
-		if (apiError.status?.toString().startsWith('5')) {
-			message = MESSAGES.SERVER_ERROR;
-		} else if (apiError.status === 404) {
+		if (apiError.status === 404) {
 			message = MESSAGES.PAGE_NOT_FOUND;
+		} else {
+			message = MESSAGES.SERVER_ERROR;
+			return { message };
 		}
-		return { message };
 	} catch (error) {
 		return { message: MESSAGES.SERVER_ERROR };
 	}

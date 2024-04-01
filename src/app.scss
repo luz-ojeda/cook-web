@@ -49,14 +49,15 @@ header {
 
 footer {
 	border-top: 1px solid $grey400;
-	padding: 16px 160px;
+	padding: 0 16px;
+	background-color: $grey300;
 
-	@media (max-width: $tabletBreakpoint) {
-		font-size: 20px;
-		padding: 12px 24px;
+	@media (min-width: $tabletBreakpoint) and (max-width: $laptopBreakpoint) {
+		padding: 12px 80px;
 	}
 
-	@media (max-width: $mobileBreakpoint) {
+	@media (min-width: $laptopBreakpoint) {
+		padding: 12px 160px;
 	}
 }
 

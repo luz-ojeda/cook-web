@@ -49,3 +49,9 @@ export {
 	buildRecipesApiUrl,
 	buildRecipesBrowserUrl
 };
+
+import EmptyBox from './assets/empty_box.svg';
+import SearchEmpty from './assets/search_empty.svg';
+import ServerError from './assets/server_error.svg';
+
+export { SearchEmpty, ServerError, EmptyBox };

@@ -19,7 +19,7 @@
 	@import '../../sass/colors.scss';
 
 	hr {
-		color: $lightestPrimaryColor;
+		color: $grey100;
 
 		@media (min-width: $tabletBreakpoint) {
 			display: none;
