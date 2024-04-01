@@ -27,7 +27,7 @@
 		border-radius: 7px;
 		box-shadow:
 			inset 0 3px 0 $lightestPrimaryColor,
-			$smallShadow;
+			$shadow;
 		color: $grey200;
 		display: flex;
 		font-size: 20px;
@@ -35,6 +35,11 @@
 		height: 48px;
 		justify-content: center;
 		padding: 8px 24px;
+
+		&:hover {
+			background-color: $lightPrimaryColor;
+			transition: background-color 0.3s;
+		}
 
 		&:disabled {
 			box-shadow:

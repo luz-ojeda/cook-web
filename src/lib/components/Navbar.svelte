@@ -34,17 +34,17 @@
 	@import '../../sass/variables.scss';
 
 	nav {
-		@media (max-width: $mobileBreakpoint) {
-			padding: 0px 16px;
+		padding: 0 16px;
+
+		@media (min-width: $tabletBreakpoint) and (max-width: $laptopBreakpoint) {
+			padding: 12px 80px;
 		}
 
-		@media (max-width: $tabletBreakpoint) {
-			font-size: 20px;
-			padding: 24px;
+		@media (min-width: $laptopBreakpoint) {
+			padding: 12px 160px;
 		}
 
 		font-size: 24px;
-		padding: 16px 160px;
 	}
 
 	.burger-button {
