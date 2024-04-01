@@ -1,7 +1,7 @@
 import type { RecipeParameters } from '$lib/types/Recipe';
 
-function buildRecipesApiUrl(url: URL) {
-	let urlWithParams = 'http://localhost:5255/recipes?';
+function buildRecipesApiUrl(apiUrl: string, url: URL) {
+	let urlWithParams = `${apiUrl}/recipes?`;
 
 	const page = url.searchParams.get('pagina');
 	urlWithParams += `page=${page ?? '1'}`;
