@@ -1,8 +1,15 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	import { Footer, Navbar } from '$lib';
 	import '../app.scss';
 	import { savedIds } from '../stores/savedRecipesStore';
+	import { browser } from "$app/environment";
+	
+	let scrolled = false;
+
+	const handleScroll = () => {
+		scrolled = window.scrollY > 0;
+	};
 
 	onMount(() => {
 		let recipesSaved = localStorage.getItem('recipesSaved');
@@ -18,11 +25,33 @@
 				ids: recipesIdsSavedParsed
 			};
 		});
+
+		if (browser) {
+			window.addEventListener('scroll', handleScroll);
+		}
+	});
+
+	onDestroy(() => {
+		if (browser) {
+			window.removeEventListener('scroll', handleScroll);
+		}
 	});
 </script>
 
-<header>
+<header class="header {scrolled ? 'shadow' : ''}">
 	<Navbar />
 </header>
 <slot />
 <Footer />
+
+<style lang="scss">
+	@import "../sass/variables.scss";
+
+	.header {
+	  transition: box-shadow 0.3s ease;
+	}
+  
+	.shadow {
+	  box-shadow: $smallShadow;
+	}
+  </style>
