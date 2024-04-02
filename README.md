@@ -1,5 +1,7 @@
 # Cook web
 
+[![es](https://img.shields.io/badge/lang-es-red)](https://github.com/luz-ojeda/cook-api/blob/main/README.es.md)
+
 Svelte web application that lets users manage and retrieve cooking recipes. Uses [cook-api](https://github.com/luz-ojeda/cook-api) as the backend.
 
 ## Features
