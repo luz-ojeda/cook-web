@@ -45,7 +45,8 @@
 				{#if data.preparationTime}
 					<div class="flex-center">
 						<Icon class="icon-margin-right" name="clock" width="24" height="24" />
-						<span>Tiempo de preparación:&nbsp </span>
+						<span class="laptop">Tiempo de preparación:&nbsp </span>
+						<span class="mobile">Preparación: </span>
 						<p><span class="bold">{data.preparationTime}</span> minutos</p>
 					</div>
 				{/if}
@@ -53,7 +54,8 @@
 				{#if data.cookingTime}
 					<div class="flex-center">
 						<Icon class="icon-margin-right" name="stove" width="24" height="24" />
-						<span>Tiempo de cocina:&nbsp</span>
+						<span class="laptop">Tiempo de cocina:&nbsp</span>
+						<span class="mobile">Cocina:&nbsp</span>
 						<p><span class="bold">{data.cookingTime}</span> minutos</p>
 					</div>
 				{/if}

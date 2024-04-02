@@ -83,3 +83,19 @@
 		text-align: center;
 	}
 }
+
+.laptop {
+	display: none;
+
+	@media (min-width: $laptopBreakpoint) {
+		display: block;
+	}
+}
+
+.mobile {
+	display: block;
+
+	@media (min-width: $laptopBreakpoint) {
+		display: none;
+	}
+}
