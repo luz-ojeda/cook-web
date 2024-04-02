@@ -3,16 +3,19 @@
 	import { ChipTextInput, PrimaryButton, TextInput } from '$lib';
 	import { buildRecipesBrowserUrl } from '$lib/scripts/urls';
 	import { recipes } from '../../stores/recipes';
+	import { burgerMenuStore } from '../../stores/burgerMenu';
 
 	let loading = false;
 
 	async function onButtonClick() {
 		if ($page.url.pathname === '/') return;
-		$recipes.page = 1;
 
+		$recipes.page = 1;
+		
 		loading = true;
 		await recipes.loadRecipes();
 		loading = false;
+		if ($burgerMenuStore) $burgerMenuStore = false;
 	}
 </script>
 

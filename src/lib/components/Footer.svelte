@@ -33,7 +33,7 @@
 		<ul>
 			<li>
 				<Icon class="icon-margin-right" name="location" width="24" height="24" />
-				<span class="large-screen">Ciudad Autónoma de Buenos Aires, Argentina</span>
+				<span class="laptop">Ciudad Autónoma de Buenos Aires, Argentina</span>
 				<span class="mobile">CABA, Argentina</span>
 			</li>
 			<li>
@@ -105,22 +105,6 @@
 
 		@media (min-width: $tabletBreakpoint) {
 			margin-bottom: 8px;
-		}
-	}
-
-	.mobile {
-		display: block;
-
-		@media (min-width: $largeScreenBreakpoint) {
-			display: none;
-		}
-	}
-
-	.large-screen {
-		display: none;
-
-		@media (min-width: $largeScreenBreakpoint) {
-			display: block;
 		}
 	}
 
