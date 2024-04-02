@@ -181,6 +181,10 @@
 		p {
 			margin: 0;
 		}
+
+		@media (max-width: $tabletBreakpoint) {
+			font-size: 16px;
+		}
 	}
 
 	.actions {
