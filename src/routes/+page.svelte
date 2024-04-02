@@ -91,8 +91,11 @@
 		grid-template: minmax(0, 1fr) / repeat(4, minmax(0, 1fr));
 
 		@media (max-width: $laptopBreakpoint) {
-			padding: 32px 80px;
 			grid-template: repeat(2, minmax(0, 1fr)) / repeat(2, minmax(0, 1fr));
+		}
+
+		@media (max-width: $mobileBreakpoint) {
+			padding: $paddingMobile;
 		}
 	}
 </style>
