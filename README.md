@@ -4,6 +4,8 @@
 
 Svelte web application that lets users manage and retrieve cooking recipes. Uses [cook-api](https://github.com/luz-ojeda/cook-api) as the backend.
 
+A deployed version of the full stack web application can be found [here](https://cook-web-weathered-thunder-7639.fly.dev/)
+
 ## Features
 
 - Recipe Management: Create, Read, Update, and Delete (CRUD) operations for recipes.
