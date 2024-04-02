@@ -6,7 +6,11 @@ import { logRecipesError } from '../errorLogging';
 
 export const load: PageServerLoad<PaginatedList<Recipe>> = async ({ fetch }) => {
 	try {
-		const res = await fetch(`${env.API_URL}/recipes?limit=4`);
+		const res = await fetch(`${env.API_URL}/recipes?limit=4`, {
+			headers: {
+				'x-api-key': `${env.API_KEY}`
+			}
+		});
 		const responseJson = await res.json();
 		if ('status' in responseJson) {
 			throw new Error(responseJson.title);
