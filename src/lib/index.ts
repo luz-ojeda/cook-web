@@ -51,7 +51,8 @@ export {
 };
 
 import EmptyBox from './assets/empty_box.svg';
+import GitHubMark from './assets/github-mark.svg';
 import SearchEmpty from './assets/search_empty.svg';
 import ServerError from './assets/server_error.svg';
 
-export { SearchEmpty, ServerError, EmptyBox };
+export { EmptyBox, GitHubMark, SearchEmpty, ServerError };

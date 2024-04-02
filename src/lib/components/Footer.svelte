@@ -1,6 +1,6 @@
 <script>
 	import { page } from '$app/stores';
-	import { Icon } from '$lib';
+	import { GitHubMark, Icon } from '$lib';
 </script>
 
 <footer class="container">
@@ -39,6 +39,10 @@
 			<li>
 				<Icon class="icon-margin-right" name="mail" width="24" height="24" />
 				cook@proton.me
+			</li>
+			<li>
+				<img class="icon-margin-right" alt="" src={GitHubMark} width="24" />
+				<a href="https://github.com/luz-ojeda/cook-web">GitHub</a>
 			</li>
 		</ul>
 	</div>
