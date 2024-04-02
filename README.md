@@ -1,38 +1,39 @@
-# create-svelte
+# Cook web
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+Svelte web application that lets users manage and retrieve cooking recipes. Uses [cook-api](https://github.com/luz-ojeda/cook-api) as the backend.
 
-## Creating a project
+## Features
 
-If you're seeing this, you've probably already done this step. Congrats!
+- Recipe Management: Create, Read, Update, and Delete (CRUD) operations for recipes.
+- Search Functionality: Search for recipes by name, difficulty, only vegetarians and ingredients.
+- Save Recipes: Users can save recipes in the browser's Local Storage without the need of registration
+- Recipe servings scaling: For ingredients that have a determinate amount users can adjust the servings and they will automatically adjust in the individual recipe page
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+## Getting started
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+### Prerequisites
 
-## Developing
+- [Node 16 or higer](https://nodejs.org/en/download)
+- [npm](https://www.npmjs.com/)
 
 Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
-```bash
-npm run dev
+1. Clone the repository:
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+   ```bash
+   git clone https://github.com/luz-ojeda/cook-web.git
 
-## Building
+2. Navigate to the project's root directory
 
-To create a production version of your app:
+   ```bash
+   cd cook-web
 
-```bash
-npm run build
-```
+3. Create an .env file and add `API_URL` variable
+    ```plaintext
+    API_URL=http://localhost:5255
+    ```
+4. Install packages and run
 
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+    ```bash
+    npm install
+    npm run dev
