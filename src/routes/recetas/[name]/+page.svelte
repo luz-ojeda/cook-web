@@ -214,6 +214,7 @@
 
 	.instructions-paragraph {
 		max-width: 34em;
+		white-space: pre-line;
 
 		@media (max-width: $tabletBreakpoint) {
 			max-width: none;
