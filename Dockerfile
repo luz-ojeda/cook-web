@@ -26,7 +26,7 @@ RUN npm ci --include=dev
 # Copy application code
 COPY --link . .
 
-RUN --mount=type=secret,id=API_URL API_URL="$(cat /run/secrets/API_URL)"
+RUN --mount=type=secret,id=API_URL --mount=type=secret,id=API_KEY API_URL="$(cat /run/secrets/API_URL)" API_KEY="$(cat /run/secrets/API_KEY)"
 
 ENV PUBLIC_AZURE_STORAGE_SAS_TOKEN='sp=r&st=2024-03-18T01:19:57Z&se=2024-05-16T09:19:57Z&spr=https&sv=2022-11-02&sr=c&sig=UH5PP4XKr9wlqRyTASqVUEAWhCi%2BOhEoZ%2F5YcbVjaYo%3D'
 
