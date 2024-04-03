@@ -91,7 +91,7 @@
 		grid-template: minmax(0, 1fr) / repeat(4, minmax(0, 1fr));
 
 		@media (max-width: $laptopBreakpoint) {
-			grid-template: repeat(2, minmax(0, 1fr)) / repeat(2, minmax(0, 1fr));
+			grid-template: repeat(2, minmax(0, 1fr)) / repeat(3, minmax(0, 1fr));
 		}
 
 		@media (max-width: $mobileBreakpoint) {

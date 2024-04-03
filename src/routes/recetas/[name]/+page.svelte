@@ -193,13 +193,17 @@
 		display: flex;
 		margin-bottom: 12px;
 
-		div {
+		div:not(:last-child) {
 			margin-right: 16px;
 		}
 
 		@media (max-width: $tabletBreakpoint) {
 			margin: 16px 0;
 			justify-content: space-between;
+
+			div:not(:last-child) {
+			margin-right: 8px;
+		}
 		}
 	}
 
