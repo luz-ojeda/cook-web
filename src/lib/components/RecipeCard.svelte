@@ -8,7 +8,7 @@
 	export let recipeTitle: string;
 	export let recipeSummary: string;
 
-	$: slugifiedRecipeTitle = recipeTitle.toLowerCase().replace(" ", "-");
+	$: slugifiedRecipeTitle = recipeTitle.toLowerCase().replaceAll(" ", "-");
 </script>
 
 <div class="flex-column">
