@@ -9,7 +9,7 @@ const securityHeaders = {
 	'Strict-Transport-Security': 'max-age=31536000',
     // [...],
 	'Referrer-Policy': 'no-referrer-when-downgrade',
-	'X-Content-Type-Options': 'nosnif',
+	'X-Content-Type-Options': 'nosniff',
 	'X-Frame-Options': 'DENY'
 }
 
