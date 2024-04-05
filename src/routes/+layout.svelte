@@ -4,6 +4,7 @@
 	import '../app.scss';
 	import { savedIds } from '../stores/savedRecipesStore';
 	import { browser } from "$app/environment";
+	import { burgerMenuStore } from "../stores/burgerMenu";
 	
 	let scrolled = false;
 
@@ -38,7 +39,7 @@
 	});
 </script>
 
-<header class="header {scrolled ? 'shadow' : ''}">
+<header class="header {scrolled ? 'shadow' : ''} {$burgerMenuStore ? 'border' : ''}">
 	<Navbar />
 </header>
 <slot />
@@ -46,6 +47,7 @@
 
 <style lang="scss">
 	@import "../sass/variables.scss";
+	@import "../sass/colors.scss";
 
 	.header {
 	  transition: box-shadow 0.3s ease;
@@ -53,5 +55,9 @@
   
 	.shadow {
 	  box-shadow: $smallShadow;
+	}
+
+	.border {
+		border-bottom: 1px solid $grey500;
 	}
   </style>
