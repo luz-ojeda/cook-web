@@ -45,8 +45,8 @@
 				{#if data.preparationTime}
 					<div class="flex-center">
 						<Icon class="icon-margin-right" name="clock" width="24" height="24" />
-						<span class="laptop">Tiempo de preparación:&nbsp </span>
-						<span class="mobile">Preparación: </span>
+						<span class="laptop">Tiempo de preparación:&nbsp</span>
+						<span class="mobile">Preparación:&nbsp</span>
 						<p><span class="bold">{data.preparationTime}</span> minutos</p>
 					</div>
 				{/if}
