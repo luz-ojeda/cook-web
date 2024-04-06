@@ -7,17 +7,17 @@
 	export let recipeImage: string;
 	export let recipeTitle: string;
 	export let recipeSummary: string;
-
 	$: slugifiedRecipeTitle = recipeTitle.toLowerCase().replaceAll(' ', '-');
 </script>
 
 <div class="flex-column">
-	<!-- svelte-ignore a11y-img-redundant-alt -->
 	<a class="non-text-anchor-element" href={`/recetas/${slugifiedRecipeTitle}`}>
 		<img
+			alt={`Photo of the recipe ${recipeTitle}`}
 			class="rounded-img recipe-image"
-			src={recipeImage ? `${recipeImage}?${PUBLIC_AZURE_STORAGE_SAS_TOKEN}` : placeholder}
-			alt="Photo of the recipe"
+			crossorigin="anonymous"
+			loading="lazy"
+			src={recipeImage ? recipeImage : placeholder}
 		/>
 		<div class="title-container">
 			<h2>{recipeTitle}</h2>
@@ -37,8 +37,14 @@
 		aspect-ratio: 1 / 1;
 		box-shadow: $smallestShadow;
 		margin-bottom: 16px;
+		max-height: 240px;
+		display: inline-block;
 		object-fit: cover;
 		width: 100%;
+
+		@media (max-width: $mobileBreakpoint) {
+			max-height: 150px;
+		}
 	}
 
 	h2 {

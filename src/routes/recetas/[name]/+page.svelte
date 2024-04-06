@@ -35,9 +35,10 @@
 <div class="spacing">
 	<div class="title-image-container flex">
 		<img
+			alt={`Photo of the recipe ${data.name}`}
 			class="rounded-img recipe-image"
+			crossorigin="anonymous"
 			src={data.pictures[0] ? `${data.pictures[0]}?${PUBLIC_AZURE_STORAGE_SAS_TOKEN}` : placeholder}
-			alt=""
 		/>
 		<div>
 			<h1>{data.name}</h1>
@@ -202,8 +203,8 @@
 			justify-content: space-between;
 
 			div:not(:last-child) {
-			margin-right: 8px;
-		}
+				margin-right: 8px;
+			}
 		}
 	}
 
