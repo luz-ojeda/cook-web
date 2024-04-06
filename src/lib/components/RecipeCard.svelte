@@ -7,6 +7,7 @@
 	export let recipeImage: string;
 	export let recipeTitle: string;
 	export let recipeSummary: string;
+
 	$: slugifiedRecipeTitle = recipeTitle.toLowerCase().replaceAll(' ', '-');
 </script>
 
@@ -22,6 +23,7 @@
 	</a>
 	<div class="title-container">
 		<a class="non-text-anchor-element" href={`/recetas/${slugifiedRecipeTitle}`}>
+
 			<h2>{recipeTitle}</h2>
 		</a>
 		<SaveRecipeButton {recipeId} --iconWidth="32px" --mobileIconWidth="48px" />
