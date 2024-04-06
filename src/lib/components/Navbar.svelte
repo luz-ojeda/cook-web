@@ -44,6 +44,11 @@
 			padding: 12px 160px;
 		}
 
+		@media (max-width: $tabletBreakpoint) {
+			max-height: 100vh;
+			overflow-y: scroll;
+		}
+
 		font-size: 24px;
 	}
 

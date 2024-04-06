@@ -27,7 +27,7 @@
 
 <!-- Recipe cards -->
 {#if data.data.length > 0}
-	<div class="recipes spacing background">
+	<div class="recipes-section spacing background">
 		<div class="recipes-container recipes-container-home">
 			{#each data.data as { id, name, summary, pictures }}
 				<RecipeCard
@@ -61,7 +61,6 @@
 	.hero {
 		@media (max-width: $tabletBreakpoint) {
 			flex-direction: column;
-			padding-bottom: 32px;
 			text-align: center;
 		}
 
@@ -88,12 +87,17 @@
 		}
 	}
 
-	.recipes {
+	.recipes-section {
 		align-items: center;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		padding-bottom: 24px;
+		padding-bottom: 48px;
+		padding-top: 48px;
+
+		@media (max-width: $laptopBreakpoint) {
+			padding-top: 24px;
+		}
 
 		a {
 			font-size: 24px;
@@ -106,10 +110,6 @@
 
 		@media (max-width: $laptopBreakpoint) {
 			grid-template: repeat(2, minmax(0, 1fr)) / repeat(3, minmax(0, 1fr));
-		}
-
-		@media (max-width: $mobileBreakpoint) {
-			padding: $paddingMobile;
 		}
 	}
 </style>
