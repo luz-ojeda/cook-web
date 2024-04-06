@@ -23,17 +23,22 @@ Aplicación web en Svelte que permite a los usuarios gestionar y recuperar recet
    ```bash
    git clone https://github.com/luz-ojeda/cook-web.git
 
+   ```
+
 2. Navegue hasta el directorio raíz del proyecto
 
    ```bash
    cd cook-web
 
+   ```
+
 3. Cree un archivo .env y agregue la variable `API_URL`
-    ```plaintext
-    API_URL=http://localhost:5255
-    ```
+   ```plaintext
+   API_URL=http://localhost:5255
+   ```
 4. Instalar paquetes y ejecutar
 
-    ```bash
-    npm install
-    npm run dev
+   ```bash
+   npm install
+   npm run dev
+   ```

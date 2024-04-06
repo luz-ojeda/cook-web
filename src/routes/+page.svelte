@@ -27,8 +27,8 @@
 
 <!-- Recipe cards -->
 {#if data.data.length > 0}
-	<div class="background">
-		<div class="recipes-container recipes-container-home spacing">
+	<div class="recipes-section spacing background">
+		<div class="recipes-container recipes-container-home">
 			{#each data.data as { id, name, summary, pictures }}
 				<RecipeCard
 					recipeId={id}
@@ -38,6 +38,7 @@
 				/>
 			{/each}
 		</div>
+		<a class="see-more" href="/recetas">Ver más recetas</a>
 	</div>
 {/if}
 
@@ -47,6 +48,12 @@
 
 	.background {
 		background-color: $grey200;
+	}
+
+	.recipes-section {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
 	}
 
 	h1 {
@@ -60,7 +67,6 @@
 	.hero {
 		@media (max-width: $tabletBreakpoint) {
 			flex-direction: column;
-			padding-bottom: 32px;
 			text-align: center;
 		}
 
@@ -91,14 +97,29 @@
 		grid-template-columns: repeat(4, minmax(0, 1fr));
 		grid-template-rows: auto;
 		grid-auto-rows: 0;
-		overflow: scroll;
 
 		@media (max-width: $tabletBreakpoint) {
 			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
 
-		@media (max-width: $mobileBreakpoint) {
-			padding: $paddingMobile;
+	}
+
+	.see-more {
+		font-size: 24px;
+		font-weight: bold;
+	}
+
+	.recipes-container-home {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		grid-template-rows: auto;
+		grid-auto-rows: 0;
+
+		@media (max-width: $tabletBreakpoint) {
+			grid-auto-rows: auto;
+		}
+
+		@media (max-width: $tabletBreakpoint) {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
 	}
 </style>

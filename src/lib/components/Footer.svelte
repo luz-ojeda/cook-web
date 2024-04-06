@@ -16,14 +16,18 @@
 		<h3>EXPLORAR</h3>
 		<ul>
 			<li>
-				<a href="/">Inicio</a>
+				<a class="non-text-anchor-element" href="/">Inicio</a>
 			</li>
 			<li>
-				<a href="/sobre-cook" aria-current={$page.url.pathname === '/sobre-cook'}>Sobre Cook</a>
+				<a
+					class="non-text-anchor-element"
+					href="/sobre-cook"
+					aria-current={$page.url.pathname === '/sobre-cook'}>Sobre Cook</a
+				>
 			</li>
 			{#if $page.url.pathname != '/recetas'}
 				<li>
-					<a href="/recetas"> Buscar recetas </a>
+					<a class="non-text-anchor-element" href="/recetas"> Buscar recetas </a>
 				</li>
 			{/if}
 		</ul>
@@ -42,7 +46,7 @@
 			</li>
 			<li>
 				<img class="icon-margin-right" alt="" src={GitHubMark} width="24" />
-				<a href="https://github.com/luz-ojeda/cook-web">GitHub</a>
+				<a class="non-text-anchor-element" href="https://github.com/luz-ojeda/cook-web">GitHub</a>
 			</li>
 		</ul>
 	</div>
