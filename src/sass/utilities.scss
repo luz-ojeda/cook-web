@@ -1,3 +1,5 @@
+@import "./colors.scss";
+
 .flex {
 	display: flex;
 }
@@ -98,4 +100,9 @@
 	@media (min-width: $laptopBreakpoint) {
 		display: none;
 	}
+}
+
+.non-text-anchor-element {
+	color: $grey900;
+	text-decoration: none;
 }

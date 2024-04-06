@@ -8,24 +8,22 @@
 	export let recipeTitle: string;
 	export let recipeSummary: string;
 
-	$: slugifiedRecipeTitle = recipeTitle.toLowerCase().replaceAll(" ", "-");
+	$: slugifiedRecipeTitle = recipeTitle.toLowerCase().replaceAll(' ', '-');
 </script>
 
 <div class="flex-column">
 	<!-- svelte-ignore a11y-img-redundant-alt -->
-	<a href={`/recetas/${slugifiedRecipeTitle}`}>
+	<a class="non-text-anchor-element" href={`/recetas/${slugifiedRecipeTitle}`}>
 		<img
 			class="rounded-img recipe-image"
 			src={recipeImage ? `${recipeImage}?${PUBLIC_AZURE_STORAGE_SAS_TOKEN}` : placeholder}
 			alt="Photo of the recipe"
 		/>
-	</a>
-	<div class="title-container">
-		<a href={`/recetas/${slugifiedRecipeTitle}`}>
+		<div class="title-container">
 			<h2>{recipeTitle}</h2>
-		</a>
-		<SaveRecipeButton {recipeId} --iconWidth="32px" --mobileIconWidth="48px" />
-	</div>
+			<SaveRecipeButton {recipeId} --iconWidth="32px" --mobileIconWidth="48px" />
+		</div>
+	</a>
 	{#if recipeSummary}
 		<p>{recipeSummary}</p>
 	{/if}
@@ -57,5 +55,9 @@
 		@media (max-width: 720px) {
 			align-items: center;
 		}
+	}
+
+	a {
+		text-decoration: none;
 	}
 </style>

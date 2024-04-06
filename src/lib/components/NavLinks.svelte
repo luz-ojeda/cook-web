@@ -3,8 +3,8 @@
 </script>
 
 <div class="nav-links">
-	<a href="/recetas" aria-current={$page.url.pathname === '/recetas'}>Recetas</a>
-	<a href="/recetas-guardadas" aria-current={$page.url.pathname === '/recetas-guardadas'}
+	<a class="non-text-anchor-element nav-link" href="/recetas" aria-current={$page.url.pathname === '/recetas'}>Recetas</a>
+	<a class="non-text-anchor-element nav-link" href="/recetas-guardadas" aria-current={$page.url.pathname === '/recetas-guardadas'}
 		>Recetas guardadas</a
 	>
 </div>
@@ -27,6 +27,13 @@
 		@media (max-width: $tabletBreakpoint) {
 			margin-right: 0;
 			margin-bottom: 24px;
+		}
+	}
+
+	.nav-link {
+		&[aria-current='true'] {
+			color: $primaryColor;
+			text-decoration: underline;
 		}
 	}
 </style>

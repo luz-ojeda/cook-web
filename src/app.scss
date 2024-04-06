@@ -22,21 +22,12 @@ button {
 }
 
 a {
-	text-decoration: none;
-	color: $grey900;
-
-	&:visited {
-		color: $grey900;
-	}
+	color: $primaryColor;
 
 	&:hover {
-		color: $lightestPrimaryColor;
+		color: $lightPrimaryColor;
+		text-decoration: none;
 		transition: color 0.2s ease;
-	}
-
-	&[aria-current='true'] {
-		color: $primaryColor;
-		text-decoration: underline;
 	}
 }
 

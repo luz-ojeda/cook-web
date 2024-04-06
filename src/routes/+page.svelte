@@ -27,8 +27,8 @@
 
 <!-- Recipe cards -->
 {#if data.data.length > 0}
-	<div class="background">
-		<div class="recipes-container recipes-container-home spacing">
+	<div class="recipes spacing background">
+		<div class="recipes-container recipes-container-home">
 			{#each data.data as { id, name, summary, pictures }}
 				<RecipeCard
 					recipeId={id}
@@ -38,6 +38,7 @@
 				/>
 			{/each}
 		</div>
+		<a href="/recetas">Ver más recetas</a>
 	</div>
 {/if}
 
@@ -84,6 +85,19 @@
 	.hero div:first-of-type {
 		@media (min-width: 720px) {
 			margin-right: 48px;
+		}
+	}
+
+	.recipes {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		padding-bottom: 24px;
+
+		a {
+			font-size: 24px;
+			font-weight: bold;
 		}
 	}
 
