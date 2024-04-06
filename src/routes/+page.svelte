@@ -106,10 +106,16 @@
 	}
 
 	.recipes-container-home {
-		grid-template: minmax(0, 1fr) / repeat(4, minmax(0, 1fr));
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		grid-template-rows: auto;
+		grid-auto-rows: 0;
 
-		@media (max-width: $laptopBreakpoint) {
-			grid-template: repeat(2, minmax(0, 1fr)) / repeat(3, minmax(0, 1fr));
+		@media (max-width: $tabletBreakpoint) {
+			grid-auto-rows: auto;
+		}
+
+		@media (max-width: $tabletBreakpoint) {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
 	}
 </style>
