@@ -46,7 +46,7 @@
 
 		@media (max-width: $tabletBreakpoint) {
 			max-height: 100vh;
-			overflow-y: scroll;
+			overflow-y: auto;
 		}
 
 		font-size: 24px;
