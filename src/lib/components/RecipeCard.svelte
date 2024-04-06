@@ -19,11 +19,13 @@
 			loading="lazy"
 			src={recipeImage ? recipeImage : placeholder}
 		/>
-		<div class="title-container">
-			<h2>{recipeTitle}</h2>
-			<SaveRecipeButton {recipeId} --iconWidth="32px" --mobileIconWidth="48px" />
-		</div>
 	</a>
+	<div class="title-container">
+		<a class="non-text-anchor-element" href={`/recetas/${slugifiedRecipeTitle}`}>
+			<h2>{recipeTitle}</h2>
+		</a>
+		<SaveRecipeButton {recipeId} --iconWidth="32px" --mobileIconWidth="48px" />
+	</div>
 	{#if recipeSummary}
 		<p>{recipeSummary}</p>
 	{/if}

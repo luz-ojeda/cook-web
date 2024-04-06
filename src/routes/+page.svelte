@@ -38,7 +38,7 @@
 				/>
 			{/each}
 		</div>
-		<a href="/recetas">Ver más recetas</a>
+		<a class="see-more" href="/recetas">Ver más recetas</a>
 	</div>
 {/if}
 
@@ -48,6 +48,12 @@
 
 	.background {
 		background-color: $grey200;
+	}
+
+	.recipes-section {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
 	}
 
 	h1 {
@@ -87,22 +93,20 @@
 		}
 	}
 
-	.recipes-section {
-		align-items: center;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		padding-bottom: 48px;
-		padding-top: 48px;
+	.recipes-container-home {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		grid-template-rows: auto;
+		grid-auto-rows: 0;
 
-		@media (max-width: $laptopBreakpoint) {
-			padding-top: 24px;
+		@media (max-width: $tabletBreakpoint) {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
 
-		a {
-			font-size: 24px;
-			font-weight: bold;
-		}
+	}
+
+	.see-more {
+		font-size: 24px;
+		font-weight: bold;
 	}
 
 	.recipes-container-home {
