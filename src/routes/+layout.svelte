@@ -3,9 +3,9 @@
 	import { Footer, Navbar } from '$lib';
 	import '../app.scss';
 	import { savedIds } from '../stores/savedRecipesStore';
-	import { browser } from "$app/environment";
-	import { burgerMenuStore } from "../stores/burgerMenu";
-	
+	import { browser } from '$app/environment';
+	import { burgerMenuStore } from '../stores/burgerMenu';
+
 	let scrolled = false;
 
 	const handleScroll = () => {
@@ -46,18 +46,18 @@
 <Footer />
 
 <style lang="scss">
-	@import "../sass/variables.scss";
-	@import "../sass/colors.scss";
+	@import '../sass/variables.scss';
+	@import '../sass/colors.scss';
 
 	.header {
-	  transition: box-shadow 0.3s ease;
+		transition: box-shadow 0.3s ease;
 	}
-  
+
 	.shadow {
-	  box-shadow: $smallShadow;
+		box-shadow: $smallShadow;
 	}
 
 	.border {
 		border-bottom: 1px solid $grey500;
 	}
-  </style>
+</style>

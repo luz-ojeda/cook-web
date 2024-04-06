@@ -34,7 +34,12 @@
 	{#if isRecipeCopied}
 		<Icon class="icon-margin-right" name="copy_full" width="18" height="18" />
 	{:else}
-		<Icon class="icon-margin-right" name={isRecipeCopied ? 'copy_full' : 'copy_empty'} width="18" height="18" />
+		<Icon
+			class="icon-margin-right"
+			name={isRecipeCopied ? 'copy_full' : 'copy_empty'}
+			width="18"
+			height="18"
+		/>
 	{/if}
 	<span class="action-label">{isRecipeCopied ? 'Copiada' : 'Copiar'}</span>
 </div>

@@ -25,7 +25,7 @@
 {/if}
 
 <style lang="scss">
-	@import "../../sass/colors.scss";
+	@import '../../sass/colors.scss';
 
 	a:hover {
 		color: $grey900;

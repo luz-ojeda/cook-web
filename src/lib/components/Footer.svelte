@@ -19,7 +19,11 @@
 				<a class="non-text-anchor-element" href="/">Inicio</a>
 			</li>
 			<li>
-				<a class="non-text-anchor-element" href="/sobre-cook" aria-current={$page.url.pathname === '/sobre-cook'}>Sobre Cook</a>
+				<a
+					class="non-text-anchor-element"
+					href="/sobre-cook"
+					aria-current={$page.url.pathname === '/sobre-cook'}>Sobre Cook</a
+				>
 			</li>
 			{#if $page.url.pathname != '/recetas'}
 				<li>

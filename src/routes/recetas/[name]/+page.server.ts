@@ -10,7 +10,8 @@ export const load: PageServerLoad<Recipe> = async ({ fetch, params }) => {
 		}
 	});
 
-	if (res.status == 404) error(404, `No se encontró una receta con el nombre ${params.name.replace("-", " ")}`);
+	if (res.status == 404)
+		error(404, `No se encontró una receta con el nombre ${params.name.replace('-', ' ')}`);
 
 	const responseJson = await res.json();
 	if ('status' in responseJson) {

@@ -27,17 +27,22 @@ Once you've created a project and installed dependencies with `npm install` (or 
    ```bash
    git clone https://github.com/luz-ojeda/cook-web.git
 
+   ```
+
 2. Navigate to the project's root directory
 
    ```bash
    cd cook-web
 
+   ```
+
 3. Create an .env file and add `API_URL` variable
-    ```plaintext
-    API_URL=http://localhost:5255
-    ```
+   ```plaintext
+   API_URL=http://localhost:5255
+   ```
 4. Install packages and run
 
-    ```bash
-    npm install
-    npm run dev
+   ```bash
+   npm install
+   npm run dev
+   ```

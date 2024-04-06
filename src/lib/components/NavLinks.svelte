@@ -3,9 +3,15 @@
 </script>
 
 <div class="nav-links">
-	<a class="non-text-anchor-element nav-link" href="/recetas" aria-current={$page.url.pathname === '/recetas'}>Recetas</a>
-	<a class="non-text-anchor-element nav-link" href="/recetas-guardadas" aria-current={$page.url.pathname === '/recetas-guardadas'}
-		>Recetas guardadas</a
+	<a
+		class="non-text-anchor-element nav-link"
+		href="/recetas"
+		aria-current={$page.url.pathname === '/recetas'}>Recetas</a
+	>
+	<a
+		class="non-text-anchor-element nav-link"
+		href="/recetas-guardadas"
+		aria-current={$page.url.pathname === '/recetas-guardadas'}>Recetas guardadas</a
 	>
 </div>
 

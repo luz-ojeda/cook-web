@@ -4,14 +4,14 @@ import { MESSAGES } from './constants';
 import type { ApiError } from '$lib/types/ApiError';
 
 const securityHeaders = {
-    'Cross-Origin-Embedder-Policy': 'require-corp',
-    'Cross-Origin-Opener-Policy': 'same-origin',
+	'Cross-Origin-Embedder-Policy': 'require-corp',
+	'Cross-Origin-Opener-Policy': 'same-origin',
 	'Strict-Transport-Security': 'max-age=31536000',
-    // [...],
+	// [...],
 	'Referrer-Policy': 'no-referrer-when-downgrade',
 	'X-Content-Type-Options': 'nosniff',
 	'X-Frame-Options': 'DENY'
-}
+};
 
 export const handleError: HandleServerError = async ({ event, error }) => {
 	if (event.route.id === '/' || event.route.id === '/recetas') {
@@ -33,10 +33,8 @@ export const handleError: HandleServerError = async ({ event, error }) => {
 };
 
 export const handle: Handle = async ({ event, resolve }) => {
-    const response = await resolve(event);
-    Object.entries(securityHeaders).forEach(
-        ([header, value]) => response.headers.set(header, value)
-    );
+	const response = await resolve(event);
+	Object.entries(securityHeaders).forEach(([header, value]) => response.headers.set(header, value));
 
-    return response;
-}
+	return response;
+};
