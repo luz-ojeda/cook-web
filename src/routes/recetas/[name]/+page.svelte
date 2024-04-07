@@ -32,11 +32,11 @@
 	<title>{data.name}</title>
 </svelte:head>
 
-<div class="spacing">
-	<div class="title-image-container flex">
+<div class="recipe-container spacing">
+	<div class="recipe-first-content">
 		<img
 			alt={`Photo of the recipe ${data.name}`}
-			class="rounded-img recipe-image"
+			class="image-container rounded-img recipe-image"
 			crossorigin="anonymous"
 			src={data.pictures[0] ? `${data.pictures[0]}?${PUBLIC_AZURE_STORAGE_SAS_TOKEN}` : placeholder}
 		/>
@@ -93,39 +93,40 @@
 				{/if}
 			</div>
 		</div>
-	</div>
 
-	<div class="actions">
-		<!-- TODO: Handle copy for firefox for Android where clipboard API is not supported -->
-		<div>
-			<CopyRecipeButton recipe={{ ...data, ingredients, servings }} />
-		</div>
-		<div>
-			<SaveRecipeButton --color="#2f2622" label iconWidth="18" recipeId={data.id} />
-		</div>
-		<div>
-			<DownloadRecipeButton recipe={{ ...data, ingredients, servings }} />
+		<div class="actions">
+			<!-- TODO: Handle copy for firefox for Android where clipboard API is not supported -->
+			<div>
+				<CopyRecipeButton recipe={{ ...data, ingredients, servings }} />
+			</div>
+			<div>
+				<SaveRecipeButton --color="#2f2622" label iconWidth="18" recipeId={data.id} />
+			</div>
+			<div>
+				<DownloadRecipeButton recipe={{ ...data, ingredients, servings }} />
+			</div>
 		</div>
 	</div>
-
-	<div class="ingredients">
-		<div class="flex-center">
-			<Icon class="icon-margin-right" name="fridge" width="24" height="24" />
-			<h2>Ingredientes:</h2>
-		</div>
-		<ul>
-			{#each ingredients as ingredient}
-				<li>{capitalizeFirstLetter(ingredient)}</li>
-			{/each}
-		</ul>
-	</div>
-
 	<div>
-		<div class="flex-center">
-			<Icon class="icon-margin-right" name="axe" width="24" height="24" />
-			<h2>Instrucciones:</h2>
+		<div class="ingredients">
+			<div class="flex-center">
+				<Icon class="icon-margin-right" name="fridge" width="24" height="24" />
+				<h2>Ingredientes:</h2>
+			</div>
+			<ul>
+				{#each ingredients as ingredient}
+					<li>{capitalizeFirstLetter(ingredient)}</li>
+				{/each}
+			</ul>
 		</div>
-		<p class="instructions-paragraph">{data.instructions}</p>
+
+		<div>
+			<div class="flex-center">
+				<Icon class="icon-margin-right" name="axe" width="24" height="24" />
+				<h2>Instrucciones:</h2>
+			</div>
+			<p class="instructions-paragraph">{data.instructions}</p>
+		</div>
 	</div>
 
 	<!-- TODO: Display all images in gallery -->
@@ -139,6 +140,10 @@
 		margin-bottom: 16px;
 		margin-top: 0;
 
+		@media (max-width: $laptopBreakpoint) {
+			font-size: 40px;
+		}
+
 		@media (max-width: $tabletBreakpoint) {
 			font-size: 32px;
 		}
@@ -148,11 +153,34 @@
 		margin: 0;
 	}
 
+	.recipe-container {
+		display: flex;
+
+		@media (max-width: $tabletBreakpoint) {
+			display: block;
+		}
+	}
+
+	.recipe-first-content {
+		height: fit-content;
+		margin-right: 24px;
+		position: sticky;
+		top: 120px;
+		width: 50%;
+
+		@media (max-width: $tabletBreakpoint) {
+			margin-right: 0;
+			position: static;
+			top: 0;
+			width: auto;
+		}
+	}
+
 	.recipe-image {
 		max-height: 374px;
 		margin-right: 20px;
 		object-fit: cover;
-		min-width: 65%;
+		width: 100%;
 
 		@media (max-width: $tabletBreakpoint) {
 			margin-bottom: 16px;
@@ -166,16 +194,13 @@
 		}
 	}
 
-	.title-image-container {
+	.image-container {
 		margin-bottom: 16px;
-
-		@media (max-width: $tabletBreakpoint) {
-			flex-direction: column;
-		}
 	}
 
 	.recipe-summary {
 		font-size: 18px;
+		margin-bottom: 16px;
 
 		div:not(:last-of-type) {
 			margin-bottom: 12px;
@@ -187,6 +212,7 @@
 
 		@media (max-width: $tabletBreakpoint) {
 			font-size: 16px;
+			margin-bottom: 0;
 		}
 	}
 
@@ -200,11 +226,15 @@
 
 		@media (max-width: $tabletBreakpoint) {
 			margin: 16px 0;
-			justify-content: space-between;
+			justify-content: space-evenly;
 
 			div:not(:last-child) {
 				margin-right: 8px;
 			}
+		}
+
+		@media (max-width: $mobileBreakpoint) {
+			justify-content: space-between;
 		}
 	}
 

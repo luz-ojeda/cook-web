@@ -3,7 +3,7 @@
 .action-label {
 	font-size: 18px;
 
-	@media (max-width: $tabletBreakpoint) {
+	@media (max-width: $mobileBreakpoint) {
 		font-size: 12px;
 	}
 }
