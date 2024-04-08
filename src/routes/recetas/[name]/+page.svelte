@@ -13,7 +13,6 @@
 	import Icon from '$lib/components/Icon.svelte';
 
 	export let data: Recipe;
-
 	let ingredients: string[];
 	let servings = data.servings;
 
@@ -84,7 +83,6 @@
 							<input
 								id="servings"
 								min="1"
-								class="servings-input"
 								type="number"
 								bind:value={servings}
 							/>
@@ -240,11 +238,6 @@
 
 	.ingredients {
 		margin-bottom: 12px;
-	}
-
-	.servings-input {
-		padding: 6px;
-		width: 38px;
 	}
 
 	.instructions-paragraph {

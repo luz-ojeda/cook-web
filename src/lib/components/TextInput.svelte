@@ -17,10 +17,4 @@
 	label {
 		margin-bottom: 6px;
 	}
-
-	input {
-		border-radius: 5px;
-		border: 1px solid #cccccc;
-		padding: 6px 8px;
-	}
 </style>
