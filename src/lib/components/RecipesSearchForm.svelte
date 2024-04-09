@@ -85,6 +85,7 @@
 		</PrimaryButton>
 	{:else}
 		<a
+			class="non-text-anchor-element"
 			href={buildRecipesBrowserUrl({
 				name: $recipes.name,
 				ingredients: $recipes.ingredients,
