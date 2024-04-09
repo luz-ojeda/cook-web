@@ -124,5 +124,9 @@
 		img {
 			margin-right: 6px;
 		}
+
+		@media (max-width: $tabletBreakpoint) {
+			justify-content: center;
+		}
 	}
 </style>
