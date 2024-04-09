@@ -1,11 +1,12 @@
 <script>
 	import { page } from '$app/stores';
 	import { GitHubMark, Icon } from '$lib';
+	import isotipo from '$lib/assets/isotipo.svg';
 </script>
 
 <footer class="container">
 	<div class="section">
-		<h3>COOK</h3>
+		<h3 class="logotipo"><img alt="" src={isotipo} width="24" /> Cook</h3>
 		<p>
 			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget sapien venenatis massa
 			fringilla accumsan. Etiam cursus dapibus purus, eget iaculis lacus convallis quis. Sed
@@ -114,5 +115,14 @@
 
 	* :global(.icon-margin-right) {
 		margin-right: 6px;
+	}
+
+	.logotipo {
+		align-items: center;
+		display: flex;
+
+		img {
+			margin-right: 6px;
+		}
 	}
 </style>

@@ -1,14 +1,14 @@
 <script>
 	import { BurgerMenu, Icon } from '$lib';
-	import logo from '$lib/assets/logo.png';
+	import isotipo from '$lib/assets/isotipo.svg';
 	import { burgerMenuStore } from '../../stores/burgerMenu';
 	import NavLinks from './NavLinks.svelte';
 </script>
 
 <nav>
 	<div class="main-nav flex-center">
-		<a class="flex-center logo" href="/">
-			<img alt="" src={logo} width="32" />
+		<a class="flex-center logotipo" href="/">
+			<img alt="" src={isotipo} width="48" />
 			COOK
 		</a>
 		<div class="nav-links flex-center">
@@ -32,6 +32,7 @@
 
 <style lang="scss">
 	@import '../../sass/variables.scss';
+	@import '../../sass/colors.scss';
 
 	nav {
 		padding: 0 16px;
@@ -70,8 +71,8 @@
 		justify-content: space-between;
 	}
 
-	.logo {
-		color: inherit;
+	.logotipo {
+		color: $darkPrimaryColor;
 		text-decoration: none;
 		font-weight: bold;
 
