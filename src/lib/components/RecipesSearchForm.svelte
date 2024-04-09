@@ -80,7 +80,7 @@
 	<label for="vegetarian">Solo vegetarianas</label>
 
 	{#if $page.url.pathname !== '/'}
-		<PrimaryButton disabled={$recipes.loading} {loading} onClick={onButtonClick} width="100%">
+		<PrimaryButton {loading} onClick={onButtonClick} width="100%">
 			Buscar
 		</PrimaryButton>
 	{:else}
