@@ -22,8 +22,7 @@ export const actions = {
 		const response = await fetch(`${env.API_URL}/recipes`, {
 			method: 'POST',
 			headers: {
-				'Content-Type': 'application/json',
-				'x-api-key': `${env.API_KEY}`
+				'Content-Type': 'application/json'
 			},
 			body: JSON.stringify(body)
 		});

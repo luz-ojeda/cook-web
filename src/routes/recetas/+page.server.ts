@@ -5,11 +5,7 @@ import type { PageServerLoad } from '../$types';
 import { buildRecipesApiUrl } from '$lib';
 
 export const load: PageServerLoad<PaginatedList<Recipe>> = async ({ url, fetch }) => {
-	const res = await fetch(buildRecipesApiUrl(env.API_URL, url), {
-		headers: {
-			'x-api-key': `${env.API_KEY}`
-		}
-	});
+	const res = await fetch(buildRecipesApiUrl(env.API_URL, url));
 	const responseJson = await res.json();
 	if ('status' in responseJson) {
 		throw new Error(responseJson.title);
