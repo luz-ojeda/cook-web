@@ -4,6 +4,8 @@
 
 Aplicación web en Svelte que permite a los usuarios gestionar y recuperar recetas de cocina. Utiliza [cook-api](https://github.com/luz-ojeda/cook-api) como backend.
 
+Puede encontrar una versión deployada de la aplicación web completa [aquí](https://cook-web-weathered-thunder-7639.fly.dev/). La creación de recetas está por el momento restringida.
+
 ## Features
 
 - Gestión de recetas: operaciones de lectura para recetas.
@@ -24,14 +26,12 @@ Aplicación web en Svelte que permite a los usuarios gestionar y recuperar recet
    git clone https://github.com/luz-ojeda/cook-web.git
 
    ```
-
 2. Navegue hasta el directorio raíz del proyecto
 
    ```bash
    cd cook-web
 
    ```
-
 3. Cree un archivo .env y agregue la variable `API_URL`
    ```plaintext
    API_URL=http://localhost:5255
@@ -42,3 +42,48 @@ Aplicación web en Svelte que permite a los usuarios gestionar y recuperar recet
    npm install
    npm run dev
    ```
+
+## Estructura del project
+.
+├── fly.toml # Para deployment en fly.io
+├── package.json
+├── src
+│   ├── app.d.ts
+│   ├── app.html
+│   ├── app.scss
+│   ├── constants.ts
+│   ├── errorLogging.ts
+│   ├── hooks.server.ts
+│   ├── lib
+│   │   ├── index.ts
+│   │   ├── assets # Imágenes de estado vacío, placeholders, etc.
+│   │   │   └── ...
+│   │   ├── components
+│   │   │   └── ...
+│   │   ├── scripts # Utilidades en Typescript
+│   │   │   └── ...
+│   │   └── types
+│   │       └── ...
+│   ├── routes
+│   │   ├── admin # Rutas restringidas/privadas
+│   │   ├── recetas # Página de búsqueda de recetas
+│   │   ├── recetas-guardadas # Página de recetas guardadas por el usuario
+│   │   ├── sobre-cook
+│   │   └── ... 
+│   ├── sass
+│   │   ├── colors.scss
+│   │   ├── recipe-page.scss
+│   │   ├── typography.scss
+│   │   ├── utilities.scss
+│   │   └── variables.scss
+│   └── stores
+│       ├── burgerMenu.ts # Control del estado abierto/cerrado del menu mobile
+│       ├── recipes.ts
+│       └── savedRecipesStore.ts # Para la manipulación del guardado de recetas y su correcta visualización en /recetas-guardadas
+├── static
+│   ├── cook.svg
+│   └── fonts
+│       └...
+├── svelte.config.js
+├── tsconfig.json
+└── vite.config.ts
