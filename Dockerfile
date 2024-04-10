@@ -30,7 +30,7 @@ RUN pnpm install --frozen-lockfile --prod=false
 # Copy application code
 COPY --link . .
 
-RUN --mount=type=secret,id=API_URL --mount=type=secret,id=API_KEY, --mount=type=secret,id=ADMIN_LOGIN API_URL="$(cat /run/secrets/API_URL)" API_KEY="$(cat /run/secrets/API_KEY)" ADMIN_LOGIN="$(cat /run/secrets/ADMIN_LOGIN)"
+RUN --mount=type=secret,id=API_URL --mount=type=secret,id=API_KEY --mount=type=secret,id=ADMIN_LOGIN API_URL="$(cat /run/secrets/API_URL)" API_KEY="$(cat /run/secrets/API_KEY)" ADMIN_LOGIN="$(cat /run/secrets/ADMIN_LOGIN)"
 
 # Build application
 RUN pnpm run build
