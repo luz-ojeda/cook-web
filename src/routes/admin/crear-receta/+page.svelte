@@ -15,7 +15,6 @@
 	function removeIngredient(ingredient: string) {
 		ingredients = ingredients.filter((i) => i !== ingredient);
 	}
-	$: console.log(form?.data?.name);
 </script>
 
 <div class="spacing">
@@ -26,7 +25,6 @@
 			loading = true;
 
 			return async ({ result }) => {
-				console.debug(result);
 				await applyAction(result);
 				loading = false;
 			};
