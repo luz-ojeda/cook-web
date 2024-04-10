@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type { Recipe } from '$lib/types/Recipe';
 	import placeholder from '$lib/assets/recipe_image_placeholder.png';
-	import { PUBLIC_AZURE_STORAGE_SAS_TOKEN } from '$env/static/public';
 	import {
 		CopyRecipeButton,
 		DownloadRecipeButton,
@@ -37,7 +36,7 @@
 			alt={`Photo of the recipe ${data.name}`}
 			class="image-container rounded-img recipe-image"
 			crossorigin="anonymous"
-			src={data.pictures[0] ? `${data.pictures[0]}?${PUBLIC_AZURE_STORAGE_SAS_TOKEN}` : placeholder}
+			src={data.pictures[0] ? data.pictures[0] : placeholder}
 		/>
 		<div>
 			<h1>{data.name}</h1>
