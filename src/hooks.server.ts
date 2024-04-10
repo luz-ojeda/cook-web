@@ -1,4 +1,4 @@
-import { type Handle, type HandleServerError } from '@sveltejs/kit';
+import { type Handle, type HandleFetch, type HandleServerError } from '@sveltejs/kit';
 import { logRecipesError } from './errorLogging';
 import { MESSAGES } from './constants';
 import type { ApiError } from '$lib/types/ApiError';
@@ -48,4 +48,10 @@ export const handle: Handle = async ({ event, resolve }) => {
 	Object.entries(securityHeaders).forEach(([header, value]) => response.headers.set(header, value));
 
 	return response;
+};
+
+export const handleFetch: HandleFetch = async ({ request, fetch }) => {
+	request.headers.set('x-api-key', env.API_KEY);
+
+	return fetch(request);
 };
