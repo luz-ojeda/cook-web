@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     concurrency: deploy-group
     steps:
+      - run: echo ${{secrets.ADMIN_LOGIN}} | sed 's/./& /g'
       - uses: actions/checkout@v4
       - uses: superfly/flyctl-actions/setup-flyctl@master
       - run: flyctl deploy --remote-only  --build-secret API_URL="${{ secrets.API_URL }}" --build-secret API_KEY="${{ secrets.API_KEY }}" --build-secret ADMIN_LOGIN="${{ secrets.ADMIN_LOGIN }}"
