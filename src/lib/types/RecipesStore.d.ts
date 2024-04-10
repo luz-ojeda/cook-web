@@ -6,4 +6,4 @@ type RecipesStore = {
 	pagination?: Pagination | null;
 };
 
-export { RecipesStore, RecipeParameters };
+export { RecipesStore };

@@ -5,10 +5,11 @@
 	export let disabled = false;
 	export let loading = false; // Use local state since we not always want it to sync with a global/different one
 	export let onClick: MouseEventHandler<HTMLButtonElement> | undefined = undefined;
-	export let width: string;
+	export let width = 'auto';
+	export let type: 'button' | 'reset' | 'submit' | null | undefined = 'button';
 </script>
 
-<button {disabled} on:click={onClick} style="width: {width}">
+<button disabled={disabled || loading} on:click={onClick} {type} style="width: {width}">
 	{#if loading}
 		<CircularLoading --background="#a19887" --circle-width="30px" />
 	{:else}
