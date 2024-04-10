@@ -19,17 +19,15 @@ export const handleError: HandleServerError = async ({ event, error }) => {
 	}
 
 	const apiError = error as ApiError;
-	try {
-		let message = '';
-		if (apiError.status === 404) {
-			message = MESSAGES.PAGE_NOT_FOUND;
-		} else {
-			message = MESSAGES.SERVER_ERROR;
-			return { message };
-		}
-	} catch (error) {
-		return { message: MESSAGES.SERVER_ERROR };
+
+	let message = '';
+	if (apiError.status === 404) {
+		message = MESSAGES.PAGE_NOT_FOUND;
+	} else {
+		message = MESSAGES.SERVER_ERROR;
 	}
+	console.error(error);
+	return { message };
 };
 
 export const handle: Handle = async ({ event, resolve }) => {
