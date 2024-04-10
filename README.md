@@ -4,7 +4,7 @@
 
 Svelte web application that lets users manage and retrieve cooking recipes. Uses [cook-api](https://github.com/luz-ojeda/cook-api) as the backend.
 
-A deployed version of the full stack web application can be found [here](https://cook-web-weathered-thunder-7639.fly.dev/)
+A deployed version of the full stack web application can be found [here](https://cook-web-weathered-thunder-7639.fly.dev/). Creation of recipes is for now restricted.
 
 ## Features
 
@@ -20,6 +20,8 @@ A deployed version of the full stack web application can be found [here](https:/
 - [Node 16 or higer](https://nodejs.org/en/download)
 - [npm](https://www.npmjs.com/)
 
+### Running the project
+
 Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
 1. Clone the repository:
@@ -28,14 +30,12 @@ Once you've created a project and installed dependencies with `npm install` (or 
    git clone https://github.com/luz-ojeda/cook-web.git
 
    ```
-
 2. Navigate to the project's root directory
 
    ```bash
    cd cook-web
 
    ```
-
 3. Create an .env file and add `API_URL` variable
    ```plaintext
    API_URL=http://localhost:5255
@@ -46,3 +46,48 @@ Once you've created a project and installed dependencies with `npm install` (or 
    npm install
    npm run dev
    ```
+
+## Directory tree
+.
+├── fly.toml # For deployment in fly.io
+├── package.json
+├── src
+│   ├── app.d.ts
+│   ├── app.html
+│   ├── app.scss
+│   ├── constants.ts
+│   ├── errorLogging.ts
+│   ├── hooks.server.ts
+│   ├── lib
+│   │   ├── index.ts
+│   │   ├── assets # Empty state images, placeholders, etc.
+│   │   │   └── ...
+│   │   ├── components
+│   │   │   └── ...
+│   │   ├── scripts # Typescript utilities
+│   │   │   └── ...
+│   │   └── types
+│   │       └── ...
+│   ├── routes
+│   │   ├── admin # Restricted/private routes
+│   │   ├── recetas # Recipes searching page
+│   │   ├── recetas-guardadas # User saved recipes page
+│   │   ├── sobre-cook
+│   │   └── ...
+│   ├── sass
+│   │   ├── colors.scss
+│   │   ├── recipe-page.scss
+│   │   ├── typography.scss
+│   │   ├── utilities.scss
+│   │   └── variables.scss
+│   └── stores
+│       ├── burgerMenu.ts # Handling of burger menu open/close state
+│       ├── recipes.ts
+│       └── savedRecipesStore.ts # For saving recipes handling and its correct display in /recetas-guardadas
+├── static
+│   ├── cook.svg
+│   └── fonts
+│       └...
+├── svelte.config.js
+├── tsconfig.json
+└── vite.config.ts
