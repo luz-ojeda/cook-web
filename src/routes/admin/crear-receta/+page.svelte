@@ -8,6 +8,10 @@
 
 	let ingredients = [''];
 	let loading = false;
+	let files: FileList | null;
+	let fileInput: HTMLInputElement;
+	let invalidFile = false;
+	let errorMessage: string | undefined = '';
 
 	function addIngredient() {
 		ingredients = [...ingredients, ''];
@@ -16,6 +20,31 @@
 	function removeIngredient(ingredient: string) {
 		ingredients = ingredients.filter((i) => i !== ingredient);
 	}
+
+	function resetFileInput() {
+		fileInput.value = '';
+		errorMessage = '';
+		files = null;
+	}
+
+	$: {
+		if (files) {
+			invalidFile =
+				!files[0].type.includes('jpg') &&
+				!files[0].type.includes('jpeg') &&
+				!files[0].type.includes('png');
+		} else {
+			invalidFile = false;
+		}
+
+		if (invalidFile) {
+			errorMessage = 'La imagen no tiene un formato válido. Solo se permite .jpg, .jpeg y .png.';
+		} else {
+			errorMessage = '';
+		}
+	}
+
+	$: errorMessage = form?.message;
 </script>
 
 <div class="spacing">
@@ -32,7 +61,17 @@
 			};
 		}}
 	>
-		<input accept=".png, .jpg, .jpeg" id="recipeImage" name="recipeImage" type="file" />
+		<div class="flex-center">
+			<input
+				accept=".png, .jpg, .jpeg"
+				bind:files
+				bind:this={fileInput}
+				id="recipeImage"
+				name="recipeImage"
+				type="file"
+			/>
+			<button disabled={!files} on:click={resetFileInput}>Remover imagen</button>
+		</div>
 		<label for="name">
 			Nombre*:
 			<input id="name" name="name" type="text" maxlength="150" required />
@@ -107,7 +146,7 @@
 			<input id="vegetarian" name="vegetarian" type="checkbox" />
 		</label>
 
-		<PrimaryButton {loading} type="submit">CREAR RECETA</PrimaryButton>
+		<PrimaryButton disabled={invalidFile} {loading} type="submit">CREAR RECETA</PrimaryButton>
 	</form>
 
 	{#if form?.success}
@@ -117,8 +156,8 @@
 			>
 		</p>
 	{/if}
-	{#if form?.failure}
-		<p class="error">{form?.message}</p>
+	{#if errorMessage}
+		<p class="error">{errorMessage}</p>
 	{/if}
 </div>
 

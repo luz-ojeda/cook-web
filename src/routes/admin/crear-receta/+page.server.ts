@@ -17,7 +17,7 @@ export const actions = {
 		const data = await request.formData();
 		const recipeName = data.get('name');
 		const slugifiedRecipeName = slugify(recipeName as string);
-		const recipeImage = data.get('recipeImage');
+		const recipeImage = data.get('recipeImage') as File;
 
 		const body = {
 			name: recipeName,
@@ -29,9 +29,12 @@ export const actions = {
 			servings: data.get('servings') || null,
 			difficulty: data.get('difficulty'),
 			vegetarian: Boolean(data.get('vegetarian')),
-			pictures: recipeImage
-				? [`https://${env.AZURE_STORAGE_ACCOUNT_NAME}.blob.core.windows.net/recipes/${slugifiedRecipeName}/1`]
-				: null
+			pictures:
+				recipeImage.size > 0
+					? [
+							`https://${env.AZURE_STORAGE_ACCOUNT_NAME}.blob.core.windows.net/recipes/${slugifiedRecipeName}/1`
+						]
+					: null
 		};
 
 		const response = await fetch(`${env.API_URL}/recipes`, {
@@ -47,7 +50,7 @@ export const actions = {
 			const responseJson = await response.json();
 
 			if (recipeImage !== null) {
-				await uploadImage(recipeImage as File, `${slugifiedRecipeName}/1`);
+				await uploadImage(recipeImage, `${slugifiedRecipeName}/1`);
 			}
 
 			return { success: true, data: responseJson };
