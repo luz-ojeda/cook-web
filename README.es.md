@@ -44,8 +44,10 @@ Puede encontrar una versión deployada de la aplicación web completa [aquí](ht
    ```
 
 ## Estructura del project
+```bash
 .
-├── fly.toml # Para deployment en fly.io
+.
+├── fly.toml                         # Para deployment en fly.io
 ├── package.json
 ├── src
 │   ├── app.d.ts
@@ -56,18 +58,18 @@ Puede encontrar una versión deployada de la aplicación web completa [aquí](ht
 │   ├── hooks.server.ts
 │   ├── lib
 │   │   ├── index.ts
-│   │   ├── assets # Imágenes de estado vacío, placeholders, etc.
+│   │   ├── assets                   # Imágenes de estado vacío, placeholders, etc.
 │   │   │   └── ...
 │   │   ├── components
 │   │   │   └── ...
-│   │   ├── scripts # Utilidades en Typescript
+│   │   ├── scripts                  # Utilidades en Typescript
 │   │   │   └── ...
 │   │   └── types
 │   │       └── ...
 │   ├── routes
-│   │   ├── admin # Rutas restringidas/privadas
-│   │   ├── recetas # Página de búsqueda de recetas
-│   │   ├── recetas-guardadas # Página de recetas guardadas por el usuario
+│   │   ├── admin                   # Rutas restringidas/privadas
+│   │   ├── recetas                 # Página de búsqueda de recetas
+│   │   ├── recetas-guardadas       # Página de recetas guardadas por el usuario
 │   │   ├── sobre-cook
 │   │   └── ... 
 │   ├── sass
@@ -77,13 +79,14 @@ Puede encontrar una versión deployada de la aplicación web completa [aquí](ht
 │   │   ├── utilities.scss
 │   │   └── variables.scss
 │   └── stores
-│       ├── burgerMenu.ts # Control del estado abierto/cerrado del menu mobile
+│       ├── burgerMenu.ts           # Control del estado abierto/cerrado del menu mobile
 │       ├── recipes.ts
-│       └── savedRecipesStore.ts # Para la manipulación del guardado de recetas y su correcta visualización en /recetas-guardadas
+│       └── savedRecipesStore.ts   # Para la manipulación del guardado de recetas y su correcta visualización en /recetas-guardadas
 ├── static
-│   ├── cook.svg
+│   ├── favicon.svg
 │   └── fonts
 │       └...
 ├── svelte.config.js
 ├── tsconfig.json
 └── vite.config.ts
+```
