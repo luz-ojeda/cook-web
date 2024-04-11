@@ -21,6 +21,7 @@
 	<h1>Crear receta</h1>
 	<form
 		method="POST"
+		enctype=multipart/form-data
 		use:enhance={() => {
 			loading = true;
 
@@ -30,6 +31,7 @@
 			};
 		}}
 	>
+		<input accept=".png, .jpg, .jpeg" id="recipeImage" name="recipeImage" type="file" />
 		<label for="name">
 			Nombre*:
 			<input id="name" name="name" type="text" maxlength="150" required />
@@ -106,9 +108,12 @@
 
 		<PrimaryButton {loading} type="submit">CREAR RECETA</PrimaryButton>
 	</form>
+
 	{#if form?.success}
 		<p class="success">
-			Receta creada exitosamente. Puedes verla <a href={`/recetas/${form?.data.name.toLowerCase().replaceAll(' ', '-')}`}>aquí</a>
+			Receta creada exitosamente. Puedes verla <a
+				href={`/recetas/${form?.data.name.toLowerCase().replaceAll(' ', '-')}`}>aquí</a
+			>
 		</p>
 	{/if}
 	{#if form?.failure}
