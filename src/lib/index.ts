@@ -1,3 +1,4 @@
+// Components
 import BurgerMenu from './components/BurgerMenu.svelte';
 import ChipTextInput from './components/ChipTextInput.svelte';
 import CircularLoading from './components/CircularLoading.svelte';
@@ -50,6 +51,7 @@ export {
 	buildRecipesBrowserUrl
 };
 
+// Images such as empty state, errors
 import EmptyBox from './assets/empty_box.svg';
 import GitHubMark from './assets/github-mark.svg';
 import SearchEmpty from './assets/search_empty.svg';
