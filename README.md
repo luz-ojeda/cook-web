@@ -48,46 +48,51 @@ Once you've created a project and installed dependencies with `npm install` (or 
    ```
 
 ## Directory tree
+```bash
 .
-├── fly.toml # For deployment in fly.io
+├── fly.toml                         # For deployment in fly.io
 ├── package.json
 ├── src
-│   ├── app.d.ts
-│   ├── app.html
-│   ├── app.scss
-│   ├── constants.ts
-│   ├── errorLogging.ts
-│   ├── hooks.server.ts
-│   ├── lib
-│   │   ├── index.ts
-│   │   ├── assets # Empty state images, placeholders, etc.
-│   │   │   └── ...
-│   │   ├── components
-│   │   │   └── ...
-│   │   ├── scripts # Typescript utilities
-│   │   │   └── ...
-│   │   └── types
-│   │       └── ...
-│   ├── routes
-│   │   ├── admin # Restricted/private routes
-│   │   ├── recetas # Recipes searching page
-│   │   ├── recetas-guardadas # User saved recipes page
-│   │   ├── sobre-cook
-│   │   └── ...
-│   ├── sass
-│   │   ├── colors.scss
-│   │   ├── recipe-page.scss
-│   │   ├── typography.scss
-│   │   ├── utilities.scss
-│   │   └── variables.scss
-│   └── stores
-│       ├── burgerMenu.ts # Handling of burger menu open/close state
-│       ├── recipes.ts
-│       └── savedRecipesStore.ts # For saving recipes handling and its correct display in /recetas-guardadas
+│   ├── app.d.ts
+│   ├── app.html
+│   ├── app.scss                     # Root stylesheet. Imports those in ./src/sass and set root styles.
+│   ├── constants.ts
+│   ├── errorLogging.ts
+│   ├── hooks.server.ts              # Server-side hooks
+│   ├── lib
+│   │   ├── index.ts                 # Main file for exporting library functionality
+│   │   ├── assets                   # Directory for static assets like images, placeholders, etc.
+│   │   │   └── ...
+│   │   ├── components               # Directory for reusable UI components
+│   │   │   └── ...
+│   │   ├── scripts                  # Directory for TypeScript utilities
+│   │   │   └── ...
+│   │   └── types                    # Directory for TypeScript type definitions
+│   │       └── ...
+│   ├── routes
+│   │   ├── admin                    # Restricted/private routes
+│   │   │   └── ...
+│   │   ├── recetas                  # Routes for a page related to recipe searching
+│   │   │   └── ...
+│   │   ├── recetas-guardadas        # Routes for a page displaying user saved recipes
+│   │   │   └── ...
+│   │   ├── sobre-cook               # Routes for a page about your application ("About Cook")
+│   │   └── ...
+│   ├── sass
+│   │   ├── colors.scss              # Color variables (primary, grey scales, accents, etc.)
+│   │   ├── recipe-page.scss         # SCSS specific to the recipe page
+│   │   ├── typography.scss          # SCSS for typography
+│   │   ├── utilities.scss           # SCSS utilities
+│   │   └── variables.scss           # General SCSS variables (breakpoints, shadows,...)
+│   └── stores
+│       ├── burgerMenu.ts            # Handling of burger menu open/close state
+│       ├── recipes.ts               # Logic related to managing recipes
+│       └── savedRecipesStore.ts     # Logic for saving recipes and displaying them correctly
 ├── static
-│   ├── cook.svg
-│   └── fonts
-│       └...
+│   ├── favicon.svg
+│   └── fonts                        # Directory for font files
+│       └── ...
 ├── svelte.config.js
 ├── tsconfig.json
 └── vite.config.ts
+```
