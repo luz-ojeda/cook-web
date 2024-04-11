@@ -37,7 +37,8 @@ export {
 import {
 	capitalizeFirstLetter,
 	formatRecipeForCopyOrDownload,
-	mapRecipeDifficulty
+	mapRecipeDifficulty,
+	slugify
 } from './scripts/strings';
 import { scaleServings } from './scripts/recipe';
 import { buildRecipesApiUrl, buildRecipesBrowserUrl } from './scripts/urls';
@@ -46,6 +47,7 @@ export {
 	capitalizeFirstLetter,
 	formatRecipeForCopyOrDownload,
 	mapRecipeDifficulty,
+	slugify,
 	scaleServings,
 	buildRecipesApiUrl,
 	buildRecipesBrowserUrl
