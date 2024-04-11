@@ -16,6 +16,8 @@ export const actions = {
 	default: async ({ request }) => {
 		const data = await request.formData();
 		const recipeName = data.get('name');
+		const slugifiedRecipeName = slugify(recipeName as string);
+		const recipeImage = data.get('recipeImage');
 
 		const body = {
 			name: recipeName,
@@ -26,7 +28,10 @@ export const actions = {
 			cookingTime: data.get('cookingTime') || null,
 			servings: data.get('servings') || null,
 			difficulty: data.get('difficulty'),
-			vegetarian: Boolean(data.get('vegetarian'))
+			vegetarian: Boolean(data.get('vegetarian')),
+			pictures: recipeImage
+				? [`https://${env.AZURE_STORAGE_ACCOUNT_NAME}.blob.core.windows.net/recipes/${slugifiedRecipeName}/1`]
+				: null
 		};
 
 		const response = await fetch(`${env.API_URL}/recipes`, {
@@ -41,10 +46,8 @@ export const actions = {
 		if (response.status === 201) {
 			const responseJson = await response.json();
 
-			const image = data.get('recipeImage');
-			if (image !== null) {
-				const slugifiedRecipeName = slugify(recipeName as string);
-				await uploadImage(image as File, `${responseJson.id}/${slugifiedRecipeName}`);
+			if (recipeImage !== null) {
+				await uploadImage(recipeImage as File, `${slugifiedRecipeName}/1`);
 			}
 
 			return { success: true, data: responseJson };
@@ -61,14 +64,14 @@ export const actions = {
 	}
 } satisfies Actions;
 
-async function uploadImage(recipeImage: File, recipeName: string) {
+async function uploadImage(recipeImage: File, blobName: string) {
 	const sasToken = createSasToken();
 	const blobServiceClient = new BlobServiceClient(
-		`https://cookapistorage.blob.core.windows.net?${sasToken}`,
+		`https://${env.AZURE_STORAGE_ACCOUNT_NAME}.blob.core.windows.net?${sasToken}`,
 		undefined
 	);
 	const containerClient = blobServiceClient.getContainerClient('recipes');
-	const blockBlobClient = containerClient.getBlockBlobClient(recipeName);
+	const blockBlobClient = containerClient.getBlockBlobClient(blobName);
 
 	try {
 		await blockBlobClient.uploadData(Buffer.from(await recipeImage.arrayBuffer()), {
@@ -83,7 +86,7 @@ function createSasToken() {
 	const sasOptions = {
 		services: AccountSASServices.parse('b').toString(),
 		resourceTypes: AccountSASResourceTypes.parse('co').toString(),
-		permissions: AccountSASPermissions.parse('rwl'),
+		permissions: AccountSASPermissions.parse('w'),
 		protocol: SASProtocol.HttpsAndHttp,
 		expiresOn: new Date(new Date().valueOf() + 3 * 60 * 1000) // 3 minutes
 	};
