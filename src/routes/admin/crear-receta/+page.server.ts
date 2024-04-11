@@ -10,14 +10,12 @@ import {
 	SASProtocol,
 	BlobServiceClient
 } from '@azure/storage-blob';
+import { slugify } from '$lib';
 
 export const actions = {
 	default: async ({ request }) => {
 		const data = await request.formData();
-		const image = data.get('recipeImage');
 		const recipeName = data.get('name');
-
-		await uploadImage(image as File, recipeName as string);
 
 		const body = {
 			name: recipeName,
@@ -40,9 +38,15 @@ export const actions = {
 			body: JSON.stringify(body)
 		});
 
-		const responseJson = await response.json();
-
 		if (response.status === 201) {
+			const responseJson = await response.json();
+
+			const image = data.get('recipeImage');
+			if (image !== null) {
+				const slugifiedRecipeName = slugify(recipeName as string);
+				await uploadImage(image as File, `${responseJson.id}/${slugifiedRecipeName}`);
+			}
+
 			return { success: true, data: responseJson };
 		}
 
@@ -57,9 +61,7 @@ export const actions = {
 	}
 } satisfies Actions;
 
-async function uploadImage(recipeImage: File | null, recipeName: string) {
-	if (recipeImage === null) return;
-
+async function uploadImage(recipeImage: File, recipeName: string) {
 	const sasToken = createSasToken();
 	const blobServiceClient = new BlobServiceClient(
 		`https://cookapistorage.blob.core.windows.net?${sasToken}`,

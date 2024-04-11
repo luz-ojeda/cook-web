@@ -1,7 +1,8 @@
 <script lang="ts">
-	import PrimaryButton from '$lib/components/PrimaryButton.svelte';
-	import type { PageData, ActionData } from './$types';
 	import { applyAction, enhance } from '$app/forms';
+	import PrimaryButton from '$lib/components/PrimaryButton.svelte';
+	import { slugify } from '$lib';
+	import type { ActionData } from './$types';
 
 	export let form: ActionData;
 
@@ -21,7 +22,7 @@
 	<h1>Crear receta</h1>
 	<form
 		method="POST"
-		enctype=multipart/form-data
+		enctype="multipart/form-data"
 		use:enhance={() => {
 			loading = true;
 
@@ -111,8 +112,8 @@
 
 	{#if form?.success}
 		<p class="success">
-			Receta creada exitosamente. Puedes verla <a
-				href={`/recetas/${form?.data.name.toLowerCase().replaceAll(' ', '-')}`}>aquí</a
+			Receta creada exitosamente. Puedes verla <a href={`/recetas/${slugify(form?.data.name)}`}
+				>aquí</a
 			>
 		</p>
 	{/if}
