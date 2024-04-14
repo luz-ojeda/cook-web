@@ -71,6 +71,7 @@
 		<label class="label-column" for="summary">
 			Resumen (el texto que aparecerá debajo de la tarjeta de receta):
 			<textarea id="summary" name="summary" maxlength="150" />
+			<span class="field-details">Máximo 150 caracteres</span>
 		</label>
 
 		<label class="label-column" for="instructions">
@@ -168,6 +169,7 @@
 
 	label {
 		display: block;
+		margin-right: 4px;
 	}
 
 	.label-column {
@@ -178,5 +180,9 @@
 	.remove-ingredient-button {
 		border-radius: 9999px;
 		height: 32px;
+	}
+
+	.field-details {
+		font-size: 14px;
 	}
 </style>
