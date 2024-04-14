@@ -7,6 +7,7 @@ import DownloadRecipeButton from './components/DownloadRecipeButton.svelte';
 import Footer from './components/Footer.svelte';
 import HomeSearch from './components/HomeSearch.svelte';
 import Icon from './components/Icon.svelte';
+import ImageUploadInput from './components/ImageUploadInput.svelte';
 import Navbar from './components/Navbar.svelte';
 import Pagination from './components/Pagination.svelte';
 import PrimaryButton from './components/PrimaryButton.svelte';
@@ -24,6 +25,7 @@ export {
 	Footer,
 	HomeSearch,
 	Icon,
+	ImageUploadInput,
 	Navbar,
 	Pagination,
 	PrimaryButton,

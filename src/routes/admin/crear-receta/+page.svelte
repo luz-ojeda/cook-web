@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { applyAction, enhance } from '$app/forms';
 	import PrimaryButton from '$lib/components/PrimaryButton.svelte';
-	import { slugify } from '$lib';
+	import { slugify, ImageUploadInput } from '$lib';
 	import type { ActionData } from './$types';
 
 	export let form: ActionData;
@@ -9,7 +9,6 @@
 	let ingredients = [''];
 	let loading = false;
 	let files: FileList | null;
-	let fileInput: HTMLInputElement;
 	let invalidFile = false;
 	let errorMessage: string | undefined = '';
 
@@ -21,10 +20,10 @@
 		ingredients = ingredients.filter((i) => i !== ingredient);
 	}
 
-	function resetFileInput() {
-		fileInput.value = '';
-		errorMessage = '';
-		files = null;
+	$: {
+		if (files === null) {
+			errorMessage = '';
+		}
 	}
 
 	$: {
@@ -62,15 +61,7 @@
 		}}
 	>
 		<div class="flex-center">
-			<input
-				accept=".png, .jpg, .jpeg"
-				bind:files
-				bind:this={fileInput}
-				id="recipeImage"
-				name="recipeImage"
-				type="file"
-			/>
-			<button disabled={!files} on:click={resetFileInput}>Remover imagen</button>
+			<ImageUploadInput {files} />
 		</div>
 		<label for="name">
 			Nombre*:

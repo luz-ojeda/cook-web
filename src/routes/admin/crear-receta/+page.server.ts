@@ -17,7 +17,7 @@ export const actions = {
 		const data = await request.formData();
 		const recipeName = data.get('name');
 		const slugifiedRecipeName = slugify(recipeName as string);
-		const recipeImage = data.get('recipeImage') as File;
+		const recipeImage = data.get('recipeImage') as File | null;
 
 		const body = {
 			name: recipeName,
@@ -30,7 +30,7 @@ export const actions = {
 			difficulty: data.get('difficulty'),
 			vegetarian: Boolean(data.get('vegetarian')),
 			pictures:
-				recipeImage.size > 0
+			recipeImage && recipeImage.size > 0
 					? [
 							`https://${env.AZURE_STORAGE_ACCOUNT_NAME}.blob.core.windows.net/recipes/${slugifiedRecipeName}/1`
 						]
@@ -46,10 +46,10 @@ export const actions = {
 			body: JSON.stringify(body)
 		});
 
+		const responseJson = await response.json();
 		if (response.status === 201) {
-			const responseJson = await response.json();
 
-			if (recipeImage !== null) {
+			if (recipeImage && recipeImage.size > 0) {
 				await uploadImage(recipeImage, `${slugifiedRecipeName}/1`);
 			}
 
@@ -57,7 +57,7 @@ export const actions = {
 		}
 
 		if (response.status === 409) {
-			return fail(response.status, {
+			return fail(responseJson.status, {
 				failure: true,
 				message: `La receta con el nombre ${recipeName} ya existe`
 			});
