@@ -14,7 +14,7 @@ export const load: PageServerLoad<PaginatedList<Recipe>> = async ({ fetch }) => 
 
 		return responseJson;
 	} catch (error) {
-		logRecipesError('/', error);
+		logRecipesError('/', error); // TODO: Check if this duplication makes sense since in errorLogging we check for the route
 		return { data: [] };
 	}
 };

@@ -1,12 +1,16 @@
 <script lang="ts">
-	import PrimaryButton from '$lib/components/PrimaryButton.svelte';
-	import type { PageData, ActionData } from './$types';
 	import { applyAction, enhance } from '$app/forms';
+	import PrimaryButton from '$lib/components/PrimaryButton.svelte';
+	import { slugify, ImageUploadInput } from '$lib';
+	import type { ActionData } from './$types';
 
 	export let form: ActionData;
 
 	let ingredients = [''];
 	let loading = false;
+	let files: FileList | null;
+	let invalidFile = false;
+	let errorMessage: string | undefined = '';
 
 	function addIngredient() {
 		ingredients = [...ingredients, ''];
@@ -15,12 +19,38 @@
 	function removeIngredient(ingredient: string) {
 		ingredients = ingredients.filter((i) => i !== ingredient);
 	}
+
+	$: {
+		if (files === null) {
+			errorMessage = '';
+		}
+	}
+
+	$: {
+		if (files) {
+			invalidFile =
+				!files[0].type.includes('jpg') &&
+				!files[0].type.includes('jpeg') &&
+				!files[0].type.includes('png');
+		} else {
+			invalidFile = false;
+		}
+
+		if (invalidFile) {
+			errorMessage = 'La imagen no tiene un formato válido. Solo se permite .jpg, .jpeg y .png.';
+		} else {
+			errorMessage = '';
+		}
+	}
+
+	$: errorMessage = form?.message;
 </script>
 
-<div class="spacing">
+<div class="container">
 	<h1>Crear receta</h1>
 	<form
 		method="POST"
+		enctype="multipart/form-data"
 		use:enhance={() => {
 			loading = true;
 
@@ -30,6 +60,9 @@
 			};
 		}}
 	>
+		<div class="flex-center">
+			<ImageUploadInput {files} />
+		</div>
 		<label for="name">
 			Nombre*:
 			<input id="name" name="name" type="text" maxlength="150" required />
@@ -38,6 +71,7 @@
 		<label class="label-column" for="summary">
 			Resumen (el texto que aparecerá debajo de la tarjeta de receta):
 			<textarea id="summary" name="summary" maxlength="150" />
+			<span class="field-details">Máximo 150 caracteres</span>
 		</label>
 
 		<label class="label-column" for="instructions">
@@ -104,15 +138,18 @@
 			<input id="vegetarian" name="vegetarian" type="checkbox" />
 		</label>
 
-		<PrimaryButton {loading} type="submit">CREAR RECETA</PrimaryButton>
+		<PrimaryButton disabled={invalidFile} {loading} type="submit">CREAR RECETA</PrimaryButton>
 	</form>
+
 	{#if form?.success}
 		<p class="success">
-			Receta creada exitosamente. Puedes verla <a href={`/recetas/${form?.data.name.toLowerCase().replaceAll(' ', '-')}`}>aquí</a>
+			Receta creada exitosamente. Puedes verla <a href={`/recetas/${slugify(form?.data.name)}`}
+				>aquí</a
+			>
 		</p>
 	{/if}
-	{#if form?.failure}
-		<p class="error">{form?.message}</p>
+	{#if errorMessage}
+		<p class="error">{errorMessage}</p>
 	{/if}
 </div>
 
@@ -132,6 +169,23 @@
 
 	label {
 		display: block;
+		margin-right: 4px;
+	}
+
+	.container {
+		padding: 48px 320px;
+
+		@media (max-width: $laptopBreakpoint) {
+			padding: 24px 128px;
+		}
+
+		@media (max-width: $tabletBreakpoint) {
+			padding: 24px 80px;
+		}
+
+		@media (max-width: $mobileBreakpoint) {
+			padding: 24px 16px;
+		}
 	}
 
 	.label-column {
@@ -142,5 +196,9 @@
 	.remove-ingredient-button {
 		border-radius: 9999px;
 		height: 32px;
+	}
+
+	.field-details {
+		font-size: 14px;
 	}
 </style>

@@ -1,3 +1,4 @@
+// Components
 import BurgerMenu from './components/BurgerMenu.svelte';
 import ChipTextInput from './components/ChipTextInput.svelte';
 import CircularLoading from './components/CircularLoading.svelte';
@@ -6,6 +7,7 @@ import DownloadRecipeButton from './components/DownloadRecipeButton.svelte';
 import Footer from './components/Footer.svelte';
 import HomeSearch from './components/HomeSearch.svelte';
 import Icon from './components/Icon.svelte';
+import ImageUploadInput from './components/ImageUploadInput.svelte';
 import Navbar from './components/Navbar.svelte';
 import Pagination from './components/Pagination.svelte';
 import PrimaryButton from './components/PrimaryButton.svelte';
@@ -23,6 +25,7 @@ export {
 	Footer,
 	HomeSearch,
 	Icon,
+	ImageUploadInput,
 	Navbar,
 	Pagination,
 	PrimaryButton,
@@ -36,7 +39,8 @@ export {
 import {
 	capitalizeFirstLetter,
 	formatRecipeForCopyOrDownload,
-	mapRecipeDifficulty
+	mapRecipeDifficulty,
+	slugify
 } from './scripts/strings';
 import { scaleServings } from './scripts/recipe';
 import { buildRecipesApiUrl, buildRecipesBrowserUrl } from './scripts/urls';
@@ -45,11 +49,13 @@ export {
 	capitalizeFirstLetter,
 	formatRecipeForCopyOrDownload,
 	mapRecipeDifficulty,
+	slugify,
 	scaleServings,
 	buildRecipesApiUrl,
 	buildRecipesBrowserUrl
 };
 
+// Images such as empty state, errors
 import EmptyBox from './assets/empty_box.svg';
 import GitHubMark from './assets/github-mark.svg';
 import SearchEmpty from './assets/search_empty.svg';

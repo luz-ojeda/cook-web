@@ -1,7 +1,7 @@
 import type { Recipe, RecipeDifficulty } from '$lib/types/Recipe';
 
-function capitalizeFirstLetter(string: string) {
-	return string.charAt(0).toUpperCase() + string.slice(1);
+function capitalizeFirstLetter(s: string) {
+	return s.charAt(0).toUpperCase() + s.slice(1);
 }
 
 function mapRecipeDifficulty(difficulty: RecipeDifficulty) {
@@ -31,4 +31,8 @@ function formatRecipeForCopyOrDownload(recipe: Recipe) {
 	return `${name}\n\n${difficulty}${servings}${vegetarian}${preparationTime}${cookingTime}${ingredients}${instructions}`;
 }
 
-export { capitalizeFirstLetter, formatRecipeForCopyOrDownload, mapRecipeDifficulty };
+function slugify(s: string) {
+	return s.toLowerCase().replaceAll(' ', '-');
+}
+
+export { capitalizeFirstLetter, formatRecipeForCopyOrDownload, mapRecipeDifficulty, slugify };

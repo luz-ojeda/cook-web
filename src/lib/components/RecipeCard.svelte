@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { SaveRecipeButton } from '$lib';
+	import { SaveRecipeButton, slugify } from '$lib';
 	import placeholder from '$lib/assets/recipe_image_placeholder.png';
 
 	export let recipeId: string;
@@ -7,7 +7,7 @@
 	export let recipeTitle: string;
 	export let recipeSummary: string;
 
-	$: slugifiedRecipeTitle = recipeTitle.toLowerCase().replaceAll(' ', '-');
+	$: slugifiedRecipeTitle = slugify(recipeTitle);
 </script>
 
 <div class="flex-column">
