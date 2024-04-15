@@ -46,7 +46,7 @@
 	$: errorMessage = form?.message;
 </script>
 
-<div class="spacing">
+<div class="container">
 	<h1>Crear receta</h1>
 	<form
 		method="POST"
@@ -170,6 +170,22 @@
 	label {
 		display: block;
 		margin-right: 4px;
+	}
+
+	.container {
+		padding: 48px 320px;
+
+		@media (max-width: $laptopBreakpoint) {
+			padding: 24px 128px;
+		}
+
+		@media (max-width: $tabletBreakpoint) {
+			padding: 24px 80px;
+		}
+
+		@media (max-width: $mobileBreakpoint) {
+			padding: 24px 16px;
+		}
 	}
 
 	.label-column {

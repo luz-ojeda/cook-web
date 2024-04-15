@@ -3,10 +3,13 @@
 
 	export let files: FileList | null;
 	let fileInput: HTMLInputElement;
+	let imgPreview: HTMLImageElement;
 
 	function resetFileInput() {
 		fileInput.value = '';
 		files = null;
+		imgPreview.setAttribute('src', '#');
+		imgPreview.style.zIndex = '-1';
 	}
 
 	function onDragEnter(event: DragEvent) {
@@ -37,7 +40,26 @@
 
 			fileInput.files = myFileList;
 			files = myFileList;
+			previewPicture();
 		}
+	}
+
+	function previewPicture() {
+		const file = fileInput.files;
+		if (file) {
+			const fileReader = new FileReader();
+			fileReader.onload = (event) => {
+				imgPreview.setAttribute('src', event.target?.result as string);
+				imgPreview.style.zIndex = '1';
+			};
+			fileReader.readAsDataURL(file[0]);
+		}
+	}
+
+	function onButtonKeyDown(e: MouseEvent | KeyboardEvent) {
+		if (e instanceof KeyboardEvent && e.key !== 'Enter') return;
+
+		fileInput.click();
 	}
 </script>
 
@@ -49,17 +71,20 @@
 	on:drop={onDrop}
 	on:dragenter={onDragEnter}
 	on:dragleave={onDragLeave}
+	on:keydown={onButtonKeyDown}
 >
 	<label for="recipeImage"
 		>Seleccionar o arrastrar una imagen
 		<div class="icon">
 			<Icon name="upload" width="32" height="32" />
 		</div>
+		<img bind:this={imgPreview} src="#" alt="" />
 		<input
 			accept=".png, .jpg, .jpeg"
 			bind:files
 			bind:this={fileInput}
 			id="recipeImage"
+			on:input={previewPicture}
 			name="recipeImage"
 			type="file"
 		/>
@@ -80,11 +105,12 @@
 
 	label {
 		align-items: center;
+		cursor: pointer;
 		display: flex;
 		flex-direction: column;
 		height: 100%;
 		justify-content: center;
-		cursor: pointer;
+		position: relative;
 		width: 100%;
 	}
 
@@ -95,6 +121,14 @@
 		top: 0;
 		visibility: hidden;
 		width: 100%;
+	}
+
+	img {
+		border-radius: 7px;
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		z-index: -1;
 	}
 
 	:global(.dragover) {
