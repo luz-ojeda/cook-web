@@ -12,6 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: superfly/flyctl-actions/setup-flyctl@master
-      - run: flyctl deploy --remote-only  --build-secret API_URL="${{ secrets.API_URL }}" --build-secret API_KEY="${{ secrets.API_KEY }}" --build-secret ADMIN_LOGIN="${{ secrets.ADMIN_LOGIN }}"
+      - run: flyctl deploy --remote-only  --build-secret API_URL="${{ secrets.API_URL }}" --build-secret API_KEY="${{ secrets.API_KEY }}" --build-secret ADMIN_LOGIN="${{ secrets.ADMIN_LOGIN }} --build-secret AZURE_STORAGE_ACCOUNT_NAME="${{ secrets.AZURE_STORAGE_ACCOUNT_NAME }}" --build-secret AZURE_STORAGE_ACCOUNT_KEY="${{ secrets.AZURE_STORAGE_ACCOUNT_KEY }}"
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
