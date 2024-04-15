@@ -63,6 +63,7 @@ export const actions = {
 			});
 		}
 
+		console.error(responseJson);
 		return fail(response.status);
 	}
 } satisfies Actions;
