@@ -1,17 +1,23 @@
 <script>
+	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { GitHubMark, Icon } from '$lib';
 	import isotipo from '$lib/assets/isotipo.svg';
+
+	let name = '';
 </script>
 
 <footer class="container">
 	<div class="section">
-		<h3 class="logotipo"><img alt="" src={isotipo} width="24" /> Cook</h3>
-		<p>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent eget sapien venenatis massa
-			fringilla accumsan. Etiam cursus dapibus purus, eget iaculis lacus convallis quis. Sed
-			dignissim diam in quam interdum, vitae suscipit massa sodales.
-		</p>
+		<h3 class="logotipo"><img alt="" src={isotipo} width="32" /> Cook</h3>
+		<div class="search-input-wrapper">
+			<div class="icon">
+				<Icon name="search" height="1.25rem" width="1.25rem" />
+			</div>
+			<form on:submit={() => (window.location.href = `/recetas?nombre=${name}`)}>
+				<input bind:value={name} placeholder="Buscar" type="text" />
+			</form>
+		</div>
 	</div>
 	<div class="section">
 		<h3>EXPLORAR</h3>
@@ -55,6 +61,7 @@
 
 <style lang="scss">
 	@import '../../sass/variables.scss';
+	@import '../../sass/colors.scss';
 
 	.container {
 		@media (min-width: $tabletBreakpoint) {
@@ -66,13 +73,12 @@
 
 	.section {
 		text-align: center;
+		width: 100%;
 
-		&:first-of-type {
-			flex-basis: 50%;
-		}
-
-		&:not(:first-of-type) {
-			flex-basis: 25%;
+		@media (max-width: $tabletBreakpoint) {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
 		}
 
 		@media (min-width: $tabletBreakpoint) {
@@ -127,6 +133,25 @@
 
 		@media (max-width: $tabletBreakpoint) {
 			justify-content: center;
+		}
+	}
+
+	.search-input-wrapper {
+		position: relative;
+		width: 75%;
+
+		.icon {
+			color: $darkPrimaryColor;
+			height: 1.25rem;
+			position: absolute;
+			top: 50%;
+			left: 4px;
+			transform: translateY(-50%);
+		}
+
+		input {
+			padding-left: 28px;
+			width: 100%;
 		}
 	}
 </style>
