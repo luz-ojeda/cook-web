@@ -12,7 +12,7 @@
 		<h3 class="logotipo"><img alt="" src={isotipo} width="32" /> Cook</h3>
 		<div class="search-input-wrapper">
 			<div class="icon">
-				<Icon name="search" height="1.25rem" width="1.25rem" />
+				<Icon name="search" height="28" width="28" />
 			</div>
 			<form on:submit={() => (window.location.href = `/recetas?nombre=${name}`)}>
 				<input bind:value={name} placeholder="Buscar" type="text" />
@@ -73,7 +73,7 @@
 
 	.section {
 		text-align: center;
-		width: 100%;
+
 
 		@media (max-width: $tabletBreakpoint) {
 			display: flex;
@@ -138,20 +138,20 @@
 
 	.search-input-wrapper {
 		position: relative;
-		width: 75%;
 
 		.icon {
 			color: $darkPrimaryColor;
-			height: 1.25rem;
 			position: absolute;
 			top: 50%;
-			left: 4px;
+			left: 6px;
 			transform: translateY(-50%);
 		}
 
 		input {
-			padding-left: 28px;
-			width: 100%;
+			font-size: 18px;
+			padding-left: 38px;
+			height: 48px;
+			width: 250px;
 		}
 	}
 </style>
