@@ -8,8 +8,9 @@
 
 	export let form: ActionData;
 
-	let files: FileList | null;
 	let loading = false;
+
+	let files: FileList | null;
 	let invalidFile = false;
 	let errorMessage: string | undefined = '';
 
@@ -93,25 +94,26 @@
 		<fieldset>
 			<legend>Ingredientes*:</legend>
 			<div>
-				{#each $formData.ingredients as _, index (index)}
-					<label for="ingredient{index + 1}">Ingrediente {index + 1}:</label>
+				{#each $formData.ingredients as ingredient, index (index)}
+					<label for={index.toString()}>Ingrediente {index + 1}:</label>
 					<div>
 						<input
-							id="ingredient{index + 1}"
+							id={index.toString()}
 							name="ingredients"
 							required
 							type="text"
-							bind:this={$formData.ingredients[index]}
+							on:input={formData.ingredientsEventListenerCallback}
+							value={$formData.ingredients[index]}
 						/>
 						<button
 							type="button"
 							class="remove-ingredient-button"
-							on:click={() => formData.removeIngredientInput(index)}>Quitar</button
+							on:click={() => formData.removeIngredient(ingredient, index)}>Quitar</button
 						>
 					</div>
 				{/each}
 			</div>
-			<button type="button" on:click={formData.addIngredientInput}>+ Añadir Ingrediente</button>
+			<button type="button" on:click={formData.addIngredient}>+ Añadir Ingrediente</button>
 		</fieldset>
 
 		<label for="preparationTime">
