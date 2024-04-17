@@ -7,7 +7,7 @@
 		SaveRecipeButton,
 		capitalizeFirstLetter,
 		mapRecipeDifficulty,
-		scaleServings
+		scaleIngredients
 	} from '$lib';
 	import Icon from '$lib/components/Icon.svelte';
 
@@ -15,14 +15,20 @@
 	let ingredients: string[];
 	let servings = data.servings;
 
-	$: {
-		ingredients = data.ingredients;
+	function onServingsInput(e: Event & { currentTarget: EventTarget & HTMLInputElement }) {
+		if (data.servings) {
+			const { value } = e.target as HTMLInputElement;
+			const numberValue = Number(value);
+			if (numberValue === data.servings) {
+				ingredients = data.ingredients;
+			} else {
+				ingredients = [...scaleIngredients(data.ingredients, numberValue, data.servings)];
+			}
+		}
 	}
 
 	$: {
-		if (servings && data.servings) {
-			ingredients = scaleServings(data.ingredients, servings, data.servings);
-		}
+		ingredients = data.ingredients;
 	}
 </script>
 
@@ -82,6 +88,7 @@
 							<input
 								id="servings"
 								min="1"
+								on:input={onServingsInput}
 								type="number"
 								bind:value={servings}
 							/>
