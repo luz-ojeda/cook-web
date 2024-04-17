@@ -42,7 +42,7 @@ import {
 	mapRecipeDifficulty,
 	slugify
 } from './scripts/strings';
-import { scaleServings } from './scripts/recipe';
+import { scaleIngredients } from './scripts/recipe';
 import { buildRecipesApiUrl, buildRecipesBrowserUrl } from './scripts/urls';
 
 export {
@@ -50,7 +50,7 @@ export {
 	formatRecipeForCopyOrDownload,
 	mapRecipeDifficulty,
 	slugify,
-	scaleServings,
+	scaleIngredients,
 	buildRecipesApiUrl,
 	buildRecipesBrowserUrl
 };
