@@ -1,6 +1,6 @@
 type FormDataElems = {
 	name: HTMLInputElement | null;
-	ingredients: HTMLInputElement[];
+	ingredients: string[];
 	summary: HTMLTextAreaElement | null;
 	instructions: HTMLTextAreaElement | null;
 	preparationTime: HTMLInputElement | null;
