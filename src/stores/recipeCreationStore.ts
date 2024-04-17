@@ -1,8 +1,7 @@
 import { browser } from '$app/environment';
 import type { RecipeCreationFormData, FormDataElems } from '$lib/types/RecipeCreationFormStore';
 import { get, writable } from 'svelte/store';
-
-const LOCAL_STORAGE_FORM_KEY = 'recipeCreationFormData';
+import { LOCAL_STORAGE_KEYS } from '../constants';
 
 const initialFormElems = {
 	name: null,
@@ -34,7 +33,7 @@ function createRecipeCreationFormData() {
 	function saveFormToLocalStorage(form: RecipeCreationFormData) {
 		if (browser) {
 			const f = JSON.stringify(form);
-			window.localStorage.setItem(LOCAL_STORAGE_FORM_KEY, f);
+			window.localStorage.setItem(LOCAL_STORAGE_KEYS.RECIPE_CREATION_FORM, f);
 		}
 	}
 
@@ -121,7 +120,7 @@ function createRecipeCreationFormData() {
 		getFormDataFromLocalStorage: () => {
 			if (!browser) return;
 
-			const localStorageFormData = window.localStorage.getItem(LOCAL_STORAGE_FORM_KEY);
+			const localStorageFormData = window.localStorage.getItem(LOCAL_STORAGE_KEYS.RECIPE_CREATION_FORM);
 			if (!localStorageFormData) return;
 
 			const cachedFormData: RecipeCreationFormData = JSON.parse(localStorageFormData);

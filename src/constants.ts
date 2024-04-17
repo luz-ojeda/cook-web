@@ -4,4 +4,8 @@ const MESSAGES: Record<string, string> = {
 	PAGE_NOT_FOUND: 'Error 404: Página no encontrada'
 };
 
-export { MESSAGES };
+const LOCAL_STORAGE_KEYS: Record<string, string> = {
+	RECIPE_CREATION_FORM: 'recipeCreationFormData'
+};
+
+export { MESSAGES, LOCAL_STORAGE_KEYS };
