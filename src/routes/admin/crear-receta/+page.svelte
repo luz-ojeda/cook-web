@@ -1,24 +1,17 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import { applyAction, enhance } from '$app/forms';
 	import PrimaryButton from '$lib/components/PrimaryButton.svelte';
 	import { slugify, ImageUploadInput } from '$lib';
 	import type { ActionData } from './$types';
+	import { formData } from '../../../stores/recipeCreationStore';
 
 	export let form: ActionData;
 
-	let ingredients = [''];
-	let loading = false;
 	let files: FileList | null;
+	let loading = false;
 	let invalidFile = false;
 	let errorMessage: string | undefined = '';
-
-	function addIngredient() {
-		ingredients = [...ingredients, ''];
-	}
-
-	function removeIngredient(ingredient: string) {
-		ingredients = ingredients.filter((i) => i !== ingredient);
-	}
 
 	$: {
 		if (files === null) {
@@ -44,6 +37,12 @@
 	}
 
 	$: errorMessage = form?.message;
+
+	onMount(() => {
+		formData.getFormDataFromLocalStorage();
+		formData.updateInputsWithFormData();
+		formData.addEventListeners();
+	});
 </script>
 
 <div class="container">
@@ -65,23 +64,36 @@
 		</div>
 		<label for="name">
 			Nombre*:
-			<input id="name" name="name" type="text" maxlength="150" required />
+			<input
+				bind:this={$formData.name}
+				id="name"
+				name="name"
+				type="text"
+				maxlength="150"
+				required
+			/>
 		</label>
 
 		<label class="label-column" for="summary">
 			Resumen (el texto que aparecerá debajo de la tarjeta de receta):
-			<textarea id="summary" name="summary" maxlength="150" />
+			<textarea bind:this={$formData.summary} id="summary" name="summary" maxlength="150" />
 			<span class="field-details">Máximo 150 caracteres</span>
 		</label>
 
 		<label class="label-column" for="instructions">
 			Instrucciones*:
-			<textarea id="instructions" name="instructions" required minlength="20" />
+			<textarea
+				bind:this={$formData.instructions}
+				id="instructions"
+				name="instructions"
+				required
+				minlength="20"
+			/>
 		</label>
 		<fieldset>
 			<legend>Ingredientes*:</legend>
 			<div>
-				{#each ingredients as ingredient, index (index)}
+				{#each $formData.ingredients as _, index (index)}
 					<label for="ingredient{index + 1}">Ingrediente {index + 1}:</label>
 					<div>
 						<input
@@ -89,53 +101,78 @@
 							name="ingredients"
 							required
 							type="text"
-							bind:value={ingredients[index]}
+							bind:this={$formData.ingredients[index]}
 						/>
 						<button
 							type="button"
 							class="remove-ingredient-button"
-							on:click={() => removeIngredient(ingredient)}>Quitar</button
+							on:click={() => formData.removeIngredientInput(index)}>Quitar</button
 						>
 					</div>
 				{/each}
 			</div>
-			<button type="button" on:click={addIngredient}>+ Añadir Ingrediente</button>
+			<button type="button" on:click={formData.addIngredientInput}>+ Añadir Ingrediente</button>
 		</fieldset>
 
 		<label for="preparationTime">
 			Tiempo de preparación:
-			<input id="preparationTime" name="preparationTime" type="number" />
+			<input
+				bind:this={$formData.preparationTime}
+				id="preparationTime"
+				name="preparationTime"
+				type="number"
+			/>
 		</label>
 
 		<label for="cookingTime">
 			Tiempo de cocina:
-			<input id="cookingTime" name="cookingTime" type="number" />
+			<input bind:this={$formData.cookingTime} id="cookingTime" name="cookingTime" type="number" />
 		</label>
 
 		<label for="servings">
 			Porciones:
-			<input id="servings" name="servings" type="number" />
+			<input bind:this={$formData.servings} id="servings" name="servings" type="number" />
 		</label>
 
-		<fieldset>
-			<legend>Dificultad:</legend>
-			<label for="easy">
-				Fácil
-				<input id="easy" name="difficulty" type="radio" value={'Easy'} />
-			</label>
-			<label for="medium">
-				Intermedia
-				<input id="medium" name="difficulty" type="radio" value="Medium" />
-			</label>
-			<label for="hard">
-				Difícil
-				<input id="hard" name="difficulty" type="radio" value="Hard" />
-			</label>
-		</fieldset>
+		{#if $formData.difficulty}
+			<fieldset>
+				<legend>Dificultad:</legend>
+				<label for="easy">
+					Fácil
+					<input
+						bind:this={$formData.difficulty[0]}
+						id="easy"
+						name="difficulty"
+						type="radio"
+						value="Easy"
+					/>
+				</label>
+				<label for="medium">
+					Intermedia
+					<input
+						bind:this={$formData.difficulty[1]}
+						id="medium"
+						name="difficulty"
+						type="radio"
+						value="Medium"
+					/>
+				</label>
+				<label for="hard">
+					Difícil
+					<input
+						bind:this={$formData.difficulty[2]}
+						id="hard"
+						name="difficulty"
+						type="radio"
+						value="Hard"
+					/>
+				</label>
+			</fieldset>
+		{/if}
 
 		<label for="vegetarian">
 			Vegetariana
-			<input id="vegetarian" name="vegetarian" type="checkbox" />
+			<input bind:this={$formData.vegetarian} id="vegetarian" name="vegetarian" type="checkbox" />
 		</label>
 
 		<PrimaryButton disabled={invalidFile} {loading} type="submit">CREAR RECETA</PrimaryButton>
