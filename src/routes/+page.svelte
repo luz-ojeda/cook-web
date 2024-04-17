@@ -45,7 +45,7 @@
 
 <!-- Hero -->
 <div class="spacing hero flex-center">
-	<div>
+	<div class="hero-title">
 		<h1>
 			{#if !userSawAnimation}
 				Recetas
@@ -100,7 +100,7 @@
 		font-size: 48px;
 
 		@media (max-width: $tabletBreakpoint) {
-			font-size: 32px;
+			font-size: 24px;
 		}
 	}
 
@@ -130,6 +130,12 @@
 	.hero div:first-of-type {
 		@media (min-width: 720px) {
 			margin-right: 48px;
+		}
+	}
+
+	.hero-title {
+		@media (max-width: $tabletBreakpoint) {
+			margin-bottom: 16px;
 		}
 	}
 
