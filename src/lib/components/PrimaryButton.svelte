@@ -1,15 +1,21 @@
 <script lang="ts">
-	import type { MouseEventHandler } from 'svelte/elements';
+	import type { EventHandler } from 'svelte/elements';
 	import CircularLoading from './CircularLoading.svelte';
 
 	export let disabled = false;
 	export let loading = false; // Use local state since we not always want it to sync with a global/different one
-	export let onClick: MouseEventHandler<HTMLButtonElement> | undefined = undefined;
+	export let onClick: EventHandler<MouseEvent | SubmitEvent> | undefined = undefined;
 	export let width = 'auto';
 	export let type: 'button' | 'reset' | 'submit' | null | undefined = 'button';
 </script>
 
-<button disabled={disabled || loading} on:click={onClick} {type} style="width: {width}">
+<button
+	disabled={disabled || loading}
+	on:click={onClick}
+	on:submit={type === 'submit' ? onClick : undefined}
+	{type}
+	style="width: {width}"
+>
 	{#if loading}
 		<CircularLoading --background="#a19887" --circle-width="30px" />
 	{:else}
