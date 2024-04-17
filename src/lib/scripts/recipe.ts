@@ -9,7 +9,7 @@ function convertFractionToDecimal(fraction: string): number {
 }
 
 function scaleIngredients(ingredients: string[], newServings: number, originalServings: number) {
-	const regex = /(\d+\/\d+|\d+(\.\d+)?|\d+)\s?([\w\s]+)?/;
+	const regex = /(\d+\/\d+|\d+(\.\d+)?|\d+)\s?([\w\s\S]+)?/;
 	const updatedIngredients = ingredients.map((ingredient) => {
 		const match = ingredient.match(regex);
 		if (match) {
