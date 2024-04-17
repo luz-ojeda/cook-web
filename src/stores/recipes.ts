@@ -22,8 +22,7 @@ export function createRecipes() {
 	async function loadRecipes() {
 		toggleLoading();
 
-		const recipesStore = get(store);
-		const { name, difficulties, ingredients, onlyVegetarian, page, resultsPerPage } = recipesStore;
+		const { name, difficulties, ingredients, onlyVegetarian, page, resultsPerPage } = get(store);
 
 		const url = buildRecipesBrowserUrl({
 			name,

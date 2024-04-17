@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { savedIds, savedRecipes } from '../../stores/savedRecipesStore';
-	import { CircularLoading, RecipeCard, Icon, SearchEmpty, EmptyBox } from '$lib';
+	import { CircularLoading, RecipeCard, EmptyBox } from '$lib';
 
 	let message = '';
 
