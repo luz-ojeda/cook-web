@@ -5,6 +5,7 @@
 	import { slugify, ImageUploadInput } from '$lib';
 	import type { ActionData } from './$types';
 	import { formData } from '../../../stores/recipeCreationStore';
+	import { LOCAL_STORAGE_KEYS } from '../../../constants';
 
 	export let form: ActionData;
 
@@ -38,6 +39,10 @@
 	}
 
 	$: errorMessage = form?.message;
+
+	$: if (form?.success) {
+		window.localStorage.removeItem(LOCAL_STORAGE_KEYS.RECIPE_CREATION_FORM);
+	}
 
 	onMount(() => {
 		formData.getFormDataFromLocalStorage();
