@@ -170,13 +170,13 @@
 		margin-right: 24px;
 		position: sticky;
 		top: 120px;
-		min-width: 50%;
+		width: 50%;
 
 		@media (max-width: $tabletBreakpoint) {
 			margin-right: 0;
 			position: static;
 			top: 0;
-			min-width: auto;
+			width: auto;
 		}
 	}
 
