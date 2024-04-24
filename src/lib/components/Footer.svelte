@@ -9,7 +9,7 @@
 
 <footer class="container">
 	<div class="section">
-		<h3 class="logotipo"><img alt="" src={isotipo} width="32" /> Cook</h3>
+		<h3 class="logotipo"><img alt="" src={isotipo} width="32" />Recetas Simples</h3>
 		<div class="search-input-wrapper">
 			<div class="icon">
 				<Icon name="search" height="28" width="28" />
@@ -28,8 +28,8 @@
 			<li>
 				<a
 					class="non-text-anchor-element"
-					href="/sobre-cook"
-					aria-current={$page.url.pathname === '/sobre-cook'}>Sobre Cook</a
+					href="/sobre-recetas-simples"
+					aria-current={$page.url.pathname === '/sobre-recetas-simples'}>Sobre Recetas Simples</a
 				>
 			</li>
 			{#if $page.url.pathname != '/recetas'}
@@ -49,7 +49,7 @@
 			</li>
 			<li>
 				<Icon class="icon-margin-right" name="mail" width="24" height="24" />
-				cook@proton.me
+				recetassimples@proton.me
 			</li>
 			<li>
 				<img class="icon-margin-right" alt="" src={GitHubMark} width="24" />

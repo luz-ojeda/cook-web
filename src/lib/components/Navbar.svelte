@@ -9,7 +9,7 @@
 	<div class="main-nav flex-center">
 		<a class="flex-center logotipo" href="/">
 			<img alt="" src={isotipo} width="48" />
-			COOK
+			RECETAS SIMPLES
 		</a>
 		<div class="nav-links flex-center">
 			<div class="nav-links-tablet-desktop">
