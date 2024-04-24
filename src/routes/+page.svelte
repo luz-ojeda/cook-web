@@ -40,7 +40,7 @@
 </script>
 
 <svelte:head>
-	<title>Cook</title>
+	<title>Recetas Simples</title>
 </svelte:head>
 
 <!-- Hero -->
@@ -51,7 +51,7 @@
 				Recetas
 				{heroTitle.join('')}
 			{:else}
-				Recetas simples
+				Recetas sin vueltas
 			{/if}
 		</h1>
 		<p>
