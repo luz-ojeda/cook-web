@@ -2,6 +2,7 @@
 	import { Icon } from '$lib';
 
 	export let files: FileList | null;
+	export let recipeImage: string | undefined = undefined;
 	let fileInput: HTMLInputElement;
 	let imgPreview: HTMLImageElement;
 
@@ -61,6 +62,10 @@
 
 		fileInput.click();
 	}
+
+	$: {
+		if (recipeImage && imgPreview) imgPreview.style.zIndex = '1';
+	}
 </script>
 
 <button
@@ -78,7 +83,7 @@
 		<div class="icon">
 			<Icon name="upload" width="32" height="32" />
 		</div>
-		<img bind:this={imgPreview} src="#" alt="" />
+		<img bind:this={imgPreview} crossorigin="anonymous" src={recipeImage ?? '#'} alt="" />
 		<input
 			accept=".png, .jpg, .jpeg"
 			bind:files
@@ -125,8 +130,9 @@
 
 	img {
 		border-radius: 7px;
-		position: absolute;
 		height: 100%;
+		object-fit: cover;
+		position: absolute;
 		width: 100%;
 		z-index: -1;
 	}

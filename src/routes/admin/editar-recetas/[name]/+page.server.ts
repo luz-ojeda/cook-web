@@ -1,6 +1,6 @@
 import { env } from '$env/dynamic/private';
 import type { Recipe } from '$lib/types/Recipe';
-import { error } from '@sveltejs/kit';
+import { error, type Actions } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad<Recipe> = async ({ fetch, params }) => {
@@ -16,3 +16,10 @@ export const load: PageServerLoad<Recipe> = async ({ fetch, params }) => {
 
 	return responseJson;
 };
+
+
+export const actions = {
+	default: async () => {
+		return { success: true, data: '', message: '' };
+	}
+} satisfies Actions;

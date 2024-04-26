@@ -7,35 +7,6 @@
 
 	export let form: ActionData;
 
-	let files: FileList | null;
-	let invalidFile = false;
-	let errorMessage: string | undefined = '';
-
-	$: {
-		if (files === null) {
-			errorMessage = '';
-		}
-	}
-
-	$: {
-		if (files) {
-			invalidFile =
-				!files[0].type.includes('jpg') &&
-				!files[0].type.includes('jpeg') &&
-				!files[0].type.includes('png');
-		} else {
-			invalidFile = false;
-		}
-
-		if (invalidFile) {
-			errorMessage = 'La imagen no tiene un formato válido. Solo se permite .jpg, .jpeg y .png.';
-		} else {
-			errorMessage = '';
-		}
-	}
-
-	$: errorMessage = form?.message;
-
 	$: if (form?.success) {
 		window.localStorage.removeItem(LOCAL_STORAGE_KEYS.RECIPE_CREATION_FORM);
 	}
@@ -52,8 +23,8 @@
 	<RecipeForm
 		{form}
 		formData={$formData}
-		onIngredientInput={formData.ingredientsEventListenerCallback}
 		onAddIngredientClick={formData.addIngredient}
+		onIngredientInput={formData.onIngredientInput}
 		onRemoveIngredientClick={formData.removeIngredient}
 	/>
 </div>

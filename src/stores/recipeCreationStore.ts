@@ -1,5 +1,5 @@
 import { browser } from '$app/environment';
-import type { RecipeCreationFormData, RecipeFormDataElems } from '$lib/types/RecipeFormData';
+import type { RecipeFormData, RecipeFormDataElems } from '$lib/types/RecipeFormData';
 import { get, writable } from 'svelte/store';
 import { LOCAL_STORAGE_KEYS } from '../constants';
 
@@ -15,10 +15,10 @@ const initialFormElems = {
 	vegetarian: null
 };
 
-function createRecipeCreationFormData() {
+function createRecipeFormData() {
 	const store = writable<RecipeFormDataElems>(initialFormElems);
 
-	let formValues: RecipeCreationFormData = {
+	let formValues: RecipeFormData = {
 		name: '',
 		summary: '',
 		instructions: '',
@@ -30,7 +30,7 @@ function createRecipeCreationFormData() {
 		vegetarian: false
 	};
 
-	function saveFormToLocalStorage(form: RecipeCreationFormData) {
+	function saveFormToLocalStorage(form: RecipeFormData) {
 		if (browser) {
 			const f = JSON.stringify(form);
 			window.localStorage.setItem(LOCAL_STORAGE_KEYS.RECIPE_CREATION_FORM, f);
@@ -40,7 +40,7 @@ function createRecipeCreationFormData() {
 	function eventListenerCallback() {
 		const formDataElems = get(store);
 
-		const form: RecipeCreationFormData = {
+		const form: RecipeFormData = {
 			...formValues,
 			name: formDataElems.name?.value ?? '',
 			summary: formDataElems.summary?.value ?? '',
@@ -76,7 +76,7 @@ function createRecipeCreationFormData() {
 		});
 	}
 
-	function ingredientsEventListenerCallback(
+	function onIngredientInput(
 		e: Event & { currentTarget: EventTarget & HTMLInputElement }
 	) {
 		if (!e.target) return;
@@ -92,7 +92,7 @@ function createRecipeCreationFormData() {
 			formDataElems.ingredients.push(value);
 		}
 
-		const form: RecipeCreationFormData = {
+		const form: RecipeFormData = {
 			...formValues,
 			ingredients: formDataElems.ingredients
 		};
@@ -125,12 +125,12 @@ function createRecipeCreationFormData() {
 			const localStorageFormData = window.localStorage.getItem(LOCAL_STORAGE_KEYS.RECIPE_CREATION_FORM);
 			if (!localStorageFormData) return;
 
-			const cachedFormData: RecipeCreationFormData = JSON.parse(localStorageFormData);
+			const cachedFormData: RecipeFormData = JSON.parse(localStorageFormData);
 			if (!cachedFormData) return;
 
 			formValues = cachedFormData;
 		},
-		ingredientsEventListenerCallback,
+		onIngredientInput,
 		removeIngredient: (ingToRemove: string, index: number) =>
 			store.update((formDataElems) => {
 				const newIngredients = formDataElems.ingredients.filter((ingredient, i) => {
@@ -177,4 +177,4 @@ function createRecipeCreationFormData() {
 	};
 }
 
-export const formData = createRecipeCreationFormData();
+export const formData = createRecipeFormData();
