@@ -1,4 +1,4 @@
-type FormDataElems = {
+type RecipeFormDataElems = {
 	name: HTMLInputElement | null;
 	ingredients: string[];
 	summary: HTMLTextAreaElement | null;
@@ -24,4 +24,4 @@ type RecipeCreationFormData = {
 	[key: string]: string | boolean | string[];
 };
 
-export { FormDataElems, RecipeCreationFormData };
+export { RecipeFormDataElems, RecipeCreationFormData };

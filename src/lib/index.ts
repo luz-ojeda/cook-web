@@ -12,6 +12,7 @@ import Navbar from './components/Navbar.svelte';
 import Pagination from './components/Pagination.svelte';
 import PrimaryButton from './components/PrimaryButton.svelte';
 import RecipeCard from './components/RecipeCard.svelte';
+import RecipeForm from './components/RecipeForm.svelte';
 import RecipesSearchForm from './components/RecipesSearchForm.svelte';
 import SaveRecipeButton from './components/SaveRecipeButton.svelte';
 import TextInput from './components/TextInput.svelte';
@@ -30,6 +31,7 @@ export {
 	Pagination,
 	PrimaryButton,
 	RecipeCard,
+	RecipeForm,
 	RecipesSearchForm,
 	SaveRecipeButton,
 	TextInput

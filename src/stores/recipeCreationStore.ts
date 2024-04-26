@@ -1,5 +1,5 @@
 import { browser } from '$app/environment';
-import type { RecipeCreationFormData, FormDataElems } from '$lib/types/RecipeCreationFormStore';
+import type { RecipeCreationFormData, RecipeFormDataElems } from '$lib/types/RecipeFormData';
 import { get, writable } from 'svelte/store';
 import { LOCAL_STORAGE_KEYS } from '../constants';
 
@@ -16,7 +16,7 @@ const initialFormElems = {
 };
 
 function createRecipeCreationFormData() {
-	const store = writable<FormDataElems>(initialFormElems);
+	const store = writable<RecipeFormDataElems>(initialFormElems);
 
 	let formValues: RecipeCreationFormData = {
 		name: '',
@@ -82,6 +82,7 @@ function createRecipeCreationFormData() {
 		if (!e.target) return;
 
 		const formDataElems = get(store);
+
 		const id = Number(e.currentTarget.id);
 		const value = e.currentTarget.value;
 
@@ -96,6 +97,7 @@ function createRecipeCreationFormData() {
 			ingredients: formDataElems.ingredients
 		};
 
+		// Update local storage and store
 		saveFormToLocalStorage(form);
 		store.update((formElems) => {
 			return {
@@ -149,7 +151,9 @@ function createRecipeCreationFormData() {
 			}),
 		updateInputsWithFormData: () =>
 			store.update((formDataElems) => {
-				// Loop over name: HTMLInputElement, summary: HTMLTextAreaElement, etc. and get its value from the localstorage form data using the key ('name', 'summary', ...)
+				// Loop over name: HTMLInputElement, summary: HTMLTextAreaElement, etc.
+				// and get its value from the localstorage form data using the key ('name', 'summary', ...)
+
 				Object.entries(formDataElems).forEach(([formLabel, elem]) => {
 					if (elem instanceof HTMLElement) {
 						if (elem instanceof HTMLInputElement && formLabel === 'vegetarian') {
