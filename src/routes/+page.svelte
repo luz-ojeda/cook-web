@@ -3,7 +3,7 @@
 	import type { PaginatedList } from '$lib/types/PaginatedList';
 	import type { Recipe } from '$lib/types/Recipe';
 	import { onMount } from 'svelte';
-	import { browser } from "$app/environment";
+	import { browser } from '$app/environment';
 
 	export let data: PaginatedList<Recipe>;
 
@@ -11,9 +11,7 @@
 	let heroTitle: string[] = [];
 	const adjectives = ['sencillas', 'simples', 'sin vueltas.'];
 
-	const userSawAnimation = browser
-		? sessionStorage.getItem(heroAnimationSessionStorageKey)
-		: false;
+	const userSawAnimation = browser ? sessionStorage.getItem(heroAnimationSessionStorageKey) : false;
 
 	function animateHeroTitle() {
 		const delay = 100;
@@ -44,7 +42,7 @@
 </svelte:head>
 
 <!-- Hero -->
-<div class="spacing hero flex-center">
+<section class="spacing hero flex-center">
 	<div class="hero-title">
 		<h1>
 			{#if !userSawAnimation}
@@ -63,11 +61,11 @@
 	<div>
 		<HomeSearch />
 	</div>
-</div>
+</section>
 
 <!-- Recipe cards -->
 {#if data.data.length > 0}
-	<div class="recipes-section spacing background">
+	<section class="recipes-section spacing background curved">
 		<div class="recipes-container recipes-container-home">
 			{#each data.data as { id, name, summary, pictures }}
 				<RecipeCard
@@ -79,7 +77,7 @@
 			{/each}
 		</div>
 		<a class="see-more" href="/recetas">Ver más recetas</a>
-	</div>
+	</section>
 {/if}
 
 <style lang="scss">
@@ -166,5 +164,23 @@
 		@media (max-width: $tabletBreakpoint) {
 			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
+	}
+
+	.curved {
+		position: relative;
+		height: 50vh;
+	}
+
+	.curved::before {
+		background: $grey200;
+		border-top-left-radius: 50% 100%;
+		border-top-right-radius: 50% 100%;
+		content: '';
+		left: 0;
+		position: absolute;
+		top: -15%;
+		width: 100%;
+		height: 15%;
+		z-index: -1;
 	}
 </style>
