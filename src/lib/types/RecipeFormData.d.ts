@@ -10,7 +10,7 @@ type RecipeFormDataElems = {
 	vegetarian: HTMLInputElement | null;
 };
 
-type RecipeCreationFormData = {
+type RecipeFormData = {
 	name: string;
 	summary: string;
 	instructions: string;
@@ -24,4 +24,4 @@ type RecipeCreationFormData = {
 	[key: string]: string | boolean | string[];
 };
 
-export { RecipeFormDataElems, RecipeCreationFormData };
+export { RecipeFormDataElems, RecipeFormData };

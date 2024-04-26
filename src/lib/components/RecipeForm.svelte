@@ -2,8 +2,8 @@
 	import { applyAction, enhance } from '$app/forms';
 	import { ImageUploadInput, slugify } from '$lib';
 	import PrimaryButton from '$lib/components/PrimaryButton.svelte';
+	import type { Recipe } from '$lib/types/Recipe';
 	import type { RecipeFormDataElems } from '$lib/types/RecipeFormData';
-	import { LOCAL_STORAGE_KEYS } from '../../constants';
 	import type { ActionData as CreateRecipeActionData } from '../../routes/admin/crear-receta/$types';
 	import type { ActionData as UpdateRecipeActionData } from '../../routes/admin/editar-recetas/[name]/$types';
 
@@ -12,6 +12,7 @@
 	export let onIngredientInput: any; // TODO: narrow this type
 	export let onAddIngredientClick: () => void;
 	export let onRemoveIngredientClick: (ingToRemove: string, index: number) => void;
+	export let values: Recipe | undefined = undefined;
 
 	let loading = false;
 
@@ -43,10 +44,6 @@
 	}
 
 	$: errorMessage = form?.message;
-
-	$: if (form?.success) {
-		window.localStorage.removeItem(LOCAL_STORAGE_KEYS.RECIPE_CREATION_FORM);
-	}
 </script>
 
 <div>
@@ -63,16 +60,30 @@
 		}}
 	>
 		<div class="flex-center">
-			<ImageUploadInput {files} />
+			<ImageUploadInput {files} recipeImage={values?.pictures[0]} />
 		</div>
 		<label for="name">
 			Nombre*:
-			<input bind:this={formData.name} id="name" name="name" type="text" maxlength="150" required />
+			<input
+				bind:this={formData.name}
+				id="name"
+				name="name"
+				type="text"
+				maxlength="150"
+				required
+				value={values?.name}
+			/>
 		</label>
 
 		<label class="label-column" for="summary">
 			Resumen (el texto que aparecerá debajo de la tarjeta de receta):
-			<textarea bind:this={formData.summary} id="summary" name="summary" maxlength="150" />
+			<textarea
+				bind:this={formData.summary}
+				id="summary"
+				name="summary"
+				maxlength="150"
+				value={values?.summary}
+			/>
 			<span class="field-details">Máximo 150 caracteres</span>
 		</label>
 
@@ -84,12 +95,13 @@
 				name="instructions"
 				required
 				minlength="20"
+				value={values?.instructions}
 			/>
 		</label>
 		<fieldset>
 			<legend>Ingredientes*:</legend>
 			<div>
-				{#each formData.ingredients as ingredient, index (index)}
+				{#each values?.ingredients ?? formData.ingredients as ingredient, index (index)}
 					<label for={index.toString()}>Ingrediente {index + 1}:</label>
 					<div>
 						<input
@@ -98,7 +110,7 @@
 							required
 							type="text"
 							on:input={onIngredientInput}
-							value={formData.ingredients[index]}
+							value={values?.ingredients[index] ?? formData.ingredients[index]}
 						/>
 						<button
 							type="button"
@@ -118,17 +130,30 @@
 				id="preparationTime"
 				name="preparationTime"
 				type="number"
+				value={values?.preparationTime}
 			/>
 		</label>
 
 		<label for="cookingTime">
 			Tiempo de cocina:
-			<input bind:this={formData.cookingTime} id="cookingTime" name="cookingTime" type="number" />
+			<input
+				bind:this={formData.cookingTime}
+				id="cookingTime"
+				name="cookingTime"
+				type="number"
+				value={values?.cookingTime}
+			/>
 		</label>
 
 		<label for="servings">
 			Porciones:
-			<input bind:this={formData.servings} id="servings" name="servings" type="number" />
+			<input
+				bind:this={formData.servings}
+				id="servings"
+				name="servings"
+				type="number"
+				value={values?.servings}
+			/>
 		</label>
 
 		{#if formData.difficulty}
@@ -142,6 +167,7 @@
 						name="difficulty"
 						type="radio"
 						value="Easy"
+						checked={values?.difficulty == 'Easy'}
 					/>
 				</label>
 				<label for="medium">
@@ -152,6 +178,7 @@
 						name="difficulty"
 						type="radio"
 						value="Medium"
+						checked={values?.difficulty == 'Medium'}
 					/>
 				</label>
 				<label for="hard">
@@ -162,14 +189,21 @@
 						name="difficulty"
 						type="radio"
 						value="Hard"
+						checked={values?.difficulty == 'Hard'}
 					/>
 				</label>
 			</fieldset>
 		{/if}
 
 		<label for="vegetarian">
-			Vegetariana
-			<input bind:this={formData.vegetarian} id="vegetarian" name="vegetarian" type="checkbox" />
+			Vegetariana checked={values?.difficulty == 'Easy'}
+			<input
+				bind:this={formData.vegetarian}
+				id="vegetarian"
+				name="vegetarian"
+				type="checkbox"
+				checked={values?.vegetarian}
+			/>
 		</label>
 
 		<PrimaryButton disabled={invalidFile} {loading} type="submit">CREAR RECETA</PrimaryButton>

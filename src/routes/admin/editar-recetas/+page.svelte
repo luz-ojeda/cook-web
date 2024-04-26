@@ -3,7 +3,7 @@
 	import type { PaginatedList } from '$lib/types/PaginatedList';
 	import { Pagination, TextInput, slugify } from '$lib';
 	import { browser } from '$app/environment';
-	import { onMount, tick } from "svelte";
+	import { onMount } from "svelte";
 	import { goto } from "$app/navigation";
 
 	export let data: PaginatedList<Recipe>;
