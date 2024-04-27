@@ -9,10 +9,16 @@
 
 	export let form: UpdateRecipeActionData | CreateRecipeActionData;
 	export let formData: RecipeFormDataElems;
-	export let onIngredientInput: any; // TODO: narrow this type
+	export let onIngredientInput: (
+		e: Event & {
+			currentTarget: EventTarget & HTMLInputElement;
+		}
+	) => void;
 	export let onAddIngredientClick: () => void;
 	export let onRemoveIngredientClick: (ingToRemove: string, index: number) => void;
 	export let values: Recipe | undefined = undefined;
+	export let submitButtonText: string;
+	export let successMessage: string;
 
 	let loading = false;
 
@@ -59,6 +65,9 @@
 			};
 		}}
 	>
+		{#if values?.id}
+			<input id="id" name="id" readonly type="id" value={values?.id} />
+		{/if}
 		<div class="flex-center">
 			<ImageUploadInput {files} recipeImage={values?.pictures[0]} />
 		</div>
@@ -196,7 +205,7 @@
 		{/if}
 
 		<label for="vegetarian">
-			Vegetariana checked={values?.difficulty == 'Easy'}
+			Vegetariana
 			<input
 				bind:this={formData.vegetarian}
 				id="vegetarian"
@@ -206,13 +215,11 @@
 			/>
 		</label>
 
-		<PrimaryButton disabled={invalidFile} {loading} type="submit">CREAR RECETA</PrimaryButton>
+		<PrimaryButton disabled={invalidFile} {loading} type="submit">{submitButtonText}</PrimaryButton>
 	</form>
 	{#if form?.success}
 		<p class="success">
-			Receta creada exitosamente. Puedes verla <a href={`/recetas/${slugify(form?.data.name)}`}
-				>aquí</a
-			>
+			{successMessage} Puedes verla <a href={`/recetas/${slugify(form?.data.name)}`}>aquí</a>
 		</p>
 	{/if}
 	{#if errorMessage}

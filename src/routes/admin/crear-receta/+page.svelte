@@ -26,6 +26,8 @@
 		onAddIngredientClick={formData.addIngredient}
 		onIngredientInput={formData.onIngredientInput}
 		onRemoveIngredientClick={formData.removeIngredient}
+		submitButtonText="CREAR RECETA"
+		successMessage="Receta creada exitosamente."
 	/>
 </div>
 
