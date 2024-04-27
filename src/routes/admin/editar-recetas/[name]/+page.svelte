@@ -8,6 +8,10 @@
 	export let form: ActionData;
 </script>
 
+<svelte:head>
+	<title>Editar {data.name}</title>
+</svelte:head>
+
 <div class="spacing">
 	<h1>Editar "{data.name}"</h1>
 	<RecipeForm
