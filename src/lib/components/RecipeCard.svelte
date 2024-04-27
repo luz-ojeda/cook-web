@@ -10,7 +10,7 @@
 	$: slugifiedRecipeTitle = slugify(recipeTitle);
 </script>
 
-<div class="flex-column">
+<div class="container flex-column">
 	<a class="non-text-anchor-element" href={`/recetas/${slugifiedRecipeTitle}`}>
 		<img
 			alt={`Photo of the recipe ${recipeTitle}`}
@@ -35,6 +35,14 @@
 <style lang="scss">
 	@import '../../sass/variables.scss';
 	@import '../../sass/colors.scss';
+
+	.container {
+		transition: opacity 0.2s ease;
+
+		&:hover {
+			opacity: 0.8;
+		}
+	}
 
 	.recipe-image {
 		aspect-ratio: 1 / 1;
@@ -67,6 +75,8 @@
 	}
 
 	a {
-		text-decoration: none;
+		&:hover {
+			color: inherit;
+		}
 	}
 </style>
