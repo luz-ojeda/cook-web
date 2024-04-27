@@ -30,6 +30,10 @@
     }
 </script>
 
+<svelte:head>
+	<title>Recetas para editar</title>
+</svelte:head>
+
 <div class="spacing container">
 	<h1>Editar recetas</h1>
 	<div class="table-handlers">

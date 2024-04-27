@@ -18,6 +18,10 @@
 	});
 </script>
 
+<svelte:head>
+	<title>Crear receta</title>
+</svelte:head>
+
 <div class="container">
 	<h1>Crear receta</h1>
 	<RecipeForm
