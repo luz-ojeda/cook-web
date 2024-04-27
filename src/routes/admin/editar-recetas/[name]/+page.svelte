@@ -16,6 +16,8 @@
 		onAddIngredientClick={formData.addIngredient}
 		onIngredientInput={formData.onIngredientInput}
 		onRemoveIngredientClick={formData.removeIngredient}
+		submitButtonText="EDITAR RECETA"
+		successMessage="Receta editada exitosamente."
 		values={data}
 	/>
 </div>
