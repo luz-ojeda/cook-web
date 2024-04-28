@@ -41,7 +41,7 @@
 			: ''}"
 	>
 		{#if $recipes.recipes && $recipes.recipes.length > 0 && !$recipes.loading}
-			<div class="recipes-container">
+			<div class="recipes-container recipes-container-two-column">
 				{#each $recipes.recipes as { id, name, summary, pictures }}
 					<RecipeCard
 						recipeId={id}
