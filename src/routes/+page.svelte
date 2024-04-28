@@ -137,16 +137,6 @@
 		}
 	}
 
-	.recipes-container-home {
-		grid-template-columns: repeat(4, minmax(0, 1fr));
-		grid-template-rows: auto;
-		grid-auto-rows: 0;
-
-		@media (max-width: $tabletBreakpoint) {
-			grid-template-columns: repeat(2, minmax(0, 1fr));
-		}
-	}
-
 	.see-more {
 		font-size: 24px;
 		font-weight: bold;
@@ -168,7 +158,6 @@
 
 	.curved {
 		position: relative;
-		height: 50vh;
 	}
 
 	.curved::before {
