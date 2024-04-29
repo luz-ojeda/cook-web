@@ -53,7 +53,7 @@
 			</li>
 			<li>
 				<img class="icon-margin-right" alt="" src={GitHubMark} width="24" />
-				<a class="non-text-anchor-element" href="https://github.com/luz-ojeda/cook-web">GitHub</a>
+				<a class="non-text-anchor-element" href="https://github.com/luz-ojeda/cook-web#readme">GitHub</a>
 			</li>
 		</ul>
 	</div>
