@@ -4,6 +4,7 @@
 	import { buildRecipesBrowserUrl } from '$lib/scripts/urls';
 	import { recipes } from '../../stores/recipes';
 	import { burgerMenuStore } from '../../stores/burgerMenu';
+	import { onMount } from 'svelte';
 
 	let loading = false;
 
@@ -17,6 +18,20 @@
 		loading = false;
 		if ($burgerMenuStore) $burgerMenuStore = false;
 	}
+
+	onMount(() => {
+		if ($page.url.pathname == '/') {
+			recipes.update((store) => {
+				return {
+					...store,
+					name: '',
+					ingredients: [],
+					difficulties: [],
+					onlyVegetarian: false
+				};
+			});
+		}
+	});
 </script>
 
 <form>
