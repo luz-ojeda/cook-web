@@ -13,6 +13,11 @@
 		href="/recetas-guardadas"
 		aria-current={$page.url.pathname === '/recetas-guardadas'}>Recetas guardadas</a
 	>
+	<a
+		class="non-text-anchor-element nav-link"
+		href="/ingredientes"
+		aria-current={$page.url.pathname === '/ingredientes'}>Ingredientes</a
+	>
 </div>
 
 <style lang="scss">
