@@ -5,16 +5,22 @@
 	export let disabled = false;
 	export let loading = false; // Use local state since we not always want it to sync with a global/different one
 	export let onClick: EventHandler<MouseEvent | SubmitEvent> | undefined = undefined;
-	export let width = 'auto';
+	export let size: 'small' | 'large' = 'large';
 	export let type: 'button' | 'reset' | 'submit' | null | undefined = 'button';
+	export let buttonType: 'primary' | 'secondary' | 'tertiary' = 'primary';
 </script>
 
 <button
+	class="
+		{buttonType === 'primary'
+		? 'primary'
+		: buttonType === 'secondary'
+			? 'secondary'
+			: 'tertiary'} {size === 'small' ? 'small' : 'large'}"
 	disabled={disabled || loading}
 	on:click={onClick}
 	on:submit={type === 'submit' ? onClick : undefined}
 	{type}
-	style="width: {width}"
 >
 	{#if loading}
 		<CircularLoading --background="#a19887" --circle-width="30px" />
@@ -29,24 +35,11 @@
 
 	button {
 		align-items: center;
-		background-color: $primaryColor;
 		border: 0;
 		border-radius: 7px;
-		box-shadow:
-			inset 0 3px 0 $lightestPrimaryColor,
-			$shadow;
-		color: $grey200;
 		display: flex;
-		font-size: 20px;
 		font-weight: bold;
-		height: 48px;
 		justify-content: center;
-		padding: 8px 24px;
-
-		&:hover {
-			background-color: $lightPrimaryColor;
-			transition: background-color 0.3s;
-		}
 
 		&:disabled {
 			box-shadow:
@@ -57,6 +50,41 @@
 
 		&:active {
 			box-shadow: $smallestShadow;
+		}
+	}
+
+	.small {
+		font-size: 16px;
+		height: 32px;
+		padding: 4px 12px;
+	}
+
+	.large {
+		font-size: 20px;
+		height: 48px;
+		padding: 8px 24px;
+		width: 100%;
+	}
+
+	.primary {
+		background-color: $primaryColor;
+		box-shadow:
+			inset 0 3px 0 $lightestPrimaryColor,
+			$shadow;
+		color: $grey200;
+
+		&:hover {
+			background-color: $lightPrimaryColor;
+			transition: background-color 0.3s;
+		}
+	}
+
+	.tertiary {
+		background-color: transparent;
+		color: $primaryColor;
+
+		&:hover {
+			text-decoration: underline;
 		}
 	}
 </style>

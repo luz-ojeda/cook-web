@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { applyAction, enhance } from '$app/forms';
 	import { ImageUploadInput, slugify } from '$lib';
-	import PrimaryButton from '$lib/components/PrimaryButton.svelte';
+	import Button from '$lib/components/Button.svelte';
 	import type { Recipe } from '$lib/types/Recipe';
 	import type { RecipeFormDataElems } from '$lib/types/RecipeFormData';
 	import type { ActionData as CreateRecipeActionData } from '../../routes/admin/crear-receta/$types';
@@ -215,7 +215,7 @@
 			/>
 		</label>
 
-		<PrimaryButton disabled={invalidFile} {loading} type="submit">{submitButtonText}</PrimaryButton>
+		<Button disabled={invalidFile} {loading} type="submit">{submitButtonText}</Button>
 	</form>
 	{#if form?.success}
 		<p class="success">
