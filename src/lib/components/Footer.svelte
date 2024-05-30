@@ -15,7 +15,7 @@
 				<Icon name="search" height="28" width="28" />
 			</div>
 			<form on:submit={() => (window.location.href = `/recetas?nombre=${name}`)}>
-				<input bind:value={name} placeholder="Buscar" type="text" />
+				<input bind:value={name} placeholder="Buscar" type="search" />
 			</form>
 		</div>
 	</div>
