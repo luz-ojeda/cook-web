@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page, navigating } from '$app/stores';
-	import { ChipTextInput, PrimaryButton, TextInput } from '$lib';
+	import { ChipTextInput, Button, TextInput } from '$lib';
 	import { buildRecipesBrowserUrl } from '$lib/scripts/urls';
 	import { recipes } from '../../stores/recipes';
 	import { burgerMenuStore } from '../../stores/burgerMenu';
@@ -95,9 +95,7 @@
 	<label for="vegetarian">Solo vegetarianas</label>
 
 	{#if $page.url.pathname !== '/'}
-		<PrimaryButton {loading} onClick={onButtonClick} type="submit" width="100%">
-			Buscar
-		</PrimaryButton>
+		<Button {loading} onClick={onButtonClick} type="submit">Buscar</Button>
 	{:else}
 		<a
 			class="non-text-anchor-element"
@@ -109,13 +107,12 @@
 			})}
 			style={Boolean($navigating) ? 'pointer-events: none' : ''}
 		>
-			<PrimaryButton
+			<Button
 				disabled={$recipes.loading || Boolean($navigating)}
 				loading={loading && $navigating?.to?.url.pathname == '/recetas'}
 				onClick={() => {
 					loading = true;
-				}}
-				width="100%">Buscar</PrimaryButton
+				}}>Buscar</Button
 			>
 		</a>
 	{/if}

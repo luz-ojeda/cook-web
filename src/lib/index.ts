@@ -1,5 +1,6 @@
 // Components
 import BurgerMenu from './components/BurgerMenu.svelte';
+import Button from './components/Button.svelte';
 import ChipTextInput from './components/ChipTextInput.svelte';
 import CircularLoading from './components/CircularLoading.svelte';
 import CopyRecipeButton from './components/CopyRecipeButton.svelte';
@@ -10,7 +11,6 @@ import Icon from './components/Icon.svelte';
 import ImageUploadInput from './components/ImageUploadInput.svelte';
 import Navbar from './components/Navbar.svelte';
 import Pagination from './components/Pagination.svelte';
-import PrimaryButton from './components/PrimaryButton.svelte';
 import RecipeCard from './components/RecipeCard.svelte';
 import RecipeForm from './components/RecipeForm.svelte';
 import RecipesSearchForm from './components/RecipesSearchForm.svelte';
@@ -19,6 +19,7 @@ import TextInput from './components/TextInput.svelte';
 
 export {
 	BurgerMenu,
+	Button,
 	ChipTextInput,
 	CircularLoading,
 	CopyRecipeButton,
@@ -29,7 +30,6 @@ export {
 	ImageUploadInput,
 	Navbar,
 	Pagination,
-	PrimaryButton,
 	RecipeCard,
 	RecipeForm,
 	RecipesSearchForm,

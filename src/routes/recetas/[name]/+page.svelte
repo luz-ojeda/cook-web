@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Recipe } from '$lib/types/Recipe';
-	import placeholder from '$lib/assets/recipe_image_placeholder.png';
+	import placeholder from '$lib/assets/recipe_image_placeholder.svg';
 	import {
 		CopyRecipeButton,
 		DownloadRecipeButton,
@@ -40,7 +40,7 @@
 	<div class="recipe-first-content">
 		<img
 			alt={`Photo of the recipe ${data.name}`}
-			class="image-container rounded-img recipe-image"
+			class="image-container rounded-img recipe-image {data.pictures[0] ? 'object-fit-cover' : ''}"
 			crossorigin="anonymous"
 			src={data.pictures[0] ? data.pictures[0] : placeholder}
 		/>
@@ -183,7 +183,6 @@
 	.recipe-image {
 		max-height: 374px;
 		margin-right: 20px;
-		object-fit: cover;
 		width: 100%;
 
 		@media (max-width: $tabletBreakpoint) {

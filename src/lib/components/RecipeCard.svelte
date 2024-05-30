@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { SaveRecipeButton, slugify } from '$lib';
-	import placeholder from '$lib/assets/recipe_image_placeholder.png';
+	import placeholder from '$lib/assets/recipe_image_placeholder.svg';
 
 	export let recipeId: string;
 	export let recipeImage: string;
@@ -10,11 +10,11 @@
 	$: slugifiedRecipeTitle = slugify(recipeTitle);
 </script>
 
-<div class="container flex-column">
+<div class="container flex-column" data-testid="recipe-card">
 	<a class="non-text-anchor-element" href={`/recetas/${slugifiedRecipeTitle}`}>
 		<img
 			alt={`Photo of the recipe ${recipeTitle}`}
-			class="rounded-img recipe-image"
+			class="rounded-img recipe-image {recipeImage ? 'object-fit-cover' : ''}"
 			crossorigin="anonymous"
 			loading="lazy"
 			src={recipeImage ? recipeImage : placeholder}
@@ -22,7 +22,6 @@
 	</a>
 	<div class="title-container">
 		<a class="non-text-anchor-element" href={`/recetas/${slugifiedRecipeTitle}`}>
-
 			<h2>{recipeTitle}</h2>
 		</a>
 		<SaveRecipeButton {recipeId} --iconWidth="32px" --mobileIconWidth="48px" />
@@ -50,7 +49,6 @@
 		margin-bottom: 16px;
 		max-height: 240px;
 		display: inline-block;
-		object-fit: cover;
 		width: 100%;
 
 		@media (max-width: $mobileBreakpoint) {
