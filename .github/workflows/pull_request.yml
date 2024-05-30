@@ -25,5 +25,17 @@ jobs:
           cache: 'pnpm'
       - run: pnpm install
       - run: pnpm run build
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+
+    strategy:
+      matrix:
+        node-version: [20]
+
+    steps:
       - run: pnpm exec playwright install
       - run: pnpm test
+        env:
+          API_URL: ${{ secrets.API_URL }}
