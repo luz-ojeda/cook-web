@@ -10,7 +10,7 @@
 	$: slugifiedRecipeTitle = slugify(recipeTitle);
 </script>
 
-<div class="container flex-column">
+<div class="container flex-column" data-testid="recipe-card">
 	<a class="non-text-anchor-element" href={`/recetas/${slugifiedRecipeTitle}`}>
 		<img
 			alt={`Photo of the recipe ${recipeTitle}`}
@@ -22,7 +22,6 @@
 	</a>
 	<div class="title-container">
 		<a class="non-text-anchor-element" href={`/recetas/${slugifiedRecipeTitle}`}>
-
 			<h2>{recipeTitle}</h2>
 		</a>
 		<SaveRecipeButton {recipeId} --iconWidth="32px" --mobileIconWidth="48px" />
