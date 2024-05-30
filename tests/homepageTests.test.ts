@@ -21,4 +21,15 @@ test.describe('homepage', () => {
 
 		expect(recipeCardsCount).toBeGreaterThan(0);
 	});
+
+	test("clicking on recipe card takes user to recipe's page", async ({ page }) => {
+		const recipeCard = page.getByTestId('recipe-card').first();
+		const recipeName = await recipeCard.getByRole('heading').innerText();
+
+		await recipeCard.click();
+		await page.waitForURL('**/recetas/**');
+
+		const recipeHeading = await page.getByRole('heading', { name: recipeName }).innerText();
+		expect(recipeHeading).toEqual(recipeName);
+	});
 });
