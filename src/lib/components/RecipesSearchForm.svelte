@@ -34,7 +34,7 @@
 	});
 </script>
 
-<form>
+<form aria-label="Recipe search form">
 	<div>
 		<TextInput
 			bind:inputValue={$recipes.name}
@@ -112,7 +112,8 @@
 				loading={loading && $navigating?.to?.url.pathname == '/recetas'}
 				onClick={() => {
 					loading = true;
-				}}>Buscar</Button
+				}}
+				type="submit">Buscar</Button
 			>
 		</a>
 	{/if}
