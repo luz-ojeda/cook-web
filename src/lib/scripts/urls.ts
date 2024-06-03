@@ -71,16 +71,16 @@ function buildRecipesBrowserUrl({
 	}
 
 	if (onlyVegetarian) {
-		browserUrl += `soloVegetarianas=true`;
+		browserUrl += `soloVegetarianas=true&`;
 	}
 
 	if (ids && ids.length > 0) {
 		for (let i = 0; i < ids.length; i++) {
-			browserUrl += `&ids=${ids[i]}`;
+			browserUrl += `ids=${ids[i]}&`;
 		}
 	}
 
-	browserUrl += `&pagina=${page ?? '1'}&limit=${resultsPerPage ?? '9'}`;
+	browserUrl += `pagina=${page ?? '1'}&limit=${resultsPerPage ?? '9'}`;
 
 	return browserUrl;
 }
