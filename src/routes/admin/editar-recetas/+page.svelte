@@ -1,33 +1,24 @@
 <script lang="ts">
 	import type { Recipe } from '$lib/types/Recipe';
 	import type { PaginatedList } from '$lib/types/PaginatedList';
-	import { Pagination, TextInput, slugify } from '$lib';
+	import { Pagination, TextInput, slugify, updateURLSearchParam } from '$lib';
 	import { browser } from '$app/environment';
-	import { onMount } from "svelte";
-	import { goto } from "$app/navigation";
+	import { onMount } from 'svelte';
 
 	export let data: PaginatedList<Recipe>;
 	let name = '';
 	let nameFilter = '';
 	let page: number | null = null;
 
-	function updateURLParameter(param: string, value: string) {
-        if (browser) {
-			const url = new URL(window.location.href);
-            url.searchParams.set(param, value);
-            goto(url);
-        }
-    }
-
 	onMount(async () => {
-        const urlParams = new URLSearchParams(window.location.search);
-        page = Number(urlParams.get('pagina')) || null;
-        name = urlParams.get('nombre') || '';
-    });
+		const urlParams = new URLSearchParams(window.location.search);
+		page = Number(urlParams.get('pagina')) || null;
+		name = urlParams.get('nombre') || '';
+	});
 
 	$: if (browser && page) {
-        updateURLParameter('pagina', page.toString());
-    }
+		updateURLSearchParam('pagina', page.toString());
+	}
 </script>
 
 <svelte:head>

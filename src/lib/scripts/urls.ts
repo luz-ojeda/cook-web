@@ -1,3 +1,5 @@
+import { browser } from '$app/environment';
+import { goto } from '$app/navigation';
 import type { RecipeParameters } from '$lib/types/Recipe';
 
 function buildRecipesApiUrl(apiUrl: string, url: URL) {
@@ -85,4 +87,12 @@ function buildRecipesBrowserUrl({
 	return browserUrl;
 }
 
-export { buildRecipesApiUrl, buildRecipesBrowserUrl };
+function updateURLSearchParam(param: string, value: string) {
+	if (browser) {
+		const url = new URL(window.location.href);
+		url.searchParams.set(param, value);
+		goto(url);
+	}
+}
+
+export { buildRecipesApiUrl, buildRecipesBrowserUrl, updateURLSearchParam };

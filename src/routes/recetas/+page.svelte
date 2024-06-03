@@ -2,8 +2,16 @@
 	import type { Recipe } from '$lib/types/Recipe';
 	import { onMount } from 'svelte';
 	import { recipes } from '../../stores/recipes';
-	import { CircularLoading, Pagination, RecipeCard, RecipesSearchForm, SearchEmpty } from '$lib';
+	import {
+		CircularLoading,
+		Pagination,
+		RecipeCard,
+		RecipesSearchForm,
+		SearchEmpty,
+		updateURLSearchParam
+	} from '$lib';
 	import type { PaginatedList } from '$lib/types/PaginatedList';
+	import { browser } from '$app/environment';
 
 	export let data: PaginatedList<Recipe>;
 
@@ -23,6 +31,10 @@
 			};
 		});
 	});
+
+	$: if (browser && $recipes.page && $recipes.page !== 1) {
+		updateURLSearchParam('pagina', $recipes.page.toString());
+	}
 </script>
 
 <svelte:head>
