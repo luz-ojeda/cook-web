@@ -25,6 +25,7 @@
 	let files: FileList | null;
 	let invalidFile = false;
 	let errorMessage: string | undefined = '';
+	let imageErrorMessage: string | undefined = '';
 
 	$: {
 		if (files === null) {
@@ -32,17 +33,25 @@
 		}
 	}
 
-	function validateFile(file: Blob) {
-		invalidFile =
-			!file.type.includes('jpg') &&
-			!file.type.includes('jpeg') &&
-			!file.type.includes('png');
+	function validateFile(file: Blob): boolean {
+		imageErrorMessage = '';
+		const invalidType =
+			!file.type.includes('jpg') && !file.type.includes('jpeg') && !file.type.includes('png');
 
-		if (invalidFile) {
-			errorMessage = 'La imagen no tiene un formato válido. Solo se permite .jpg, .jpeg y .png.';
+		const invalidSize = file.size > 500000;
+
+		invalidFile = invalidType || invalidSize;
+
+		if (invalidType) {
+			imageErrorMessage =
+				'La imagen no tiene un formato válido. Solo se permite .jpg, .jpeg y .png.';
+		} else if (invalidSize) {
+			imageErrorMessage = 'La imagen debe pesar menos de 500KB';
 		} else {
-			errorMessage = '';
+			imageErrorMessage = '';
 		}
+
+		return !invalidFile;
 	}
 
 	$: errorMessage = form?.message;
@@ -64,8 +73,11 @@
 		{#if values?.id}
 			<input id="id" name="id" readonly type="id" value={values?.id} />
 		{/if}
-		<div class="flex-center">
-			<ImageUploadInput {files} onChange={validateFile} recipeImage={values?.pictures[0]} />
+		<div>
+			<ImageUploadInput {files} validateImage={validateFile} recipeImage={values?.pictures[0]} />
+			{#if imageErrorMessage}
+				<p class="error">{imageErrorMessage}</p>
+			{/if}
 		</div>
 		<label for="name">
 			Nombre*:

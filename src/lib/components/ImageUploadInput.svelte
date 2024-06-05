@@ -1,12 +1,13 @@
 <script lang="ts">
-	import { Icon } from '$lib';
+	import { CircularLoading, Icon } from '$lib';
 
 	export let files: FileList | null;
 	export let recipeImage: string | undefined = undefined;
-	export let onChange: (file: Blob) => void;
+	export let validateImage: (file: Blob) => boolean;
 
 	let fileInput: HTMLInputElement;
 	let imgPreview: HTMLImageElement;
+	let fileReader: FileReader;
 
 	function resetFileInput() {
 		fileInput.value = '';
@@ -50,13 +51,14 @@
 	function previewPicture() {
 		const file = fileInput.files;
 		if (file) {
-			const fileReader = new FileReader();
-			fileReader.onload = (event) => {
-				imgPreview.setAttribute('src', event.target?.result as string);
-				imgPreview.style.zIndex = '1';
-			};
-			fileReader.readAsDataURL(file[0]);
-			onChange(file[0]);
+			if (validateImage(file[0])) {
+				fileReader = new FileReader();
+				fileReader.onload = (event) => {
+					imgPreview.setAttribute('src', event.target?.result as string);
+					imgPreview.style.zIndex = '1';
+				};
+				fileReader.readAsDataURL(file[0]);
+			}
 		}
 	}
 
@@ -81,11 +83,15 @@
 	on:dragleave={onDragLeave}
 	on:keydown={onButtonKeyDown}
 >
-	<label for="recipeImage"
-		>Seleccionar o arrastrar una imagen
-		<div class="icon">
-			<Icon name="upload" width="32" height="32" />
-		</div>
+	<label for="recipeImage">
+		{#if fileReader?.readyState != 1}
+			<div>
+				Seleccionar o arrastrar una imagen
+				<div class="icon">
+					<Icon name="upload" width="32" height="32" />
+				</div>
+			</div>
+		{/if}
 		<img bind:this={imgPreview} crossorigin="anonymous" src={recipeImage ?? '#'} alt="" />
 		<input
 			accept=".png, .jpg, .jpeg"
@@ -96,6 +102,10 @@
 			name="recipeImage"
 			type="file"
 		/>
+		{#if fileReader?.readyState == 1}
+			<!-- 1 = 'LOADING' -->
+			<CircularLoading --background="#e9e9ed" --circle-width="60px" />
+		{/if}
 	</label>
 </button>
 <button disabled={!files} on:click={resetFileInput}>Remover imagen</button>
