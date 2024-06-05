@@ -74,7 +74,7 @@
 			{/if}
 		{:else if $recipes.loading}
 			<div class="w-100 h-100 flex-full-center">
-				<CircularLoading --background="#e7e2da" --circle-width="72px" />
+				<CircularLoading width="72" />
 			</div>
 		{:else if !$recipes.loading && $recipes.recipes !== undefined}
 			<div class="h-100">

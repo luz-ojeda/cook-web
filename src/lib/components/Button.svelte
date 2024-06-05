@@ -23,7 +23,7 @@
 	{type}
 >
 	{#if loading}
-		<CircularLoading --background="#a19887" --circle-width="30px" />
+		<CircularLoading width="30" />
 	{:else}
 		<slot />
 	{/if}
@@ -48,7 +48,7 @@
 			background-color: $grey500;
 		}
 
-		&:active {
+		&:active:enabled {
 			box-shadow: $smallestShadow;
 		}
 	}

@@ -16,7 +16,7 @@
 	<div class="container">
 		{#if !$savedIds.loadingIdsFromLocalStorage}
 			{#if $savedRecipes.loading}
-				<CircularLoading --circle-width="72px" />
+				<CircularLoading width="72" />
 			{:else if !message}
 				{#if $savedRecipes.recipes && $savedRecipes.recipes.length > 0}
 					<div class="recipes-container">
