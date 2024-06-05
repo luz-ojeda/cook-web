@@ -73,7 +73,7 @@
 			$shadow;
 		color: $grey200;
 
-		&:hover {
+		&:hover:enabled {
 			background-color: $lightPrimaryColor;
 			transition: background-color 0.3s;
 		}

@@ -4,7 +4,7 @@
 	import Button from '$lib/components/Button.svelte';
 	import type { Recipe } from '$lib/types/Recipe';
 	import type { RecipeFormDataElems } from '$lib/types/RecipeFormData';
-	import type { ActionData as CreateRecipeActionData } from '../../routes/admin/crear-receta/$types';
+	import type { ActionData as CreateRecipeActionData } from '../../routes/crear-receta/$types';
 	import type { ActionData as UpdateRecipeActionData } from '../../routes/admin/editar-recetas/[name]/$types';
 
 	export let form: UpdateRecipeActionData | CreateRecipeActionData;
@@ -215,7 +215,9 @@
 			/>
 		</label>
 
-		<Button disabled={invalidFile} {loading} type="submit">{submitButtonText}</Button>
+		<div class="button-container">
+			<Button disabled={invalidFile} {loading} type="submit">{submitButtonText}</Button>
+		</div>
 	</form>
 	{#if form?.success}
 		<p class="success">
@@ -258,5 +260,13 @@
 
 	.field-details {
 		font-size: 14px;
+	}
+
+	.button-container {
+		width: 384px;
+
+		@media (max-width: $tabletBreakpoint) {
+			width: auto;
+		}
 	}
 </style>

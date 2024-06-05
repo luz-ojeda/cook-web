@@ -26,7 +26,8 @@ export const actions = {
 					? [
 							`https://${env.AZURE_STORAGE_ACCOUNT_NAME}.blob.core.windows.net/recipes/${slugifiedRecipeName}/1`
 						]
-					: null
+					: null,
+			userCreated: true
 		};
 
 		const response = await fetch(`${env.API_URL}/recipes`, {
