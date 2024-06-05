@@ -104,7 +104,7 @@
 		/>
 		{#if fileReader?.readyState == 1}
 			<!-- 1 = 'LOADING' -->
-			<CircularLoading --background="#e9e9ed" --circle-width="60px" />
+			<CircularLoading width="64" />
 		{/if}
 	</label>
 </button>
