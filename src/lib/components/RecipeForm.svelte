@@ -32,15 +32,11 @@
 		}
 	}
 
-	$: {
-		if (files) {
-			invalidFile =
-				!files[0].type.includes('jpg') &&
-				!files[0].type.includes('jpeg') &&
-				!files[0].type.includes('png');
-		} else {
-			invalidFile = false;
-		}
+	function validateFile(file: Blob) {
+		invalidFile =
+			!file.type.includes('jpg') &&
+			!file.type.includes('jpeg') &&
+			!file.type.includes('png');
 
 		if (invalidFile) {
 			errorMessage = 'La imagen no tiene un formato válido. Solo se permite .jpg, .jpeg y .png.';
@@ -69,7 +65,7 @@
 			<input id="id" name="id" readonly type="id" value={values?.id} />
 		{/if}
 		<div class="flex-center">
-			<ImageUploadInput {files} recipeImage={values?.pictures[0]} />
+			<ImageUploadInput {files} onChange={validateFile} recipeImage={values?.pictures[0]} />
 		</div>
 		<label for="name">
 			Nombre*:

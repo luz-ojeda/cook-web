@@ -2,7 +2,7 @@ import type { Actions } from './$types';
 import { env } from '$env/dynamic/private';
 import { fail } from '@sveltejs/kit';
 import { slugify } from '$lib';
-import { uploadImage } from "$lib/scripts/azure";
+import { uploadImage } from '$lib/scripts/azure';
 
 export const actions = {
 	default: async ({ request }) => {
@@ -22,7 +22,7 @@ export const actions = {
 			difficulty: data.get('difficulty'),
 			vegetarian: Boolean(data.get('vegetarian')),
 			pictures:
-			recipeImage && recipeImage.size > 0
+				recipeImage && recipeImage.size > 0
 					? [
 							`https://${env.AZURE_STORAGE_ACCOUNT_NAME}.blob.core.windows.net/recipes/${slugifiedRecipeName}/1`
 						]
@@ -41,7 +41,6 @@ export const actions = {
 
 		const responseJson = await response.json();
 		if (response.status === 201) {
-
 			if (recipeImage && recipeImage.size > 0) {
 				await uploadImage(recipeImage, `${slugifiedRecipeName}/1`);
 			}
@@ -56,9 +55,20 @@ export const actions = {
 			});
 		}
 
+		if (response.status === 400) {
+			if ('Ingredients' in responseJson.errors) {
+				return fail(responseJson.status, {
+					failure: true,
+					message: `Al menos un ingrediente es necesario`
+				});
+			}
+			return fail(responseJson.status, {
+				failure: true,
+				message: `El formulario contiene errores`
+			});
+		}
+
 		console.error(responseJson);
 		return fail(response.status);
 	}
 } satisfies Actions;
-
-

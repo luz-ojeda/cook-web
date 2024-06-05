@@ -3,6 +3,8 @@
 
 	export let files: FileList | null;
 	export let recipeImage: string | undefined = undefined;
+	export let onChange: (file: Blob) => void;
+
 	let fileInput: HTMLInputElement;
 	let imgPreview: HTMLImageElement;
 
@@ -54,6 +56,7 @@
 				imgPreview.style.zIndex = '1';
 			};
 			fileReader.readAsDataURL(file[0]);
+			onChange(file[0]);
 		}
 	}
 
