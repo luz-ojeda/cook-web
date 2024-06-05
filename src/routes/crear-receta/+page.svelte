@@ -2,8 +2,8 @@
 	import { onMount } from 'svelte';
 	import { RecipeForm } from '$lib';
 	import type { ActionData } from './$types';
-	import { formData } from '../../../stores/recipeCreationStore';
-	import { LOCAL_STORAGE_KEYS } from '../../../constants';
+	import { formData } from '../../stores/recipeCreationStore';
+	import { LOCAL_STORAGE_KEYS } from '../../constants';
 
 	export let form: ActionData;
 
@@ -36,8 +36,8 @@
 </div>
 
 <style lang="scss">
-	@import '../../../sass/variables.scss';
-	@import '../../../sass/colors.scss';
+	@import '../../sass/variables.scss';
+	@import '../../sass/colors.scss';
 
 	.container {
 		padding: 48px 320px;
