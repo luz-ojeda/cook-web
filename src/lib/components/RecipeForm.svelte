@@ -267,7 +267,7 @@
 	}
 
 	.field-details {
-		font-size: 14px;
+		font-size: 0.875rem;
 	}
 
 	.button-container {

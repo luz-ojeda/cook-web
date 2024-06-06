@@ -140,16 +140,16 @@
 	@import '../../../sass/variables.scss';
 
 	h1 {
-		font-size: 48px;
+		font-size: 3rem;
 		margin-bottom: 16px;
 		margin-top: 0;
 
 		@media (max-width: $laptopBreakpoint) {
-			font-size: 40px;
+			font-size: 2.5rem;
 		}
 
 		@media (max-width: $tabletBreakpoint) {
-			font-size: 32px;
+			font-size: 2rem;
 		}
 	}
 
@@ -202,7 +202,7 @@
 	}
 
 	.recipe-summary {
-		font-size: 18px;
+		font-size: 1.125rem;
 		margin-bottom: 16px;
 
 		div:not(:last-of-type) {
@@ -214,7 +214,7 @@
 		}
 
 		@media (max-width: $tabletBreakpoint) {
-			font-size: 16px;
+			font-size: 1rem;
 			margin-bottom: 0;
 		}
 	}

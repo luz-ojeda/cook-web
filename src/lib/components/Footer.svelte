@@ -86,7 +86,7 @@
 		}
 
 		@media (max-width: $mobileBreakpoint) {
-			font-size: 16px;
+			font-size: 1rem;
 		}
 	}
 
@@ -148,7 +148,7 @@
 		}
 
 		input {
-			font-size: 18px;
+			font-size: 1.125rem;
 			padding-left: 38px;
 			height: 48px;
 			width: 250px;

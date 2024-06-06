@@ -85,7 +85,7 @@
 	button {
 		background-color: transparent;
 		border-radius: 8px;
-		font-size: 18px;
+		font-size: 1.125rem;
 		padding: 1px 0;
 		width: 32px;
 

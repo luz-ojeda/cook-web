@@ -62,7 +62,7 @@
 		border-radius: 12px;
 		color: $grey300;
 		display: flex;
-		font-size: 14px;
+		font-size: 0.875rem;
 		font-weight: bold;
 		letter-spacing: 0.025rem;
 		padding: 4px 8px;

@@ -54,13 +54,13 @@
 	}
 
 	.small {
-		font-size: 16px;
+		font-size: 1rem;
 		height: 32px;
 		padding: 4px 12px;
 	}
 
 	.large {
-		font-size: 20px;
+		font-size: 1.25rem;
 		height: 48px;
 		padding: 8px 24px;
 		width: 100%;

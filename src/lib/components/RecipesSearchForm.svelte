@@ -123,7 +123,7 @@
 	@import '../../sass/variables.scss';
 
 	form {
-		font-size: 18px;
+		font-size: 1.125rem;
 
 		> *:not(:last-child) {
 			margin-bottom: 16px;
