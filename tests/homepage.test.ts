@@ -41,7 +41,7 @@ test.describe('homepage', () => {
 		await vegetarianCheckbox.check();
 
 		await page.keyboard.press('Enter');
-		await page.waitForURL('**/recetas?nombre=pasta&dificultad=Medium&ingredientes=langostino&soloVegetarianas=true&pagina=1&limit=9');
+		await page.waitForURL('**/recetas?nombre=pasta&dificultad=Medium&ingredientes=langostino&soloVegetarianas=true&pagina=1&por_pagina=9');
 
 		const recipeCardsCount = await page.getByRole('heading', { name: 'pasta' }).count();
 
