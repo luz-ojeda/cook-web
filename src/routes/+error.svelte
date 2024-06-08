@@ -1,4 +1,4 @@
-<script lang="ts">
+	<script lang="ts">
 	import { page } from '$app/stores';
 	import { ServerError } from '$lib';
 </script>

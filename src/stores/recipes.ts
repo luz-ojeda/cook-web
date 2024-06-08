@@ -15,27 +15,25 @@ export function createRecipes() {
 		difficulties: [],
 		ingredients: [],
 		onlyVegetarian: false,
-		page: 1,
-		resultsPerPage: 9
+		page: undefined,
+		perPage: undefined
 	});
 
 	async function loadRecipes() {
 		toggleLoading();
 
-		const { name, difficulties, ingredients, onlyVegetarian, page, resultsPerPage } = get(store);
-
+		const { name, difficulties, ingredients, onlyVegetarian, page, perPage } = get(store);
 		const url = buildRecipesBrowserUrl({
 			name,
 			ingredients,
 			difficulties,
 			onlyVegetarian,
 			page,
-			resultsPerPage
+			perPage
 		});
 
 		const response = await fetch(url);
 		const recipesPaginatedList: PaginatedList<Recipe> = await response.json();
-
 		store.update((store) => {
 			return {
 				...store,

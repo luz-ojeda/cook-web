@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Recipe } from '$lib/types/Recipe';
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	import { recipes } from '../../stores/recipes';
 	import {
 		CircularLoading,
@@ -8,7 +8,7 @@
 		RecipeCard,
 		RecipesSearchForm,
 		SearchEmpty,
-		updateURLSearchParam
+		updateURLSearchParams
 	} from '$lib';
 	import type { PaginatedList } from '$lib/types/PaginatedList';
 	import { browser } from '$app/environment';
@@ -19,6 +19,30 @@
 		$recipes.page = page;
 		recipes.loadRecipes();
 		window.scrollTo(0, 0);
+	}
+
+	function onPerPageChange(perPage: number) {
+		$recipes.perPage = perPage;
+		$recipes.page = 1;
+		recipes.loadRecipes();
+		window.scrollTo(0, 0);
+	}
+
+	$: if (browser && ($recipes.page || $recipes.perPage)) {
+		const page = $recipes.page?.toString();
+		const perPage = $recipes.perPage?.toString();
+
+		const params: { [key: string]: string | null } = {};
+
+		if (page) {
+			params.pagina = page;
+		}
+
+		if (perPage) {
+			params.por_pagina = perPage;
+		}
+
+		updateURLSearchParams(params);
 	}
 
 	onMount(() => {
@@ -32,9 +56,11 @@
 		});
 	});
 
-	$: if (browser && $recipes.page && $recipes.page !== 1) {
-		updateURLSearchParam('pagina', $recipes.page.toString());
-	}
+	onDestroy(() => {
+		recipes.update((store) => {
+			return { ...store, page: undefined, perPage: undefined };
+		});
+	});
 </script>
 
 <svelte:head>
@@ -67,7 +93,9 @@
 				<div class="pagination">
 					<Pagination
 						currentPage={$recipes.pagination.pageNumber}
+						{onPerPageChange}
 						{onPageClick}
+						perPage={$recipes.pagination.pageSize}
 						totalPages={$recipes.pagination.totalPages}
 					/>
 				</div>

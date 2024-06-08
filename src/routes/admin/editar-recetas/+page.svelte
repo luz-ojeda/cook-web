@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Recipe } from '$lib/types/Recipe';
 	import type { PaginatedList } from '$lib/types/PaginatedList';
-	import { Pagination, TextInput, slugify, updateURLSearchParam } from '$lib';
+	import { Pagination, TextInput, slugify, updateURLSearchParams } from '$lib';
 	import { browser } from '$app/environment';
 	import { onMount } from 'svelte';
 
@@ -9,16 +9,28 @@
 	let name = '';
 	let nameFilter = '';
 	let page: number | null = null;
+	let perPage: number | null = null;
+
+	$: if (browser) {
+		const params: { [key: string]: string | null } = {};
+
+		if (page) {
+			params.pagina = page.toString();
+		}
+
+		if (perPage) {
+			params.por_pagina = perPage.toString();
+		}
+
+		updateURLSearchParams(params);
+	}
 
 	onMount(async () => {
 		const urlParams = new URLSearchParams(window.location.search);
 		page = Number(urlParams.get('pagina')) || null;
+		perPage = Number(urlParams.get('por_pagina')) || null;
 		name = urlParams.get('nombre') || '';
 	});
-
-	$: if (browser && page) {
-		updateURLSearchParam('pagina', page.toString());
-	}
 </script>
 
 <svelte:head>
@@ -80,9 +92,13 @@
 		<div class="pagination">
 			<Pagination
 				currentPage={data.pagination.pageNumber}
+				onPerPageChange={(p) => {
+					perPage = p;
+				}}
 				onPageClick={(p) => {
 					page = p;
 				}}
+				perPage={data.pagination.pageSize}
 				totalPages={data.pagination.totalPages}
 			/>
 		</div>

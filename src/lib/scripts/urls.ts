@@ -8,7 +8,7 @@ function buildRecipesApiUrl(apiUrl: string, url: URL) {
 	const page = url.searchParams.get('pagina');
 	urlWithParams += `page=${page ?? '1'}`;
 
-	const limit = url.searchParams.get('limit');
+	const limit = url.searchParams.get('por_pagina');
 	urlWithParams += `&limit=${limit ?? '9'}`;
 
 	if (url.searchParams.get('nombre')) {
@@ -51,7 +51,7 @@ function buildRecipesBrowserUrl({
 	difficulties,
 	onlyVegetarian,
 	page,
-	resultsPerPage,
+	perPage,
 	ids
 }: RecipeParameters) {
 	let browserUrl = `/recetas?`;
@@ -82,17 +82,24 @@ function buildRecipesBrowserUrl({
 		}
 	}
 
-	browserUrl += `pagina=${page ?? '1'}&limit=${resultsPerPage ?? '9'}`;
+	browserUrl += `pagina=${page ?? '1'}&por_pagina=${perPage ?? '9'}`;
 
 	return browserUrl;
 }
 
-function updateURLSearchParam(param: string, value: string) {
+function updateURLSearchParams(params: { [key: string]: string | undefined | null }) {
 	if (browser) {
 		const url = new URL(window.location.href);
-		url.searchParams.set(param, value);
+		for (const param in params) {
+			const value = params[param];
+			if (value) {
+				url.searchParams.set(param, value);
+			} else {
+				url.searchParams.delete(param);
+			}
+		}
 		goto(url);
 	}
 }
 
-export { buildRecipesApiUrl, buildRecipesBrowserUrl, updateURLSearchParam };
+export { buildRecipesApiUrl, buildRecipesBrowserUrl, updateURLSearchParams };

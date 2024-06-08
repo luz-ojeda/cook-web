@@ -48,6 +48,10 @@
 		list-style: none;
 		columns: 4;
 
+		@media (max-width: $largeScreenBreakpoint) {
+			columns: 5;
+		}
+
 		@media (max-width: $laptopBreakpoint) {
 			columns: 3;
 		}

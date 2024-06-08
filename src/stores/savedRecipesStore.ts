@@ -4,7 +4,7 @@ import type { Recipe, RecipeParameters } from '$lib/types/Recipe';
 import type { RecipesStore } from '$lib/types/RecipesStore';
 import { get, writable } from 'svelte/store';
 
-type SavedRecipesStore = RecipesStore & Pick<RecipeParameters, 'page' | 'resultsPerPage'>;
+type SavedRecipesStore = RecipesStore & Pick<RecipeParameters, 'page' | 'perPage'>;
 
 export const savedIds = writable<{ loadingIdsFromLocalStorage: boolean; ids: string[] }>({
 	loadingIdsFromLocalStorage: true,
@@ -21,7 +21,7 @@ function createSavedRecipes() {
 	async function loadRecipes() {
 		const recipesStore = get(store);
 		const { ids } = get(savedIds);
-		const { page, resultsPerPage } = recipesStore;
+		const { page, perPage } = recipesStore;
 
 		if (ids.length === 0) {
 			store.update((store) => {
@@ -38,7 +38,7 @@ function createSavedRecipes() {
 		const url = buildRecipesBrowserUrl({
 			ids,
 			page,
-			resultsPerPage
+			perPage
 		});
 
 		const response = await fetch(url);
