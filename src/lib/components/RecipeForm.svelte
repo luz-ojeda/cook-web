@@ -75,6 +75,7 @@
 		{/if}
 		<div>
 			<ImageUploadInput {files} validateImage={validateFile} recipeImage={values?.pictures[0]} />
+			<p class="max-size-note">Tamaño máximo: 500 KB</p>
 			{#if imageErrorMessage}
 				<p class="error">{imageErrorMessage}</p>
 			{/if}
@@ -267,7 +268,7 @@
 	}
 
 	.field-details {
-		font-size: 14px;
+		font-size: 0.875rem;
 	}
 
 	.button-container {
@@ -276,5 +277,11 @@
 		@media (max-width: $tabletBreakpoint) {
 			width: auto;
 		}
+	}
+
+	.max-size-note {
+		color: $grey800;
+		font-size: 0.875rem;
+		margin-top: 0;
 	}
 </style>

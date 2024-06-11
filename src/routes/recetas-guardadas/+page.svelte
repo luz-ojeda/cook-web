@@ -82,7 +82,7 @@
 
 		a {
 			color: $primaryColor;
-			font-size: 18px;
+			font-size: 1.125rem;
 			font-weight: bold;
 			&:hover {
 				color: $lightPrimaryColor;

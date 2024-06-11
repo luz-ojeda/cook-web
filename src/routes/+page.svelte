@@ -95,10 +95,10 @@
 	}
 
 	h1 {
-		font-size: 48px;
+		font-size: 3rem;
 
 		@media (max-width: $tabletBreakpoint) {
-			font-size: 24px;
+			font-size: 1.5rem;
 		}
 	}
 
@@ -109,10 +109,10 @@
 		}
 
 		p {
-			font-size: 18px;
+			font-size: 1.125rem;
 
 			@media (max-width: $tabletBreakpoint) {
-				font-size: 16px;
+				font-size: 1rem;
 			}
 		}
 	}
@@ -138,7 +138,7 @@
 	}
 
 	.see-more {
-		font-size: 24px;
+		font-size: 1.5rem;
 		font-weight: bold;
 	}
 

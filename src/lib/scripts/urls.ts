@@ -1,5 +1,3 @@
-import { browser } from '$app/environment';
-import { goto } from '$app/navigation';
 import type { RecipeParameters } from '$lib/types/Recipe';
 
 function buildRecipesApiUrl(apiUrl: string, url: URL) {
@@ -8,7 +6,7 @@ function buildRecipesApiUrl(apiUrl: string, url: URL) {
 	const page = url.searchParams.get('pagina');
 	urlWithParams += `page=${page ?? '1'}`;
 
-	const limit = url.searchParams.get('limit');
+	const limit = url.searchParams.get('por_pagina');
 	urlWithParams += `&limit=${limit ?? '9'}`;
 
 	if (url.searchParams.get('nombre')) {
@@ -51,7 +49,7 @@ function buildRecipesBrowserUrl({
 	difficulties,
 	onlyVegetarian,
 	page,
-	resultsPerPage,
+	perPage,
 	ids
 }: RecipeParameters) {
 	let browserUrl = `/recetas?`;
@@ -82,17 +80,9 @@ function buildRecipesBrowserUrl({
 		}
 	}
 
-	browserUrl += `pagina=${page ?? '1'}&limit=${resultsPerPage ?? '9'}`;
+	browserUrl += `pagina=${page ?? '1'}&por_pagina=${perPage ?? '9'}`;
 
 	return browserUrl;
 }
 
-function updateURLSearchParam(param: string, value: string) {
-	if (browser) {
-		const url = new URL(window.location.href);
-		url.searchParams.set(param, value);
-		goto(url);
-	}
-}
-
-export { buildRecipesApiUrl, buildRecipesBrowserUrl, updateURLSearchParam };
+export { buildRecipesApiUrl, buildRecipesBrowserUrl };

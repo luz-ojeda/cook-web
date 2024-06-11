@@ -4,7 +4,7 @@ type RecipeParameters = {
 	difficulties?: string[];
 	onlyVegetarian?: boolean;
 	page?: number;
-	resultsPerPage?: number;
+	perPage?: number;
 	ids?: string[];
 };
 

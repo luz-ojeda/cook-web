@@ -50,7 +50,7 @@
 			overflow-y: auto;
 		}
 
-		font-size: 24px;
+		font-size: 1.5rem;
 	}
 
 	.burger-button {
