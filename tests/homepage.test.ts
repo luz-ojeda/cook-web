@@ -5,7 +5,7 @@ test.describe('homepage', () => {
 		await page.goto('/');
 	});
 
-	test('can see list of recipes in homepage', async ({ page }) => {
+	test('should see list of recipes in homepage', async ({ page }) => {
 		const recipeCardsCount = await page.getByTestId('recipe-card').count();
 
 		expect(recipeCardsCount).toEqual(4);

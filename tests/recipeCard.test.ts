@@ -5,7 +5,7 @@ test.describe('recipe card', () => {
 		await page.goto('/');
 	});
 
-	test('can save recipe to local storage', async ({ page }) => {
+	test('should save recipe to local storage', async ({ page }) => {
 		const recipeCards = await page.getByTestId('recipe-card').all();
 		const saveRecipeButton = recipeCards[0].getByRole('button', { name: 'Guardar receta' });
         await saveRecipeButton.click();
