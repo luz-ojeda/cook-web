@@ -71,4 +71,28 @@ test.describe('recipes page', () => {
 		// Verify URL query parameter is updated to pagina=1 and por_pagina=27
 		await page.waitForURL("/recetas?pagina=1&por_pagina=27")
 	});
+
+	test('should preserve state when navigating away and returning using browser buttons', async ({ page }) => {
+		await page.goto('/recetas');
+	
+		await page.getByRole('button', { name: 'Pág. siguiente' }).click();
+	
+		let activePageButton = page.locator('.active-page');
+		await page.waitForURL("/recetas?pagina=2");
+		expect(await activePageButton.innerText()).toBe('2');
+	
+		await page.getByRole('button', { name: 'Pág. siguiente' }).click();
+
+		activePageButton = page.locator('.active-page');
+		await page.waitForURL("/recetas?pagina=3");
+		expect(await activePageButton.innerText()).toBe('3');
+	
+		// Go back using browser's back button
+		await page.goBack();
+	
+		activePageButton = page.locator('.active-page');
+		expect(await activePageButton.innerText()).toBe('2');
+	
+		await page.waitForURL("/recetas?pagina=2");
+	});
 });

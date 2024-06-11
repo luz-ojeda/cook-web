@@ -45,7 +45,7 @@ import {
 	slugify
 } from './scripts/strings';
 import { scaleIngredients } from './scripts/recipe';
-import { buildRecipesApiUrl, buildRecipesBrowserUrl, updateURLSearchParams } from './scripts/urls';
+import { buildRecipesApiUrl, buildRecipesBrowserUrl } from './scripts/urls';
 
 export {
 	capitalizeFirstLetter,
@@ -55,7 +55,6 @@ export {
 	scaleIngredients,
 	buildRecipesApiUrl,
 	buildRecipesBrowserUrl,
-	updateURLSearchParams
 };
 
 // Images such as empty state, errors

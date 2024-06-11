@@ -1,33 +1,37 @@
 <script lang="ts">
 	import type { Recipe } from '$lib/types/Recipe';
 	import type { PaginatedList } from '$lib/types/PaginatedList';
-	import { Pagination, TextInput, slugify, updateURLSearchParams } from '$lib';
+	import { Pagination, TextInput, slugify } from '$lib';
 	import { browser } from '$app/environment';
 	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
 
 	export let data: PaginatedList<Recipe>;
 	let name = '';
 	let nameFilter = '';
-	let page: number | null = null;
+	let pageNumber: number | null = null;
 	let perPage: number | null = null;
 
-	$: if (browser) {
-		const params: { [key: string]: string | null } = {};
+	$: if (pageNumber) {
+		const newUrl = new URL($page.url);
+		newUrl?.searchParams?.set('pagina', pageNumber.toString());
 
-		if (page) {
-			params.pagina = page.toString();
-		}
+		window.scrollTo(0, 0);
+		goto(newUrl);
+	}
 
-		if (perPage) {
-			params.por_pagina = perPage.toString();
-		}
+	$: if (perPage) {
+		const newUrl = new URL($page.url);
+		newUrl?.searchParams?.set('pagina', perPage.toString());
 
-		updateURLSearchParams(params);
+		window.scrollTo(0, 0);
+		goto(newUrl);
 	}
 
 	onMount(async () => {
 		const urlParams = new URLSearchParams(window.location.search);
-		page = Number(urlParams.get('pagina')) || null;
+		pageNumber = Number(urlParams.get('pagina')) || null;
 		perPage = Number(urlParams.get('por_pagina')) || null;
 		name = urlParams.get('nombre') || '';
 	});
@@ -96,7 +100,7 @@
 					perPage = p;
 				}}
 				onPageClick={(p) => {
-					page = p;
+					pageNumber = p;
 				}}
 				perPage={data.pagination.pageSize}
 				totalPages={data.pagination.totalPages}

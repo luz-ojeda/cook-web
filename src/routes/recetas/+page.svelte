@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Recipe } from '$lib/types/Recipe';
-	import { onDestroy, onMount } from 'svelte';
+	import { onDestroy } from 'svelte';
 	import { recipes } from '../../stores/recipes';
 	import {
 		CircularLoading,
@@ -8,44 +8,32 @@
 		RecipeCard,
 		RecipesSearchForm,
 		SearchEmpty,
-		updateURLSearchParams
 	} from '$lib';
 	import type { PaginatedList } from '$lib/types/PaginatedList';
-	import { browser } from '$app/environment';
+	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
 
 	export let data: PaginatedList<Recipe>;
 
 	function onPageClick(page: number) {
-		$recipes.page = page;
-		recipes.loadRecipes();
+		const newUrl = new URL($page.url);
+		newUrl?.searchParams?.set('pagina', page.toString());
+
 		window.scrollTo(0, 0);
+		goto(newUrl);
 	}
 
 	function onPerPageChange(perPage: number) {
-		$recipes.perPage = perPage;
-		$recipes.page = 1;
-		recipes.loadRecipes();
+		const newUrl = new URL($page.url);
+		newUrl?.searchParams?.set('pagina', '1');
+		newUrl?.searchParams?.set('por_pagina', perPage.toString());
+
 		window.scrollTo(0, 0);
+		goto(newUrl);
 	}
 
-	$: if (browser && ($recipes.page || $recipes.perPage)) {
-		const page = $recipes.page?.toString();
-		const perPage = $recipes.perPage?.toString();
 
-		const params: { [key: string]: string | null } = {};
-
-		if (page) {
-			params.pagina = page;
-		}
-
-		if (perPage) {
-			params.por_pagina = perPage;
-		}
-
-		updateURLSearchParams(params);
-	}
-
-	onMount(() => {
+	$: if (data.pagination?.pageNumber) {
 		recipes.update((store) => {
 			return {
 				...store,
@@ -54,7 +42,7 @@
 				loading: false
 			};
 		});
-	});
+	}
 
 	onDestroy(() => {
 		recipes.update((store) => {
