@@ -137,14 +137,4 @@
 	.difficulty-label {
 		margin-bottom: 6px;
 	}
-
-	.difficulties-container {
-		@media (max-width: $tabletBreakpoint) {
-			div {
-				&:not(:last-child) {
-					margin-bottom: 12px;
-				}
-			}
-		}
-	}
 </style>

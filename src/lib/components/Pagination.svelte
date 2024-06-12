@@ -33,62 +33,64 @@
 			<option selected={perPage == 27} value="27">27</option>
 		</select>
 	</div>
-	<div class="flex-center">
-		<!-- Previous page button -->
-		{#if currentPage !== 1 && totalPages >= 2}
-			<button on:click={() => onPageClick(currentPage - 1)} style="width: 96px;"
-				>Pág. anterior</button
-			>
-		{/if}
-
-		<!-- Page 1 button -->
-		<button
-			class={currentPage === 1 ? 'active-page' : ''}
-			disabled={currentPage === 1}
-			on:click={() => onPageClick(1)}>1</button
-		>
-
-		<!-- Rest of pages buttons -->
-		{#if totalPages > PAGES_TO_DISPLAY_IN_BETWEEN + 2}
-			{#if currentPage >= 1 + PAGES_TO_DISPLAY_IN_BETWEEN}
-				<span>...</span>
+	{#if totalPages > 1}
+		<div class="flex-center">
+			<!-- Previous page button -->
+			{#if currentPage !== 1 && totalPages >= 2}
+				<button on:click={() => onPageClick(currentPage - 1)} style="width: 96px;"
+					>Pág. anterior</button
+				>
 			{/if}
 
-			{#each pagesArray.slice(pagesSliceIndex, pagesSliceIndex + 3) as i}
-				<button
-					class={currentPage === i ? 'active-page' : ''}
-					disabled={currentPage === i}
-					on:click={() => onPageClick(i)}>{i}</button
-				>
-			{/each}
-
-			{#if currentPage <= totalPages - PAGES_TO_DISPLAY_IN_BETWEEN}
-				<span>...</span>
-			{/if}
-		{:else}
-			{#each Array.from(Array(totalPages - 2)).keys() as i}
-				<button
-					class={currentPage === i + 2 ? 'active-page' : ''}
-					disabled={currentPage === i + 2}
-					on:click={() => onPageClick(i + 2)}>{i + 2}</button
-				>
-			{/each}
-		{/if}
-
-		<!-- Last page button -->
-		<button
-			class={currentPage === totalPages ? 'active-page' : ''}
-			disabled={currentPage === totalPages}
-			on:click={() => onPageClick(totalPages)}>{totalPages}</button
-		>
-
-		<!-- Next page button -->
-		{#if currentPage !== totalPages && totalPages > 2}
-			<button on:click={() => onPageClick(currentPage + 1)} style="width: 96px;"
-				>Pág. siguiente</button
+			<!-- Page 1 button -->
+			<button
+				class={currentPage === 1 ? 'active-page' : ''}
+				disabled={currentPage === 1}
+				on:click={() => onPageClick(1)}>1</button
 			>
-		{/if}
-	</div>
+
+			<!-- Rest of pages buttons -->
+			{#if totalPages > PAGES_TO_DISPLAY_IN_BETWEEN + 2}
+				{#if currentPage >= 1 + PAGES_TO_DISPLAY_IN_BETWEEN}
+					<span>...</span>
+				{/if}
+
+				{#each pagesArray.slice(pagesSliceIndex, pagesSliceIndex + 3) as i}
+					<button
+						class={currentPage === i ? 'active-page' : ''}
+						disabled={currentPage === i}
+						on:click={() => onPageClick(i)}>{i}</button
+					>
+				{/each}
+
+				{#if currentPage <= totalPages - PAGES_TO_DISPLAY_IN_BETWEEN}
+					<span>...</span>
+				{/if}
+			{:else}
+				{#each Array.from(Array(totalPages - 2)).keys() as i}
+					<button
+						class={currentPage === i + 2 ? 'active-page' : ''}
+						disabled={currentPage === i + 2}
+						on:click={() => onPageClick(i + 2)}>{i + 2}</button
+					>
+				{/each}
+			{/if}
+
+			<!-- Last page button -->
+			<button
+				class={currentPage === totalPages ? 'active-page' : ''}
+				disabled={currentPage === totalPages}
+				on:click={() => onPageClick(totalPages)}>{totalPages}</button
+			>
+
+			<!-- Next page button -->
+			{#if currentPage !== totalPages && totalPages > 2}
+				<button on:click={() => onPageClick(currentPage + 1)} style="width: 96px;"
+					>Pág. siguiente</button
+				>
+			{/if}
+		</div>
+	{/if}
 </nav>
 
 <style lang="scss">
