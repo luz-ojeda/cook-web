@@ -4,7 +4,7 @@
 
 Aplicación web en Svelte que permite a los usuarios gestionar y recuperar recetas de cocina. Utiliza [cook-api](https://github.com/luz-ojeda/cook-api) como backend.
 
-Puede encontrar una versión deployada de la aplicación web completa [aquí](https://cook-web-weathered-thunder-7639.fly.dev/). La creación de recetas está por el momento restringida.
+Puede encontrar una versión deployada de la aplicación web completa [aquí](https://cook-web-weathered-thunder-7639.fly.dev/).
 
 ## Features
 
