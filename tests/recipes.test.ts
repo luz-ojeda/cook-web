@@ -42,7 +42,7 @@ test.describe('recipes page', () => {
 	test('should display correct number of recipes and highlight correct page when navigating with query parameters', async ({
 		page
 	}) => {
-		await page.goto('/recetas?pagina=3&por_pagina=9');
+		await page.goto('/recetas?pagina=2&por_pagina=9');
 
 		await expect(page.getByTestId('recipe-card')).toHaveCount(9)
 		await expect(page.locator('.active-page')).toHaveText('2')
