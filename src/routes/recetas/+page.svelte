@@ -77,7 +77,7 @@
 					/>
 				{/each}
 			</div>
-			{#if $recipes.pagination && $recipes.pagination.totalPages > 1}
+			{#if $recipes.pagination}
 				<div class="pagination">
 					<Pagination
 						currentPage={$recipes.pagination.pageNumber}

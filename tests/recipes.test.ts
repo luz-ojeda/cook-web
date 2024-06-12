@@ -42,9 +42,9 @@ test.describe('recipes page', () => {
 	test('should display correct number of recipes and highlight correct page when navigating with query parameters', async ({
 		page
 	}) => {
-		await page.goto('/recetas?pagina=2&por_pagina=18');
+		await page.goto('/recetas?pagina=3&por_pagina=9');
 
-		await expect(page.getByTestId('recipe-card')).toHaveCount(18)
+		await expect(page.getByTestId('recipe-card')).toHaveCount(9)
 		await expect(page.locator('.active-page')).toHaveText('2')
 	});
 
@@ -57,13 +57,13 @@ test.describe('recipes page', () => {
         await page.waitForURL("/recetas?pagina=3")
 
 		const perPageSelect = page.getByRole('combobox', { name: 'Resultados por página' }).first();
-		await perPageSelect.selectOption({ label: '27' });
+		await perPageSelect.selectOption({ label: '18' });
 
 		// Check that the page has been reset to 1
 		await expect(page.locator('.active-page')).toHaveText('1')
 
 		// Verify URL query parameter is updated to pagina=1 and por_pagina=27
-		await page.waitForURL("/recetas?pagina=1&por_pagina=27")
+		await page.waitForURL("/recetas?pagina=1&por_pagina=18")
 	});
 
 	test('should preserve state when navigating away and returning using browser buttons', async ({ page }) => {
