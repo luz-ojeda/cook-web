@@ -44,10 +44,8 @@ test.describe('recipes page', () => {
 	}) => {
 		await page.goto('/recetas?pagina=2&por_pagina=18');
 
-		const recipeCards = await page.getByTestId('recipe-card').all();
-
-		expect(recipeCards.length).toBe(18);
-		expect(await page.locator('.active-page').innerText()).toBe('2');
+		await expect(page.getByTestId('recipe-card')).toHaveCount(18)
+		await expect(page.locator('.active-page')).toHaveText('2')
 	});
 
 	test('should reset to page 1 when changing results per page', async ({ page }) => {
