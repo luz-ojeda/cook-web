@@ -6,18 +6,20 @@ import { get, writable } from 'svelte/store';
 
 type RecipesStoreWithParameters = RecipeParameters & RecipesStore;
 
+export const initialState = {
+	recipes: undefined,
+	pagination: null,
+	loading: false,
+	name: '',
+	difficulties: [],
+	ingredients: [],
+	onlyVegetarian: false,
+	page: undefined,
+	perPage: undefined
+};
+
 export function createRecipes() {
-	const store = writable<RecipesStoreWithParameters>({
-		recipes: undefined,
-		pagination: null,
-		loading: false,
-		name: '',
-		difficulties: [],
-		ingredients: [],
-		onlyVegetarian: false,
-		page: undefined,
-		perPage: undefined
-	});
+	const store = writable<RecipesStoreWithParameters>(initialState);
 
 	async function loadRecipes() {
 		toggleLoading();

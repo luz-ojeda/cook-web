@@ -1,26 +1,31 @@
 <script lang="ts">
 	import type { Recipe } from '$lib/types/Recipe';
 	import { onDestroy } from 'svelte';
-	import { recipes } from '../../stores/recipes';
-	import {
-		CircularLoading,
-		Pagination,
-		RecipeCard,
-		RecipesSearchForm,
-		SearchEmpty,
-	} from '$lib';
+	import { initialState, recipes } from '../../stores/recipes';
+	import { CircularLoading, Pagination, RecipeCard, RecipesSearchForm, SearchEmpty } from '$lib';
 	import type { PaginatedList } from '$lib/types/PaginatedList';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 
 	export let data: PaginatedList<Recipe>;
 
+	$: {
+		recipes.update((store) => {
+			return {
+				...store,
+				recipes: data.data,
+				pagination: data.pagination,
+				loading: false
+			};
+		});
+	}
+
 	function onPageClick(page: number) {
 		const newUrl = new URL($page.url);
 		newUrl?.searchParams?.set('pagina', page.toString());
 
-		window.scrollTo(0, 0);
 		goto(newUrl);
+		window.scrollTo(0, 0);
 	}
 
 	function onPerPageChange(perPage: number) {
@@ -32,21 +37,9 @@
 		goto(newUrl);
 	}
 
-
-	$: if (data.pagination?.pageNumber) {
-		recipes.update((store) => {
-			return {
-				...store,
-				recipes: data.data,
-				pagination: data.pagination,
-				loading: false
-			};
-		});
-	}
-
 	onDestroy(() => {
 		recipes.update((store) => {
-			return { ...store, page: undefined, perPage: undefined };
+			return initialState;
 		});
 	});
 </script>

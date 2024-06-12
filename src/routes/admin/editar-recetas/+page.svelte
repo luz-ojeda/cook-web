@@ -1,8 +1,7 @@
 <script lang="ts">
 	import type { Recipe } from '$lib/types/Recipe';
 	import type { PaginatedList } from '$lib/types/PaginatedList';
-	import { Pagination, TextInput, slugify } from '$lib';
-	import { browser } from '$app/environment';
+	import { Pagination, TextInput, slugify } from '$lib';;
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
