@@ -13,15 +13,13 @@ test.describe('recipes page', () => {
 		await perPageSelect.selectOption({ label: '18' });
 		expect(perPageSelect).toHaveValue('18');
 
-		let recipeCards = await page.getByTestId('recipe-card').all();
-		expect(recipeCards.length).toBe(18);
-
+		await expect(page.getByTestId('recipe-card')).toHaveCount(18)
+		
 		// Change results per page to 27
 		await perPageSelect.selectOption({ label: '27' });
 		expect(perPageSelect).toHaveValue('27');
 
-		recipeCards = await page.getByTestId('recipe-card').all();
-		expect(recipeCards.length).toBe(27);
+		await expect(page.getByTestId('recipe-card')).toHaveCount(27)
 	});
 
 	test('should navigate to the next and previous pages correctly', async ({ page }) => {
@@ -29,8 +27,7 @@ test.describe('recipes page', () => {
 
 		await page.getByRole('button', { name: 'Pág. siguiente' }).click();
 
-		const activePageButton = page.locator('.active-page');
-		expect(await activePageButton.innerText()).toBe('2');
+		await expect(page.locator('.active-page')).toHaveText('2')
 
 		// Check if query parameter was updated
 		await page.waitForURL("/recetas?pagina=2")
@@ -38,7 +35,7 @@ test.describe('recipes page', () => {
 		// Click previous page button
 		await page.getByRole('button', { name: 'Pág. anterior' }).click();
         
-		expect(await activePageButton.innerText()).toBe('1');
+		await expect(page.locator('.active-page')).toHaveText('1')
 		await page.waitForURL("/recetas?pagina=1")
 	});
 
@@ -65,8 +62,7 @@ test.describe('recipes page', () => {
 		await perPageSelect.selectOption({ label: '27' });
 
 		// Check that the page has been reset to 1
-		const activePageButton = page.locator('.active-page');
-		expect(await activePageButton.innerText()).toBe('1');
+		await expect(page.locator('.active-page')).toHaveText('1')
 
 		// Verify URL query parameter is updated to pagina=1 and por_pagina=27
 		await page.waitForURL("/recetas?pagina=1&por_pagina=27")
@@ -77,21 +73,18 @@ test.describe('recipes page', () => {
 	
 		await page.getByRole('button', { name: 'Pág. siguiente' }).click();
 	
-		let activePageButton = page.locator('.active-page');
 		await page.waitForURL("/recetas?pagina=2");
-		expect(await activePageButton.innerText()).toBe('2');
+		await expect(page.locator('.active-page')).toHaveText('2')
 	
 		await page.getByRole('button', { name: 'Pág. siguiente' }).click();
 
-		activePageButton = page.locator('.active-page');
 		await page.waitForURL("/recetas?pagina=3");
-		expect(await activePageButton.innerText()).toBe('3');
+		await expect(page.locator('.active-page')).toHaveText('3')
 	
 		// Go back using browser's back button
 		await page.goBack();
 	
-		activePageButton = page.locator('.active-page');
-		expect(await activePageButton.innerText()).toBe('2');
+		await expect(page.locator('.active-page')).toHaveText('2')
 	
 		await page.waitForURL("/recetas?pagina=2");
 	});
