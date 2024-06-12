@@ -85,7 +85,7 @@
 >
 	<label for="recipeImage">
 		{#if fileReader?.readyState != 1}
-			<div>
+			<div class="h-100 flex-column justify-center">
 				Seleccionar o arrastrar una imagen
 				<div class="icon">
 					<Icon name="upload" width="32" height="32" />
