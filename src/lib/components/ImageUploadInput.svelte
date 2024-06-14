@@ -151,8 +151,8 @@
 	}
 
 	:global(.dragover) {
-		outline: 1px solid $primaryColor;
-		background-color: $lightestPrimaryColor;
+		outline: 1px solid $primary500;
+		background-color: $primary100;
 	}
 
 	.icon {

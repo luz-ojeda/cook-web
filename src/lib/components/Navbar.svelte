@@ -72,7 +72,7 @@
 	}
 
 	.logotipo {
-		color: $darkPrimaryColor;
+		color: $primary700;
 		text-decoration: none;
 		font-weight: bold;
 

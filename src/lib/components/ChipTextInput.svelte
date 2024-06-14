@@ -58,7 +58,7 @@
 
 	.chip {
 		align-items: center;
-		background-color: $darkestPrimaryColor;
+		background-color: $primary900;
 		border-radius: 12px;
 		color: $grey300;
 		display: flex;

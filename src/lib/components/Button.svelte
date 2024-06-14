@@ -67,21 +67,21 @@
 	}
 
 	.primary {
-		background-color: $primaryColor;
+		background-color: $primary500;
 		box-shadow:
-			inset 0 3px 0 $lightestPrimaryColor,
+			inset 0 3px 0 $primary100,
 			$shadow;
 		color: $grey200;
 
 		&:hover:enabled {
-			background-color: $lightPrimaryColor;
+			background-color: $primary300;
 			transition: background-color 0.3s;
 		}
 	}
 
 	.tertiary {
 		background-color: transparent;
-		color: $primaryColor;
+		color: $primary500;
 
 		&:hover {
 			text-decoration: underline;

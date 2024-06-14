@@ -140,7 +140,7 @@
 		position: relative;
 
 		.icon {
-			color: $darkPrimaryColor;
+			color: $primary700;
 			position: absolute;
 			top: 50%;
 			left: 6px;

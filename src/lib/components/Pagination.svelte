@@ -117,17 +117,21 @@
 		width: 32px;
 
 		&:hover:not(:disabled) {
-			background-color: $lightestPrimaryColor;
+			background-color: $primary100;
 		}
 	}
 
 	.active-page {
-		background-color: $darkPrimaryColor;
+		background-color: $primary700;
 		color: $grey100;
 	}
 
 	.per-page-container {
 		margin-right: 24px;
+
+		label {
+			margin-right: 0;
+		}
 
 		@media (max-width: $tabletBreakpoint) {
 			align-items: center;
@@ -135,12 +139,16 @@
 			justify-content: center;
 			margin-right: 0px;
 			margin-top: 24px;
+
+			label {
+				margin-right: 12px;
+			}
 		}
 	}
 
 	select {
 		@media (max-width: $tabletBreakpoint) {
-			height: 48px;
+			height: 32px;
 			width: 48px;
 		}
 	}
