@@ -22,10 +22,10 @@ button {
 }
 
 a {
-	color: $primaryColor;
+	color: $primary500;
 
 	&:hover {
-		color: $lightPrimaryColor;
+		color: $primary300;
 		text-decoration: none;
 		transition: color 0.2s ease;
 	}
@@ -73,17 +73,17 @@ input[type='number'] {
 }
 
 *:focus-visible {
-	outline-color: $lightPrimaryColor;
+	outline-color: $primary300;
 	outline-style: solid;
 	outline-width: medium;
 }
 
 ::selection {
-	background-color: $darkestPrimaryColor;
+	background-color: $primary900;
 	color: $grey100;
 }
 
 input[type='checkbox'],
 input[type='radio'] {
-	accent-color: $primaryColor;
+	accent-color: $primary500;
 }

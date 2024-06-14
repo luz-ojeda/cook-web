@@ -81,11 +81,11 @@
 		width: 100%;
 
 		a {
-			color: $primaryColor;
+			color: $primary500;
 			font-size: 1.125rem;
 			font-weight: bold;
 			&:hover {
-				color: $lightPrimaryColor;
+				color: $primary300;
 			}
 		}
 	}

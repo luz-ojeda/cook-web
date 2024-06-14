@@ -131,7 +131,7 @@
 		padding: 8px;
 	}
 	th {
-		background-color: $lightestPrimaryColor;
+		background-color: $primary100;
 	}
 
 	.pagination {

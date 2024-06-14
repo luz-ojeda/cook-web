@@ -77,7 +77,7 @@
 	button {
 		border: 0;
 		background-color: transparent;
-		color: var(--color, $darkestPrimaryColor);
+		color: var(--color, $primary900);
 		font-family: inherit;
 		height: fit-content;
 		padding: 0;
