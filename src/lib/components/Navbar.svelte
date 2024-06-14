@@ -3,6 +3,8 @@
 	import isotipo from '$lib/assets/isotipo.svg';
 	import { burgerMenuStore } from '../../stores/burgerMenu';
 	import NavLinks from './NavLinks.svelte';
+
+	
 </script>
 
 <nav>
@@ -12,6 +14,8 @@
 			RECETAS SIMPLES
 		</a>
 		<div class="nav-links flex-center">
+			<button>light</button>
+			<button>dark</button>
 			<div class="nav-links-tablet-desktop">
 				<NavLinks />
 			</div>
@@ -78,6 +82,10 @@
 
 		img {
 			margin-right: 12px;
+		}
+
+		@media (prefers-color-scheme: dark) {
+			color: $primary300;
 		}
 	}
 

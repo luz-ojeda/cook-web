@@ -86,6 +86,10 @@
 
 	.background {
 		background-color: $grey200;
+
+		@media (prefers-color-scheme: dark) {
+			background: $grey800;
+		}
 	}
 
 	.recipes-section {
@@ -161,7 +165,6 @@
 	}
 
 	.curved::before {
-		background: $grey200;
 		border-top-left-radius: 50% 100%;
 		border-top-right-radius: 50% 100%;
 		content: '';
@@ -171,5 +174,11 @@
 		width: 100%;
 		height: 15%;
 		z-index: -1;
+
+		background-color: $grey200;
+
+		@media (prefers-color-scheme: dark) {
+			background: $grey800;
+		}
 	}
 </style>

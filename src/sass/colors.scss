@@ -11,15 +11,28 @@ $grey100: #faf9f8;
 $primary900: #662a14;
 $primary700: #8c3a1d;
 $primary500: #b14b25;
-$primary300: hsl(16, 55%, 53%);
-$primary100: hsl(16, 60%, 70%);
+$primary300: #c96845;
+$primary100: #e09d85;
 
 /* Accents */
 
 // Error
-$error200: #D31B13;
+$error200: #d31b13;
 
 // Warning
 
 // Success
-$success200: #25B14B;
+$success200: #25b14b;
+
+:root {
+	color-scheme: light dark;
+	--color: #{$grey900};
+	--background-color: #{$grey300};
+	--primary-color-text: #{$primary500};
+
+	@media (prefers-color-scheme: dark) {
+		--color: #{$grey300};
+		--background-color: #{$grey900};
+		--primary-color-text: #{$primary100};
+	}
+}
