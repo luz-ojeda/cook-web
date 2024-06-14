@@ -107,6 +107,10 @@
 .non-text-anchor-element {
 	color: $grey900;
 	text-decoration: none;
+
+	@media (prefers-color-scheme: dark) {
+		color: $grey100;
+	}
 }
 
 .object-fit-cover {

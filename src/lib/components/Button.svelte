@@ -81,7 +81,7 @@
 
 	.tertiary {
 		background-color: transparent;
-		color: $primary500;
+		color: var(--primary-color-text);
 
 		&:hover {
 			text-decoration: underline;

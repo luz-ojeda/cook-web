@@ -54,6 +54,10 @@
 		@media (max-width: $mobileBreakpoint) {
 			max-height: 150px;
 		}
+
+		@media (prefers-color-scheme: dark) {
+			background-color: $grey800;
+		}
 	}
 
 	h2 {

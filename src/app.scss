@@ -4,12 +4,9 @@
 @import 'sass/typography';
 @import 'sass/colors';
 
-:root {
-	background-color: $grey300;
-	color: $grey900;
-}
-
 body {
+	background-color: var(--background-color);
+	color: var(--color);
 	margin: 0;
 }
 
@@ -22,7 +19,7 @@ button {
 }
 
 a {
-	color: $primary500;
+	color: var(--primary-color-text);
 
 	&:hover {
 		color: $primary300;
@@ -32,7 +29,7 @@ a {
 }
 
 header {
-	background-color: $grey300;
+	background-color: var(--background-color);
 	opacity: 0.95;
 	position: sticky;
 	top: 0;
@@ -42,7 +39,7 @@ header {
 footer {
 	border-top: 1px solid $grey400;
 	padding: 0 16px;
-	background-color: $grey300;
+	background-color: var(--background-color);
 
 	@media (min-width: $tabletBreakpoint) and (max-width: $laptopBreakpoint) {
 		padding: 12px 80px;
@@ -53,12 +50,20 @@ footer {
 	}
 }
 
+input,
+textarea {
+	background-color: $grey100;
+
+	@media (prefers-color-scheme: dark) {
+		background-color: $grey800;
+	}
+}
+
 input[type='text'],
-input[type='search']
+input[type='search'],
 input[type='number'],
 textarea {
 	appearance: none;
-	background-color: $grey100;
 	box-shadow: inset 0 2px 2px hsla(0, 0%, 0%, 0.1);
 	box-sizing: border-box;
 	border-radius: 5px;
@@ -81,9 +86,21 @@ input[type='number'] {
 ::selection {
 	background-color: $primary900;
 	color: $grey100;
+
+	@media (prefers-color-scheme: dark) {
+		background-color: $primary500;
+	}
 }
 
 input[type='checkbox'],
 input[type='radio'] {
 	accent-color: $primary500;
+}
+
+fieldset {
+	border-radius: 5px;
+
+	@media (prefers-color-scheme: dark) {
+		border-color: $grey100;
+	}
 }

@@ -43,7 +43,7 @@
 
 	.nav-link {
 		&[aria-current='true'] {
-			color: $primary500;
+			color: $primary100;
 			text-decoration: underline;
 		}
 	}
