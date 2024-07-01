@@ -45,6 +45,7 @@
 
 	.recipe-image {
 		aspect-ratio: 1 / 1;
+		background-color: var(--body-bg);
 		box-shadow: $smallestShadow;
 		margin-bottom: 16px;
 		max-height: 240px;
@@ -54,10 +55,10 @@
 		@media (max-width: $mobileBreakpoint) {
 			max-height: 150px;
 		}
+	}
 
-		@media (prefers-color-scheme: dark) {
-			background-color: $grey800;
-		}
+	:global(.dark) .recipe-image {
+		background-color: var(--grey800);
 	}
 
 	h2 {

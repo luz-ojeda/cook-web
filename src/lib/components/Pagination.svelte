@@ -112,18 +112,20 @@
 	button {
 		background-color: transparent;
 		border-radius: 8px;
+		color: var(--text);
 		font-size: 1.125rem;
 		padding: 1px 0;
 		width: 32px;
 
 		&:hover:not(:disabled) {
-			background-color: $primary100;
+			background-color: var(--btn-primary-hover);
+			color: var(--selection-color);
 		}
 	}
 
 	.active-page {
-		background-color: $primary700;
-		color: $grey100;
+		background-color: var(--btn-primary-active);
+		color: var(--btn-primary-text-color);
 	}
 
 	.per-page-container {

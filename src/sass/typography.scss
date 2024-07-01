@@ -44,9 +44,9 @@ h2 {
 }
 
 .success {
-	color: $success200;
+	color: var(--success);
 }
 
 .error {
-	color: $error200;
+	color: var(--error);
 }

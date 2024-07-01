@@ -11,13 +11,9 @@
 	@import '../../sass/colors.scss';
 
 	.container {
-		background-color: $grey400;
+		background-color: var(--card-bg);
 		border-radius: $borderRadius;
 		box-shadow: $smallShadow;
 		padding: 24px;
-
-		@media (prefers-color-scheme: dark) {
-			background-color: $grey800;
-		}
 	}
 </style>

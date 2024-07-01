@@ -30,7 +30,6 @@
 </button>
 
 <style lang="scss">
-	@import '../../sass/colors.scss';
 	@import '../../sass/variables.scss';
 
 	button {
@@ -43,9 +42,9 @@
 
 		&:disabled {
 			box-shadow:
-				inset 0 3px 0 $grey300,
+				inset 0 3px 0 var(--grey300),
 				$smallShadow;
-			background-color: $grey500;
+			background-color: var(--btn-primary-disabled-bg);
 		}
 
 		&:active:enabled {
@@ -67,21 +66,21 @@
 	}
 
 	.primary {
-		background-color: $primary500;
+		background-color: var(--btn-primary-bg);
 		box-shadow:
-			inset 0 3px 0 $primary100,
+			inset 0 3px 0 var(--primary100),
 			$shadow;
-		color: $grey200;
+		color: var(--grey200);
 
 		&:hover:enabled {
-			background-color: $primary300;
+			background-color: var(--btn-primary-hover);
 			transition: background-color 0.3s;
 		}
 	}
 
 	.tertiary {
 		background-color: transparent;
-		color: var(--primary-color-text);
+		color: var(--btn-tertiary);
 
 		&:hover {
 			text-decoration: underline;

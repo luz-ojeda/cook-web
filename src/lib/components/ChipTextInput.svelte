@@ -58,9 +58,9 @@
 
 	.chip {
 		align-items: center;
-		background-color: $primary900;
+		background-color: var(--chip);
 		border-radius: 12px;
-		color: $grey300;
+		color: var(--grey300);
 		display: flex;
 		font-size: 0.875rem;
 		font-weight: bold;
