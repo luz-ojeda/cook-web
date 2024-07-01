@@ -23,11 +23,3 @@
 		<span class="action-label">Descargar</span>
 	</a>
 {/if}
-
-<style lang="scss">
-	@import '../../sass/colors.scss';
-
-	a:hover {
-		color: $grey900;
-	}
-</style>

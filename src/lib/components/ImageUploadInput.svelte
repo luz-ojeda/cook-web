@@ -116,7 +116,7 @@
 	.dropzone-button {
 		border-radius: 7px;
 		margin-right: 12px;
-		border: 1px dashed $grey500;
+		border: 1px dashed var(--light-text);
 		padding: 0;
 		position: relative;
 	}
@@ -151,12 +151,12 @@
 	}
 
 	:global(.dragover) {
-		outline: 1px solid $primary500;
-		background-color: $primary100;
+		outline: 1px solid var(--outline);
+		background-color: var(--image-upload-bg);
 	}
 
 	.icon {
-		color: $grey500;
+		color: var(--light-text);
 		margin-top: 12px;
 	}
 </style>

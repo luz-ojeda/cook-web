@@ -110,7 +110,6 @@
 
 <style lang="scss">
 	@import '../../../sass/variables.scss';
-	@import '../../../sass/colors.scss';
 
 	.table-handlers {
 		width: 25%;
@@ -127,11 +126,11 @@
 	}
 	th,
 	td {
-		border: 1px solid $grey200;
+		border: 1px solid var(--border);
 		padding: 8px;
 	}
 	th {
-		background-color: $primary100;
+		background-color: var(--primary100);
 	}
 
 	.pagination {

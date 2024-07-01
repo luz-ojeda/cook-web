@@ -104,7 +104,7 @@
 				<CopyRecipeButton recipe={{ ...data, ingredients, servings }} />
 			</div>
 			<div>
-				<SaveRecipeButton --color="#2f2622" label iconWidth="18" recipeId={data.id} />
+				<SaveRecipeButton label iconWidth="18" recipeId={data.id} />
 			</div>
 			<div>
 				<DownloadRecipeButton recipe={{ ...data, ingredients, servings }} />

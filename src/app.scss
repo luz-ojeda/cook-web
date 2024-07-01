@@ -5,8 +5,8 @@
 @import 'sass/colors';
 
 body {
-	background-color: var(--background-color);
-	color: var(--color);
+	background-color: var(--body-bg);
+	color: var(--text);
 	margin: 0;
 }
 
@@ -19,17 +19,17 @@ button {
 }
 
 a {
-	color: var(--primary-color-text);
+	color: var(--link);
 
 	&:hover {
-		color: $primary300;
+		color: var(--link-hover);
 		text-decoration: none;
 		transition: color 0.2s ease;
 	}
 }
 
 header {
-	background-color: var(--background-color);
+	background-color: var(--body-bg);
 	opacity: 0.95;
 	position: sticky;
 	top: 0;
@@ -37,9 +37,9 @@ header {
 }
 
 footer {
-	border-top: 1px solid $grey400;
+	border-top: 1px solid var(--border);
 	padding: 0 16px;
-	background-color: var(--background-color);
+	background-color: var(--body-bg);
 
 	@media (min-width: $tabletBreakpoint) and (max-width: $laptopBreakpoint) {
 		padding: 12px 80px;
@@ -52,11 +52,11 @@ footer {
 
 input,
 textarea {
-	background-color: $grey100;
+	background-color: var(--input-bg);
+}
 
-	@media (prefers-color-scheme: dark) {
-		background-color: $grey800;
-	}
+::placeholder {
+	color: var(--placeholder);
 }
 
 input[type='text'],
@@ -68,6 +68,7 @@ textarea {
 	box-sizing: border-box;
 	border-radius: 5px;
 	border: 1px solid #cccccc;
+	color: var(--text);
 	padding: 6px 8px;
 	-webkit-appearance: none;
 }
@@ -78,29 +79,22 @@ input[type='number'] {
 }
 
 *:focus-visible {
-	outline-color: $primary300;
+	outline-color: var(--outline);
 	outline-style: solid;
 	outline-width: medium;
 }
 
 ::selection {
-	background-color: $primary900;
-	color: $grey100;
-
-	@media (prefers-color-scheme: dark) {
-		background-color: $primary500;
-	}
+	background-color: var(--selection-bg);
+	color: var(--selection-color);
 }
 
 input[type='checkbox'],
 input[type='radio'] {
-	accent-color: $primary500;
+	accent-color: var(--accent-color);
 }
 
 fieldset {
 	border-radius: 5px;
-
-	@media (prefers-color-scheme: dark) {
-		border-color: $grey100;
-	}
+	border-color: var(--border);
 }

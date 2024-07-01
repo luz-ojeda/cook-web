@@ -58,6 +58,6 @@
 	}
 
 	.border {
-		border-bottom: 1px solid $grey500;
+		border-bottom: 1px solid var(--border);
 	}
 </style>

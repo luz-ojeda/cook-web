@@ -77,13 +77,9 @@
 	button {
 		border: 0;
 		background-color: transparent;
-		color: var(--color, $primary900);
+		color: var(--text);
 		font-family: inherit;
 		height: fit-content;
 		padding: 0;
-	}
-
-	span {
-		color: $grey900;
 	}
 </style>
