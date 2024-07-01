@@ -3,6 +3,7 @@
 	import isotipo from '$lib/assets/isotipo.svg';
 	import { burgerMenuStore } from '../../stores/burgerMenu';
 	import NavLinks from './NavLinks.svelte';
+	import ThemeIcon from "./ThemeIcon.svelte";
 </script>
 
 <nav>
@@ -22,6 +23,7 @@
 					<Icon name="cross" height="32" width="32" />
 				{/if}
 			</button>
+			<ThemeIcon />
 		</div>
 	</div>
 
@@ -72,7 +74,7 @@
 	}
 
 	.logotipo {
-		color: $darkPrimaryColor;
+		color: var(--link);
 		text-decoration: none;
 		font-weight: bold;
 

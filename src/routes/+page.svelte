@@ -85,7 +85,7 @@
 	@import '../sass/colors.scss';
 
 	.background {
-		background-color: $grey200;
+		background-color: var(--body-bg-accent);
 	}
 
 	.recipes-section {
@@ -161,7 +161,7 @@
 	}
 
 	.curved::before {
-		background: $grey200;
+		background-color: var(--body-bg-accent);
 		border-top-left-radius: 50% 100%;
 		border-top-right-radius: 50% 100%;
 		content: '';

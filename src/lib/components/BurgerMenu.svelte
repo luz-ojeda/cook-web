@@ -16,10 +16,9 @@
 
 <style lang="scss">
 	@import '../../sass/variables.scss';
-	@import '../../sass/colors.scss';
 
 	hr {
-		color: $grey100;
+		color: var(--grey100);
 
 		@media (min-width: $tabletBreakpoint) {
 			display: none;
