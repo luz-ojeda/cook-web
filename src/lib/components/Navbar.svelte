@@ -74,7 +74,7 @@
 	}
 
 	.logotipo {
-		color: var(--link);
+		color: var(--logotipo);
 		text-decoration: none;
 		font-weight: bold;
 
