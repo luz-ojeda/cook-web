@@ -74,11 +74,10 @@
 <style lang="scss">
 	@import '../../sass/colors.scss';
 
-	button {
+	button {	
 		border: 0;
 		background-color: transparent;
 		color: var(--text);
-		font-family: inherit;
 		height: fit-content;
 		padding: 0;
 	}

@@ -6,9 +6,9 @@
     --grey700: #80756e;
     --grey600: #988d85;
     --grey500: #a19887;
-    --grey400: #ccc5b8;
-    --grey300: #e7e2daf0;
-    --grey200: #f1eeea;
+    --grey400: #bdb6a9;
+    --grey300: #d5cfc6f0;
+    --grey200: #e4dfd9;
     --grey100: #faf9f8;
 
 	/* primary */
@@ -49,7 +49,6 @@
 	--btn-primary-hover: var(--primary300);
 	--btn-primary-active: var(--primary900);
 	--btn-primary-disabled-bg: var(--grey500);
-	--btn-primary-text-color: var(--grey100);
 	--btn-tertiary: var(--primary500);
 	--btn-tertiary-hover: var(--primary300);
 
@@ -93,11 +92,7 @@
 		--body-bg-accent: var(--grey600);
 
 		/* buttons */
-		--btn-primary-bg: var(--primary500);
-		--btn-primary-hover: var(--primary200);
 		--btn-primary-active: var(--primary400);
-		--btn-primary-disabled-bg: var(--grey500);
-		--btn-primary-text-color: var(--grey100);
 		--btn-tertiary: var(--primary500);
 		--btn-tertiary-hover: var(--primary300);
 

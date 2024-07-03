@@ -1,6 +1,5 @@
 <script lang="ts">
-	import { SaveRecipeButton, slugify } from '$lib';
-	import placeholder from '$lib/assets/recipe_image_placeholder.svg';
+	import { SaveRecipeButton, slugify, RecipeImage } from '$lib';
 
 	export let recipeId: string;
 	export let recipeImage: string;
@@ -11,14 +10,11 @@
 </script>
 
 <div class="container flex-column" data-testid="recipe-card">
-	<a class="non-text-anchor-element" href={`/recetas/${slugifiedRecipeTitle}`}>
-		<img
-			alt={`Photo of the recipe ${recipeTitle}`}
-			class="rounded-img recipe-image {recipeImage ? 'object-fit-cover' : ''}"
-			crossorigin="anonymous"
-			loading="lazy"
-			src={recipeImage ? recipeImage : placeholder}
-		/>
+	<a
+		class="recipe-image-container non-text-anchor-element"
+		href={`/recetas/${slugifiedRecipeTitle}`}
+	>
+		<RecipeImage {recipeTitle} {recipeImage} />
 	</a>
 	<div class="title-container">
 		<a class="non-text-anchor-element" href={`/recetas/${slugifiedRecipeTitle}`}>
@@ -43,24 +39,6 @@
 		}
 	}
 
-	.recipe-image {
-		aspect-ratio: 1 / 1;
-		background-color: var(--body-bg);
-		box-shadow: $smallestShadow;
-		margin-bottom: 16px;
-		max-height: 240px;
-		display: inline-block;
-		width: 100%;
-
-		@media (max-width: $mobileBreakpoint) {
-			max-height: 150px;
-		}
-	}
-
-	:global(.dark) .recipe-image {
-		background-color: var(--grey800);
-	}
-
 	h2 {
 		margin: 0;
 		overflow: hidden;
@@ -77,9 +55,13 @@
 		}
 	}
 
-	a {
-		&:hover {
-			color: inherit;
+	.recipe-image-container {
+		display: inline-block;
+		margin-bottom: 16px;
+		height: 240px;
+
+		@media (max-width: $mobileBreakpoint) {
+			max-height: 150px;
 		}
 	}
 </style>

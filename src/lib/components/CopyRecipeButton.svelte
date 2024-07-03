@@ -43,9 +43,3 @@
 	{/if}
 	<span class="action-label">{isRecipeCopied ? 'Copiada' : 'Copiar'}</span>
 </div>
-
-<style>
-	div {
-		cursor: pointer;
-	}
-</style>

@@ -17,7 +17,7 @@
 	<a
 		{href}
 		download={'Receta de ' + recipe.name}
-		class="non-text-anchor-element flex-center interactive-pointer-opacity flex-center"
+		class="non-text-anchor-element flex-center interactive-pointer-opacity"
 	>
 		<Icon class="icon-margin-right" name="download" width="18" height="18" />
 		<span class="action-label">Descargar</span>

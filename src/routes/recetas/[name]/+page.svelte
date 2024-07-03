@@ -7,9 +7,10 @@
 		SaveRecipeButton,
 		capitalizeFirstLetter,
 		mapRecipeDifficulty,
-		scaleIngredients
+		scaleIngredients,
+		Icon,
+		RecipeImage
 	} from '$lib';
-	import Icon from '$lib/components/Icon.svelte';
 
 	export let data: Recipe;
 	let ingredients: string[];
@@ -38,12 +39,15 @@
 
 <div class="recipe-container spacing">
 	<div class="recipe-first-content">
-		<img
-			alt={`Photo of the recipe ${data.name}`}
-			class="image-container rounded-img recipe-image {data.pictures[0] ? 'object-fit-cover' : ''}"
-			crossorigin="anonymous"
-			src={data.pictures[0] ? data.pictures[0] : placeholder}
-		/>
+		<div class="recipe-image-container">
+			<!-- <img
+				alt={`Photo of the recipe ${data.name}`}
+				class="rounded-img recipe-image {data.pictures[0] ? 'object-fit-cover' : ''}"
+				crossorigin="anonymous"
+				src={data.pictures[0] ? data.pictures[0] : placeholder}
+			/> -->
+			<RecipeImage recipeImage={data.pictures[0]} recipeTitle={data.name} />
+		</div>
 		<div>
 			<h1>{data.name}</h1>
 			<div class="recipe-summary">
@@ -180,25 +184,19 @@
 		}
 	}
 
-	.recipe-image {
-		max-height: 374px;
+	.recipe-image-container {
+		margin-bottom: 16px;
 		margin-right: 20px;
-		width: 100%;
+		height: 375px;
 
 		@media (max-width: $tabletBreakpoint) {
-			margin-bottom: 16px;
 			margin-right: 0;
-			max-height: 150px;
-			width: 100%;
+			height: 150px;
 		}
 
 		@media (max-width: $laptopBreakpoint) {
 			min-width: 50%;
 		}
-	}
-
-	.image-container {
-		margin-bottom: 16px;
 	}
 
 	.recipe-summary {
