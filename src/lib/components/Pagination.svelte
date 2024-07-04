@@ -125,7 +125,7 @@
 
 	.active-page {
 		background-color: var(--btn-primary-active);
-		color: var(--btn-primary-text-color);
+		color: var(--selection-color);
 	}
 
 	.per-page-container {
