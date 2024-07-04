@@ -42,7 +42,7 @@
 	}
 </script>
 
-<Button buttonType="tertiary" onClick={saveRecipe} size="small">
+<Button ariaLabel="Guardar receta" buttonType="tertiary" onClick={saveRecipe} size="small">
 	{#if isRecipeSaved}
 		<Icon
 			class={label ? 'icon-margin-right' : ''}

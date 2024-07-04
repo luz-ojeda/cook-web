@@ -2,6 +2,7 @@
 	import type { EventHandler } from 'svelte/elements';
 	import CircularLoading from './CircularLoading.svelte';
 
+	export let ariaLabel = "";
 	export let disabled = false;
 	export let loading = false; // Use local state since we not always want it to sync with a global/different one
 	export let onClick: EventHandler<KeyboardEvent | MouseEvent> | undefined = undefined;
@@ -13,6 +14,7 @@
 </script>
 
 <button
+	aria-label={ariaLabel}
 	class="{buttonType} {size === 'small' ? 'small' : 'large'}"
 	disabled={disabled || loading}
 	on:click={onClick}
