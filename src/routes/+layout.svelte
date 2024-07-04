@@ -12,10 +12,12 @@
 		scrolled = window.scrollY > 0;
 	};
 
-	$: if ($burgerMenuStore) {
-		document.body.style.overflowY = 'hidden';
-	} else {
-		document.body.style.overflowY = 'visible';
+	$: if (browser) {
+		if ($burgerMenuStore) {
+			document.body.style.overflowY = 'hidden';
+		} else {
+			document.body.style.overflowY = 'visible';
+		}
 	}
 
 	onMount(() => {

@@ -95,7 +95,7 @@
 	<label for="vegetarian">Solo vegetarianas</label>
 
 	{#if $page.url.pathname !== '/'}
-		<Button {loading} onClick={onButtonClick} type="submit">Buscar</Button>
+		<Button {loading} onSubmit={onButtonClick} type="submit">Buscar</Button>
 	{:else}
 		<a
 			class="non-text-anchor-element"
@@ -110,7 +110,7 @@
 			<Button
 				disabled={$recipes.loading || Boolean($navigating)}
 				loading={loading && $navigating?.to?.url.pathname == '/recetas'}
-				onClick={() => {
+				onSubmit={() => {
 					loading = true;
 				}}
 				type="submit">Buscar</Button

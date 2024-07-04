@@ -4,22 +4,20 @@
 
 	export let disabled = false;
 	export let loading = false; // Use local state since we not always want it to sync with a global/different one
-	export let onClick: EventHandler<MouseEvent | SubmitEvent> | undefined = undefined;
+	export let onClick: EventHandler<KeyboardEvent | MouseEvent> | undefined = undefined;
+	export let onSubmit: EventHandler<Event> | undefined = undefined;
 	export let size: 'small' | 'large' = 'large';
 	export let type: 'button' | 'reset' | 'submit' | null | undefined = 'button';
 	export let buttonType: 'primary' | 'secondary' | 'tertiary' = 'primary';
+	export let tabIndex = 0;
 </script>
 
 <button
-	class="
-		{buttonType === 'primary'
-		? 'primary'
-		: buttonType === 'secondary'
-			? 'secondary'
-			: 'tertiary'} {size === 'small' ? 'small' : 'large'}"
+	class="{buttonType} {size === 'small' ? 'small' : 'large'}"
 	disabled={disabled || loading}
 	on:click={onClick}
-	on:submit={type === 'submit' ? onClick : undefined}
+	on:submit={onSubmit}
+	tabindex={tabIndex}
 	{type}
 >
 	{#if loading}
@@ -81,8 +79,10 @@
 	.tertiary {
 		background-color: transparent;
 		color: var(--btn-tertiary);
+		padding: 0;
 
 		&:hover {
+			color: var(--btn-tertiary-hover);
 			text-decoration: underline;
 		}
 	}
