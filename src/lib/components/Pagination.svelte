@@ -94,8 +94,8 @@
 </nav>
 
 <style lang="scss">
-	@import '../../sass/colors.scss';
 	@import '../../sass/variables.scss';
+
 	nav {
 		align-items: center;
 		display: flex;
@@ -112,22 +112,28 @@
 	button {
 		background-color: transparent;
 		border-radius: 8px;
+		color: var(--text);
 		font-size: 1.125rem;
 		padding: 1px 0;
 		width: 32px;
 
 		&:hover:not(:disabled) {
-			background-color: $lightestPrimaryColor;
+			background-color: var(--btn-primary-hover);
+			color: var(--selection-color);
 		}
 	}
 
 	.active-page {
-		background-color: $darkPrimaryColor;
-		color: $grey100;
+		background-color: var(--btn-primary-active);
+		color: var(--btn-primary-text-color);
 	}
 
 	.per-page-container {
 		margin-right: 24px;
+
+		label {
+			margin-right: 0;
+		}
 
 		@media (max-width: $tabletBreakpoint) {
 			align-items: center;
@@ -135,12 +141,16 @@
 			justify-content: center;
 			margin-right: 0px;
 			margin-top: 24px;
+
+			label {
+				margin-right: 12px;
+			}
 		}
 	}
 
 	select {
 		@media (max-width: $tabletBreakpoint) {
-			height: 48px;
+			height: 32px;
 			width: 48px;
 		}
 	}

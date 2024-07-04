@@ -44,7 +44,6 @@
 </div>
 
 <style lang="scss">
-	@import '../../sass/colors.scss';
 	@import '../../sass/variables.scss';
 
 	.container {
@@ -79,15 +78,6 @@
 		flex-direction: column;
 		position: relative;
 		width: 100%;
-
-		a {
-			color: $primaryColor;
-			font-size: 1.125rem;
-			font-weight: bold;
-			&:hover {
-				color: $lightPrimaryColor;
-			}
-		}
 	}
 
 	h2 {

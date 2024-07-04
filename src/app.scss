@@ -4,12 +4,9 @@
 @import 'sass/typography';
 @import 'sass/colors';
 
-:root {
-	background-color: $grey300;
-	color: $grey900;
-}
-
 body {
+	background-color: var(--body-bg);
+	color: var(--text);
 	margin: 0;
 }
 
@@ -22,17 +19,17 @@ button {
 }
 
 a {
-	color: $primaryColor;
+	color: var(--link);
 
 	&:hover {
-		color: $lightPrimaryColor;
+		color: var(--link-hover);
 		text-decoration: none;
 		transition: color 0.2s ease;
 	}
 }
 
 header {
-	background-color: $grey300;
+	background-color: var(--body-bg);
 	opacity: 0.95;
 	position: sticky;
 	top: 0;
@@ -40,9 +37,9 @@ header {
 }
 
 footer {
-	border-top: 1px solid $grey400;
+	border-top: 1px solid var(--border);
 	padding: 0 16px;
-	background-color: $grey300;
+	background-color: var(--body-bg);
 
 	@media (min-width: $tabletBreakpoint) and (max-width: $laptopBreakpoint) {
 		padding: 12px 80px;
@@ -53,16 +50,25 @@ footer {
 	}
 }
 
+input,
+textarea {
+	background-color: var(--input-bg);
+}
+
+::placeholder {
+	color: var(--placeholder);
+}
+
 input[type='text'],
-input[type='search']
+input[type='search'],
 input[type='number'],
 textarea {
 	appearance: none;
-	background-color: $grey100;
 	box-shadow: inset 0 2px 2px hsla(0, 0%, 0%, 0.1);
 	box-sizing: border-box;
 	border-radius: 5px;
 	border: 1px solid #cccccc;
+	color: var(--text);
 	padding: 6px 8px;
 	-webkit-appearance: none;
 }
@@ -73,17 +79,22 @@ input[type='number'] {
 }
 
 *:focus-visible {
-	outline-color: $lightPrimaryColor;
+	outline-color: var(--outline);
 	outline-style: solid;
 	outline-width: medium;
 }
 
 ::selection {
-	background-color: $darkestPrimaryColor;
-	color: $grey100;
+	background-color: var(--selection-bg);
+	color: var(--selection-color);
 }
 
 input[type='checkbox'],
 input[type='radio'] {
-	accent-color: $primaryColor;
+	accent-color: var(--accent-color);
+}
+
+fieldset {
+	border-radius: 5px;
+	border-color: var(--border);
 }

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Icon, formatRecipeForCopyOrDownload } from '$lib';
+	import { Button, Icon, formatRecipeForCopyOrDownload } from '$lib';
 	import type { Recipe } from '$lib/types/Recipe';
 
 	export let recipe: Recipe;
@@ -23,14 +23,7 @@
 	}
 </script>
 
-<div
-	aria-label="Copiar receta"
-	class="interactive-pointer-opacity flex-center"
-	on:click={copyRecipe}
-	on:keydown={copyRecipe}
-	role="button"
-	tabindex="0"
->
+<Button ariaLabel="Copiar receta" buttonType="tertiary" onClick={copyRecipe} size="small">
 	{#if isRecipeCopied}
 		<Icon class="icon-margin-right" name="copy_full" width="18" height="18" />
 	{:else}
@@ -42,10 +35,4 @@
 		/>
 	{/if}
 	<span class="action-label">{isRecipeCopied ? 'Copiada' : 'Copiar'}</span>
-</div>
-
-<style>
-	div {
-		cursor: pointer;
-	}
-</style>
+</Button>

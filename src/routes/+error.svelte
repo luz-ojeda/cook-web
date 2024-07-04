@@ -19,8 +19,6 @@
 </div>
 
 <style lang="scss">
-	@import '../sass/variables.scss';
-
 	.container {
 		align-items: center;
 		display: flex;

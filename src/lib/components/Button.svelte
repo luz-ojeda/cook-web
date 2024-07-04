@@ -2,24 +2,24 @@
 	import type { EventHandler } from 'svelte/elements';
 	import CircularLoading from './CircularLoading.svelte';
 
+	export let ariaLabel = "";
 	export let disabled = false;
 	export let loading = false; // Use local state since we not always want it to sync with a global/different one
-	export let onClick: EventHandler<MouseEvent | SubmitEvent> | undefined = undefined;
+	export let onClick: EventHandler<KeyboardEvent | MouseEvent> | undefined = undefined;
+	export let onSubmit: EventHandler<Event> | undefined = undefined;
 	export let size: 'small' | 'large' = 'large';
 	export let type: 'button' | 'reset' | 'submit' | null | undefined = 'button';
 	export let buttonType: 'primary' | 'secondary' | 'tertiary' = 'primary';
+	export let tabIndex = 0;
 </script>
 
 <button
-	class="
-		{buttonType === 'primary'
-		? 'primary'
-		: buttonType === 'secondary'
-			? 'secondary'
-			: 'tertiary'} {size === 'small' ? 'small' : 'large'}"
+	aria-label={ariaLabel}
+	class="{buttonType} {size === 'small' ? 'small' : 'large'}"
 	disabled={disabled || loading}
 	on:click={onClick}
-	on:submit={type === 'submit' ? onClick : undefined}
+	on:submit={onSubmit}
+	tabindex={tabIndex}
 	{type}
 >
 	{#if loading}
@@ -30,7 +30,6 @@
 </button>
 
 <style lang="scss">
-	@import '../../sass/colors.scss';
 	@import '../../sass/variables.scss';
 
 	button {
@@ -43,9 +42,9 @@
 
 		&:disabled {
 			box-shadow:
-				inset 0 3px 0 $grey300,
+				inset 0 3px 0 var(--grey300),
 				$smallShadow;
-			background-color: $grey500;
+			background-color: var(--btn-primary-disabled-bg);
 		}
 
 		&:active:enabled {
@@ -67,23 +66,25 @@
 	}
 
 	.primary {
-		background-color: $primaryColor;
+		background-color: var(--btn-primary-bg);
 		box-shadow:
-			inset 0 3px 0 $lightestPrimaryColor,
+			inset 0 3px 0 var(--primary100),
 			$shadow;
-		color: $grey200;
+		color: var(--grey200);
 
 		&:hover:enabled {
-			background-color: $lightPrimaryColor;
+			background-color: var(--btn-primary-hover);
 			transition: background-color 0.3s;
 		}
 	}
 
 	.tertiary {
 		background-color: transparent;
-		color: $primaryColor;
+		color: var(--btn-tertiary);
+		padding: 0;
 
 		&:hover {
+			color: var(--btn-tertiary-hover);
 			text-decoration: underline;
 		}
 	}

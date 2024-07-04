@@ -22,7 +22,6 @@
 
 <style lang="scss">
 	@import '../../sass/variables.scss';
-	@import '../../sass/colors.scss';
 
 	.nav-links {
 		@media (max-width: $tabletBreakpoint) {
@@ -43,7 +42,7 @@
 
 	.nav-link {
 		&[aria-current='true'] {
-			color: $primaryColor;
+			color: var(--btn-primary-active);
 			text-decoration: underline;
 		}
 	}

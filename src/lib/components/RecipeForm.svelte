@@ -240,7 +240,6 @@
 
 <style lang="scss">
 	@import '../../sass/variables.scss';
-	@import '../../sass/colors.scss';
 
 	form {
 		> *:not(:last-child) {
@@ -280,7 +279,7 @@
 	}
 
 	.max-size-note {
-		color: $grey800;
+		color: var(--light-text);
 		font-size: 0.875rem;
 		margin-top: 0;
 	}

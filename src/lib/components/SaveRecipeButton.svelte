@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { savedIds } from '../../stores/savedRecipesStore';
-	import { Icon } from '$lib';
+	import { Icon, Button } from '$lib';
 
 	export let recipeId: string;
 	export let label = false;
@@ -42,12 +42,7 @@
 	}
 </script>
 
-<button
-	aria-label="Guardar receta"
-	class="flex-center interactive-pointer-opacity"
-	on:keydown={saveRecipe}
-	on:click={saveRecipe}
->
+<Button ariaLabel="Guardar receta" buttonType="tertiary" onClick={saveRecipe} size="small">
 	{#if isRecipeSaved}
 		<Icon
 			class={label ? 'icon-margin-right' : ''}
@@ -69,21 +64,4 @@
 	{#if label}
 		<span class="action-label">{isRecipeSaved ? 'Guardada' : 'Guardar'}</span>
 	{/if}
-</button>
-
-<style lang="scss">
-	@import '../../sass/colors.scss';
-
-	button {
-		border: 0;
-		background-color: transparent;
-		color: var(--color, $darkestPrimaryColor);
-		font-family: inherit;
-		height: fit-content;
-		padding: 0;
-	}
-
-	span {
-		color: $grey900;
-	}
-</style>
+</Button>

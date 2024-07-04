@@ -1,25 +1,114 @@
-/* Grey */
-$grey900: #2f2622;
-$grey800: #625955;
-$grey500: #a19887;
-$grey400: #ccc5b8;
-$grey300: #e7e2da;
-$grey200: #f1eeea;
-$grey100: #faf9f8;
+:root {
+	/* grey */
+    --black: #1a1411;
+    --grey900: #2f2622;
+    --grey800: #625955;
+    --grey700: #80756e;
+    --grey600: #988d85;
+    --grey500: #a19887;
+    --grey400: #bdb6a9;
+    --grey300: #d5cfc6f0;
+    --grey200: #e4dfd9;
+    --grey100: #faf9f8;
 
-/* Primary */
-$darkestPrimaryColor: #662a14;
-$darkPrimaryColor: #8c3a1d;
-$primaryColor: #b14b25;
-$lightPrimaryColor: hsl(16, 55%, 53%);
-$lightestPrimaryColor: hsl(16, 60%, 70%);
+	/* primary */
+	--primary1000: #4d1f0f;
+	--primary900: #662a14;
+	--primary800: #77301a;
+	--primary700: #8c3a1d;
+	--primary600: #9e4321;
+	--primary500: #b14b25;
+	--primary400: #bf5b38;
+	--primary300: #c96845;
+	--primary200: #d58267;
+	--primary100: #e09d85;
+	--primary50: #f2d4c9;
 
-/* Accents */
+	/* typography */
+	--text: var(--grey900);
+	--light-text: var(--grey500);
+	--text-heading: var(--black);
+	--link: var(--primary700);
+	--link-hover: var(--primary300);
+	--selection-bg: var(--primary300);
+	--selection-color: var(--grey100);
+	--outline: var(--primary300);
+	--placeholder: var(--grey700);
+	--logotipo: var(--primary700);
 
-// Error
-$error200: #D31B13;
+	/* accents */
+	--error: #d31b13;
+	--success: #25b14b;
 
-// Warning
+	/* body */
+	--body-bg: var(--grey200);
+	--body-bg-accent: var(--grey300);
 
-// Success
-$success200: #25B14B;
+	/* buttons */
+	--btn-primary-bg: var(--primary500);
+	--btn-primary-hover: var(--primary300);
+	--btn-primary-active: var(--primary900);
+	--btn-primary-disabled-bg: var(--grey500);
+	--btn-tertiary: var(--primary500);
+	--btn-tertiary-hover: var(--primary400);
+
+	/* inputs */
+	--accent-color: var(--primary500);
+
+	/* components */
+	--card-bg: var(--grey400);
+
+	/* misc */
+	--border: var(--grey400);
+	--chip: var(--primary900);
+	--image-upload-bg: var(--primary100);
+	--input-bg: var(--grey100);
+
+	/* table */
+	--th: var(--primary100);
+}
+
+/* Dark mode */
+@supports (--css: variables) {
+	:global(.dark) {
+		/* typography */
+		--text: var(--grey200);
+		--light-text: var(--grey400);
+		--text-heading: var(--grey100);
+		--link: var(--primary100);
+		--link-hover: var(--primary700);
+		--selection-bg: var(--primary300);
+		--selection-color: var(--grey100);
+		--outline: var(--primary300);
+		--placeholder: var(--grey100);
+		--logotipo: var(--primary300);
+
+		/* accents */
+		--error: #d31b13;
+		--success: #25b14b;
+
+		/* body */
+		--body-bg: var(--grey900);
+		--body-bg-accent: var(--grey600);
+
+		/* buttons */
+		--btn-primary-active: var(--primary400);
+		--btn-tertiary: var(--primary400);
+		--btn-tertiary-hover: var(--primary200);
+
+		/* inputs */
+		--accent-color: var(--primary500);
+
+		/* components */
+		--card-bg: var(--grey600);
+
+		/* misc */
+		--border: var(--grey400);
+		--chip: var(--primary900);
+		--image-upload-bg: var(--primary100);
+		--input-bg: var(--grey800);
+
+		/* table */
+		--th: var(--primary100);
+	}
+}

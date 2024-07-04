@@ -3,6 +3,7 @@
 	import isotipo from '$lib/assets/isotipo.svg';
 	import { burgerMenuStore } from '../../stores/burgerMenu';
 	import NavLinks from './NavLinks.svelte';
+	import ThemeIcon from './ThemeIcon.svelte';
 </script>
 
 <nav>
@@ -11,7 +12,7 @@
 			<img alt="" src={isotipo} width="48" />
 			RECETAS SIMPLES
 		</a>
-		<div class="nav-links flex-center">
+		<div class="flex-center">
 			<div class="nav-links-tablet-desktop">
 				<NavLinks />
 			</div>
@@ -22,6 +23,7 @@
 					<Icon name="cross" height="32" width="32" />
 				{/if}
 			</button>
+			<ThemeIcon />
 		</div>
 	</div>
 
@@ -56,6 +58,7 @@
 	.burger-button {
 		align-items: center;
 		background: none;
+		color: var(--text);
 		display: flex;
 		height: 48px;
 		justify-content: center;
@@ -72,7 +75,7 @@
 	}
 
 	.logotipo {
-		color: $darkPrimaryColor;
+		color: var(--logotipo);
 		text-decoration: none;
 		font-weight: bold;
 
@@ -82,6 +85,8 @@
 	}
 
 	.nav-links-tablet-desktop {
+		margin-right: 12px;
+
 		@media (max-width: $tabletBreakpoint) {
 			display: none;
 		}

@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { browser } from '$app/environment';
-	import { Icon, formatRecipeForCopyOrDownload } from '$lib';
+	import { Button, Icon, formatRecipeForCopyOrDownload } from '$lib';
 	import type { Recipe } from '$lib/types/Recipe';
 
 	export let recipe: Recipe;
@@ -17,17 +17,17 @@
 	<a
 		{href}
 		download={'Receta de ' + recipe.name}
-		class="non-text-anchor-element flex-center interactive-pointer-opacity flex-center"
+		class="non-text-anchor-element flex-center interactive-pointer-opacity"
 	>
-		<Icon class="icon-margin-right" name="download" width="18" height="18" />
-		<span class="action-label">Descargar</span>
+		<Button buttonType="tertiary" size="small" tabIndex={-1}>
+			<Icon class="icon-margin-right" name="download" width="18" height="18" />
+			<span class="action-label">Descargar</span>
+		</Button>
 	</a>
 {/if}
 
-<style lang="scss">
-	@import '../../sass/colors.scss';
-
-	a:hover {
-		color: $grey900;
+<style>
+	a {
+		border-radius: 7px;
 	}
 </style>

@@ -5,37 +5,18 @@
 </script>
 
 <div class="container">
-	<div class="nav-links">
+	<div class="nav-links tablet-desktop">
 		<NavLinks />
 	</div>
 	{#if $page.url.pathname === '/recetas'}
-		<hr class="w-100" />
+		<hr class="w-100 tablet-desktop" />
 		<RecipesSearchForm />
 	{/if}
 </div>
 
 <style lang="scss">
-	@import '../../sass/variables.scss';
-	@import '../../sass/colors.scss';
-
 	hr {
-		color: $grey100;
-
-		@media (min-width: $tabletBreakpoint) {
-			display: none;
-		}
-	}
-
-	div {
-		@media (min-width: $tabletBreakpoint) {
-			display: none;
-		}
-	}
-
-	.nav-links {
-		@media (min-width: $tabletBreakpoint) {
-			display: none;
-		}
+		color: var(--grey100);
 	}
 
 	.container {
