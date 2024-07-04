@@ -18,14 +18,17 @@
 		let totalDelay = 0;
 
 		adjectives.forEach((adjective, index) => {
+			// replace each letter of the title with a greater delay than the last letter
 			for (let i = 0; i < adjective.length; i++) {
 				setTimeout(() => (heroTitle = [...heroTitle, adjective[i]]), totalDelay + i * delay);
 			}
 			totalDelay += adjective.length * delay + 600;
 
+			// clear the heroTitle array after each adjective except the last
+			// this leaves 'Recetas sin vueltas' as the last title
 			if (index !== adjectives.length - 1)
 				setTimeout(() => {
-					heroTitle.length = 0; // Clear the heroTitle array
+					heroTitle.length = 0;
 				}, totalDelay);
 		});
 
@@ -140,6 +143,14 @@
 	.see-more {
 		font-size: 1.5rem;
 		font-weight: bold;
+	}
+	
+	:global(.dark) .see-more {
+		color: var(--primary700);
+
+		&:hover {
+			color:var(--primary500);
+		}
 	}
 
 	.recipes-container-home {

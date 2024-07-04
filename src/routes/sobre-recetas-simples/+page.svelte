@@ -27,8 +27,6 @@
 </div>
 
 <style lang="scss">
-	@import '../../sass/variables.scss';
-
 	.container {
 		display: flex;
 		justify-content: center;

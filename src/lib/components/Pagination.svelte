@@ -94,8 +94,8 @@
 </nav>
 
 <style lang="scss">
-	@import '../../sass/colors.scss';
 	@import '../../sass/variables.scss';
+
 	nav {
 		align-items: center;
 		display: flex;

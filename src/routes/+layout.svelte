@@ -12,6 +12,12 @@
 		scrolled = window.scrollY > 0;
 	};
 
+	$: if ($burgerMenuStore) {
+		document.body.style.overflowY = 'hidden';
+	} else {
+		document.body.style.overflowY = 'visible';
+	}
+
 	onMount(() => {
 		let recipesSaved = localStorage.getItem('recipesSaved');
 		let recipesIdsSavedParsed: string[] = [];

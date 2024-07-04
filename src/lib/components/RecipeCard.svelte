@@ -29,7 +29,6 @@
 
 <style lang="scss">
 	@import '../../sass/variables.scss';
-	@import '../../sass/colors.scss';
 
 	.container {
 		transition: opacity 0.2s ease;

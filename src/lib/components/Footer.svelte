@@ -79,7 +79,6 @@
 
 <style lang="scss">
 	@import '../../sass/variables.scss';
-	@import '../../sass/colors.scss';
 
 	.container {
 		@media (min-width: $tabletBreakpoint) {

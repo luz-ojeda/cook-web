@@ -240,7 +240,6 @@
 
 <style lang="scss">
 	@import '../../sass/variables.scss';
-	@import '../../sass/colors.scss';
 
 	form {
 		> *:not(:last-child) {

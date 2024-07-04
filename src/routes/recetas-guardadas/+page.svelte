@@ -44,7 +44,6 @@
 </div>
 
 <style lang="scss">
-	@import '../../sass/colors.scss';
 	@import '../../sass/variables.scss';
 
 	.container {

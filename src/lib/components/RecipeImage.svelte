@@ -15,7 +15,6 @@
 
 <style lang="scss">
 	@import '../../sass/variables.scss';
-	@import '../../sass/colors.scss';
 
 	.recipe-image {
 		object-fit: cover;

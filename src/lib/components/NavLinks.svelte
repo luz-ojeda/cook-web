@@ -22,7 +22,6 @@
 
 <style lang="scss">
 	@import '../../sass/variables.scss';
-	@import '../../sass/colors.scss';
 
 	.nav-links {
 		@media (max-width: $tabletBreakpoint) {

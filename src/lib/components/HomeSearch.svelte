@@ -8,7 +8,6 @@
 
 <style lang="scss">
 	@import '../../sass/variables.scss';
-	@import '../../sass/colors.scss';
 
 	.container {
 		background-color: var(--card-bg);
