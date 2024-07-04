@@ -95,7 +95,7 @@
 	<label for="vegetarian">Solo vegetarianas</label>
 
 	{#if $page.url.pathname !== '/'}
-		<Button {loading} onSubmit={onButtonClick} type="submit">Buscar</Button>
+		<Button {loading} onClick={onButtonClick} type="submit">Buscar</Button>
 	{:else}
 		<a
 			class="non-text-anchor-element"
@@ -123,8 +123,6 @@
 	@import '../../sass/variables.scss';
 
 	form {
-		font-size: 1.125rem;
-
 		> *:not(:last-child) {
 			margin-bottom: 16px;
 
