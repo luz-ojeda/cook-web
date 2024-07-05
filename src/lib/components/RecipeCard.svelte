@@ -11,7 +11,7 @@
 
 <div class="container flex-column" data-testid="recipe-card">
 	<a
-		class="recipe-image-container non-text-anchor-element"
+		class="recipe-image-container non-text-anchor-element margin-bottom"
 		href={`/recetas/${slugifiedRecipeTitle}`}
 	>
 		<RecipeImage {recipeTitle} {recipeImage} />
@@ -55,7 +55,6 @@
 
 	.recipe-image-container {
 		display: inline-block;
-		margin-bottom: 16px;
 		height: 240px;
 
 		@media (max-width: $mobileBreakpoint) {

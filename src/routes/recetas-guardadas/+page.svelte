@@ -11,36 +11,34 @@
 	<title>Recetas guardadas</title>
 </svelte:head>
 
-<div class="spacing">
-	<h1>Mis recetas guardadas</h1>
-	<div class="container">
-		{#if !$savedIds.loadingIdsFromLocalStorage}
-			{#if $savedRecipes.loading}
-				<CircularLoading width="72" />
-			{:else if !message}
-				{#if $savedRecipes.recipes && $savedRecipes.recipes.length > 0}
-					<div class="recipes-container">
-						{#each $savedRecipes.recipes as { id, name, summary, pictures }}
-							<RecipeCard
-								recipeId={id}
-								recipeTitle={name}
-								recipeSummary={summary}
-								recipeImage={pictures[0]}
-							/>
-						{/each}
-					</div>
-				{:else if $savedRecipes.recipes && $savedRecipes.recipes.length === 0}
-					<div class="h-100 no-recipes-container">
-						<h2>Aún no tienes ninguna guardada</h2>
-						<a href="/recetas">Explorar recetas</a>
-						<img class="empty-box" src={EmptyBox} alt="" />
-					</div>
-				{/if}
-			{:else}
-				<h2>{message}</h2>
+<h1>Mis recetas guardadas</h1>
+<div class="container">
+	{#if !$savedIds.loadingIdsFromLocalStorage}
+		{#if $savedRecipes.loading}
+			<CircularLoading width="72" />
+		{:else if !message}
+			{#if $savedRecipes.recipes && $savedRecipes.recipes.length > 0}
+				<div class="recipes-container">
+					{#each $savedRecipes.recipes as { id, name, summary, pictures }}
+						<RecipeCard
+							recipeId={id}
+							recipeTitle={name}
+							recipeSummary={summary}
+							recipeImage={pictures[0]}
+						/>
+					{/each}
+				</div>
+			{:else if $savedRecipes.recipes && $savedRecipes.recipes.length === 0}
+				<div class="h-100 no-recipes-container">
+					<h2>Aún no tienes ninguna guardada</h2>
+					<a href="/recetas">Explorar recetas</a>
+					<img class="empty-box" src={EmptyBox} alt="" />
+				</div>
 			{/if}
+		{:else}
+			<h2>{message}</h2>
 		{/if}
-	</div>
+	{/if}
 </div>
 
 <style lang="scss">

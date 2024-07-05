@@ -3,7 +3,7 @@
 	import { ServerError } from '$lib';
 </script>
 
-<div class="container spacing">
+<div class="container">
 	{#if $page.status === 404}
 		{#if $page.route.id !== '/recetas/[name]'}
 			<h2>No se encontró la página solicitada</h2>

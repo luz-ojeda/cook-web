@@ -34,24 +34,3 @@
 		successMessage="Receta creada exitosamente."
 	/>
 </div>
-
-<style lang="scss">
-	@import '../../sass/variables.scss';
-	@import '../../sass/colors.scss';
-
-	.container {
-		padding: 48px 320px;
-
-		@media (max-width: $laptopBreakpoint) {
-			padding: 24px 128px;
-		}
-
-		@media (max-width: $tabletBreakpoint) {
-			padding: 24px 80px;
-		}
-
-		@media (max-width: $mobileBreakpoint) {
-			padding: 24px 16px;
-		}
-	}
-</style>

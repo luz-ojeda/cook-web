@@ -7,14 +7,6 @@
 </script>
 
 <div class="flex-column">
-	<label for={id}>{label}</label>
+	<label class="margin-bottom--xs" for={id}>{label}</label>
 	<input on:keydown {placeholder} type="text" {id} {name} bind:value={inputValue} />
 </div>
-
-<style lang="scss">
-	@import '../../sass/variables.scss';
-
-	label {
-		margin-bottom: 6px;
-	}
-</style>

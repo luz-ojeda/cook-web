@@ -40,7 +40,7 @@
 	<title>Recetas para editar</title>
 </svelte:head>
 
-<div class="spacing container">
+<div class="container">
 	<h1>Editar recetas</h1>
 	<div class="table-handlers">
 		<form action="/admin/editar-recetas" class="flex-center">
@@ -121,7 +121,7 @@
 
 	table {
 		border-collapse: collapse;
-		margin-top: 24px;
+		margin-top: var(--space-lg);
 		width: 100%;
 	}
 	th,
@@ -136,6 +136,6 @@
 	.pagination {
 		display: flex;
 		justify-content: center;
-		margin-top: 24px;
+		margin-top: var(--space-lg);
 	}
 </style>

@@ -113,6 +113,7 @@
 		background-color: transparent;
 		border-radius: 8px;
 		color: var(--text);
+		font-size: 1em;
 		padding: 1px 0;
 		width: 32px;
 
@@ -139,7 +140,7 @@
 			display: flex;
 			justify-content: center;
 			margin-right: 0px;
-			margin-top: 24px;
+			margin-top: var(--space-lg);
 
 			label {
 				margin-right: 12px;

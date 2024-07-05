@@ -1,4 +1,4 @@
-<div class="container spacing">
+<div class="container">
 	<h1>Recetas Simples</h1>
 	<p>
 		<strong>Hola!</strong> Mi nombre es Luz Ojeda y soy la creadora de la página. Empezó como una idea en

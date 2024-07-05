@@ -118,21 +118,3 @@
 		</a>
 	{/if}
 </form>
-
-<style lang="scss">
-	@import '../../sass/variables.scss';
-
-	form {
-		> *:not(:last-child) {
-			margin-bottom: 16px;
-
-			@media (max-width: $tabletBreakpoint) {
-				margin-bottom: 24px;
-			}
-		}
-	}
-
-	.difficulty-label {
-		margin-bottom: 6px;
-	}
-</style>
