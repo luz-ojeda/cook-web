@@ -62,7 +62,7 @@
 		border-radius: 12px;
 		color: var(--grey300);
 		display: flex;
-		font-size: 0.875rem;
+		font-size: var(--text-xs);
 		font-weight: bold;
 		letter-spacing: 0.025rem;
 		padding: 4px 8px;

@@ -100,10 +100,6 @@
 		@media (min-width: $tabletBreakpoint) {
 			text-align: left;
 		}
-
-		@media (max-width: $mobileBreakpoint) {
-			font-size: 1rem;
-		}
 	}
 
 	ul {
@@ -164,7 +160,6 @@
 		}
 
 		input {
-			font-size: 1.125rem;
 			padding-left: 38px;
 			height: 48px;
 			width: 250px;
