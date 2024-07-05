@@ -1,6 +1,6 @@
 # Cook web
 
-[![en](https://img.shields.io/badge/lang-en-blue)](https://github.com/luz-ojeda/cook-web/blob/main/README.md)
+[![en](https://img.shields.io/badge/lang-en-blue)](https://github.com/luz-ojeda/cook-web/blob/master/README.md)
 
 Aplicación web en Svelte que permite a los usuarios gestionar y recuperar recetas de cocina. Utiliza [cook-api](https://github.com/luz-ojeda/cook-api) como backend.
 
