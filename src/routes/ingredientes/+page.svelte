@@ -9,35 +9,25 @@
 	<title>Índice de ingredientes</title>
 </svelte:head>
 
-<div class="spacing">
-	<h1>Índice de ingredientes</h1>
-	{#each data.ingredients as ingredientsByLetter}
-		<div class="ingredients-group">
-			<h2>{ingredientsByLetter.letter}</h2>
-			<hr size="1">
-			<ul>
-				{#each ingredientsByLetter.ingredients as ingredient}
-					<li class="ingredient">
-						<a href={`/recetas?ingredientes=${ingredient.name}`}
-							>{capitalizeFirstLetter(ingredient.name)}</a
-						>
-					</li>
-				{/each}
-			</ul>
-		</div>
-	{/each}
-</div>
+<h1>Índice de ingredientes</h1>
+{#each data.ingredients as ingredientsByLetter}
+	<div class="margin-bottom--lg">
+		<h2>{ingredientsByLetter.letter}</h2>
+		<hr size="1" />
+		<ul>
+			{#each ingredientsByLetter.ingredients as ingredient}
+				<li class="margin-bottom--sm">
+					<a href={`/recetas?ingredientes=${ingredient.name}`}
+						>{capitalizeFirstLetter(ingredient.name)}</a
+					>
+				</li>
+			{/each}
+		</ul>
+	</div>
+{/each}
 
 <style lang="scss">
 	@import '../../sass/variables.scss';
-
-	.ingredients-group {
-		margin-bottom: 24px;
-	}
-
-	.ingredient {
-		margin-bottom: 10px;
-	}
 
 	h2 {
 		margin-bottom: 0;

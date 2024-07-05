@@ -87,7 +87,7 @@
 		{#if fileReader?.readyState != 1}
 			<div class="h-100 flex-column justify-center">
 				Seleccionar o arrastrar una imagen
-				<div class="icon">
+				<div class="icon margin-top">
 					<Icon name="upload" width="32" height="32" />
 				</div>
 			</div>
@@ -157,6 +157,5 @@
 
 	.icon {
 		color: var(--light-text);
-		margin-top: 12px;
 	}
 </style>

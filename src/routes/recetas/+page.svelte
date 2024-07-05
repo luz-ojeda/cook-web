@@ -48,7 +48,7 @@
 	<title>Recetas</title>
 </svelte:head>
 
-<div class="flex spacing">
+<div class="flex">
 	<aside>
 		<RecipesSearchForm />
 	</aside>
@@ -71,7 +71,7 @@
 				{/each}
 			</div>
 			{#if $recipes.pagination}
-				<div class="pagination">
+				<div class="pagination margin-top--lg">
 					<Pagination
 						currentPage={$recipes.pagination.pageNumber}
 						{onPerPageChange}
@@ -115,7 +115,6 @@
 	.pagination {
 		display: flex;
 		justify-content: center;
-		margin-top: 24px;
 	}
 
 	.no-recipes-found-container {

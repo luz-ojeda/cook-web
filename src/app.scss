@@ -2,10 +2,20 @@
 @import 'sass/utilities';
 @import 'sass/typography';
 @import 'sass/colors';
+@import 'sass/spacing';
 
 body {
 	background-color: var(--body-bg);
 	margin: 0;
+}
+
+main, footer, header {
+	padding: 0 var(--page-padding-horizontal);
+}
+
+main, footer {
+	padding-top: var(--page-padding-vertical);
+	padding-bottom: var(--page-padding-vertical);
 }
 
 button {
@@ -36,16 +46,7 @@ header {
 
 footer {
 	border-top: 1px solid var(--border);
-	padding: 0 16px;
 	background-color: var(--body-bg);
-
-	@media (min-width: $tabletBreakpoint) and (max-width: $laptopBreakpoint) {
-		padding: 12px 80px;
-	}
-
-	@media (min-width: $laptopBreakpoint) {
-		padding: 12px 160px;
-	}
 }
 
 input,
@@ -95,4 +96,14 @@ input[type='radio'] {
 fieldset {
 	border-radius: 5px;
 	border-color: var(--border);
+}
+
+form {
+	> *:not(:last-child) {
+		margin-bottom: var(--space-md);
+
+		@media (max-width: $tabletBreakpoint) {
+			margin-bottom: var(--space-lg);
+		}
+	}
 }

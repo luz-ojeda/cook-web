@@ -32,11 +32,11 @@
 	}
 
 	.nav-links a:not(:last-child) {
-		margin-right: 16px;
+		margin-right: var(--space-sm);
 
 		@media (max-width: $tabletBreakpoint) {
 			margin-right: 0;
-			margin-bottom: 24px;
+			margin-bottom: var(--space-lg);
 		}
 	}
 

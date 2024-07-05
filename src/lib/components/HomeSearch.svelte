@@ -13,6 +13,6 @@
 		background-color: var(--card-bg);
 		border-radius: $borderRadius;
 		box-shadow: $smallShadow;
-		padding: 24px;
+		padding: var(--component-padding);
 	}
 </style>

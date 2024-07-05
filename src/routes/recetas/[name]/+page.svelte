@@ -37,18 +37,12 @@
 	<title>{data.name}</title>
 </svelte:head>
 
-<div class="recipe-container spacing">
+<div class="recipe-container">
 	<div class="recipe-first-content">
 		<div class="recipe-image-container">
-			<!-- <img
-				alt={`Photo of the recipe ${data.name}`}
-				class="rounded-img recipe-image {data.pictures[0] ? 'object-fit-cover' : ''}"
-				crossorigin="anonymous"
-				src={data.pictures[0] ? data.pictures[0] : placeholder}
-			/> -->
 			<RecipeImage recipeImage={data.pictures[0]} recipeTitle={data.name} />
 		</div>
-		<div>
+		<div class="margin-bottom">
 			<h1>{data.name}</h1>
 			<div class="recipe-summary">
 				{#if data.preparationTime}
@@ -136,21 +130,11 @@
 			<p class="instructions-paragraph">{data.instructions}</p>
 		</div>
 	</div>
-
 	<!-- TODO: Display all images in gallery -->
 </div>
 
 <style lang="scss">
 	@import '../../../sass/variables.scss';
-
-	h1 {
-		margin-bottom: 16px;
-		margin-top: 0;
-	}
-
-	h2 {
-		margin: 0;
-	}
 
 	.recipe-container {
 		display: flex;
@@ -176,7 +160,6 @@
 	}
 
 	.recipe-image-container {
-		margin-bottom: 16px;
 		margin-right: 20px;
 		height: 375px;
 
@@ -190,32 +173,14 @@
 		}
 	}
 
-	.recipe-summary {
-		margin-bottom: 16px;
-
-		div:not(:last-of-type) {
-			margin-bottom: 12px;
-		}
-
-		p {
-			margin: 0;
-		}
-
-		@media (max-width: $tabletBreakpoint) {
-			margin-bottom: 0;
-		}
-	}
-
 	.actions {
 		display: flex;
-		margin-bottom: 12px;
 
 		div:not(:last-child) {
 			margin-right: 16px;
 		}
 
 		@media (max-width: $tabletBreakpoint) {
-			margin: 16px 0;
 			justify-content: space-evenly;
 
 			div:not(:last-child) {
@@ -226,10 +191,6 @@
 		@media (max-width: $mobileBreakpoint) {
 			flex-wrap: wrap;
 		}
-	}
-
-	.ingredients {
-		margin-bottom: 12px;
 	}
 
 	.instructions-paragraph {

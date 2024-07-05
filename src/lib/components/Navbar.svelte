@@ -37,33 +37,9 @@
 	@import '../../sass/colors.scss';
 
 	nav {
-		padding: 0 16px;
-
-		@media (min-width: $tabletBreakpoint) and (max-width: $laptopBreakpoint) {
-			padding: 12px 80px;
-		}
-
-		@media (min-width: $laptopBreakpoint) {
-			padding: 12px 160px;
-		}
-
 		@media (max-width: $tabletBreakpoint) {
 			max-height: 100vh;
 			overflow-y: auto;
-		}
-	}
-
-	.burger-button {
-		align-items: center;
-		background: none;
-		color: var(--text);
-		display: flex;
-		height: 48px;
-		justify-content: center;
-		width: 48px;
-
-		@media (min-width: $tabletBreakpoint) {
-			display: none;
 		}
 	}
 
@@ -79,6 +55,24 @@
 
 		img {
 			margin-right: 12px;
+		}
+
+		h3 {
+			margin: 0;
+		}
+	}
+
+	.burger-button {
+		align-items: center;
+		background: none;
+		color: var(--text);
+		display: flex;
+		height: 48px;
+		justify-content: center;
+		width: 48px;
+
+		@media (min-width: $tabletBreakpoint) {
+			display: none;
 		}
 	}
 

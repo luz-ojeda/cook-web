@@ -1,7 +1,6 @@
 <script>
-	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
-	import { GitHubMark, Icon } from '$lib';
+	import { Icon } from '$lib';
 	import isotipo from '$lib/assets/isotipo.svg';
 
 	let name = '';
@@ -124,11 +123,7 @@
 	}
 
 	li:not(:last-child) {
-		margin-bottom: 16px;
-
-		@media (min-width: $tabletBreakpoint) {
-			margin-bottom: 8px;
-		}
+		margin-bottom: var(--space-sm);
 	}
 
 	* :global(.icon-margin-right), svg {

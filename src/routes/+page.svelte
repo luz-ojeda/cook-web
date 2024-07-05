@@ -45,7 +45,7 @@
 </svelte:head>
 
 <!-- Hero -->
-<section class="spacing hero flex-center">
+<section class="hero flex-center">
 	<div class="hero-title">
 		<h1>
 			{#if !userSawAnimation}
@@ -68,7 +68,7 @@
 
 <!-- Recipe cards -->
 {#if data.data.length > 0}
-	<section class="recipes-section spacing background curved">
+	<section class="recipes-section background curved">
 		<div class="recipes-container recipes-container-home">
 			{#each data.data as { id, name, summary, pictures }}
 				<RecipeCard
@@ -117,12 +117,6 @@
 	.hero div:first-of-type {
 		@media (min-width: 720px) {
 			margin-right: 48px;
-		}
-	}
-
-	.hero-title {
-		@media (max-width: $tabletBreakpoint) {
-			margin-bottom: 16px;
 		}
 	}
 

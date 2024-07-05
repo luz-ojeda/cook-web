@@ -26,7 +26,7 @@
 <div class="flex-column">
 	<TextInput {label} {placeholder} {id} {name} bind:inputValue on:keydown={handleKeyPress} />
 	{#if values.length > 0}
-		<div class="chips-container">
+		<div class="chips-container margin-top">
 			{#each values as value}
 				<!-- svelte-ignore a11y-click-events-have-key-events -->
 				<!-- svelte-ignore a11y-no-static-element-interactions -->
@@ -51,7 +51,6 @@
 	.chips-container {
 		display: flex;
 		flex-wrap: wrap;
-		margin-top: 12px;
 		align-items: center;
 		row-gap: 6px;
 	}

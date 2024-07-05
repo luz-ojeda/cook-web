@@ -12,7 +12,7 @@
 	<title>Editar {data.name}</title>
 </svelte:head>
 
-<div class="spacing">
+<div>
 	<h1>Editar "{data.name}"</h1>
 	<RecipeForm
 		{form}

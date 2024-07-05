@@ -35,18 +35,6 @@
 	}
 }
 
-.spacing {
-	padding: $paddingMobile;
-
-	@media (min-width: $tabletBreakpoint) and (max-width: $laptopBreakpoint) {
-		padding: $paddingLaptop;
-	}
-
-	@media (min-width: $laptopBreakpoint) {
-		padding: $paddingDesktop;
-	}
-}
-
 .rounded-img {
 	border-radius: $borderRadius;
 }
@@ -97,7 +85,7 @@
 }
 
 .mobile {
-	display: block;
+	display: block;	
 
 	@media (min-width: $laptopBreakpoint) {
 		display: none;

@@ -50,7 +50,9 @@
 <header class="header {scrolled ? 'shadow' : ''} {$burgerMenuStore ? 'border' : ''}">
 	<Navbar />
 </header>
-<slot />
+<main>
+	<slot />
+</main>
 <Footer />
 
 <style lang="scss">

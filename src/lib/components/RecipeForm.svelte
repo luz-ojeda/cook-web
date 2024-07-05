@@ -241,16 +241,6 @@
 <style lang="scss">
 	@import '../../sass/variables.scss';
 
-	form {
-		> *:not(:last-child) {
-			margin-bottom: 16px;
-
-			@media (max-width: $tabletBreakpoint) {
-				margin-bottom: 24px;
-			}
-		}
-	}
-
 	label {
 		display: block;
 		margin-right: 4px;
