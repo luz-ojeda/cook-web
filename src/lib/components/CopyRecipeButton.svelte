@@ -23,7 +23,7 @@
 	}
 </script>
 
-<Button ariaLabel="Copiar receta" buttonType="tertiary" onClick={copyRecipe} size="small">
+<Button ariaLabel="Copiar receta" buttonType="tertiary" onClick={copyRecipe}>
 	{#if isRecipeCopied}
 		<Icon class="icon-margin-right" name="copy_full" width="18" height="18" />
 	{:else}
@@ -34,5 +34,5 @@
 			height="18"
 		/>
 	{/if}
-	<span class="action-label">{isRecipeCopied ? 'Copiada' : 'Copiar'}</span>
+	<span>{isRecipeCopied ? 'Copiada' : 'Copiar'}</span>
 </Button>

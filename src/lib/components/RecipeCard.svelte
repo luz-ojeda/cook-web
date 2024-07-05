@@ -47,7 +47,6 @@
 	.title-container {
 		display: flex;
 		justify-content: space-between;
-		font-size: 1rem;
 
 		@media (max-width: 720px) {
 			align-items: center;

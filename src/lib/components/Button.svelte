@@ -53,13 +53,13 @@
 	}
 
 	.small {
-		font-size: 1rem;
+		font-size: var(--text-sm);
 		height: 32px;
 		padding: 4px 12px;
 	}
 
 	.large {
-		font-size: 1.25rem;
+		font-size: var(--text-md);
 		height: 48px;
 		padding: 8px 24px;
 		width: 100%;
@@ -82,6 +82,7 @@
 		background-color: transparent;
 		color: var(--btn-tertiary);
 		padding: 0;
+		width: fit-content;
 
 		&:hover {
 			color: var(--btn-tertiary-hover);

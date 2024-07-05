@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { HomeSearch, RecipeCard } from '$lib';
+	import { Button, HomeSearch, RecipeCard } from '$lib';
 	import type { PaginatedList } from '$lib/types/PaginatedList';
 	import type { Recipe } from '$lib/types/Recipe';
 	import { onMount } from 'svelte';
@@ -79,7 +79,9 @@
 				/>
 			{/each}
 		</div>
-		<a class="see-more" href="/recetas">Ver más recetas</a>
+		<a href="/recetas">
+			<Button buttonType="tertiary" tabIndex={-1}>Ver más recetas</Button>
+		</a>
 	</section>
 {/if}
 
@@ -97,26 +99,10 @@
 		flex-direction: column;
 	}
 
-	h1 {
-		font-size: 3rem;
-
-		@media (max-width: $tabletBreakpoint) {
-			font-size: 1.5rem;
-		}
-	}
-
 	.hero {
 		@media (max-width: $tabletBreakpoint) {
 			flex-direction: column;
 			text-align: center;
-		}
-
-		p {
-			font-size: 1.125rem;
-
-			@media (max-width: $tabletBreakpoint) {
-				font-size: 1rem;
-			}
 		}
 	}
 
@@ -137,19 +123,6 @@
 	.hero-title {
 		@media (max-width: $tabletBreakpoint) {
 			margin-bottom: 16px;
-		}
-	}
-
-	.see-more {
-		font-size: 1.5rem;
-		font-weight: bold;
-	}
-	
-	:global(.dark) .see-more {
-		color: var(--primary700);
-
-		&:hover {
-			color:var(--primary500);
 		}
 	}
 

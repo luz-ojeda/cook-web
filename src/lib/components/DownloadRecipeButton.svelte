@@ -14,12 +14,8 @@
 </script>
 
 {#if browser}
-	<a
-		{href}
-		download={'Receta de ' + recipe.name}
-		class="non-text-anchor-element flex-center interactive-pointer-opacity"
-	>
-		<Button buttonType="tertiary" size="small" tabIndex={-1}>
+	<a {href} download={'Receta de ' + recipe.name} class="non-text-anchor-element">
+		<Button buttonType="tertiary" tabIndex={-1}>
 			<Icon class="icon-margin-right" name="download" width="18" height="18" />
 			<span class="action-label">Descargar</span>
 		</Button>

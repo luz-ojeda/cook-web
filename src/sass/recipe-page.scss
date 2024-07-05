@@ -1,9 +1,0 @@
-@import './variables.scss';
-
-.action-label {
-	font-size: 1.125rem;
-
-	@media (max-width: $mobileBreakpoint) {
-		font-size: 0.75rem;
-	}
-}

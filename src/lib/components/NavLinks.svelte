@@ -2,7 +2,7 @@
 	import { page } from '$app/stores';
 </script>
 
-<div class="nav-links">
+<div class="nav-links text--lg">
 	<a
 		class="non-text-anchor-element nav-link"
 		href="/recetas"

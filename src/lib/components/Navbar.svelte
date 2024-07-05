@@ -10,7 +10,7 @@
 	<div class="main-nav flex-center">
 		<a class="flex-center logotipo" href="/">
 			<img alt="" src={isotipo} width="48" />
-			RECETAS SIMPLES
+			<h3>RECETAS SIMPLES</h3>
 		</a>
 		<div class="flex-center">
 			<div class="nav-links-tablet-desktop">
@@ -51,8 +51,6 @@
 			max-height: 100vh;
 			overflow-y: auto;
 		}
-
-		font-size: 1.5rem;
 	}
 
 	.burger-button {
