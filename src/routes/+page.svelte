@@ -68,7 +68,7 @@
 
 <!-- Recipe cards -->
 {#if data.data.length > 0}
-	<section class="recipes-section background curved">
+	<section class="recipes-section curved">
 		<div class="recipes-container recipes-container-home">
 			{#each data.data as { id, name, summary, pictures }}
 				<RecipeCard
@@ -82,24 +82,16 @@
 		<a href="/recetas">
 			<Button buttonType="tertiary" tabIndex={-1}>Ver más recetas</Button>
 		</a>
+		<div class="background"></div>
 	</section>
 {/if}
 
 <style lang="scss">
 	@import '../sass/variables.scss';
-	@import '../sass/colors.scss';
-
-	.background {
-		background-color: var(--body-bg-accent);
-	}
-
-	.recipes-section {
-		align-items: center;
-		display: flex;
-		flex-direction: column;
-	}
 
 	.hero {
+		margin-bottom: var(--space-lg);
+
 		@media (max-width: $tabletBreakpoint) {
 			flex-direction: column;
 			text-align: center;
@@ -120,10 +112,43 @@
 		}
 	}
 
+	.recipes-section {
+		align-items: center;
+		display: flex;
+		flex-direction: column;
+		position: relative;
+	}
+
+	.background {
+		background-color: var(--body-bg-accent);
+		height: 120%;
+		width: 100vw;
+		position: absolute;
+		z-index: -1;
+	}
+
+	.background::before {
+		background-color: var(--body-bg-accent);
+		border-top-left-radius: 50% 100%;
+		border-top-right-radius: 50% 100%;
+		content: '';
+		left: 0;
+		position: absolute;
+		transform: translateY(-70px);
+		width: 100vw;
+		height: 15%;
+		z-index: -1;
+
+		@media (max-width: $tabletBreakpoint) {
+			display: none;
+		}
+	}
+
 	.recipes-container-home {
 		grid-template-columns: repeat(4, minmax(0, 1fr));
 		grid-template-rows: auto;
 		grid-auto-rows: 0;
+		padding: var(--component-padding) 0;
 
 		@media (max-width: $tabletBreakpoint) {
 			grid-auto-rows: auto;
@@ -132,22 +157,5 @@
 		@media (max-width: $tabletBreakpoint) {
 			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
-	}
-
-	.curved {
-		position: relative;
-	}
-
-	.curved::before {
-		background-color: var(--body-bg-accent);
-		border-top-left-radius: 50% 100%;
-		border-top-right-radius: 50% 100%;
-		content: '';
-		left: 0;
-		position: absolute;
-		top: -15%;
-		width: 100%;
-		height: 15%;
-		z-index: -1;
 	}
 </style>
