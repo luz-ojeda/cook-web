@@ -111,7 +111,6 @@
 
 	button {
 		background-color: transparent;
-		border-radius: 8px;
 		color: var(--text);
 		font-size: 1em;
 		padding: 1px 0;

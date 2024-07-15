@@ -1,9 +1,9 @@
 <script>
 	import { page } from '$app/stores';
-	import { SignIn } from '@auth/sveltekit/components';
+	import GoogleSignInButton from './GoogleSignInButton.svelte';
 </script>
 
-<div class="nav-links text--md">
+<div class="flex-center nav-links text--md">
 	<a
 		class="non-text-anchor-element nav-link"
 		href="/recetas"
@@ -20,9 +20,14 @@
 		aria-current={$page.url.pathname === '/ingredientes'}>Ingredientes</a
 	>
 	{#if $page.data.session}
-		<a href="/auth/signout" class="button" data-sveltekit-preload-data="off">Cerrar sesión </a>
+		<a
+			class="non-text-anchor-element nav-link"
+			href="/auth/signout"
+			data-sveltekit-preload-data="off"
+			>Cerrar sesión
+		</a>
 	{:else}
-		<SignIn provider="google" signInPage="signin" />
+		<a class="non-text-anchor-element nav-link" href="/iniciar-sesion">Iniciar sesión </a>
 	{/if}
 </div>
 
