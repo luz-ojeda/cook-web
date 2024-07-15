@@ -13,7 +13,7 @@
 			<h3>RECETAS SIMPLES</h3>
 		</a>
 		<div class="flex-center">
-			<div class="nav-links-tablet-desktop">
+			<div class="laptop-desktop">
 				<NavLinks />
 			</div>
 			<button class="burger-button" on:click={() => ($burgerMenuStore = !$burgerMenuStore)}>
@@ -72,14 +72,6 @@
 		width: 48px;
 
 		@media (min-width: $tabletBreakpoint) {
-			display: none;
-		}
-	}
-
-	.nav-links-tablet-desktop {
-		margin-right: 12px;
-
-		@media (max-width: $tabletBreakpoint) {
 			display: none;
 		}
 	}

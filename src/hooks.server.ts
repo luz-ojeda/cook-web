@@ -3,6 +3,8 @@ import { logRecipesError } from './errorLogging';
 import { MESSAGES } from './constants';
 import type { ApiError } from '$lib/types/ApiError';
 import { env } from '$env/dynamic/private';
+import { sequence } from '@sveltejs/kit/hooks';
+import { handle as authHandle } from "./auth"
 
 const securityHeaders = {
 	'Cross-Origin-Embedder-Policy': 'require-corp',
@@ -30,7 +32,7 @@ export const handleError: HandleServerError = async ({ event, error }) => {
 	return { message };
 };
 
-export const handle: Handle = async ({ event, resolve }) => {
+export const first: Handle = async ({ event, resolve }) => {
 	if (event.url.pathname.startsWith('/admin')) {
 		const auth = event.request.headers.get('Authorization');
 
@@ -55,3 +57,5 @@ export const handleFetch: HandleFetch = async ({ request, fetch }) => {
 
 	return fetch(request);
 };
+
+export const handle = sequence(first, authHandle);

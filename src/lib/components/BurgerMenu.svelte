@@ -5,11 +5,11 @@
 </script>
 
 <div class="container">
-	<div class="nav-links tablet-desktop">
+	<div class="nav-links">
 		<NavLinks />
 	</div>
 	{#if $page.url.pathname === '/recetas'}
-		<hr class="w-100 tablet-desktop" />
+		<hr class="w-100" />
 		<RecipesSearchForm />
 	{/if}
 </div>

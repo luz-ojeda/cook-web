@@ -1,8 +1,9 @@
 <script>
 	import { page } from '$app/stores';
+	import { SignIn } from '@auth/sveltekit/components';
 </script>
 
-<div class="nav-links text--lg">
+<div class="nav-links text--md">
 	<a
 		class="non-text-anchor-element nav-link"
 		href="/recetas"
@@ -18,16 +19,24 @@
 		href="/ingredientes"
 		aria-current={$page.url.pathname === '/ingredientes'}>Ingredientes</a
 	>
+	{#if $page.data.session}
+		<a href="/auth/signout" class="button" data-sveltekit-preload-data="off">Cerrar sesión </a>
+	{:else}
+		<SignIn provider="google" signInPage="signin" />
+	{/if}
 </div>
 
 <style lang="scss">
 	@import '../../sass/variables.scss';
 
 	.nav-links {
+		display: flex;
+		margin-right: var(--space-sm);
+
 		@media (max-width: $tabletBreakpoint) {
-			display: flex;
-			flex-direction: column;
 			align-items: center;
+			margin: 0;
+			flex-direction: column;
 		}
 	}
 

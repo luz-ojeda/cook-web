@@ -38,6 +38,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@auth/sveltekit": "^1.4.1",
 		"@azure/storage-blob": "^12.17.0"
 	}
 }
