@@ -3,17 +3,21 @@
 @import 'sass/typography';
 @import 'sass/colors';
 @import 'sass/spacing';
+@import 'sass/layout';
 
 body {
 	background-color: var(--body-bg);
 	margin: 0;
 }
 
-main, footer, header {
+main,
+footer,
+header {
 	padding: 0 var(--page-padding-horizontal);
 }
 
-main, footer {
+main,
+footer {
 	padding-top: var(--page-padding-vertical);
 	padding-bottom: var(--page-padding-vertical);
 }
@@ -106,4 +110,21 @@ form {
 			margin-bottom: var(--space-lg);
 		}
 	}
+}
+
+/** Buttons **/
+// TODO: Move to separate file
+button {
+	align-items: center;
+	border: 0;
+	border-radius: 7px;
+	display: flex;
+	justify-content: center;
+}
+
+.small,
+form > button { // form for the google sign in button
+	font-size: 1em;
+	height: 32px;
+	padding: 4px 12px;
 }

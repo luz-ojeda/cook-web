@@ -4,6 +4,7 @@
 	import type { ActionData } from './$types';
 	import { formData } from '../../stores/recipeCreationStore';
 	import { LOCAL_STORAGE_KEYS } from '../../constants';
+	import Protected from '$lib/components/Protected.svelte';
 
 	export let form: ActionData;
 
@@ -22,15 +23,17 @@
 	<title>Crear receta</title>
 </svelte:head>
 
-<div class="container">
-	<h1>Crear receta</h1>
-	<RecipeForm
-		{form}
-		formData={$formData}
-		onAddIngredientClick={formData.addIngredient}
-		onIngredientInput={formData.onIngredientInput}
-		onRemoveIngredientClick={formData.removeIngredient}
-		submitButtonText="CREAR RECETA"
-		successMessage="Receta creada exitosamente."
-	/>
-</div>
+<Protected>
+	<div class="container">
+		<h1>Crear receta</h1>
+		<RecipeForm
+			{form}
+			formData={$formData}
+			onAddIngredientClick={formData.addIngredient}
+			onIngredientInput={formData.onIngredientInput}
+			onRemoveIngredientClick={formData.removeIngredient}
+			submitButtonText="CREAR RECETA"
+			successMessage="Receta creada exitosamente."
+		/>
+	</div>
+</Protected>

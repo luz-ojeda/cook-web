@@ -1,4 +1,4 @@
-<div class="container">
+<div class="narrow-page">
 	<h1>Recetas Simples</h1>
 	<p>
 		<strong>Hola!</strong> Mi nombre es Luz Ojeda y soy la creadora de la página. Empezó como una idea en
@@ -25,14 +25,3 @@
 		>!
 	</p>
 </div>
-
-<style lang="scss">
-	.container {
-		display: flex;
-		justify-content: center;
-		flex-direction: column;
-		margin: 0 auto;
-		max-width: 640px;
-		text-align: justified;
-	}
-</style>

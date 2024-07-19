@@ -1,8 +1,9 @@
 <script>
 	import { page } from '$app/stores';
+	import GoogleSignInButton from './GoogleSignInButton.svelte';
 </script>
 
-<div class="nav-links text--lg">
+<div class="flex-center nav-links text--md">
 	<a
 		class="non-text-anchor-element nav-link"
 		href="/recetas"
@@ -18,16 +19,29 @@
 		href="/ingredientes"
 		aria-current={$page.url.pathname === '/ingredientes'}>Ingredientes</a
 	>
+	{#if $page.data.session}
+		<a
+			class="non-text-anchor-element nav-link"
+			href="/auth/signout"
+			data-sveltekit-preload-data="off"
+			>Cerrar sesión
+		</a>
+	{:else}
+		<a class="non-text-anchor-element nav-link" href="/iniciar-sesion">Iniciar sesión </a>
+	{/if}
 </div>
 
 <style lang="scss">
 	@import '../../sass/variables.scss';
 
 	.nav-links {
+		display: flex;
+		margin-right: var(--space-sm);
+
 		@media (max-width: $tabletBreakpoint) {
-			display: flex;
-			flex-direction: column;
 			align-items: center;
+			margin: 0;
+			flex-direction: column;
 		}
 	}
 

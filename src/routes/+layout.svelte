@@ -5,6 +5,8 @@
 	import { savedIds } from '../stores/savedRecipesStore';
 	import { browser } from '$app/environment';
 	import { burgerMenuStore } from '../stores/burgerMenu';
+	import { userEmail } from '../stores/user';
+	import { page } from '$app/stores';
 
 	let scrolled = false;
 
@@ -12,15 +14,7 @@
 		scrolled = window.scrollY > 0;
 	};
 
-	$: if (browser) {
-		if ($burgerMenuStore) {
-			document.body.style.overflowY = 'hidden';
-		} else {
-			document.body.style.overflowY = 'visible';
-		}
-	}
-
-	onMount(() => {
+	const updateSavedRecipeIdsStore = () => {
 		let recipesSaved = localStorage.getItem('recipesSaved');
 		let recipesIdsSavedParsed: string[] = [];
 		if (recipesSaved) {
@@ -34,6 +28,22 @@
 				ids: recipesIdsSavedParsed
 			};
 		});
+	};
+
+	$: if (browser) {
+		if ($burgerMenuStore) {
+			document.body.style.overflowY = 'hidden';
+		} else {
+			document.body.style.overflowY = 'visible';
+		}
+	}
+
+	$: if ($page.data.session?.user?.email) {
+		userEmail.set($page.data.session?.user.email);
+	}
+
+	onMount(() => {
+		updateSavedRecipeIdsStore();
 
 		if (browser) {
 			window.addEventListener('scroll', handleScroll);

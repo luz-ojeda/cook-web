@@ -28,6 +28,13 @@
 	flex-direction: column;
 }
 
+.flex-col-full-center {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
 .interactive-pointer-opacity {
 	&:hover {
 		cursor: pointer;
@@ -76,6 +83,12 @@
 	}
 }
 
+.laptop-desktop {
+	@media (max-width: $tabletBreakpoint) {
+		display: none;
+	}
+}
+
 .laptop {
 	display: none;
 
@@ -83,6 +96,7 @@
 		display: block;
 	}
 }
+
 
 .mobile {
 	display: block;	

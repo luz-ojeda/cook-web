@@ -2,7 +2,7 @@
 	import type { EventHandler } from 'svelte/elements';
 	import CircularLoading from './CircularLoading.svelte';
 
-	export let ariaLabel = "";
+	export let ariaLabel = '';
 	export let disabled = false;
 	export let loading = false; // Use local state since we not always want it to sync with a global/different one
 	export let onClick: EventHandler<KeyboardEvent | MouseEvent> | undefined = undefined;
@@ -33,12 +33,7 @@
 	@import '../../sass/variables.scss';
 
 	button {
-		align-items: center;
-		border: 0;
-		border-radius: 7px;
-		display: flex;
 		font-weight: bold;
-		justify-content: center;
 
 		&:disabled {
 			box-shadow:
@@ -50,12 +45,6 @@
 		&:active:enabled {
 			box-shadow: $smallestShadow;
 		}
-	}
-
-	.small {
-		font-size: var(--text-sm);
-		height: 32px;
-		padding: 4px 12px;
 	}
 
 	.large {
