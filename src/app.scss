@@ -22,11 +22,58 @@ footer {
 	padding-bottom: var(--page-padding-vertical);
 }
 
-button {
+button,
+form.signOutButton button {
 	border: 0;
+	font-weight: bold;
 
 	&:not(:disabled) {
 		cursor: pointer;
+	}
+
+	&:disabled {
+		color: var(--btn-disabled-color);
+	}
+}
+
+button.primary,
+form.signOutButton button {
+	background-color: var(--btn-primary-bg);
+	box-shadow:
+		inset 0 3px 0 var(--primary100),
+		$shadow;
+
+	&:not(:disabled) {
+		color: var(--grey200);
+	}
+
+	&:disabled {
+		box-shadow:
+			inset 0 3px 0 var(--grey300),
+			$smallShadow;
+		background-color: var(--btn-primary-disabled-bg);
+	}
+
+	&:hover:enabled {
+		background-color: var(--btn-primary-hover);
+		transition: background-color 0.3s;
+	}
+
+	&:active:enabled {
+		box-shadow: $smallestShadow;
+	}
+}
+
+form.signOutButton button {
+	background-color: var(--btn-primary-bg);
+	box-shadow:
+		inset 0 3px 0 var(--primary100),
+		$shadow;
+	color: var(--grey200);
+
+	&:hover:enabled {
+		background-color: var(--btn-primary-hover);
+		transition: background-color 0.3s;
 	}
 }
 
@@ -123,7 +170,8 @@ button {
 }
 
 .small,
-form > button { // form for the google sign in button
+form > button {
+	// form for the google sign in button
 	font-size: 1em;
 	height: 32px;
 	padding: 4px 12px;

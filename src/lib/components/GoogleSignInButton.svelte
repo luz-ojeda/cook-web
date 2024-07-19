@@ -2,7 +2,14 @@
 	import { SignIn } from '@auth/sveltekit/components';
 </script>
 
-<SignIn className="small" provider="google" signInPage="iniciar-sesion">
+<SignIn
+	className="small"
+	options={{
+		redirectTo: '/recetas'
+	}}
+	provider="google"
+	signInPage="iniciar-sesion"
+>
 	<div class="flex-center" slot="submitButton">
 		<svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<g clip-path="url(#clip0_710_6221)">

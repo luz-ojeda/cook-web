@@ -32,21 +32,6 @@
 <style lang="scss">
 	@import '../../sass/variables.scss';
 
-	button {
-		font-weight: bold;
-
-		&:disabled {
-			box-shadow:
-				inset 0 3px 0 var(--grey300),
-				$smallShadow;
-			background-color: var(--btn-primary-disabled-bg);
-		}
-
-		&:active:enabled {
-			box-shadow: $smallestShadow;
-		}
-	}
-
 	.large {
 		font-size: var(--text-md);
 		height: 48px;
@@ -54,26 +39,16 @@
 		width: 100%;
 	}
 
-	.primary {
-		background-color: var(--btn-primary-bg);
-		box-shadow:
-			inset 0 3px 0 var(--primary100),
-			$shadow;
-		color: var(--grey200);
-
-		&:hover:enabled {
-			background-color: var(--btn-primary-hover);
-			transition: background-color 0.3s;
-		}
-	}
-
 	.tertiary {
 		background-color: transparent;
-		color: var(--btn-tertiary);
 		padding: 0;
 		width: fit-content;
 
-		&:hover {
+		&:not(:disabled) {
+			color: var(--btn-tertiary);
+		}
+
+		&:hover:enabled {
 			color: var(--btn-tertiary-hover);
 			text-decoration: underline;
 		}
