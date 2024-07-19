@@ -1,6 +1,5 @@
 <script>
 	import { page } from '$app/stores';
-	import GoogleSignInButton from './GoogleSignInButton.svelte';
 </script>
 
 <div class="flex-center nav-links text--md">
@@ -22,7 +21,7 @@
 	{#if $page.data.session}
 		<a
 			class="non-text-anchor-element nav-link"
-			href="/auth/signout"
+			href="/cerrar-sesion"
 			data-sveltekit-preload-data="off"
 			>Cerrar sesión
 		</a>
