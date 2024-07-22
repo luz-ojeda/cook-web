@@ -4,7 +4,7 @@
 	export let recipeId: string;
 	export let recipeImage: string;
 	export let recipeTitle: string;
-	export let recipeSummary: string;
+	export let recipeSummary: string = "";
 
 	$: slugifiedRecipeTitle = slugify(recipeTitle);
 </script>
