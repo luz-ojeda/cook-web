@@ -5,7 +5,7 @@ import { slugify } from '$lib';
 import { uploadImage } from '$lib/scripts/azure';
 
 export const actions = {
-	default: async ({ request }) => {
+	default: async ({ request, locals }) => {
 		const data = await request.formData();
 		const recipeName = data.get('name');
 		const slugifiedRecipeName = slugify(recipeName as string);
@@ -27,7 +27,7 @@ export const actions = {
 							`https://${env.AZURE_STORAGE_ACCOUNT_NAME}.blob.core.windows.net/recipes/${slugifiedRecipeName}/1`
 						]
 					: null,
-			userCreated: true
+			userEmail: (await locals.auth())?.user?.email
 		};
 
 		const response = await fetch(`${env.API_URL}/recipes`, {

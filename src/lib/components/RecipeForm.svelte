@@ -6,6 +6,7 @@
 	import type { RecipeFormDataElems } from '$lib/types/RecipeFormData';
 	import type { ActionData as CreateRecipeActionData } from '../../routes/crear-receta/$types';
 	import type { ActionData as UpdateRecipeActionData } from '../../routes/admin/editar-recetas/[name]/$types';
+	import Chip from './Chip.svelte';
 
 	export let form: UpdateRecipeActionData | CreateRecipeActionData;
 	export let formData: RecipeFormDataElems;
@@ -121,8 +122,9 @@
 			<div>
 				{#each values?.ingredients ?? formData.ingredients as ingredient, index (index)}
 					<label for={index.toString()}>Ingrediente {index + 1}:</label>
-					<div>
+					<div class="flex">
 						<input
+							class="margin-right--sm"
 							id={index.toString()}
 							name="ingredients"
 							required
@@ -130,15 +132,11 @@
 							on:input={onIngredientInput}
 							value={values?.ingredients[index] ?? formData.ingredients[index]}
 						/>
-						<button
-							type="button"
-							class="remove-ingredient-button"
-							on:click={() => onRemoveIngredientClick(ingredient, index)}>Quitar</button
-						>
+						<Chip label="Quitar" onClick={() => onRemoveIngredientClick(ingredient, index)} />
 					</div>
 				{/each}
 			</div>
-			<button type="button" on:click={onAddIngredientClick}>+ Añadir Ingrediente</button>
+			<Chip label="+ Añadir ingrediente" onClick={onAddIngredientClick} />
 		</fieldset>
 
 		<label for="preparationTime">
@@ -249,11 +247,6 @@
 	.label-column {
 		display: flex;
 		flex-direction: column;
-	}
-
-	.remove-ingredient-button {
-		border-radius: 9999px;
-		height: 32px;
 	}
 
 	.button-container {

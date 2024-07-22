@@ -11,7 +11,7 @@ type RecipeParameters = {
 type Recipe = {
 	id: string;
 	name: string;
-	summary: string;
+	summary?: string;
 	ingredients: string[];
 	instructions: string;
 	pictures: string[];
@@ -21,6 +21,7 @@ type Recipe = {
 	servings?: number;
 	difficulty?: RecipeDifficulty;
 	vegetarian: boolean;
+	userEmail?: string;
 };
 
 type RecipeDifficulty = 'Easy' | 'Medium' | 'Hard';
