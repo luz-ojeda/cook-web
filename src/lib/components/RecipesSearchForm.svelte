@@ -98,7 +98,7 @@
 		<Button {loading} onClick={onButtonClick} type="submit">Buscar</Button>
 	{:else}
 		<a
-			class="non-text-anchor-element"
+			class="text-color"
 			href={buildRecipesBrowserUrl({
 				name: $recipes.name,
 				ingredients: $recipes.ingredients,
