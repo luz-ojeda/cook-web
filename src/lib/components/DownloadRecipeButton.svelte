@@ -14,7 +14,7 @@
 </script>
 
 {#if browser}
-	<a {href} download={'Receta de ' + recipe.name} class="non-text-anchor-element">
+	<a {href} download={'Receta de ' + recipe.name} class="text-color">
 		<Button buttonType="tertiary" tabIndex={-1}>
 			<Icon class="icon-margin-right" name="download" width="18" height="18" />
 			<span class="action-label">Descargar</span>

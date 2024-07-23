@@ -79,10 +79,10 @@ form.signOutButton button {
 
 a {
 	color: var(--link);
+	text-decoration: none;
 
 	&:hover {
 		color: var(--link-hover);
-		text-decoration: none;
 		transition: color 0.2s ease;
 	}
 }
