@@ -8,7 +8,8 @@ A deployed version of the full stack web application can be found [here](https:/
 
 ## Features
 
-- Recipe Management: Create, Read, Update, and Delete (CRUD) operations for recipes.
+- Recipe Management: Create, Read and Update operations for recipes.
+   - Creation of recipes is only allowed for signed-in users via Google for now. Update is not implemented for users yet.
 - Search Functionality: Search for recipes by name, difficulty, only vegetarians and ingredients.
 - Save Recipes: Users can save recipes in the browser's Local Storage without the need of registration
 - Recipe servings scaling: For ingredients that have a determinate amount users can adjust the servings and they will automatically adjust in the individual recipe page
