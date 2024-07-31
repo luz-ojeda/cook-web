@@ -8,7 +8,8 @@ Puede encontrar una versión deployada de la aplicación web completa [aquí](ht
 
 ## Features
 
-- Gestión de recetas: operaciones de lectura para recetas.
+- Gestión de recetas: operaciones de creación, lectura y actualización  para recetas.
+   - Para usuarios solo se permite la creación autenticándose  a través de Google por ahora.
 - Funcionalidad de búsqueda: busque recetas por nombre, dificultad, solo vegetarianos e ingredientes.
 - Guardar recetas: los usuarios pueden guardar recetas en el almacenamiento local (local storage) del navegador sin necesidad de registrarse
 - Escalado de porciones de recetas: para ingredientes que tienen una cantidad determinada, los usuarios pueden ajustar las porciones de la receta en la página de la misma y los ingredientes se ajustarán automáticamente.
